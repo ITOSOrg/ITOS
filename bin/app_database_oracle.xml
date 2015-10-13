@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is the ant database build file for project.
+-->
+
+<!DOCTYPE project>
+	
+<project name="app_database_oracle" default="oracledatabase">
+
+
+	<!-- set global properties for this build -->
+
+	<property environment="sysenv."/>
+
+	<property name="app.tools.dir" 			                    value="${sysenv.TOOLS_HOME}" />
+	<property name="db.oracle.drop.tablespaces.file" 			value="DropTablespaces.sql" />
+	<property name="db.oracle.create.tablespaces.file" 			value="CreateTablespaces.sql" />
+	<property name="db.oracle.create.user.file" 				value="CreateDBUser.sql" />
+	<property name="db.oracle.drop.user.file" 					value="DropDBUser.sql" />
+	<property name="db.oracle.grant.connect.user.file" 			value="GrantConnectToDBUser.sql" />
+
+	<property name="db.oracle.url" 								value=" ${db.oracle.username}/${db.oracle.password}@${db.name} as ${db.oracle.connect.as} " />
+
+	<property name="db.oracle.tablespace.datafile.path.name" 	value="${app.tools.dir}/${db.oracle.tablespace.datafile.path}/${db.username}/${db.oracle.default.tablespace}.dbf" />
+
+
+	<!--  *************************  -->
+	<!--  ***  D A T A B A S E  ***  -->
+	<!--  *************************  -->
+	<!-- Main Targets -->
+	<target name="oracledatabase" depends="drop, droptablespaces, createtablespaces, create, grant" 
+				description="Build a Clean Database">
+
+	</target>
+
+	<!-- run the DropTablespaces.sql -->
+	<target name="droptablespaces"	depends="run.database.all" unless="statictablespaces"
+				description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Dropping Table Spaces"/>
+		</antcall>
+
+		<tempfile property="temp.file" prefix="temp" suffix=".oracle" destdir="${dir.bld.datamanager}" />
+
+		<copy file="${dir.server.datamanager.oracle}/${db.oracle.drop.tablespaces.file}" tofile="${temp.file}">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+		<exec executable="sqlplus" failonerror="true">
+			<arg value="-S" />
+			<arg line="${db.oracle.url}" />
+			<arg value="@${temp.file}" />
+		</exec>
+
+		<!-- Delete temp file. -->
+		<delete file="${temp.file}" quiet="true" verbose="false" />
+		<delete file="${db.oracle.tablespace.datafile.path.name}" quiet="true" verbose="false" />
+
+	</target>
+
+	<!-- run the CreateTablespaces.sql -->
+	<target name="createtablespaces" depends="run.database.all"  unless="statictablespaces"
+		description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Creating Table Spaces"/>
+		</antcall>
+
+		<mkdir dir="${app.tools.dir}/${db.oracle.tablespace.datafile.path}/${db.username}" />
+
+		<tempfile property="temp.file" prefix="temp" suffix=".oracle" destdir="${dir.bld.datamanager}" />
+
+		<copy file="${dir.server.datamanager.oracle}/${db.oracle.create.tablespaces.file}" tofile="${temp.file}">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+		<exec executable="sqlplus" failonerror="true">
+			<arg value="-S" />
+			<arg line="${db.oracle.url}" />
+			<arg value="@${temp.file}" />
+		</exec>
+
+		<!-- Delete temp file. -->
+		<delete file="${temp.file}" quiet="true" verbose="false" />
+
+	</target>
+
+
+	<!--  ****************************************** -->
+	<!--  ***  D R O P  ORACLE  I N S T A N C E  *** -->
+	<!--  ****************************************** -->
+	<target name="drop" depends="run.database.all, db.oracle.drop.user" 
+				description="Drop dtabase instance ">
+
+	</target>
+
+	<target name="db.oracle.drop.user"
+				description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Droping Oracle User"/>
+		</antcall>
+
+		<tempfile property="temp.file" prefix="temp" suffix=".oracle" destdir="${dir.bld.datamanager}" />
+
+		<copy file="${dir.server.datamanager.oracle}/${db.oracle.drop.user.file}" tofile="${temp.file}">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+		<exec executable="sqlplus" failonerror="true">
+			<arg value="-S" />
+			<arg line="${db.oracle.url}" />
+			<arg value="@${temp.file}" />
+		</exec>
+
+		<!-- Delete temp file. -->
+		<delete file="${temp.file}" quiet="true" verbose="false" />
+
+	</target>
+
+
+	<!--  ******************************************** -->
+	<!--  *** C R E A T E  ORACLE  I N S T A N C E *** -->
+	<!--  ******************************************** -->
+	<target name="create" depends="run.database.all, db.oracle.create.user" 
+				description="rebuilds an existing oracle database instance ">
+
+	</target>
+
+	<target name="db.oracle.create.user" 
+					description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Create Oracle User"/>
+		</antcall>
+
+		<tempfile property="temp.file" prefix="temp" suffix=".oracle" destdir="${dir.bld.datamanager}" />
+
+		<copy file="${dir.server.datamanager.oracle}/${db.oracle.create.user.file}" tofile="${temp.file}">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+		<exec executable="sqlplus" failonerror="true">
+			<arg value="-S" />
+			<arg line="${db.oracle.url}" />
+			<arg value="@${temp.file}" />
+		</exec>
+
+		<!-- Delete temp file. -->
+		<delete file="${temp.file}" quiet="true" verbose="false" />
+
+	</target>
+
+
+	<!--  *******************************************  -->
+	<!--  ***  ORACLE GRANT CONNECT TO USER       ***  -->
+	<!--  *******************************************  -->
+	<target name="grant" depends="run.database.all, db.oracle.grant.connect" 
+				description="rebuilds an existing oracle database instance ">
+
+	</target>
+
+	<target name="db.oracle.grant.connect" 
+				description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Grant Privillages to User"/>
+		</antcall>
+
+		<tempfile property="temp.file" prefix="temp" suffix=".oracle" destdir="${dir.bld.datamanager}" />
+
+		<copy file="${dir.server.datamanager.oracle}/${db.oracle.grant.connect.user.file}" tofile="${temp.file}">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+		<exec executable="sqlplus" failonerror="true">
+			<arg value="-S" />
+			<arg line="${db.oracle.url}" />
+			<arg value="@${temp.file}" />
+		</exec>
+
+		<!-- Delete temp file. -->
+		<delete file="${temp.file}" quiet="true" verbose="false" />
+
+	</target>
+
+</project>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is the ant file for ATS projects.
+-->
+
+<!DOCTYPE project> 
+
+<project name="ITOS">
+
+	<!--  ***********************  -->
+	<!--  ***  I M P O R T S  ***  -->
+	<!--  ***********************  -->
+	<!-- build properties -->
+	<import file="./app_properties.xml" />
+
+	<!-- build utilities -->
+	<import file="./app_utilities.xml" /> 
+
+	 <!-- build initialization -->
+	<import file="./app_init.xml" />
+  
+	<!-- build database -->
+	<import file="./app_database.xml" />
+
+	<!-- build password encryption -->
+	<!--<import file="./app_encrypt.xml" />-->
+
+	
+	<!--  ********************  -->
+	<!--  *** START CLEAN  ***  -->
+	<!--  ********************  -->
+	<target name="clean">
+
+	</target>
+       
+
+</project>

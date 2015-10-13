@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+
+<!DOCTYPE project>
+
+<!--
+  This is the ant file to encrypt the password.
+-->
+<project name="app_encrypt" default="encrypt.password">
+
+	<!--  ***************************  -->
+	<!--  ***  Import Properties  ***  -->
+	<!--  ***************************  -->
+	<import file="./app_properties.xml" />
+
+	<target name="init">
+		
+		<!-- Check to see if the password to be encrypted is set -->
+		<condition property="encryption.password.valid">
+			<isset property="password" />
+		</condition>
+		<antcall target="check.password.valid" />
+		
+	</target>
+
+	<!--  ***********************************************  -->
+	<!--  ***  P A S S W O R D   E N C R Y P T I O N  ***  -->
+	<!--  ***********************************************  -->
+	<target name="encrypt" description="Encrypts the given password. (use -Dpassword=)">
+
+		<!-- Call app_encrypt.xml to encrypt the given password -->
+		<antcall target="encrypt.password" />
+
+	</target>
+
+
+	<!--  ***********************************************  -->
+	<!--  ***  P A S S W O R D   D I G E S T  ***  -->
+	<!--  ***********************************************  -->
+	<target name="digest" description="Digests the given password. used for one-way encryption (use -Dpassword=)">
+
+		<!-- Call app_encrypt.xml to encrypt the given password -->
+		<antcall target="digest.password" />
+
+	</target>
+
+
+	<!-- Fail if password property is missing. -->
+	<target name="check.password.valid" unless="encryption.password.valid">
+		
+		<fail message="Missing password property." />
+		
+	</target>
+
+	<target name="encrypt.password" description="Encrypts the given password" depends="init">
+		
+		<echo message="${crypto.prop.file.location}  ${base.dir}" />
+		<taskdef name="encrypt" classname="com.company.itos.core.util.security.EncryptPassword" classpath="${crypto.prop.file.location}:${jar.coreinf}:${jar.tools}" />
+		<encrypt password="${password}" />
+		
+	</target>
+
+
+
+	<target name="digest.password" description="Creates digest of the given password" depends="init">
+		
+		<java classname="com.company.itos.core.util.security.EncryptionAdmin" classpath="${crypto.prop.file.location}:${jar.coreinf}" fork="${java.fork}" failonerror="${java.failonerror}" maxmemory="${java.maxmemory}" taskname="digest">
+			<jvmarg value="${java.jvmargs}" />
+			<arg value="${password}" />
+			<arg value="./digest.txt" />
+		</java>
+		
+		<loadfile property="echo.digest" srcFile="./digest.txt" />
+		<delete file="./digest.txt" quiet="true" deleteonexit="true" />
+		<echo message="Digest : ${echo.digest}" />
+		
+	</target>
+
+</project>

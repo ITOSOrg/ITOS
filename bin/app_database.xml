@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is the ant database build file for project.
+-->
+
+<!DOCTYPE project>
+	
+<project name="app_database" default="database">
+
+
+	<!--  ***********************  -->
+	<!--  ***  I M P O R T S  ***  -->
+	<!--  ***********************  -->
+
+	<!-- build database oracle -->
+	<import file="./app_database_oracle.xml" />
+
+	<property name="db.drop.infrastructure.tables.file" value="DropInfTables.sql" />
+	<property name="db.create.infrastructure.tables.file" value="CreateInfTables.sql" />
+	<property name="db.drop.tables.file" value="DropTables.sql" />
+	<property name="db.create.tables.file" value="CreateTables.sql" />
+	<property name="db.drop.sequences.file" value="DropSequences.sql" />
+	<property name="db.create.sequences.file" value="CreateSequences.sql" />
+	<property name="db.add.constraint.file" value="AddConstraint.sql" />
+	<property name="db.insert.demo.data.file" value="DemoData.sql" />
+	<property name="db.insert.initial.data.file" value="InitialData.sql" />
+
+	<!--  *************************  -->
+	<!--  ***  D A T A B A S E  ***  -->
+	<!--  *************************  -->
+	<!-- Main Targets -->
+	<target name="database" depends="init, dbinit, merge.database.files, dropapptables, dropappsequence, createapptables, createappsequence, insertdata, addConstraint" description="Build a Clean Database">
+
+	</target>
+
+	<!--  **************************  -->
+	<!--  *** DB INITIALISATION  ***  -->
+	<!--  **************************  -->
+	<target name="dbinit" description="Database Initialization">
+
+		<echo message="Database init." />
+
+		<!-- Delete datamanager directory. -->
+		<delete dir="${dir.bld.datamanager}" />
+
+		<!-- Craete build datamanager directory. -->
+		<mkdir dir="${dir.bld.datamanager}" />
+
+	</target>
+
+	<!-- run the DropInfTables.sql -->
+	<target name="dropinftables" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Dropping Infrastructure Tables" />
+		</antcall>
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" onerror="continue" encoding="UTF-8">
+			<transaction src="${dir.bld.datamanager}/${db.drop.infrastructure.tables.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- run the CreateInfTables.sql -->
+	<target name="createinftables" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Creating Infrastructure Tables" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<transaction>
+				${transaction}
+			</transaction>
+			<transaction src="${dir.bld.datamanager}/${db.create.infrastructure.tables.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- run the DropAppTables.sql -->
+	<target name="dropapptables" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Dropping Application Tables" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" onerror="continue" encoding="UTF-8">
+			<transaction src="${dir.bld.datamanager}/${db.drop.tables.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- run the CreateAppTables.sql -->
+	<target name="createapptables" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Creating Application Tables" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<!-- <transaction>
+				${transaction}
+			</transaction> -->
+			<transaction src="${dir.bld.datamanager}/${db.create.tables.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- run the DropSequences.sql -->
+	<target name="dropappsequence" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Dropping Application Sequence" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" onerror="continue" encoding="UTF-8">
+			<transaction src="${dir.bld.datamanager}/${db.drop.sequences.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- run the CreateSequence.sql -->
+	<target name="createappsequence" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Creating Application Sequence" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<transaction src="${dir.bld.datamanager}/${db.create.sequences.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- Insert Initial and Demo Data from datamanager/initial_data folder into Tables -->
+	<target name="insertdata" depends="run.database.all, insertinitialdata, insertdemodata" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Inserting Initial and Demo data into database" />
+		</antcall>
+
+	</target>
+
+	<!-- Insert Initial Data from datamanager/initial folder into Tables -->
+	<target name="insertinitialdata" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Inserting initial data into database" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<transaction>
+				${transaction.dateformat}
+			</transaction>
+			<transaction src="${dir.bld.datamanager}/${db.insert.initial.data.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- Insert Demo Data from datamanager/demo folder into Tables -->
+	<target name="insertdemodata" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Inserting demo data into database" />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<!--<transaction>
+					${transaction.dateformat}
+			</transaction>-->
+			<transaction src="${dir.bld.datamanager}/${db.insert.demo.data.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!-- Add constraint from datamanager/AppConstraint.sql file into Tables -->
+	<target name="addConstraint" depends="run.database.all" description="Target description.">
+
+		<antcall target="dispmsg">
+			<param name="prm.msg" value="Add constraint Primary Key, Forien Key, Index to database table." />
+		</antcall>
+
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}" autocommit="true" encoding="UTF-8" onerror="abort">
+			<transaction src="${dir.bld.datamanager}/${db.add.constraint.file}" />
+			<classpath>
+				<path refid="database.common.classpath" />
+			</classpath>
+		</sql>
+
+	</target>
+
+	<!--  ***********************************  -->
+	<!--  ***  D A T A B A S E   A L L    ***  -->
+	<!--  ***********************************  -->
+	<target name="run.database.all" depends="check.db.type, run.database.ora, run.database.mysql" description="Target description.">
+
+		<!-- Coomon target for all types of database to call from. -->
+
+	</target>
+
+	<!--  ***********************************  -->
+	<!--  ***  C H E C K   D B   T Y P E  ***  -->
+	<!--  ***********************************  -->
+	<target name="check.db.type" description="Target description.">
+
+		<condition property="usingoracle">
+			<contains string="${db.type}" substring="ora" casesensitive="No" />
+		</condition>
+
+		<condition property="usingmysql">
+			<contains string="${db.type}" substring="mysql" casesensitive="No" />
+		</condition>
+
+		<condition property="prop.file.inside.available">
+			<and>
+				<isset property="db.username" />
+				<isset property="db.password" />
+				<isset property="db.name" />
+				<isset property="db.oracle.servicename" />
+			</and>
+		</condition>
+
+	</target>
+
+
+	<!--  *****************************  -->
+	<!--  ***  R U N  D D L  O R A  ***  -->
+	<!--  *****************************  -->
+	<target name="run.database.ora" if="usingoracle" description="Target description.">
+
+		<property name="db.driver" value="oracle.jdbc.OracleDriver" />
+		<!-- Below Oracle database URL works with SID old way connectivity to database. New way is to connect through Service. -->
+		<!-- <property name="db.url" value="jdbc:oracle:thin:@${db.servername}:${db.serverport}:${db.name}"/> -->
+		<property name="db.url" value="jdbc:oracle:thin:@//${db.servername}:${db.serverport}/${db.oracle.servicename}" />
+		<property name="transaction" value="ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD-HH24.MI.SS';" />
+		<property name="sqlj.classpath" value="${jar.oracle}${path.separator}${jar.oracle.sqlj.trans}${path.separator}${jar.oracle.sqlj.run}" />
+		<property name="transaction.dateformat" value="ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';" />
+
+	</target>
+
+
+	<!--  *****************************  -->
+	<!--  ***  R U N  D D L  MYSQL  ***  -->
+	<!--  *****************************  -->
+	<target name="run.database.mysql" if="usingmysql" description="Target description.">
+
+		<property name="db.driver" value="com.mysql.jdbc.Driver" />
+		<!-- jdbc:mysql://[host][,failoverhost...][:port]/[database] -->
+		<!-- <property name="db.url" value="jdbc:mysql://${db.servername}:${db.serverport}/${db.name}"/> -->
+		<!-- <property name="db.url" value="jdbc:mysql://192.168.0.101/root"/> -->
+		<property name="db.url" value="jdbc:mysql://127.0.0.1/test" />
+		<property name="sqlj.classpath" value="${jar.mysql}" />
+		<property name="db.url.noschema" value="jdbc:mysql://192.168.0.101/root" />
+
+
+	</target>
+
+
+	<!--  ******************************  -->
+	<!--  *** CHECK DATABASE DRIVER  ***  -->
+	<!--  ******************************  -->
+	<target name="check.database.driver" description="Target description.">
+
+		<condition property="database.zip.available">
+			<or>
+				<available file="${jar.oracle}" />
+			</or>
+		</condition>
+
+	</target>
+
+	<!--  ******************************  -->
+	<!--  *** CHECK DATABASE DRIVER  ***  -->
+	<!--  ******************************  -->
+	<target name="merge.database.files" description="Merge all application ddl files.">
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.drop.tables.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.drop.tables.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.create.tables.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.create.tables.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.drop.sequences.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.drop.sequences.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.create.sequences.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.create.sequences.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.drop.infrastructure.tables.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.drop.infrastructure.tables.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.create.infrastructure.tables.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.create.infrastructure.tables.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.add.constraint.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.ddl}/${db.add.constraint.file}" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.insert.initial.data.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.initial}/*.sql" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+		<concat force="true" fixlastline="yes" destfile="${dir.bld.datamanager}/${db.insert.demo.data.file}">
+			<fileset dir="${dir.server.components}">
+				<include name="*/${dir.data.demo}/*.sql" />
+				<exclude name="" />
+			</fileset>
+		</concat>
+
+	</target>
+
+</project>

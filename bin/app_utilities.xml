@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is the ant utilities file for project.
+  It contains any utility tasks used by the application build.
+-->
+
+<!DOCTYPE project>
+	
+<project name="app_utilities" default="">
+
+  <!--  *********************************************  -->
+  <!--  ***  Targets for checking properties set  ***  -->
+  <!--  *********************************************  -->
+  <target name="check.props.inside.file" unless="prop.file.inside.available">
+    <echo>Properties are missing from your ${prop.file}</echo>
+    <echo>The following minimum properties should be setup: </echo>
+    <echo>db.username=a valid database username</echo>
+    <echo>db.password=a valid database password</echo>
+    <echo>db.name=database name</echo>
+    <echo>db.servername=a valid database machine name</echo>
+    <echo>db.serverport=port the database is listening on</echo>
+    <fail> </fail>
+  </target>
+
+  <!--  *******************************************  -->
+  <!--  ***  C H E C K   F I L E   E X I S T S  ***  -->
+  <!--  *******************************************  -->
+  <target name="check.prop.file" unless="prop.file.available">
+    <echo>A ${prop.file} file needs to be placed in your properties directory</echo>
+    <fail> </fail>
+  </target>
+
+  <!--  **************************************************************************  -->
+  <!--  ***  Test a named property to check its non-blank, and fail otherwise  ***  -->
+  <!--  ***  Parameters: prm.property - name of property to be tested          ***  -->
+  <!--  **************************************************************************  -->
+  <target name="check.prop"  unless="${prm.prop}">
+    <echo>Property ${prm.var} is not defined. Use ant -D${prm.var}=&lt;value&gt;</echo>
+    <echo>Alternatively set ${prm.var} as an environment variable</echo>
+    <antcall target="ini.setup.fail" inheritAll="false"/>
+  </target>
+
+  <!-- Fail because of bad configuration settings -->
+  <target name="ini.setup.fail">
+    <fail message=" There is a problem with your settings. 
+					Maybe you are invoking this build procedure incorrectly ?" />
+  </target>
+
+  
+  <!--  ***************************************  -->
+  <!--  ***  Display a timestamped message  ***  -->
+  <!--  ***************************************  -->
+  <target name="dispmsg">
+	<!-- Display a timestamped message
+       Parameters: prm.msg - the message to be displayed  -->
+    <tstamp>
+		<format property="tim.now" pattern="${prp.time.format}"/>
+	</tstamp>
+    
+	<echo message="${tim.now} ${prm.msg}"/>
+
+  </target>
+
+
+  <!--  ************************  -->
+  <!--  ***  GET.RUNNING.OS  ***  -->
+  <!--  ************************  -->
+  <target name="get.running.os">
+
+    <!-- Check to see if running on Windows -->
+    <condition property="os.windows">
+      <os family="windows"/>
+    </condition>
+
+    <!-- Check to see if running on Unix -->
+    <condition property="os.unix">
+      <os family="unix"/>
+    </condition>
+ 
+  </target>
+
+
+</project>

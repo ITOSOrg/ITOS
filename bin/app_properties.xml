@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is ant properties file for project. 
+  It contains all properties used by the application build.
+-->
+
+<!DOCTYPE project> 
+	
+<project name="app_properties">
+
+	<!--  *******************************  -->
+	<!--  ***  Load from Environment  ***  -->
+	<!--  *******************************  -->
+
+	<property environment="sysenv."/>
+
+	<!-- ============================================================ -->
+	<!--
+	! GLOBAL PROPERTIES AND PATHS
+	!
+	! Property name conventions:
+	!   dir.xxx - directory
+	!   jar.xxx - jar file
+	!   pgm.xxx - executable program or script
+	!   fil.xxx - other files
+	!   prp.xxx - other properties
+	!   prm.xxx - parameters to antcall task
+	!-->
+
+	<!-- Environment Settings -->
+	<property name="JAVA_HOME"                		value="${sysenv.JAVA_HOME}"/>
+	<property name="J2EE_JAR"                 		value="${sysenv.J2EE_JAR}"/>
+	<property name="ant.home" 			      		value="${ANT_HOME}"/>
+
+	<!-- Server directories and files -->
+	<property name="dir.server"               		value="${sysenv.SERVER_DIR}"/>
+	<property name="dir.server.bin"             	value="${dir.server}/bin"/>
+	<property name="dir.server.lib"          		value="${dir.server}/WebContent/WEB-INF/lib"/>
+	<property name="dir.server.drivers"         	value="${dir.server.lib}"/>
+	<property name="dir.server.components"          value="${dir.server}/components"/>
+	<property name="dir.data.ddl"          			value="data/ddl"/>
+	<property name="dir.data.initial"         		value="data/initial"/>
+	<property name="dir.data.demo"         			value="data/demo"/>
+			
+	
+	<property name="dir.server.datamanager" 		location="${dir.server.components}/core/${dir.data.ddl}"/>
+	<property name="dir.server.datamanager.oracle" 	location="${dir.server.datamanager}/oracle"/>
+	<property name="dir.server.datamanager.mysql" 	location="${dir.server.datamanager}/mysql"/>
+	<property name="dir.project.properties"  		value="${dir.server}/project/properties"/>
+
+	<!-- Build deirectories. -->
+	<property name="dir.bld"             			value="${dir.server}/build"/>
+	<property name="dir.bld.datamanager"        	value="${dir.bld}/datamanager"/>
+	<property name="dir.bld.log"             		value="${dir.server}/buildlogs"/>
+
+
+
+	<!-- Set external library properties -->
+	<property name="jar.ant"            			value="${ant.home}/lib/ant.jar"/>
+	<property name="jar.clover"         			value="${ant.home}/lib/clover.jar"/>
+
+	<property name="jar.j2ee"           			value="${J2EE_JAR}"/>
+	<property name="jar.javatools"      			value="${JAVA_HOME}/lib/tools.jar"/>
+
+	<property name="jar.mail"           			value="${sysenv.JAVAMAIL_HOME}/mail.jar"/>
+	<property name="jar.activation"     			value="${sysenv.JAVAMAIL_HOME}/activation.jar"/>
+
+	<property name="prop.file.location" 			value="${dir.project.properties}"/>
+	<property name="prop.file.database"          	value="${prop.file.location}/database.properties"/>
+	<property name="prop.file.oracle"          		value="${prop.file.location}/oracle.properties"/>
+	<property file="${prop.file.database}"/>
+	<property file="${prop.file.oracle}"/>
+
+	<!--  **********************************  -->
+	<!--  *** Oracle Database properties ***  -->
+	<!--  **********************************  -->
+	<property name="jar.oracle"             		value="${dir.server.drivers}/ojdbc14.jar"/>
+	<property name="jar.oracle.sqlj.run"    		value="${dir.server.drivers}/runtime12.jar"/>
+	<property name="jar.oracle.sqlj.trans"  		value="${dir.server.drivers}/translator.jar"/>
+
+	<!--  **********************************  -->
+	<!--  *** Oracle Database properties ***  -->
+	<!--  **********************************  -->
+	<property name="jar.mysql"             			value="${dir.server.drivers}/mysql-connector-java-5.1.16-bin.jar"/>
+
+
+	<!--  *******************************  -->
+	<!--  ***  JAVA/JAVAC TASK FLAGS  ***  -->
+	<!--  *******************************  -->
+
+	<property name="java.fork"              		value="true"/>
+	<property name="java.maxmemory"         		value="768m"/>
+	<property name="java.failonerror"       		value="true"/>
+
+	<property name="java.console.encoding"  		value="UTF-8"/>
+	<property name="java.file.encoding"     		value="UTF-8"/>
+	<property name="path.separator" 				value=";"/>
+
+	<!-- A fake setting is necessary on Unix platforms rather than an empty string -->
+	<property name="java.jvmargs"          			value="-Dfake.property=1"/>
+	<property name="cmp.fork"               		value="true"/>
+	<property name="cmp.debug"              		value="on"/>
+	<property name="cmp.maxmemory"          		value="768m"/>
+	<property name="cmp.nowarn"             		value="off"/>
+	<property name="cmp.optimize"           		value="off"/>
+	<property name="cmp.deprecation"        		value="off"/>
+	<property name="cmp.verbose"            		value="false"/>
+	<property name="cmp.includeAntRuntime"  		value="yes"/>
+	<property name="cmp.includeJavaRuntime" 		value="no"/>
+	<property name="cmp.failonerror"        		value="true"/>
+	<property name="cmp.listfiles"          		value="no"/>
+
+	<!-- Other properties and custom tasks -->
+	<property name="prp.loglevel"       			value="info"/>
+	<property name="prp.time.format"    			value="HH:mm:ss"/>
+	<property name="prp.warningstoerrors" 			value="false"/>
+
+
+	<!--  **********************************  -->
+	<!--  ***  Common Compile Classpath  ***  -->
+	<!--  **********************************  -->
+	<path id="j.cp">
+		<pathelement path="${jar.ant}"/>
+		<pathelement path="${jar.clover}"/>
+		<pathelement path="${jar.tools}"/>
+		<pathelement path="${jar.j2ee}"/>
+	</path>
+
+
+	<!--  ***********************************  -->
+	<!--  ***  Common Database Classpath  ***  -->
+	<!--  ***********************************  -->
+	<path id="database.common.classpath">
+		<pathelement path="${jar.oracle}"/>
+		<pathelement path="${jar.mysql}"/>
+		<pathelement path="${jar.ant}"/>
+		<pathelement path="${jar.clover}"/>
+		<pathelement path="${jar.j2ee}"/>
+		<pathelement location="${prop.file.location}"/>
+		<pathelement location="${dir.project.properties}"/>
+	</path>
+
+
+</project>

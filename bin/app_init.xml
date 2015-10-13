@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is the ant initialization file for project.
+  It includes any initialization tasks that need to be performed before a application can be built.
+-->
+
+<!DOCTYPE project> 
+	
+<project name="app_init" default="init">
+
+	<!--  ************************  -->
+	<!--  ***  INITIALISATION  ***  -->
+	<!--  ************************  -->
+	<target name="init">
+
+		<echo message="Application init."/>
+
+		<!-- Set the starting time stamp for use in file names -->
+		<tstamp>
+			<format property="tim.start.sort" pattern="yyyyMMddHHmmss"/>
+		</tstamp>
+
+		<!-- Craete Build directory. -->
+		<mkdir dir="${dir.bld}"/>
+
+		<!-- Start recording progress to a log file -->
+		<mkdir dir="${dir.bld.log}"/>
+		<!--<record name="${dir.bld.log}/Build_${tim.start.sort}.txt" loglevel="${prp.loglevel}" />-->
+
+		<!-- Check for a J2EE installation -->
+		<antcall target="check.prop" inheritall="false">
+			<param name="prm.var" value="J2EE_JAR"/>
+			<param name="prm.prop" value="sysenv.J2EE_JAR"/>
+		</antcall>
+
+		<!-- Check for a Database Properties file -->
+		<condition property="prop.file.available">
+			<available file="${prop.file.database}"/>
+		</condition>
+		
+		<antcall target="check.prop.file" />
+
+	</target>
+
+</project>

@@ -32,7 +32,7 @@ public class PersonDeleteDAO {
 			 * of DBConnection class
 			 */
 			connection = dbConnection.getDBConnection();
-			String query = "UPDATE	PERSON	SET	STATUS='cancel'	WHERE	REFRENCENUMBER="
+			String query = "UPDATE	PERSON	SET	RECORDSTATUS='cancel'	WHERE	REFRENCENUMBER="
 					+ personDetail.getRefrenceNumber();
 			/**
 			 * sending sql statement to the database

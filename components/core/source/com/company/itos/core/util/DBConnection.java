@@ -15,7 +15,7 @@ public class DBConnection {
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection(oracleUrlStr, "pms",
+			connection = DriverManager.getConnection(oracleUrlStr, "itos",
 					"password");
 		} catch (SQLException e) {
 			e.printStackTrace();

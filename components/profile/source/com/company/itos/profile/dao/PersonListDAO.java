@@ -36,16 +36,18 @@ public class PersonListDAO {
 				personDetail.setPersonID(resultSet.getInt("PERSONID"));
 				personDetail.setRefrenceNumber(resultSet
 						.getInt("REFRENCENUMBER"));
+				personDetail.setTitle(resultSet.getString("title"));
 				personDetail.setFirstName(resultSet.getString("FIRSTNAME"));
 				personDetail.setMiddleName(resultSet.getString("MIDDLENAME"));
 				personDetail.setLastName(resultSet.getString("LASTNAME"));
 				personDetail.setUserName(resultSet.getString("USERNAME"));
-				personDetail
-						.setVersionNo(resultSet.getInt("versionNo"));
+				personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
+				personDetail.setGender(resultSet.getString("gender"));
 				personDetail.setCreatedBy(resultSet.getString("createdBy"));
 				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
+				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 				
 				personDetailList.add(personDetail);
 

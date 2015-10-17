@@ -22,36 +22,37 @@ import com.company.itos.profile.pojo.PersonSearchDetails;
  */
 public class PersonRegistrationDAO {
 
-	PreparedStatement	preparedStatement;
+	PreparedStatement preparedStatement;
 
-	ResultSet			resultSet;
+	ResultSet resultSet;
 
 	public String registerPerson(PersonDetail personDetail) {
 
 		String returnMassegeStr = "";
 		boolean personExistInd = personExist(personDetail);
 		boolean userNameExistInd = checkingUserName(personDetail);
-		
+
 		if (!personExistInd && !userNameExistInd) {
 
 			UsersDetail usersDetail = personDetail.getUsersDetail();
 
-			String sql = "INSERT	INTO	USERS(userName,password)	VALUES('" + usersDetail.getUserName() + "','" + usersDetail.getPassword()
-					+ "')";
+			String sql = "INSERT	INTO	USERS(userName,password)	VALUES('"
+					+ usersDetail.getUserName() + "','"
+					+ usersDetail.getPassword() + "')";
 
-			String insertTableSQL = "INSERT INTO PERSON(RefrenceNumber,FirstName,MiddleName,LastName,userName,versionNo,recordStatus,dateOfBirth) VALUES ('"
-					+ personDetail.getRefrenceNumber()
-					+ "','"
+			String insertTableSQL = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, versionNo) "
+					+ "VALUES (PersonSEQ.nextval, PersonRefrenceNumberSEQ.nextval, '"
+					+ personDetail.getTitle()
+					+ "', '"
 					+ personDetail.getFirstName()
 					+ "','"
 					+ personDetail.getMiddleName()
 					+ "','"
 					+ personDetail.getLastName()
 					+ "','"
-					+ usersDetail.getUserName()
-					+ "','"
-					+ personDetail.getVersionNo()
-					+ "','active'," + " ? )";
+					+ personDetail.getGender()
+					+ "' ,'"
+					+ usersDetail.getUserName() + "',?, 'active'," + " 1 )";
 
 			DBConnection dbConnection = new DBConnection();
 
@@ -63,18 +64,21 @@ public class PersonRegistrationDAO {
 
 				preparedStatement.execute();
 
-				PreparedStatement preparedStatement1 = connection.prepareStatement(insertTableSQL, Statement.RETURN_GENERATED_KEYS);
+				PreparedStatement preparedStatement1 = connection
+						.prepareStatement(insertTableSQL);
+				// ,Statement.RETURN_GENERATED_KEYS);
 
-				resultSet = preparedStatement1.getGeneratedKeys();
+				// resultSet = preparedStatement1.getGeneratedKeys();
 
+				// preparedStatement1.setString(1,
+				// "PersonRegistrationSEQ.nextval");
 				preparedStatement1.setDate(1, personDetail.getDateOfBirth());
-				
+
 				preparedStatement1.execute();
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 			} catch (SQLException e) {
-				List<String> errorMessageList = new ArrayList<String>();
-				errorMessageList.add("Username already exist");
+				personDetail.getErrorMessageList().add("Username already exist");
 				e.printStackTrace();
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 			}
@@ -95,9 +99,15 @@ public class PersonRegistrationDAO {
 
 			PersonSearchCriteria personSearchCriteria = new PersonSearchCriteria();
 
-			personSearchCriteria.setFirstName(personDetail.getFirstName() == null ? "" : personDetail.getFirstName());
-			personSearchCriteria.setMiddleName(personDetail.getMiddleName() == null ? "" : personDetail.getMiddleName());
-			personSearchCriteria.setLastName(personDetail.getLastName() == null ? "" : personDetail.getLastName());
+			personSearchCriteria
+					.setFirstName(personDetail.getFirstName() == null ? ""
+							: personDetail.getFirstName());
+			personSearchCriteria
+					.setMiddleName(personDetail.getMiddleName() == null ? ""
+							: personDetail.getMiddleName());
+			personSearchCriteria
+					.setLastName(personDetail.getLastName() == null ? ""
+							: personDetail.getLastName());
 
 			PersonSearchDetails personSearchDetails = new PersonSearchDetails();
 			personSearchDetails.setPersonSearchCriteria(personSearchCriteria);
@@ -106,7 +116,8 @@ public class PersonRegistrationDAO {
 			SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
 
 			//
-			List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
+			List<PersonDetail> personDetailList = searchPersonDAO
+					.searchPersonInfo(personSearchDetails);
 
 			if (personDetailList.size() > 0) {
 
@@ -135,13 +146,15 @@ public class PersonRegistrationDAO {
 		try {
 			connection = dbConnection.getDBConnection();
 			Statement statement = connection.createStatement();
-			String sql = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
+			String sql = "select userName from USERS where userName='"
+					+ personDetail.getUsersDetail().getUserName() + "'";
 			ResultSet resultSet = statement.executeQuery(sql);
 			while (resultSet.next()) {
 				List<String> errorMessageList = new ArrayList<String>();
 				errorMessageList.add("UserName already exist");
 				// personDetail.setErrorMessageList(errorMessageList);
-				personDetail.getErrorMessageList().add("UserName already exist");
+				personDetail.getErrorMessageList()
+						.add("UserName already exist");
 				return true;
 
 			}

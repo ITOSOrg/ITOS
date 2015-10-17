@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.pojo.PersonDetail;
-
 import com.company.itos.profile.dao.PersonUpdateDAO;
 
 /**
@@ -61,24 +63,32 @@ public class PersonUpdate extends HttpServlet {
 			personDetail.setUserName(userName);
 
 			PersonUpdateDAO personUpdateDAO = new PersonUpdateDAO();
+			String returnMassegeStr = personUpdateDAO
+					.updatePerson(personDetail);
+			if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			int versionNumber = personUpdateDAO
-					.returnVersionNumber(personDetail);
+				pageForwardStr = "/PersonHome";
+			} else {
 
-			if (versionNumber != 0
-					&& versionNumber == personDetail.getVersionNo()) {
-
-				personUpdateDAO.updatePerson(personDetail);
-				personUpdateDAO.versionNumberIncreament(personDetail);
-				request.setAttribute("personDetail", personDetail);
-
-				if (personDetail != null) {
-					pageForwardStr = "/PersonHome";
-				} else {
-					errorInd = true;
-				}
-
+				pageForwardStr = "/PersonHome?act=update";
 			}
+
+			/*
+			 * int versionNumber = personUpdateDAO
+			 * .returnVersionNumber(personDetail);
+			 * 
+			 * if (versionNumber != 0 && versionNumber ==
+			 * personDetail.getVersionNo()) {
+			 * 
+			 * personUpdateDAO.updatePerson(personDetail);
+			 * personUpdateDAO.versionNumberIncreament(personDetail);
+			 * request.setAttribute("personDetail", personDetail);
+			 * 
+			 * if (personDetail != null) { pageForwardStr = "/PersonHome"; }
+			 * else { errorInd = true; }
+			 * 
+			 * }
+			 */
 
 		}
 
@@ -92,28 +102,29 @@ public class PersonUpdate extends HttpServlet {
 
 	private boolean personValidate(HttpServletRequest request,
 			PersonDetail personDetail) {
-		
-		List<String> errorMessageList = new ArrayList<String>();
-		
-		Integer versionNumber = new Integer(
-				request.getParameter("versionNo"));
-		
-		personDetail.setVersionNo(versionNumber);
-		
-		String refNumber = request.getParameter("refrenceNumber");
-		
-		if (refNumber == null || refNumber.equals("")) {
-			errorMessageList
-					.add("Please	enter	only numbers in Reference	Number.");
-			personDetail.setRefrenceNumber(new Integer(refNumber));
-		} else {
-			try {
-				personDetail.setRefrenceNumber(new Integer(refNumber));
 
-			} catch (NumberFormatException numberFormatException) {
-				errorMessageList
-						.add("Please	enter	only numbers in Reference	Number.");
-			}
+		List<String> errorMessageList = new ArrayList<String>();
+
+		String dateOfBirth = request.getParameter("dateOfBirth");
+		String title = request.getParameter("title");
+		String gender = request.getParameter("gender");
+		
+		personDetail.setTitle(title);
+		personDetail.setGender(gender);
+
+		/**
+		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
+		 * personDetail.setDateOfBirth(sqlDate);
+		 */
+
+		try {
+
+			java.util.Date date = new SimpleDateFormat("MM-dd-yyyy").parse(dateOfBirth);
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			personDetail.setDateOfBirth(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
 		String pattern = "^[a-zA-Z]*$";
@@ -126,7 +137,7 @@ public class PersonUpdate extends HttpServlet {
 		} else {
 			personDetail.setFirstName(firstName);
 		}
-		
+
 		String middleName = request.getParameter("middleName");
 		if (middleName == null || !middleName.matches(pattern)) {
 			errorMessageList
@@ -135,7 +146,7 @@ public class PersonUpdate extends HttpServlet {
 		} else {
 			personDetail.setMiddleName(middleName);
 		}
-		
+
 		String lastName = request.getParameter("lastName");
 		if (lastName == null || !lastName.matches(pattern)) {
 			errorMessageList
@@ -145,9 +156,11 @@ public class PersonUpdate extends HttpServlet {
 			personDetail.setLastName(lastName);
 		}
 		
+		personDetail.setVersionNo(Integer.parseInt(request.getParameter("versionNo")));
+
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);
-		
+
 		return !errorMessageList.isEmpty();
 
 	}

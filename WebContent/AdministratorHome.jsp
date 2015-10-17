@@ -26,11 +26,12 @@
 			<thead>
 
 				<tr>
-					<th align="left">PersonID:</th>
-					<th>RefrenceNumber:</th>
+					<th align="left">Title:</th>
 					<th>First Name:</th>
 					<th>Middle Name:</th>
 					<th>Last Name:</th>
+					<th>Date Of Birth:</th>
+					<th>Gender:</th>
 					<th>Created By:</th>
 					<th align="center">Created On:</th>
 					<th align="center">Modified By:</th>
@@ -45,11 +46,12 @@
 			%>
 			<tbody>
 				<tr>
-					<td><%=personDetail.getPersonID()%></td>
-					<td><%=personDetail.getRefrenceNumber()%></td>
+					<td><%=personDetail.getTitle()%></td>
 					<td><%=personDetail.getFirstName()%></td>
 					<td><%=personDetail.getMiddleName()%></td>
 					<td><%=personDetail.getLastName()%></td>
+					<td><%=personDetail.getDateOfBirth()%></td>
+					<td><%=personDetail.getGender()%></td>
 					<td><%=personDetail.getCreatedBy()%></td>
 					<td><%=personDetail.getCreatedOn()%></td>
 					<td><%=personDetail.getModifiedBy()%></td>
@@ -57,7 +59,7 @@
 					<td><a
 						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Read</a></td>
 					<td><a
-						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>&act=update&versionNo=<%=personDetail.getVersionNo()%>	">Update</a></td>
+						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>&act=update">Update</a></td>
 
 
 

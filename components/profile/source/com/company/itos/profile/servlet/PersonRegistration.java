@@ -57,6 +57,7 @@ public class PersonRegistration extends HttpServlet {
 
 		// Call Validate Method
 		boolean errorInd = validatePersonDetails(request, personDetail);
+		String pageForwardStr ="";
 
 		if (errorInd) {
 
@@ -70,14 +71,14 @@ public class PersonRegistration extends HttpServlet {
 
 			if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-				RequestDispatcher rd1 = request.getRequestDispatcher("/PersonHome");
-				rd1.include(request, response);
+				pageForwardStr = "/PersonHome";
 			} else {
-
-				RequestDispatcher rd1 = request.getRequestDispatcher("/RegistrationForm.jsp");
-				rd1.forward(request, response);
+				pageForwardStr = "/RegistrationForm.jsp";
 			}
 		}
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
@@ -90,8 +91,12 @@ public class PersonRegistration extends HttpServlet {
 
 		List<String> errorMessageList = new ArrayList<String>();
 
-		String refNumber = request.getParameter("refrenceNumber");
-		String dateOfBirth = request.getParameter("dateOfBirst");
+		String dateOfBirth = request.getParameter("dateOfBirth");
+		String title = request.getParameter("title");
+		String gender = request.getParameter("gender");
+		
+		personDetail.setTitle(title);
+		personDetail.setGender(gender);
 
 		/**
 		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
@@ -108,37 +113,10 @@ public class PersonRegistration extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		if (refNumber == null || refNumber.equals("")) {
-
-			errorMessageList.add("Please	enter	Reference	Number.");
-			personDetail.setRefrenceNumber(new Integer(refNumber));
-		} else {
-
-			try {
-
-				personDetail.setRefrenceNumber(new Integer(refNumber));
-
-			} catch (NumberFormatException numberFormatException) {
-
-				errorMessageList.add("Please	enter	only numbers in Reference	Number.");
-
-			}
-		}
+		
 
 		String userName = request.getParameter("userName");
-		String versionNo = request.getParameter("versionNo");
-		if (versionNo == null || versionNo.equals("")) {
-			errorMessageList.add("Please	enter	only numbers in Version	Number.");
-			personDetail.setVersionNo(new Integer(versionNo));
-
-		} else {
-			try {
-				personDetail.setVersionNo(new Integer(versionNo));
-
-			} catch (NumberFormatException numberFormatException) {
-				errorMessageList.add("Please	enter	only numbers in Version	Number.");
-			}
-		}
+		
 
 		UsersDetail usersDetail = new UsersDetail();
 		usersDetail.setUserName(userName);
@@ -185,7 +163,7 @@ public class PersonRegistration extends HttpServlet {
 			}
 		}
 		String password = request.getParameter("password");
-		if (password.length() != 8) {
+		if (password.length() < 8) {
 			errorMessageList.add("Password must contain at 8 charachters");
 			usersDetail.setPassword(password);
 		} else {

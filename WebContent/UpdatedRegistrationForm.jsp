@@ -34,9 +34,9 @@
 
 		<table>
 			<tr>
-				<td>RefrenceNumber :</td>
-				<td><input type="text" name="refrenceNumber"
-					value="<%=personDetail.getRefrenceNumber()%>"></td>
+				<td>Title :</td>
+				<td><input type="text" name="title"
+					value="<%=personDetail.getTitle()%>"></td>
 			</tr>
 
 			<tr>
@@ -53,6 +53,16 @@
 				<td>Last Name:</td>
 				<td><input type="text" name="lastName"
 					value="<%=personDetail.getLastName()%>"></td>
+			</tr>
+			<tr>
+				<td>Gender:</td>
+				<td><input type="text" name="gender"
+					value="<%=personDetail.getGender()%>"></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth:</td>
+				<td><input type="text" name="dateOfBirth"
+					value="<%=personDetail.getDateOfBirth()%>"></td>
 			</tr>
 
 			<tr>

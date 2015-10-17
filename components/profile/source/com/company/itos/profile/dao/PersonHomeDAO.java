@@ -45,16 +45,18 @@ public class PersonHomeDAO {
 				personDetail.setPersonID(resultSet.getInt("personID"));
 				personDetail.setRefrenceNumber(resultSet
 						.getInt("refrenceNumber"));
+				personDetail.setTitle(resultSet.getString("title"));
 				personDetail.setFirstName(resultSet.getString("firstName"));
 				personDetail.setMiddleName(resultSet.getString("middleName"));
 				personDetail.setLastName(resultSet.getString("lastName"));
-				personDetail.setRecordStatus(resultSet.getString("recordStatus"));
-				personDetail.setVersionNo(resultSet.getInt("versionNo"));
-				personDetail.setCreatedBy(resultSet.getString("createdBy"));
-				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
+				personDetail.setGender(resultSet.getString("gender"));
+				personDetail.setRecordStatus(resultSet.getString("recordStatus"));
+				personDetail.setCreatedBy(resultSet.getString("createdBy"));
 				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
+				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
+				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 
 			}
 		} catch (SQLException e) {

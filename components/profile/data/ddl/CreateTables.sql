@@ -1,21 +1,27 @@
-CREATE TABLE Person
- ( personID NUMBER(10) NOT NULL,
-   title VARCHAR2(30),
-   firstName VARCHAR2(15),
-   middleName VARCHAR2(30),
-   lastName VARCHAR2(15), 
-   fullName VARCHAR2(60),
-   gender VARCHAR2(10),
-   dateOfBirth DATE, 
-   comments VARCHAR2(500),
-   registrationDate DATE,
-   primaryAddressID NUMBER(10),
-   primaryEmailAddressID NUMBER(10),
-   primaryAlternateID NUMBER(10),
-   primaryPhoneNumberID NUMBER(15),
-   recordStatus VARCHAR2(30),
-   versionNo NUMBER(20)
-   );
+CREATE TABLE Person ( 
+	personID NUMBER(10) NOT NULL,
+	title VARCHAR2(30),
+	firstName VARCHAR2(15),
+	middleName VARCHAR2(30),
+	lastName VARCHAR2(15), 
+	fullName VARCHAR2(60),
+	gender VARCHAR2(10),
+	dateOfBirth DATE, 
+	comments VARCHAR2(500),
+	registrationDate DATE,
+	refrenceNumber varchar2(15),
+	userName VARCHAR2(15), --NOT NULL,
+	primaryAddressID NUMBER(10),
+	primaryEmailAddressID NUMBER(10),
+	primaryAlternateID NUMBER(10),
+	primaryPhoneNumberID NUMBER(15),
+	recordStatus VARCHAR2(30),	
+	createdBy varchar2(35),
+	createdOn timestamp(6),
+	modifiedBy varchar2(35),
+	modifiedOn timestamp(6),	
+	versionNo NUMBER(20)
+   ); 
    
 CREATE TABLE Address
  ( addressId NUMBER(10) NOT NULL,
@@ -27,27 +33,30 @@ CREATE TABLE Address
    state VARCHAR2(30),
    country VARCHAR2(30),
    zipCode NUMBER(10),
-   versionNo NUMBER(20)); 
+   versionNo NUMBER(20)
+   ); 
    
    
 CREATE TABLE AddressLink
- ( addressLinkID NUMBER(10) NOT NULL,  
-   relatedID NUMBER(10),
-   addressID NUMBER(10),
-   typeCode VARCHAR2(30),
-   primaryInd VARCHAR2(5),
-   startDate DATE,
-   endDate DATE,
-   recordStatus VARCHAR2(30),
-   comments VARCHAR2(30),
-   versionNo NUMBER(20)); 
+  ( addressLinkID NUMBER(10) NOT NULL,  
+	relatedID NUMBER(10),
+	addressID NUMBER(10),
+	typeCode VARCHAR2(30),
+	primaryInd VARCHAR2(5),
+	startDate DATE,
+	endDate DATE,
+	recordStatus VARCHAR2(30),
+	comments VARCHAR2(30),
+	versionNo NUMBER(20)
+	); 
    
    
 CREATE TABLE EmailAddress
  ( emailAddressID NUMBER(10) NOT NULL,
    emailAddress VARCHAR2(300),
    recordStatus VARCHAR2(30),
-   versionNo NUMBER(10)); 
+   versionNo NUMBER(10)
+   ); 
 
    
 CREATE TABLE EmailAddressLink
@@ -60,7 +69,8 @@ CREATE TABLE EmailAddressLink
   endDate DATE,
   comments VARCHAR2(30),
   recordStatus VARCHAR2(30),
-  versionNo NUMBER(20)); 
+  versionNo NUMBER(20)
+  ); 
   
   
 CREATE TABLE PhoneNumber
@@ -70,7 +80,8 @@ CREATE TABLE PhoneNumber
   phoneNumber VARCHAR2(30),
   extension VARCHAR2(30),
   recordStatus VARCHAR2(30),
-  versionNo NUMBER(10));
+  versionNo NUMBER(10)
+  );
   
   
 CREATE TABLE PhoneNumberLink
@@ -83,32 +94,34 @@ CREATE TABLE PhoneNumberLink
   endDate DATE,
   comments VARCHAR2(30),
   recordStatus VARCHAR2(30),
-  versionNo NUMBER(20));
+  versionNo NUMBER(20)
+  );
   
 CREATE TABLE PersonIdentity
 ( personIdentityID NUMBER(10) NOT NULL,
-	personID Number(10),
-	alternateID VARCHAR2(30),
-	primaryInd VARCHAR2(30),
-	typeCode VARCHAR2(30),
-	startDate DATE,
-	endDate DATE,
-	comments VARCHAR2(30),
-	recordStatus VARCHAR2(30),
-	versionNo NUMBER(20)
+  personID Number(10),
+  alternateID VARCHAR2(30),
+  primaryInd VARCHAR2(30),
+  typeCode VARCHAR2(30),
+  startDate DATE,
+  endDate DATE,
+  comments VARCHAR2(30),
+  recordStatus VARCHAR2(30),
+  versionNo NUMBER(20)
 );
   
-CREATE TABLE Users ( 
-	userName VARCHAR2(15) NOT NULL,
-	relatedID NUMBER(10),
-	password VARCHAR2(80),
-	accountEnabled VARCHAR2(30),
-	creationDate DATE,
-	passwordExpiryDate DATE,
-	userWorkspace VARCHAR2(30),
-	recordStatus VARCHAR2(30),
-	versionNo NUMBER(20)
-);
+CREATE TABLE Users
+( userName VARCHAR2(15) NOT NULL,
+  relatedID NUMBER(10),
+  password VARCHAR2(80),
+  accountEnabled VARCHAR2(30),
+  loginFailureCount NUMBER(20),
+  creationDate DATE,
+  passwordExpiryDate DATE,
+  userWorkspace VARCHAR2(30),
+  recordStatus VARCHAR2(30),
+  versionNo NUMBER(20)
+  );
 
 CREATE TABLE UserRoleLink
 ( userRoleLinkID NUMBER(10) NOT NULL,
@@ -123,12 +136,12 @@ CREATE TABLE UserRoleLink
   
   
     
-CREATE TABLE Role ( 
-	roleID NUMBER(10) NOT NULL,
-	roleType VARCHAR2(18),
-	recordStatus VARCHAR2(30),
-	versionNo NUMBER(20)
-);
+CREATE TABLE Role
+ ( roleID NUMBER(10) NOT NULL,
+   roleType VARCHAR2(18),
+   recordStatus VARCHAR2(30),
+   versionNo NUMBER(20)
+   );
    
 CREATE TABLE AuthenticationLog
    (

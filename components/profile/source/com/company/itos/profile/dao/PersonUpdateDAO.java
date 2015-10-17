@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.pojo.PersonDetail;
 
@@ -17,28 +18,50 @@ public class PersonUpdateDAO {
 	Connection connection = null;
 	ResultSet resultSet = null;
 
-	public PersonDetail updatePerson(PersonDetail personDetail) {
-		DBConnection dbConnection = new DBConnection();
+	public String updatePerson(PersonDetail personDetail) {
+		String returnMassegeStr = "";
 
-		try {
-			connection = dbConnection.getDBConnection();
-			String query = "UPDATE	PERSON	SET	refrenceNumber='"
-					+ personDetail.getRefrenceNumber() + "',firstName='"
-					+ personDetail.getFirstName() + "',middleName='"
-					+ personDetail.getMiddleName() + "',lastName='"
-					+ personDetail.getLastName() + "'" + "	where	userName='"
-					+ personDetail.getUserName() + "'";
+		int versionNoFromUpdate = personDetail.getVersionNo();
 
-			preparedStatement = connection.prepareStatement(query);
+		int versionNoFromDatabase = returnVersionNumber(personDetail);
 
-			preparedStatement.executeUpdate();
+		if (versionNoFromUpdate == versionNoFromDatabase) {
 
-		} catch (SQLException e) {
+			versionNoFromDatabase++;
 
-			e.printStackTrace();
+			DBConnection dbConnection = new DBConnection();
+
+			try {
+				connection = dbConnection.getDBConnection();
+				String query = "UPDATE	PERSON	SET title='"
+						+ personDetail.getTitle() + "',	firstName='"
+						+ personDetail.getFirstName() + "', middleName='"
+						+ personDetail.getMiddleName() + "', lastName='"
+						+ personDetail.getLastName() + "', gender='"
+						+ personDetail.getGender() + "', dateOfBirth = ? , versionNo ='"
+						+ versionNoFromDatabase + "' " + "	where	userName='"
+						+ personDetail.getUserName() + "'";
+
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setDate(1, personDetail.getDateOfBirth());
+				preparedStatement.executeUpdate();
+
+				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		} else {
+			personDetail
+					.getErrorMessageList()
+					.add("This Record has been already modified by another user, Please check");
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
 
-		return personDetail;
+		return returnMassegeStr;
 
 	}
 
@@ -64,25 +87,22 @@ public class PersonUpdateDAO {
 		}
 		return versionNumber;
 	}
-	
-	public	void	versionNumberIncreament(PersonDetail personDetail)
-	{
-		
-		try
-		{
+
+	public void versionNumberIncreament(PersonDetail personDetail) {
+
+		try {
 			DBConnection dbConnection = new DBConnection();
 
 			Connection connection = dbConnection.getDBConnection();
-			//PersonDetail personDetail	=	new	PersonDetail();
-			String	query	=	"UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	USERNAME='"
+			// PersonDetail personDetail = new PersonDetail();
+			String query = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	USERNAME='"
 					+ personDetail.getUserName() + "'";
 			Statement statement = connection.createStatement();
 			statement.executeQuery(query);
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-			
-		}
-		
+
 	}
 
+}

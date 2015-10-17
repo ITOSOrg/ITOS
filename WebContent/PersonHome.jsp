@@ -33,17 +33,17 @@
 			<thead>
 
 				<tr>
-					<th align="left">PersonID: <%=personDetail.getPersonID()%></th>
+					<th align="left">Title :<%=personDetail.getTitle()%></th>
 
-					<th align="left">RefrenceNumber: <%=personDetail.getRefrenceNumber()%></th>
+					<th align="left">First Name: <%=personDetail.getFirstName()%></th>
 
 				</tr>
 			</thead>
 			<tbody>
 
 				<tr>
-					<th align="left">First Name: <%=personDetail.getFirstName()%></th>
 					<th align="left">Middle Name: <%=personDetail.getMiddleName()%></th>
+			    	<th align="left">Last Name: <%=personDetail.getLastName()%></th>
 
 					<td></td>
 				</tr>
@@ -51,19 +51,19 @@
 
 			<tbody>
 
-				<th align="left">Last Name: <%=personDetail.getLastName()%></th>
+					<th align="left">Gender: <%=personDetail.getGender()%></th>
+					<th align="left">Date Of Birth: <%=personDetail.getDateOfBirth()%></th>
+
+
+			</tbody>
+			<tbody>
 				<th align="left">Status: <%=personDetail.getRecordStatus()%></th>
-
-
-			</tbody>
-			<tbody>
 				<th align="left">Created By:<%=personDetail.getCreatedBy()%></th>
-				<th align="left">Modified By:<%=personDetail.getModifiedBy()%></th>
 
 			</tbody>
 			<tbody>
-			<th align="left">Date Of Birth:<%=personDetail.getDateOfBirth() %></th>
-			<th align="left">Created On:<%=personDetail.getCreatedOn() %></th>
+			    <th align="left">Created On:<%=personDetail.getCreatedOn() %></th>
+				<th align="left">Modified By:<%=personDetail.getModifiedBy()%></th>
 			</tbody>
 			<tbody>
 			<th align="left"> Modified On:<%=personDetail.getModifiedOn() %></th>

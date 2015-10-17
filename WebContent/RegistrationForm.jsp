@@ -37,17 +37,12 @@
 			<%
 				}
 			%>
+			
 			<tr>
-				<td>RefrenceNumber :</td>
-				<td><input type="text" name="refrenceNumber"
-					value="<%=personDetail.getRefrenceNumber()%>"></td>
+				<td>Title :</td>
+				<td><input type="text" name="title" 
+				      value="<%=personDetail.getTitle()%>"></td>
 			</tr>
-			<tr>
-				<td>VersionNumber :</td>
-				<td><input type="text" name="versionNo"
-					value="<%=personDetail.getVersionNo()%>"></td>
-			</tr>
-
 			<tr>
 				<td>First Name :</td>
 				<td><input type="text" name="firstName"
@@ -64,9 +59,17 @@
 				<td><input type="text" name="lastName"
 					value="<%=personDetail.getLastName()%>"></td>
 			</tr>
+			
+			
+			<tr> 
+			       <td> Gender:</td>
+			       <td><input type="text" name="gender"
+			             value="<%=personDetail.getGender()%>">    </td>
+			</tr>
+			
 			<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="text" name="dateOfBirst"
+				<td><input type="text" name="dateOfBirth"
 					value="<%=personDetail.getDateOfBirth()%>"></td>
 			</tr>
 			<tr>
@@ -84,13 +87,10 @@
 				} else {
 			%>
 
+			
 			<tr>
-				<td>RefrenceNumber :</td>
-				<td><input type="text" name="refrenceNumber"></td>
-			</tr>
-			<tr>
-				<td>VersionNumber :</td>
-				<td><input type="text" name="versionNo"></td>
+				<td>Title :</td>
+				<td><input type="text" name="title"></td>
 			</tr>
 
 			<tr>
@@ -106,6 +106,23 @@
 				<td>Last Name:</td>
 				<td><input type="text" name="lastName"></td>
 			</tr>
+			
+			<tr>
+			<td>Gender:</td>
+			<td><input type="text" name="gender"></td>
+			</tr>
+			
+			
+			<!-- <tr>
+			<td>Gender</td>
+			<td><select>
+				<option value="Male" name="gender">Male</option>	
+				<option value="Female" name="gender">Female</option>	
+			</select></td>
+			
+			</tr> -->
+			
+			
 			<tr>
 				<td>Date Of Birth:</td>
 				<td><input type="text" name="dateOfBirst"></td>
@@ -120,10 +137,7 @@
 			</tr>
 
 			<!--  
-			<tr> 
-			       <td> Gender:</td>
-			       <td><input type="radio" name="sex "value="Male">Male<br><input type="radio" name="sex "value="Male">Female</td>
-			</tr>
+			
 			
 			<tr> 
 			       <td> Age:</td>

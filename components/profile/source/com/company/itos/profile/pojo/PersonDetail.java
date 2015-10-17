@@ -11,6 +11,8 @@ public class PersonDetail {
 	private int refrenceNumber;
 
 	private int versionNo;
+	
+	private String title;
 
 	private String firstName;
 
@@ -19,6 +21,8 @@ public class PersonDetail {
 	private String lastName;
 
 	private String userName;
+	
+	private String gender;
 
 	private String recordStatus;
 
@@ -94,6 +98,14 @@ public class PersonDetail {
 	public void setUserName(String userName) {
 
 		this.userName = userName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public Date getDateOfBirth() {
@@ -174,6 +186,16 @@ public class PersonDetail {
 		this.versionNo = versionNo;
 	}
 
+	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getRecordStatus() {
 		return recordStatus;
 	}
@@ -181,7 +203,5 @@ public class PersonDetail {
 	public void setRecordStatus(String recordStatus) {
 		this.recordStatus = recordStatus;
 	}
-
-	
 
 }

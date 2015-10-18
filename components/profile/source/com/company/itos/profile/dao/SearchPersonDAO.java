@@ -56,9 +56,12 @@ public class SearchPersonDAO {
 					personDetail = new PersonDetail();
 					personDetail.setPersonID(resultSet.getInt("personID"));
 					personDetail.setRefrenceNumber(resultSet.getInt("refrenceNumber"));
+					personDetail.setTitle(resultSet.getString("title"));
 					personDetail.setFirstName(resultSet.getString("firstName"));
 					personDetail.setMiddleName(resultSet.getString("middleName"));
 					personDetail.setLastName(resultSet.getString("lastName"));
+					personDetail.setGender(resultSet.getString("gender"));
+					personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
 					PersonDetailList.add(personDetail);
 				}
 

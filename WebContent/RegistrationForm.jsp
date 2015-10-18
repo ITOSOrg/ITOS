@@ -125,7 +125,7 @@
 			
 			<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="text" name="dateOfBirst"></td>
+				<td><input type="text" name="dateOfBirth"></td>
 			</tr>
 			<tr>
 				<td>UserName:</td>

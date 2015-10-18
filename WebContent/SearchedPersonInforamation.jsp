@@ -84,11 +84,12 @@
 			<thead>
 
 				<tr>
-					<th>PersonID:</th>
-					<th>RefrenceNumber:</th>
+					<th>Title:</th>
 					<th>First Name:</th>
 					<th>Middle Name:</th>
 					<th>Last Name:</th>
+					<th>Gender:</th>
+					<th>Date Of Birth:</th>
 				</tr>
 			</thead>
 			<%
@@ -108,11 +109,12 @@
 
 			<tbody>
 				<tr>
-					<td><%=personDetail.getPersonID()%></td>
-					<td><%=personDetail.getRefrenceNumber()%></td>
+					<td><%=personDetail.getTitle()%></td>
 					<td><%=personDetail.getFirstName()%></td>
 					<td><%=personDetail.getMiddleName()%></td>
 					<td><%=personDetail.getLastName()%></td>
+					<td><%=personDetail.getGender()%></td>
+					<td><%=personDetail.getDateOfBirth()%></td>
 				</tr>
 			</tbody>
 

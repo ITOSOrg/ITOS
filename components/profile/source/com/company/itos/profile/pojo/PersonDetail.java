@@ -39,6 +39,8 @@ public class PersonDetail {
 	private Timestamp createdOn;
 
 	private Timestamp modifiedOn;
+	
+	
 
 	public int getPersonID() {
 

@@ -6,14 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
-
 import com.company.itos.profile.pojo.PersonSearchCriteria;
 import com.company.itos.profile.pojo.PersonSearchDetails;
 
@@ -40,7 +43,7 @@ public class PersonRegistrationDAO {
 					+ usersDetail.getUserName() + "','"
 					+ usersDetail.getPassword() + "')";
 
-			String insertTableSQL = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, versionNo) "
+			String insertTableSQL = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, createdBy, createdOn, modifiedBy, modifiedOn, versionNo) "
 					+ "VALUES (PersonSEQ.nextval, PersonRefrenceNumberSEQ.nextval, '"
 					+ personDetail.getTitle()
 					+ "', '"
@@ -52,7 +55,7 @@ public class PersonRegistrationDAO {
 					+ "','"
 					+ personDetail.getGender()
 					+ "' ,'"
-					+ usersDetail.getUserName() + "',?, 'active'," + " 1 )";
+					+ usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?," + " 1 )";
 
 			DBConnection dbConnection = new DBConnection();
 
@@ -73,12 +76,19 @@ public class PersonRegistrationDAO {
 				// preparedStatement1.setString(1,
 				// "PersonRegistrationSEQ.nextval");
 				preparedStatement1.setDate(1, personDetail.getDateOfBirth());
+				
+				String crrentDateTime = JavaUtildates.getCurrentDateTime();
+				
+				 Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
+				 preparedStatement1.setTimestamp(2, timestamp);
+				 preparedStatement1.setTimestamp(3, timestamp);
 
 				preparedStatement1.execute();
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 			} catch (SQLException e) {
-				personDetail.getErrorMessageList().add("Username already exist");
+				personDetail.getErrorMessageList()
+						.add("Username already exist");
 				e.printStackTrace();
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 			}

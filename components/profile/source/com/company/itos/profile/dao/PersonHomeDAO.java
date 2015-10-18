@@ -1,3 +1,4 @@
+
 package com.company.itos.profile.dao;
 
 import java.sql.Connection;
@@ -57,7 +58,10 @@ public class PersonHomeDAO {
 				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
-
+				personDetail.setCreatedBy(resultSet.getString("createdBy"));
+				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
+				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
+				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

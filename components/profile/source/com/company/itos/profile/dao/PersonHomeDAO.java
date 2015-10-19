@@ -57,11 +57,8 @@ public class PersonHomeDAO {
 				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
+				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
-				personDetail.setCreatedBy(resultSet.getString("createdBy"));
-				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
-				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
-				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

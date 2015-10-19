@@ -36,6 +36,7 @@
 					<th align="center">Created On:</th>
 					<th align="center">Modified By:</th>
 					<th align="center">Modified On:</th>
+					<th align="center">Registration Date:</th>
 					<th colspan=3>Action</th>
 				</tr>
 			</thead>
@@ -56,6 +57,7 @@
 					<td><%=personDetail.getCreatedOn()%></td>
 					<td><%=personDetail.getModifiedBy()%></td>
 					<td><%=personDetail.getModifiedOn()%></td>
+					<td><%=personDetail.getRegistrationDate()%></td>
 					<td><a
 						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Read</a></td>
 					<td><a

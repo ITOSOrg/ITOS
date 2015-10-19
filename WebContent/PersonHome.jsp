@@ -67,6 +67,7 @@
 			</tbody>
 			<tbody>
 			<th align="left"> Modified On:<%=personDetail.getModifiedOn() %></th>
+			<th align="left"> Registration Date:<%=personDetail.getRegistrationDate() %></th>
 			</tbody>
 			<tbody>
 

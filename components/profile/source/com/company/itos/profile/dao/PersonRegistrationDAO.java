@@ -39,11 +39,11 @@ public class PersonRegistrationDAO {
 
 			UsersDetail usersDetail = personDetail.getUsersDetail();
 
-			String sql = "INSERT	INTO	USERS(userName,password)	VALUES('"
+			String sql = "INSERT	INTO	USERS(userName,password,recordStatus)	VALUES('"
 					+ usersDetail.getUserName() + "','"
-					+ usersDetail.getPassword() + "')";
+					+ usersDetail.getPassword() + "','active')";
 
-			String insertTableSQL = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, createdBy, createdOn, modifiedBy, modifiedOn, versionNo) "
+			String insertTableSQL = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, createdBy, createdOn, modifiedBy, modifiedOn, REGISTRATIONDATE, versionNo) "
 					+ "VALUES (PersonSEQ.nextval, PersonRefrenceNumberSEQ.nextval, '"
 					+ personDetail.getTitle()
 					+ "', '"
@@ -55,7 +55,7 @@ public class PersonRegistrationDAO {
 					+ "','"
 					+ personDetail.getGender()
 					+ "' ,'"
-					+ usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?," + " 1 )";
+					+ usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?,?," + " 1 )";
 
 			DBConnection dbConnection = new DBConnection();
 
@@ -82,6 +82,7 @@ public class PersonRegistrationDAO {
 				 Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
 				 preparedStatement1.setTimestamp(2, timestamp);
 				 preparedStatement1.setTimestamp(3, timestamp);
+				 preparedStatement1.setTimestamp(4, timestamp);
 
 				preparedStatement1.execute();
 

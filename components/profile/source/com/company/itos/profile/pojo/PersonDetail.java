@@ -40,6 +40,8 @@ public class PersonDetail {
 
 	private Timestamp modifiedOn;
 	
+	private Timestamp registrationDate;
+	
 	
 
 	public int getPersonID() {
@@ -204,6 +206,14 @@ public class PersonDetail {
 
 	public void setRecordStatus(String recordStatus) {
 		this.recordStatus = recordStatus;
+	}
+
+	public Timestamp getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Timestamp registrationDate) {
+		this.registrationDate = registrationDate;
 	}
 
 }

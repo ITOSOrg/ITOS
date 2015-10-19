@@ -77,6 +77,7 @@
 				<td><input type="submit" value="Submit"></td>
 			</tr>
 		</table>
+		<br>
 	</form>
 	<form action="/ITOS/SearchPerson" method="POST">
 

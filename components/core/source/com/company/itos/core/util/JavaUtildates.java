@@ -38,7 +38,7 @@ public class JavaUtildates {
 		// get current date time with Date()
 		Date date = new Date();
 		String crrentDateTime = dateFormat.format(date);
-		System.out.println(crrentDateTime);
+		//System.out.println(crrentDateTime);
 
 		/*
 		 * //get current date time with Calendar() Calendar cal =

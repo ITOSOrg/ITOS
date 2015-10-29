@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
-
 import com.company.itos.profile.dao.PersonRegistrationDAO;
 
 /**
@@ -61,8 +61,8 @@ public class PersonRegistration extends HttpServlet {
 
 		if (errorInd) {
 
-			RequestDispatcher rd1 = request.getRequestDispatcher("/RegistrationForm.jsp");
-			rd1.forward(request, response);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/RegistrationForm.jsp");
+			requestDispatcher.forward(request, response);
 
 		} else {
 
@@ -90,13 +90,59 @@ public class PersonRegistration extends HttpServlet {
 	private boolean validatePersonDetails(HttpServletRequest request, PersonDetail personDetail) {
 
 		List<String> errorMessageList = new ArrayList<String>();
+		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
 		String gender = request.getParameter("gender");
+		String emailAddress = request.getParameter("emailAddress");
+		String typeCode = request.getParameter("typeCode");
+		String primaryInd = request.getParameter("primaryInd");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		
+		/*String streetOne = request.getParameter("streetOne");
+		String streetTwo = request.getParameter("streetTwo");
+	 	String aptUnit = request.getParameter("aptUnit");
+		String city = request.getParameter("city");
+		String county = request.getParameter("county");
+		String state = request.getParameter("state");
+		String country = request.getParameter("country");
+		int zipCode =(new Integer (request.getParameter("zipCode")));*/
 		
 		personDetail.setTitle(title);
 		personDetail.setGender(gender);
+		emailAddressDetail.setEmailAddress(emailAddress);
+		emailAddressDetail.setTypeCode(typeCode);
+		emailAddressDetail.setPrimaryInd(primaryInd);
+		java.util.Date date;
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			emailAddressDetail.setStartDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			emailAddressDetail.setEndDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		personDetail.setEmailAddressDetail(emailAddressDetail);
+		
+		/*personDetail.setStreetOne(streetOne);
+		personDetail.setStreetTwo(streetTwo);
+		personDetail.setAptUnit(aptUnit);
+		personDetail.setCity(city);
+		personDetail.setCounty(county);
+		personDetail.setState(state);
+		personDetail.setCountry(country);
+		personDetail.setZipCode(zipCode);*/
 
 		/**
 		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
@@ -105,8 +151,8 @@ public class PersonRegistration extends HttpServlet {
 
 		try {
 
-			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
-			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			java.util.Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+			java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
 			personDetail.setDateOfBirth(sqlDate);
 
 		} catch (ParseException e) {

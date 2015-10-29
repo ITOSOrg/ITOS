@@ -41,6 +41,7 @@ public class ReadEmailAddress extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String pageForwardStr = "";
+		String action = request.getParameter("act");
 
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		try {
@@ -59,12 +60,13 @@ public class ReadEmailAddress extends HttpServlet {
 			pageForwardStr = "/ReadEmailAddress.jsp";
 
 		} else {
-			pageForwardStr = "/CreateEmailAddress.jsp";
+			pageForwardStr = "/UpdateEmailAddress.jsp";
 		}
 
 		request.setAttribute("emailAddressDetail", emailAddressDetail);
 
-		//RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
+		// RequestDispatcher requestDispatcher =
+		// getServletContext().getRequestDispatcher(pageForwardStr);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 

@@ -9,6 +9,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
+<link href="jquery-ui\jquery-ui.css" rel="stylesheet"/>
+<script src="js\jquery.js" type="text/javascript"></script>
+<script src="jquery-ui\jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function()
+		{
+	$("#datepicker").datepicker();
+	$('#submit').click(function()
+			{
+		 alert("Submit ?");
+			}
+	);
+		});
+
+
+</script>
 </head>
 <body>
 	<h> Registration Form</h>
@@ -72,6 +89,7 @@
 				<td><input type="text" name="dateOfBirth"
 					value="<%=personDetail.getDateOfBirth()%>"></td>
 			</tr>
+			
 			<tr>
 				<td>UserName:</td>
 				<td><input type="text" name="userName"
@@ -82,6 +100,31 @@
 				<td><input type="text" name="password"
 					value="<%=personDetail.getUsersDetail().getPassword()%>"></td>
 			</tr>
+			<tr>
+				<td>Email Address:</td>
+				<td><input type="text" name="emailAddress"
+					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+			</tr>
+			<tr>
+				<td>Type Code:</td>
+				<td><input type="text" name="typeCode"
+					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd:</td>
+				<td><input type="text" name="primaryInd"
+					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+			</tr>
+			<tr>
+				<td>Start Date:</td>
+				<td><input type="text" name="startDate"
+					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+			</tr>
+			<tr>
+				<td>End Date:</td>
+				<td><input type="text" name="endDate"
+					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+			</tr>
 
 			<%
 				} else {
@@ -90,7 +133,12 @@
 			
 			<tr>
 				<td>Title :</td>
-				<td><input type="text" name="title"></td>
+				<td><select name="title">
+					<option  value="Mr." >Mr.</option>	
+				<option  value="Mrs." >Mrs.</option>	
+				<option  value="Miss." >Miss.</option>	
+				<option  value="Kumar" >Kumar</option>	
+			</select></td>
 			</tr>
 
 			<tr>
@@ -107,26 +155,22 @@
 				<td><input type="text" name="lastName"></td>
 			</tr>
 			
-			<tr>
-			<td>Gender:</td>
-			<td><input type="text" name="gender"></td>
-			</tr>
 			
-			
-			<!-- <tr>
+			 <tr>
 			<td>Gender</td>
-			<td><select>
-				<option value="Male" name="gender">Male</option>	
-				<option value="Female" name="gender">Female</option>	
+			<td><select name="gender">
+				<option  value="Male" >Male</option>	
+				<option  value="Female" >Female</option>	
 			</select></td>
 			
-			</tr> -->
+			</tr> 
 			
 			
 			<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="text" name="dateOfBirth"></td>
+				<td><input   type="text" name="dateOfBirth"></td>
 			</tr>
+			
 			<tr>
 				<td>UserName:</td>
 				<td><input type="text" name="userName"></td>
@@ -135,52 +179,74 @@
 				<td>Password:</td>
 				<td><input type="text" name="password"></td>
 			</tr>
-
-			<!--  
+			<tr>
+				<td>Email Address:</td>
+				<td><input  type="text" name="emailAddress"></td>
+			</tr>
+			<tr>
+				<td>Type Code :</td>
+				<td><input type="text" name="typeCode"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd :</td>
+				<td><input type="text" name="primaryInd"></td>
+			</tr>
+			<tr>
+				<td>Start Date :</td>
+				<td><input type="text" name="startDate"></td>
+			</tr>
+			<tr>
+				<td>End Date :</td>
+				<td><input type="text" name="endDate"></td>
+			</tr>
 			
+			<!-- <tr>
+				<td>StreetOne:</td>
+				<td><input type="text" name="streetOne" maxlength="50"></td>
+			</tr>
 			
-			<tr> 
-			       <td> Age:</td>
-			       <td><select name="agevalue">
-			       <option value="18">18</option>
-			       <option value="19">19</option>
-			       <option value="20">20</option>
-			       <option value="21">21</option>
-			       <option value="22">22</option>
-			       <option value="23">23</option>
-			       </select></td>
+			<tr>
+				<td>StreetTwo:</td>
+				<td><input type="text" name="streetTwo" maxlength="50"></td>
 			</tr>
-			<tr> 
-			       <td>Email:</td>
-			       <td><input type="text" name="textmail" ></td>
+			
+			<tr>
+				<td>AptUnit:</td>
+				<td><input type="text" name="aptUnit" maxlength="20"></td>
 			</tr>
-			<tr> 
-			       <td>UserName:</td>
-			       <td><input type="text" name="textUserName" ></td>
+			
+			<tr>
+				<td>City:</td>
+				<td><input type="text" name="city"></td>
 			</tr>
-			<tr> 
-			       <td>Password:</td>
-			       <td><input type="password" name="textpass" ></td>
+			
+			<tr>
+				<td>County:</td>
+				<td><input type="text" name="county"></td>
 			</tr>
-			<tr> 
-			       <td> Street Name:</td>
-			       <td><textarea name="textStreet"></textarea></td>
+			
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="state"></td>
 			</tr>
-			<tr> 
-			       <td> City:</td>
-			       <td><input type="text" name="textCity" ></td>
+			
+			<tr>
+				<td>Country</td>
+				<td><input type="text" name="country"></td>
 			</tr>
-			<tr> 
-			       <td> State:</td>
-			       <td><input type="text" name="textState" ></td>
-			</tr>-->
+			
+			<tr>
+				<td>ZipCode:</td>
+				<td><input type="text" name="zipCode"></td>
+			</tr> -->
 
+			
 			<%
 				}
 			%>
 			<tr>
 
-				<td><input type="submit" value="Submit"></td>
+				<td><input id="submit" type="submit" value="Submit"></td>
 
 			</tr>
 

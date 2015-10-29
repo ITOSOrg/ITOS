@@ -1,6 +1,6 @@
 <%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
-<%@ page
-	import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
+<%@ page import="com.company.itos.profile.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,15 +17,15 @@
 
 		<%
 			PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
-		%>
+			
+		EmailAddressDetail emailAddressDetail = personDetail.getEmailAddressDetail();
 
-		<%
+
 			String name = request.getParameter("firstName");
 		%>
-		<font size="3" color="green">
-			<%
-				out.println("Wellcome\t" + personDetail.getFirstName());
-			%>
+		<font size="3" color="green"> <%
+ 	out.println("Wellcome\t" + personDetail.getFirstName());
+ %>
 		</font>
 
 
@@ -43,7 +43,7 @@
 
 				<tr>
 					<th align="left">Middle Name: <%=personDetail.getMiddleName()%></th>
-			    	<th align="left">Last Name: <%=personDetail.getLastName()%></th>
+					<th align="left">Last Name: <%=personDetail.getLastName()%></th>
 
 					<td></td>
 				</tr>
@@ -51,8 +51,8 @@
 
 			<tbody>
 
-					<th align="left">Gender: <%=personDetail.getGender()%></th>
-					<th align="left">Date Of Birth: <%=personDetail.getDateOfBirth()%></th>
+				<th align="left">Gender: <%=personDetail.getGender()%></th>
+				<th align="left">Date Of Birth: <%=personDetail.getDateOfBirth()%></th>
 
 
 			</tbody>
@@ -62,13 +62,15 @@
 
 			</tbody>
 			<tbody>
-			    <th align="left">Created On:<%=personDetail.getCreatedOn() %></th>
+				<th align="left">Created On:<%=personDetail.getCreatedOn()%></th>
 				<th align="left">Modified By:<%=personDetail.getModifiedBy()%></th>
 			</tbody>
 			<tbody>
-			<th align="left"> Modified On:<%=personDetail.getModifiedOn() %></th>
-			<th align="left"> Registration Date:<%=personDetail.getRegistrationDate() %></th>
+				<th align="left">Modified On:<%=personDetail.getModifiedOn()%></th>
+				<th align="left">Registration Date:<%=personDetail.getRegistrationDate()%></th>
+
 			</tbody>
+
 			<tbody>
 
 				<th><a
@@ -77,7 +79,9 @@
 			</tbody>
 
 		</table>
-		<a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+		<a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp 
+		<a href="/ITOS/ReadEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Read
+			EmailAddress</a>
 	</form>
 	<form action="/ITOS/PersonLogOut" method="POST">
 		<br> <input type="submit" value="LogOut">

@@ -73,7 +73,7 @@ public class CreateEmailAddress extends HttpServlet {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			emailAddressDetail.setStartDate(sqlDate);
+			emailAddressDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();

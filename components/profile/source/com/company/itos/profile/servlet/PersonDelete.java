@@ -61,12 +61,12 @@ public class PersonDelete extends HttpServlet {
 		 */
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			RequestDispatcher rd1 = request.getRequestDispatcher("/PersonList");
-			rd1.forward(request, response);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/PersonList");
+			requestDispatcher.forward(request, response);
 		} else {
-			RequestDispatcher rd1 = request
+			RequestDispatcher requestDispatcher = request
 					.getRequestDispatcher("/AdministratorHome.jsp");
-			rd1.forward(request, response);
+			requestDispatcher.forward(request, response);
 		}
 	}
 }

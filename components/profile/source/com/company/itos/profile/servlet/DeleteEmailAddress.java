@@ -40,7 +40,9 @@ public class DeleteEmailAddress extends HttpServlet {
 		String pageForwardStr = "";
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		int emailAddressID = (new Integer( request.getParameter("emailAddressID")));
-		emailAddressDetail.setEmailAddressID(emailAddressID); 
+		int emailAddressLinkID = (new Integer( request.getParameter("emailAddressLinkID")));
+		emailAddressDetail.setEmailAddressID(emailAddressID);
+		emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
 		
 		DeleteEmailAddressDAO deleteEmailAddressDAO = new DeleteEmailAddressDAO();
 	String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressDetail);

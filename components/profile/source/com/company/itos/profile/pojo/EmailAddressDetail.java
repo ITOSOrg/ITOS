@@ -12,6 +12,8 @@ public class EmailAddressDetail {
 	private String comments;
 	private int emailAddressID;
 	private int emailAddressLinkID;
+	private int relatedID;
+	
 
 	public int getEmailAddressLinkID() {
 		return emailAddressLinkID;
@@ -75,6 +77,14 @@ public class EmailAddressDetail {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	public int getRelatedID() {
+		return relatedID;
+	}
+
+	public void setRelatedID(int relatedID) {
+		this.relatedID = relatedID;
 	}
 
 }

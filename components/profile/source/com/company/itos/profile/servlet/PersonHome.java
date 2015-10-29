@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
-
 import com.company.itos.profile.dao.PersonHomeDAO;
+import com.company.itos.profile.dao.ReadEmailAddressDAO;
 
 /**
  * Servlet implementation class PersonHome
@@ -43,6 +44,9 @@ public class PersonHome extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		
 
 		System.out.println(request.getParameter("userName"));
 		String userName = request.getParameter("userName");
@@ -55,21 +59,27 @@ public class PersonHome extends HttpServlet {
 		PersonHomeDAO personHomeDAO = new PersonHomeDAO();
 
 		PersonDetail personDetail = personHomeDAO
-				.readStudentDetail(usersDetail);
+				.readPersonDetail(usersDetail);
 		/**
 		 * 
 		 */
 		personDetail.setUserName(userName);
 
 		request.setAttribute("personDetail", personDetail);
-		RequestDispatcher rd1 = null;
+		
+		/*personHomeDAO.getEmailAddressLinkID(emailAddressDetail);
+		request.setAttribute("emailAddressDetail", emailAddressDetail);*/
+		
+		RequestDispatcher requestDispatcher = null;
+		
 		if (action != null && action.equals("update")) {
-			rd1 = request.getRequestDispatcher("/UpdatedRegistrationForm.jsp");
+			requestDispatcher = request.getRequestDispatcher("/UpdatedRegistrationForm.jsp");
 		} else {
 
-			rd1 = request.getRequestDispatcher("/PersonHome.jsp");
+			requestDispatcher = request.getRequestDispatcher("/PersonHome.jsp");
 		}
-
-		rd1.forward(request, response);
+		
+		requestDispatcher.forward(request, response);
+		
 	}
 }

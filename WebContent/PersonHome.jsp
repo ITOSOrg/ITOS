@@ -79,10 +79,38 @@
 			</tbody>
 
 		</table>
-		<a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp 
-		<a href="/ITOS/ReadEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Read
-			EmailAddress</a>
+		
+	</form><br><br>
+	
+	<form action="/ITOS/ReadEmailAddress" method = "POST">
+	<table border=1>
+			<thead>
+
+				<tr>
+					<th align="left">EmailAddress:</th>
+					<th>Type Code:</th>
+					<th>PrimaryInd:</th>
+					<th>Start Date:</th>
+					<th>End Date:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%=emailAddressDetail.getEmailAddress() %></td>
+					<td><%=emailAddressDetail.getTypeCode() %></td>
+					<td><%=emailAddressDetail.getPrimaryInd() %></td>
+					<td><%=emailAddressDetail.getStartDate() %></td>
+					<td><%=emailAddressDetail.getEndDate() %></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<br><a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp 
+		<a href="/ITOS/ReadEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+			EmailAddress List</a>
+	
 	</form>
+	
 	<form action="/ITOS/PersonLogOut" method="POST">
 		<br> <input type="submit" value="LogOut">
 	</form>

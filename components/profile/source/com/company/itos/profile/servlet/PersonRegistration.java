@@ -209,12 +209,10 @@ public class PersonRegistration extends HttpServlet {
 			}
 		}
 		String password = request.getParameter("password");
-		if (password.length() < 8) {
+		usersDetail.setPassword(password);
+		/*if (password.length() < 8) {
 			errorMessageList.add("Password must contain at 8 charachters");
-			usersDetail.setPassword(password);
-		} else {
-			usersDetail.setPassword(password);
-		}
+		} */
 
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);

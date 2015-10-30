@@ -12,7 +12,7 @@ import com.company.itos.profile.pojo.EmailAddressDetail;
 public class ReadEmailAddressDAO {
 	
 	
-	public String readEmailAddress(EmailAddressDetail emailAddressDetail) {
+	public EmailAddressDetail readEmailAddress(EmailAddressDetail emailAddressDetail) {
 		
 		String returnMassegeStr = "";
 		Statement statement = null;
@@ -53,13 +53,13 @@ public class ReadEmailAddressDAO {
 			}
 
 			
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+			//returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+			//returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
 
-		return returnMassegeStr;
+		return emailAddressDetail;
 	}
 
 }

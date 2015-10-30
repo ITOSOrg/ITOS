@@ -44,29 +44,44 @@ public class ReadEmailAddress extends HttpServlet {
 		String action = request.getParameter("act");
 
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		
 		try {
+			
 			Integer emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
 			emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+			
 		} catch (NumberFormatException e) {
+			
 			System.out.println(e.getMessage());
 		}
 
 		ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 
-		String returnMassegeStr = readEmailAddressDAO.readEmailAddress(emailAddressDetail);
+		// String returnMassegeStr =
+		// readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 
-		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 
-			pageForwardStr = "/ReadEmailAddress.jsp";
+		if (action != null && action.equals("update")) {
+			pageForwardStr = "/UpdateEmailAddress.jsp";
 
 		} else {
-			pageForwardStr = "/UpdateEmailAddress.jsp";
+			pageForwardStr = "/ReadEmailAddress.jsp";
 		}
+
+		/*
+		 * if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		 * 
+		 * pageForwardStr = "/ReadEmailAddress.jsp";
+		 * 
+		 * } else { pageForwardStr = "/UpdateEmailAddress.jsp"; }
+		 */
 
 		request.setAttribute("emailAddressDetail", emailAddressDetail);
 
-		// RequestDispatcher requestDispatcher =
-		// getServletContext().getRequestDispatcher(pageForwardStr);
+		// pageForwardStr += "?emailAddressLinkID=" +
+		// emailAddressDetail.getEmailAddressLinkID();
+
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 

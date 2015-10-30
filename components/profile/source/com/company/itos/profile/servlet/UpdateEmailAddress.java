@@ -20,38 +20,38 @@ import com.company.itos.profile.pojo.EmailAddressDetail;
  */
 public class UpdateEmailAddress extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateEmailAddress() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+	public UpdateEmailAddress() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+
 		String pageForwardStr = "";
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
-		
-		
+
 		int emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
 		emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
-		int emailAddressID = (new Integer( request.getParameter("emailAddressID")));
-		emailAddressDetail.setEmailAddressID(emailAddressID); 
-		
-		
-String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-		
+		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
+		emailAddressDetail.setEmailAddressID(emailAddressID);
+
+		String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 		String emailAddress = request.getParameter("emailAddress");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
@@ -59,7 +59,7 @@ String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+
 		String endDate = request.getParameter("endDate");
 
 		if (emailAddress.equals(emailPattern)) {
-		
+
 		}
 		emailAddressDetail.setEmailAddress(emailAddress);
 		emailAddressDetail.setTypeCode(typeCode);
@@ -87,17 +87,16 @@ String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+
 		UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
 		String returnMassegeStr = updateEmailAddressDAO.updateEmailAddress(emailAddressDetail);
 		request.setAttribute("emailAddressLinkID", emailAddressLinkID);
-		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
-		{
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/ReadEmailAddress";
-			
-		}else{
+
+		} else {
 			pageForwardStr = "/";
 		}
-		
+
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
-		
+
 	}
 
 }

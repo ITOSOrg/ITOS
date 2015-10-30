@@ -63,10 +63,12 @@ public class ReadEmailAddress extends HttpServlet {
 		readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 
 		if (action != null && action.equals("update")) {
-			pageForwardStr = "/UpdateEmailAddress.jsp";
+			//pageForwardStr = "/UpdateEmailAddress.jsp";
+			pageForwardStr = "/components/profile/jsp/email/UpdateEmailAddress.jsp";
 
 		} else {
-			pageForwardStr = "/ReadEmailAddress.jsp";
+			//pageForwardStr = "/ReadEmailAddress.jsp";
+			pageForwardStr = "/components/profile/jsp/email/ReadEmailAddress.jsp";
 		}
 
 		/*

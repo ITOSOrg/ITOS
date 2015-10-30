@@ -88,7 +88,8 @@ public class CreateEmailAddress extends HttpServlet {
 			pageForwardStr = "/ReadEmailAddress";
 
 		} else {
-			pageForwardStr = "/CreateEmailAddress.jsp";
+			//pageForwardStr = "/CreateEmailAddress.jsp";
+			pageForwardStr = "/components/profile/jsp/email/CreateEmailAddress.jsp";
 		}
 		
 		pageForwardStr += "?emailAddressLinkID=" + emailAddressDetail.getEmailAddressLinkID();

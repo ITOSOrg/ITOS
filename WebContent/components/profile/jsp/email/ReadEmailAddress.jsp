@@ -31,7 +31,7 @@
 					<td><%=emailAddressDetail.getEndDate() %></td>
 					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
 					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Delete</a></td>
-					<td><a href="CreateEmailAddress.jsp">Create</a></td>
+					<td><a href="/components/profile/jsp/email/CreateEmailAddress.jsp">Create</a></td>
 				</tr>
 			</tbody>
 		</table>

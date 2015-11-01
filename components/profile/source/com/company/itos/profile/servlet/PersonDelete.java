@@ -51,7 +51,7 @@ public class PersonDelete extends HttpServlet {
 
 		PersonDeleteDAO personDeleteDAO = new PersonDeleteDAO();
 		/**
-		 * assign return value of deleteStudent method to returnMassegeStr
+		 * assign return value of deletePerson method to returnMassegeStr
 		 */
 		String returnMassegeStr = personDeleteDAO.deleteStudent(personDetail);
 

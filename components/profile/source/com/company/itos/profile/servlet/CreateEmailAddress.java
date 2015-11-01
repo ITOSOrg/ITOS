@@ -41,12 +41,13 @@ public class CreateEmailAddress extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String pageForwardStr = "";
-		
+
 		String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-		
+
 		String emailAddress = request.getParameter("emailAddress");
+		String relatedID = request.getParameter("relatedID");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
 		String startDate = request.getParameter("startDate");
@@ -54,9 +55,10 @@ public class CreateEmailAddress extends HttpServlet {
 
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		if (emailAddress.equals(emailPattern)) {
-		
+
 		}
 		emailAddressDetail.setEmailAddress(emailAddress);
+		emailAddressDetail.setRelatedID(new Integer(relatedID));
 		emailAddressDetail.setTypeCode(typeCode);
 		emailAddressDetail.setPrimaryInd(primaryInd);
 
@@ -82,20 +84,19 @@ public class CreateEmailAddress extends HttpServlet {
 		CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressDetail);
 
-
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = "/ReadEmailAddress";
 
 		} else {
-			//pageForwardStr = "/CreateEmailAddress.jsp";
+			// pageForwardStr = "/CreateEmailAddress.jsp";
 			pageForwardStr = "/components/profile/jsp/email/CreateEmailAddress.jsp";
 		}
-		
+
 		pageForwardStr += "?emailAddressLinkID=" + emailAddressDetail.getEmailAddressLinkID();
-		
-		//request.setAttribute("emailAddressID", emailAddressID);
-		//request.setAttribute("emailAddressLinkID", emailAddressLinkID);
+
+		// request.setAttribute("emailAddressID", emailAddressID);
+		// request.setAttribute("emailAddressLinkID", emailAddressLinkID);
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

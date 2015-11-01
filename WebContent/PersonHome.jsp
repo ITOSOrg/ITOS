@@ -84,30 +84,23 @@
 	
 	<form action="/ITOS/ReadEmailAddress" method = "POST">
 	<table border=1>
-			<thead>
-
-				<tr>
-					<th align="left">EmailAddress:</th>
-					<th>Type Code:</th>
-					<th>PrimaryInd:</th>
-					<th>Start Date:</th>
-					<th>End Date:</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%=emailAddressDetail.getEmailAddress() %></td>
-					<td><%=emailAddressDetail.getTypeCode() %></td>
-					<td><%=emailAddressDetail.getPrimaryInd() %></td>
-					<td><%=emailAddressDetail.getStartDate() %></td>
-					<td><%=emailAddressDetail.getEndDate() %></td>
-				</tr>
-			</tbody>
+	<tbody>
+	     		<th align="left">EmailAddress: <%=emailAddressDetail.getEmailAddress()%></th>
+				<th align="left">Type Code: <%=emailAddressDetail.getTypeCode()%></th>
+	</tbody>
+	<tbody>
+	     		<th align="left">PrimaryInd: <%=emailAddressDetail.getPrimaryInd()%></th>
+				<th align="left">Start Date: <%=emailAddressDetail.getStartDate()%></th>
+	</tbody>
+	<tbody>
+	     		<th align="left">End Date: <%=emailAddressDetail.getEndDate()%></th>
+		<th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+			EmailAddress List</a></th>
+	</tbody>
+			
 		</table>
 		
 		<br><a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp 
-		<a href="/ITOS/ReadEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
-			EmailAddress List</a>
 	
 	</form>
 	

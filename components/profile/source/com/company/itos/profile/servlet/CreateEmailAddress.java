@@ -90,7 +90,7 @@ public class CreateEmailAddress extends HttpServlet {
 
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			pageForwardStr = "/ReadEmailAddress";
+			pageForwardStr = "/ListEmailAddress";
 
 		} else {
 			// pageForwardStr = "/CreateEmailAddress.jsp";

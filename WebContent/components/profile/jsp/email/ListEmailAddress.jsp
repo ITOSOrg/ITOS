@@ -10,7 +10,6 @@
 </head>
 <body>
 
-Hi
 
 <%
 List<EmailAddressDetail> emailAddressDetailList = (List<EmailAddressDetail>) request.getAttribute("emailAddressDetailList");
@@ -46,7 +45,7 @@ List<EmailAddressDetail> emailAddressDetailList = (List<EmailAddressDetail>) req
 					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Delete</a></td>
 					<td><a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%=emailAddressDetail.getRelatedID()%>">Create</a></td>
 				</tr>
-			</tbody>
+			</tbody><br></br>
 			<%} %>
 		</table>
 		</form>

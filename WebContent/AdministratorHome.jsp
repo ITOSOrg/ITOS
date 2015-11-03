@@ -82,10 +82,10 @@
 				}
 			%>
 			<a href="RegistrationForm.jsp">Add User</a>
-			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a>
+			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a><br></br>
 			
-		</table>
-		<a href="LoginForm.jsp">Back</a>
+		</table><br>
+		<a href="PersonHome.jsp">Back</a>
 </form>		
 </body>
 </html>

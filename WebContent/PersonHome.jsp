@@ -1,5 +1,6 @@
 <%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
 <%@ page import="com.company.itos.profile.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.pojo.PhoneNumberDetail"%>
 <%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -19,7 +20,8 @@
 			PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
 			
 		EmailAddressDetail emailAddressDetail = personDetail.getEmailAddressDetail();
-
+ 
+		PhoneNumberDetail phoneNumberDetail = personDetail.getPhoneNumberDetail();
 
 			String name = request.getParameter("firstName");
 		%>
@@ -94,15 +96,50 @@
 	</tbody>
 	<tbody>
 	     		<th align="left">End Date: <%=emailAddressDetail.getEndDate()%></th>
-		<th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+		<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+			EmailAddress List</a></th>-->
+		<th><a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressDetail.getRelatedID()%>">
 			EmailAddress List</a></th>
 	</tbody>
 			
 		</table>
 		
-		<br><a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp 
+	</form><br><br>
 	
-	</form>
+	
+	<form action="/ITOS/ReadPhoneNumber" method = "POST">
+	<table border=1>
+	<tbody>
+	     		<th align="left">Country Code: <%=phoneNumberDetail.getCountryCode()%></th>
+				<th align="left">Area Code: <%=phoneNumberDetail.getAreaCode()%></th>
+	</tbody>
+	<tbody>
+	     		<th align="left">Phone Number: <%=phoneNumberDetail.getPhoneNumber()%></th>
+				<th align="left">Extension: <%=phoneNumberDetail.getExtension()%></th>
+	</tbody>
+	<tbody>
+	     		<th align="left">Type Code: <%=phoneNumberDetail.getTypeCode()%></th>
+	     		<th align="left">PrimaryInd: <%=phoneNumberDetail.getPrimaryInd()%></th>
+	     		
+		<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+			EmailAddress List</a></th>-->
+			
+	</tbody>
+	<tbody>
+	     		<th align="left">start Date: <%=phoneNumberDetail.getStartDate()%></th>
+				<th align="left">End Date: <%=phoneNumberDetail.getEndDate()%></th>
+	</tbody>
+	<tbody>
+	
+		<th><a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressDetail.getRelatedID()%>">EmailAddress List</a></th>
+	
+	</tbody>
+			
+		</table>
+	
+	
+		<br><a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp <br>
+	
 	
 	<form action="/ITOS/PersonLogOut" method="POST">
 		<br> <input type="submit" value="LogOut">

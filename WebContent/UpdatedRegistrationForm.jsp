@@ -68,7 +68,7 @@
 			<tr>
 
 				<td><input type="submit" value="submit">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LoginForm.jsp">Back</a></td>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Back</a></td>
 
 			</tr>
 

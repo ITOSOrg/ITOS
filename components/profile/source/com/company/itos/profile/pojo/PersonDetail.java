@@ -44,6 +44,8 @@ public class PersonDetail {
 	
 	private EmailAddressDetail emailAddressDetail = null;
 	
+	private  PhoneNumberDetail phoneNumberDetail = null;
+	
 	//private String emailAddress;
 	
 	private String streetOne;
@@ -250,6 +252,14 @@ public class PersonDetail {
 
 	public void setEmailAddressDetail(EmailAddressDetail emailAddressDetail) {
 		this.emailAddressDetail = emailAddressDetail;
+	}
+
+	public PhoneNumberDetail getPhoneNumberDetail() {
+		return phoneNumberDetail;
+	}
+
+	public void setPhoneNumberDetail(PhoneNumberDetail phoneNumberDetail) {
+		this.phoneNumberDetail = phoneNumberDetail;
 	}
 
 	public String getStreetOne() {

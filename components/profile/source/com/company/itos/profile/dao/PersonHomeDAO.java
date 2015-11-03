@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
+import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 
 public class PersonHomeDAO {
@@ -79,7 +80,25 @@ public class PersonHomeDAO {
 			ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 			readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 			personDetail.setEmailAddressDetail(emailAddressDetail);
+			
+			//Read phoneNumber information
+			
+			PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+			
+			String PhoneNumberLinkSQLStr = "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='"+personDetail.getPersonID()+"' AND primaryInd = '1'";
+			
+			statement = connection.createStatement();
 
+			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
+			if(resultSet.next())
+			{
+				phoneNumberDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
+			}
+			
+			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
+			readPhoneNumberDAO.ReadPhoneNumber(phoneNumberDetail);
+			personDetail.setPhoneNumberDetail(phoneNumberDetail);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

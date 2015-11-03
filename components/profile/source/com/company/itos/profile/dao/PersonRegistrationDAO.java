@@ -17,6 +17,7 @@ import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
+import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.pojo.PersonSearchCriteria;
 import com.company.itos.profile.pojo.PersonSearchDetails;
@@ -40,6 +41,7 @@ public class PersonRegistrationDAO {
 
 			UsersDetail usersDetail = personDetail.getUsersDetail();
 			EmailAddressDetail emailAddressDetail = personDetail.getEmailAddressDetail();
+			 PhoneNumberDetail phoneNumberDetail = personDetail.getPhoneNumberDetail();
 
 			String usersSQLStr = "INSERT	INTO	USERS(userName,password,recordStatus)	VALUES('" + usersDetail.getUserName() + "','"
 					+ usersDetail.getPassword() + "','active')";
@@ -56,6 +58,7 @@ public class PersonRegistrationDAO {
 				
 				if (resultSet.next()) {
 					emailAddressDetail.setRelatedID(resultSet.getInt(1));
+					phoneNumberDetail.setRelatedID(resultSet.getInt(1));
 					personDetail.setPersonID(resultSet.getInt(1));
 				}
 			} catch (SQLException e1) {
@@ -109,6 +112,9 @@ public class PersonRegistrationDAO {
 				
 				CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 				createEmailAddressDAO.createEmailAddress(emailAddressDetail);
+				
+				CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
+				createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
 
 				// PreparedStatement preparedStatement2 =
 				// connection.prepareStatement(sql1);

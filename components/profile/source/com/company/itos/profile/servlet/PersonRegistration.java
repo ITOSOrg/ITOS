@@ -17,6 +17,7 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
+import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.dao.PersonRegistrationDAO;
 
@@ -95,6 +96,7 @@ public class PersonRegistration extends HttpServlet {
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
 		String gender = request.getParameter("gender");
+		
 		String emailAddress = request.getParameter("emailAddress");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
@@ -112,6 +114,7 @@ public class PersonRegistration extends HttpServlet {
 		
 		personDetail.setTitle(title);
 		personDetail.setGender(gender);
+		
 		emailAddressDetail.setEmailAddress(emailAddress);
 		emailAddressDetail.setTypeCode(typeCode);
 		emailAddressDetail.setPrimaryInd(primaryInd);
@@ -213,6 +216,46 @@ public class PersonRegistration extends HttpServlet {
 		/*if (password.length() < 8) {
 			errorMessageList.add("Password must contain at 8 charachters");
 		} */
+		
+		
+		//Phone Number Parameters
+        PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		
+		Integer countryCode = (new Integer (request.getParameter("countryCode")));
+		Integer areaCode = (new Integer (request.getParameter("areaCode")));
+		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
+		Integer extension = (new Integer (request.getParameter("extension")));
+		Integer primaryInd1 = (new Integer (request.getParameter("primaryInd")));
+		String typeCode1 = request.getParameter("typeCode");
+		String startDate1 = request.getParameter("startDate");
+		String endDate1 = request.getParameter("endDate");
+		
+		phoneNumberDetail.setCountryCode(countryCode);
+		phoneNumberDetail.setAreaCode(areaCode);
+		phoneNumberDetail.setPhoneNumber(phoneNumber);
+		phoneNumberDetail.setExtension(extension);
+		phoneNumberDetail.setPrimaryInd(primaryInd1);
+		phoneNumberDetail.setTypeCode(typeCode1);
+		
+		java.util.Date date1;
+		try {
+			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate1);
+			java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
+			phoneNumberDetail.setStartDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate1);
+			java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
+			phoneNumberDetail.setEndDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		personDetail.setPhoneNumberDetail(phoneNumberDetail);
 
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);

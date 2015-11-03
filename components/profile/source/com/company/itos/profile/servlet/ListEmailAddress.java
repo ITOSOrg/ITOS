@@ -43,8 +43,11 @@ public class ListEmailAddress extends HttpServlet {
 		String pageForwardStr = "";
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		
-		Integer emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
-		emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+		
+		//Integer emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
+		//emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+		emailAddressDetail.setRelatedID(relatedID);
 		
 		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
 		List<EmailAddressDetail> emailAddressDetailList = listEmailAddressDAO.listAllStudent(emailAddressDetail);

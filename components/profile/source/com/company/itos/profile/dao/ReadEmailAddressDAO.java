@@ -39,6 +39,7 @@ public class ReadEmailAddressDAO {
 				emailAddressDetail.setStartDate(resultSet.getDate("startDate"));
 				emailAddressDetail.setEndDate(resultSet.getDate("endDate"));
 				emailAddressDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
+				emailAddressDetail.setRelatedID(resultSet.getInt("relatedID"));
 			}
 			
 			String query = "SELECT * FROM EmailAddress where emailAddressID = \'" + emailAddressDetail.getEmailAddressID() + "\' and RECORDSTATUS='Active'";

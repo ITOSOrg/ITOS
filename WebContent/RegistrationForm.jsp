@@ -103,28 +103,69 @@ $(document).ready(function()
 			<tr>
 				<td>Email Address:</td>
 				<td><input type="text" name="emailAddress"
-					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+					value="<%=personDetail.getEmailAddressDetail().getEmailAddress()%>"></td>
 			</tr>
 			<tr>
 				<td>Type Code:</td>
 				<td><input type="text" name="typeCode"
-					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+					value="<%=personDetail.getEmailAddressDetail().getTypeCode()%>"></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd:</td>
 				<td><input type="text" name="primaryInd"
-					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+					value="<%=personDetail.getEmailAddressDetail().getPrimaryInd()%>"></td>
 			</tr>
 			<tr>
 				<td>Start Date:</td>
 				<td><input type="text" name="startDate"
-					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+					value="<%=personDetail.getEmailAddressDetail().getStartDate()%>"></td>
 			</tr>
 			<tr>
 				<td>End Date:</td>
 				<td><input type="text" name="endDate"
-					value="<%=personDetail.getEmailAddressDetail()%>"></td>
+					value="<%=personDetail.getEmailAddressDetail().getEndDate()%>"></td>
 			</tr>
+			<tr>
+		<td> Country Code:</td>
+		<td><input type="text" name="countryCode"
+		       value="<%=personDetail.getPhoneNumberDetail().getCountryCode()%>"></td>
+		</tr>
+		<tr>
+		<td> Area Code:</td>
+		<td><input type="text" name="areaCode"
+		       value="<%=personDetail.getPhoneNumberDetail().getAreaCode()%>"></td>
+		</tr>
+		<tr>
+		<td>Phone Number:</td>
+		<td><input type="text" name="phoneNumber"
+		       value="<%=personDetail.getPhoneNumberDetail().getPhoneNumber()%>"></td>
+		</tr>
+		<tr>
+		<td> Extension:</td>
+		<td><input type="text" name="extension"
+		       value="<%=personDetail.getPhoneNumberDetail().getExtension()%>"></td>
+		</tr>
+		<tr>
+		<td> Type Code:</td>
+		<td><input type="text" name="typeCode"
+		       value="<%=personDetail.getPhoneNumberDetail().getTypeCode()%>"></td>
+		</tr>
+		<tr>
+		<td> PrimaryInd:</td>
+		<td><input type="text" name="primaryInd"
+		       value="<%=personDetail.getPhoneNumberDetail().getPrimaryInd()%>"></td>
+		</tr>
+		<tr>
+		<td> Start Date:</td>
+		<td><input type="text" name="startDate"
+		       value="<%=personDetail.getPhoneNumberDetail().getStartDate()%>"></td>
+		</tr>
+		
+		<tr>
+		<td> End Date:</td>
+		<td><input type="text" name="endDate"
+		      value="<%=personDetail.getPhoneNumberDetail().getEndDate()%>"></td>
+		</tr>
 
 			<%
 				} else {
@@ -179,6 +220,9 @@ $(document).ready(function()
 				<td>Password:</td>
 				<td><input type="text" name="password"></td>
 			</tr>
+			
+			<!-- Enter Email Address Parameter -->
+			
 			<tr>
 				<td>Email Address:</td>
 				<td><input  type="text" name="emailAddress"></td>
@@ -199,6 +243,43 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr>
+			
+			<!-- Enter Phone Number Parameter -->
+			
+			<tr>
+		<td> Country Code:</td>
+		<td><input type="text" name="countryCode"></td>
+		</tr>
+		<tr>
+		<td> Area Code:</td>
+		<td><input type="text" name="areaCode"></td>
+		</tr>
+		<tr>
+		<td>Phone Number:</td>
+		<td><input type="text" name="phoneNumber"></td>
+		</tr>
+		<tr>
+		<td> Extension:</td>
+		<td><input type="text" name="extension"></td>
+		</tr>
+		<tr>
+		<td> Type Code:</td>
+		<td><input type="text" name="typeCode"></td>
+		</tr>
+		<tr>
+		<td> PrimaryInd:</td>
+		<td><input type="text" name="primaryInd"></td>
+		</tr>
+		<tr>
+		<td> Start Date:</td>
+		<td><input type="text" name="startDate"></td>
+		</tr>
+		
+		<tr>
+		<td> End Date:</td>
+		<td><input type="text" name="endDate"></td>
+		</tr>
+			
 			
 			<!-- <tr>
 				<td>StreetOne:</td>

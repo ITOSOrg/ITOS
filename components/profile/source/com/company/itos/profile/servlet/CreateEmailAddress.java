@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.dao.CreateEmailAddressDAO;
 import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.pojo.PhoneNumberDetail;
 
 /**
  * Servlet implementation class CreateEmailAddress
@@ -47,7 +48,7 @@ public class CreateEmailAddress extends HttpServlet {
 		String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 		String emailAddress = request.getParameter("emailAddress");
-		String relatedID = request.getParameter("relatedID");
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
 		String startDate = request.getParameter("startDate");
@@ -58,7 +59,7 @@ public class CreateEmailAddress extends HttpServlet {
 
 		}
 		emailAddressDetail.setEmailAddress(emailAddress);
-		emailAddressDetail.setRelatedID(new Integer(relatedID));
+		emailAddressDetail.setRelatedID(relatedID);
 		emailAddressDetail.setTypeCode(typeCode);
 		emailAddressDetail.setPrimaryInd(primaryInd);
 
@@ -80,6 +81,9 @@ public class CreateEmailAddress extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		
+		
 
 		CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressDetail);

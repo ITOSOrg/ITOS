@@ -42,7 +42,7 @@ public class ListEmailAddressDAO {
 				emailAddressDetail.setEndDate(resultSet.getDate("endDate"));
 				emailAddressDetail.setRelatedID(resultSet.getInt("relatedID"));
 			}
-			String EmailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID ='"+emailAddressDetail.getEmailAddressID()+"'";
+			String EmailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID ='"+emailAddressDetail.getEmailAddressID()+"' AND RECORDSTATUS='Active'";
 			
 			statement = connection.createStatement();
 

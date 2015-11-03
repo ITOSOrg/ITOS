@@ -163,11 +163,6 @@ public class PersonRegistrationDAO {
 
 			if (personDetailList.size() > 0) {
 
-				// List<String> errorMessageList = new ArrayList<String>();
-				// errorMessageList.add("Person already exist");
-				//
-				// personDetail.setErrorMessageList(errorMessageList);
-
 				personDetail.getErrorMessageList().add("Person already exist");
 
 				return true;

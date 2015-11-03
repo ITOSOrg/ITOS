@@ -14,7 +14,12 @@
 <%
 List<EmailAddressDetail> emailAddressDetailList = (List<EmailAddressDetail>) request.getAttribute("emailAddressDetailList");
 
+Integer relatedID = (Integer) request.getAttribute("relatedID");
+
+
 %>
+
+<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create</a>
 <form action="/ITOS/ListEmailAddress" method = "POST">
 <table border=1>
 			<thead>

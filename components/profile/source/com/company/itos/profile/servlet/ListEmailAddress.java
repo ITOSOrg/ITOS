@@ -57,6 +57,8 @@ public class ListEmailAddress extends HttpServlet {
 		
 		request.setAttribute("emailAddressDetailList", emailAddressDetailList);
 		
+		request.setAttribute("relatedID", relatedID);
+		
 		if(emailAddressDetailList!=null){
 			
 			pageForwardStr = "/components/profile/jsp/email/ListEmailAddress.jsp";

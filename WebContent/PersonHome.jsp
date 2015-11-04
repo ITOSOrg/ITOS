@@ -121,8 +121,6 @@
 	     		<th align="left">Type Code: <%=phoneNumberDetail.getTypeCode()%></th>
 	     		<th align="left">PrimaryInd: <%=phoneNumberDetail.getPrimaryInd()%></th>
 	     		
-		<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
-			EmailAddress List</a></th>-->
 			
 	</tbody>
 	<tbody>
@@ -131,7 +129,7 @@
 	</tbody>
 	<tbody>
 	
-		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=emailAddressDetail.getRelatedID()%>">PhoneNumber List</a></th>
+		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberDetail.getRelatedID()%>">PhoneNumber List</a></th>
 	
 	</tbody>
 			

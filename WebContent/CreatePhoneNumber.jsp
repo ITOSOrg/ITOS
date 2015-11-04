@@ -50,7 +50,7 @@ System.out.println("relatedID = " + relatedID);
 		<td><input type="text" name="endDate"></td>
 		</tr>
 		
-		
+		<input  type="submit" value="Submit">
 		
 		</table>
 		</form>

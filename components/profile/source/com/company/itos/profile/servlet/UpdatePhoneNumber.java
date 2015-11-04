@@ -96,6 +96,7 @@ public class UpdatePhoneNumber extends HttpServlet {
 			
 			pageForwardStr = "";
 		}
+		pageForwardStr += "?relatedID=" + phoneNumberDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 		

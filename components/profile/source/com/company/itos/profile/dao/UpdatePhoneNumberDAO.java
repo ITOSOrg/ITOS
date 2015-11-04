@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
+import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PhoneNumberDetail;
 
 public class UpdatePhoneNumberDAO {
@@ -17,6 +19,7 @@ public class UpdatePhoneNumberDAO {
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
 		DBConnection dbConnection = new DBConnection();
+		returnVersionNumber( phoneNumberDetail);
 
 		try {
 			connection = dbConnection.getDBConnection();
@@ -50,6 +53,31 @@ public class UpdatePhoneNumberDAO {
 		}
 		return returnMassegeStr;
 		
+	}
+	
+	
+	public int returnVersionNumber(PhoneNumberDetail phoneNumberDetail) {
+
+		int versionNo = 0;
+		try {
+			DBConnection dbConnection = new DBConnection();
+
+			Connection connection = dbConnection.getDBConnection();
+
+			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
+					+ phoneNumberDetail.getPhoneNumberLinkID() + "'";
+			Statement statement = connection.createStatement();
+
+			ResultSet resultSet = statement.executeQuery(phoneNumberLinkSQLStr);
+			if (resultSet.next()) {
+
+				versionNo = resultSet.getInt("versionNo");
+				phoneNumberDetail.setRelatedID(resultSet.getInt("relatedID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return  versionNo;
 	}
 
 }

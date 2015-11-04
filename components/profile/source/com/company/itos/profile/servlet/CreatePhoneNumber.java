@@ -46,9 +46,9 @@ public class CreatePhoneNumber extends HttpServlet {
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
 		
 		Integer countryCode = (new Integer (request.getParameter("countryCode")));
-		Integer relatedID = (new Integer (request.getParameter("relatedID")));
 		Integer areaCode = (new Integer (request.getParameter("areaCode")));
 		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		Integer extension = (new Integer (request.getParameter("extension")));
 		Integer primaryInd = (new Integer (request.getParameter("primaryInd")));
 		String typeCode = request.getParameter("typeCode");
@@ -56,9 +56,9 @@ public class CreatePhoneNumber extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		
 		phoneNumberDetail.setCountryCode(countryCode);
-		phoneNumberDetail.setRelatedID(relatedID);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
+		phoneNumberDetail.setRelatedID(relatedID);;
 		phoneNumberDetail.setExtension(extension);
 		phoneNumberDetail.setPrimaryInd(primaryInd);
 		phoneNumberDetail.setTypeCode(typeCode);
@@ -83,16 +83,18 @@ public class CreatePhoneNumber extends HttpServlet {
 		}
 		
 		CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
-		createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
-		if(pageForwardStr==CRUDConstants.RETURN_MESSAGE_SUCCESS){
+		String returnMassegeStr = createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
+		
+		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS){
 			
-			pageForwardStr = "/";
+			pageForwardStr = "/ListPhoneNumber";
 			
 		}else {
 			pageForwardStr = "/CreatePhoneNumber.jsp";
 		}
 
 		pageForwardStr += "?phoneNumberLinkID=" + phoneNumberDetail.getPhoneNumberLinkID();
+		pageForwardStr += "?relatedID=" + phoneNumberDetail.getRelatedID();
 
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

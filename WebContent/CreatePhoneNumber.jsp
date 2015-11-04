@@ -49,9 +49,9 @@ System.out.println("relatedID = " + relatedID);
 		<td> End Date:</td>
 		<td><input type="text" name="endDate"></td>
 		</tr>
-		
-		<input  type="submit" value="Submit">
-		
+		<tr>
+		<td><input  type="submit" value="Submit"></td>
+		</tr>
 		</table>
 		</form>
 </body>

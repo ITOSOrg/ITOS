@@ -26,6 +26,7 @@ public class DeleteEmailAddressDAO {
 		
 		Statement statement1 = connection.createStatement();
 		statement1.executeUpdate(sql1);
+		
 		}catch (SQLException e) {
 
 			e.printStackTrace();

@@ -19,6 +19,10 @@ public class CreatePhoneNumberDAO {
 		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
+		
+		//UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
+		//SupdatePhoneNumberDAO.returnVersionNumber(phoneNumberDetail);
+		
 		try {
 
 			connection = dbConnection.getDBConnection();

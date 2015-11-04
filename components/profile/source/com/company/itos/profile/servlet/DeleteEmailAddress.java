@@ -48,10 +48,10 @@ public class DeleteEmailAddress extends HttpServlet {
 	String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressDetail);
 	if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
 	{
-		pageForwardStr = "";
+		pageForwardStr = "/ListEmailAddress";
 	}else
 	{
-		pageForwardStr = "";
+		pageForwardStr = "/ListEmailAddress";
 	}
 	RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 	requestDispatcher.forward(request, response);

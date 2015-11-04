@@ -10,7 +10,7 @@ import com.company.itos.profile.pojo.PhoneNumberDetail;
 
 public class ReadPhoneNumberDAO {
 	
-	public PhoneNumberDetail ReadPhoneNumber(PhoneNumberDetail phoneNumberDetail)
+	public PhoneNumberDetail readPhoneNumber(PhoneNumberDetail phoneNumberDetail)
 	{
 		String returnMassegeStr = "";
 		Statement statement = null;

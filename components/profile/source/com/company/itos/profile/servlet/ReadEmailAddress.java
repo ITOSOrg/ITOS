@@ -57,32 +57,18 @@ public class ReadEmailAddress extends HttpServlet {
 
 		ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 
-		// String returnMassegeStr =
-		// readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 
 		readEmailAddressDAO.readEmailAddress(emailAddressDetail);
 
 		if (action != null && action.equals("update")) {
-			//pageForwardStr = "/UpdateEmailAddress.jsp";
 			pageForwardStr = "/components/profile/jsp/email/UpdateEmailAddress.jsp";
 
 		} else {
-			//pageForwardStr = "/ReadEmailAddress.jsp";
 			pageForwardStr = "/components/profile/jsp/email/ReadEmailAddress.jsp";
 		}
 
-		/*
-		 * if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-		 * 
-		 * pageForwardStr = "/ReadEmailAddress.jsp";
-		 * 
-		 * } else { pageForwardStr = "/UpdateEmailAddress.jsp"; }
-		 */
 
 		request.setAttribute("emailAddressDetail", emailAddressDetail);
-
-		// pageForwardStr += "?emailAddressLinkID=" +
-		// emailAddressDetail.getEmailAddressLinkID();
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

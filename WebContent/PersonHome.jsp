@@ -131,7 +131,7 @@
 	</tbody>
 	<tbody>
 	
-		<th><a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressDetail.getRelatedID()%>">EmailAddress List</a></th>
+		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=emailAddressDetail.getRelatedID()%>">PhoneNumber List</a></th>
 	
 	</tbody>
 			

@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.profile.dao.CreatePhoneNumberDAO;
+import com.company.itos.profile.dao.UpdatePhoneNumberDAO;
 import com.company.itos.profile.pojo.PhoneNumberDetail;
 
 /**
- * Servlet implementation class CreatePhoneNumber
+ * Servlet implementation class UpdatePhoneNumber
  */
-//@WebServlet("/CreatePhoneNumber")
-public class CreatePhoneNumber extends HttpServlet {
+//@WebServlet("/UpdatePhoneNumber")
+public class UpdatePhoneNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreatePhoneNumber() {
+    public UpdatePhoneNumber() {
         super();
     }
 
@@ -33,7 +33,7 @@ public class CreatePhoneNumber extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
@@ -45,8 +45,12 @@ public class CreatePhoneNumber extends HttpServlet {
 		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
 		
+		int phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
+		phoneNumberDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		int phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
+		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
+		
 		Integer countryCode = (new Integer (request.getParameter("countryCode")));
-		Integer relatedID = (new Integer (request.getParameter("relatedID")));
 		Integer areaCode = (new Integer (request.getParameter("areaCode")));
 		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
 		Integer extension = (new Integer (request.getParameter("extension")));
@@ -56,7 +60,6 @@ public class CreatePhoneNumber extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		
 		phoneNumberDetail.setCountryCode(countryCode);
-		phoneNumberDetail.setRelatedID(relatedID);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
 		phoneNumberDetail.setExtension(extension);
@@ -82,20 +85,21 @@ public class CreatePhoneNumber extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
-		createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
-		if(pageForwardStr==CRUDConstants.RETURN_MESSAGE_SUCCESS){
+		UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
+		String returnMassegeStr = updatePhoneNumberDAO.updatephoneNumber(phoneNumberDetail);
+		
+	
+		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
+		{
+			pageForwardStr = "/ListPhoneNumber";
+		}else{
 			
-			pageForwardStr = "/";
-			
-		}else {
-			pageForwardStr = "/CreatePhoneNumber.jsp";
+			pageForwardStr = "";
 		}
-
-		pageForwardStr += "?phoneNumberLinkID=" + phoneNumberDetail.getPhoneNumberLinkID();
-
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
+		
+		
 	}
 
 }

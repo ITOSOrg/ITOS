@@ -86,14 +86,17 @@ public class UpdateEmailAddress extends HttpServlet {
 
 		UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
 		String returnMassegeStr = updateEmailAddressDAO.updateEmailAddress(emailAddressDetail);
+		
 		request.setAttribute("emailAddressLinkID", emailAddressLinkID);
+		request.setAttribute("emailAddressDetail", emailAddressDetail);
+		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "/ReadEmailAddress";
+			pageForwardStr = "/ListEmailAddress";
 
 		} else {
 			pageForwardStr = "/";
 		}
-
+		pageForwardStr += "?relatedID=" + emailAddressDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 

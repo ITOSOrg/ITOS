@@ -13,6 +13,7 @@ public class EmailAddressDetail {
 	private int emailAddressID;
 	private int emailAddressLinkID;
 	private int relatedID;
+	private int versionNo;
 	
 
 	public int getEmailAddressLinkID() {
@@ -85,6 +86,14 @@ public class EmailAddressDetail {
 
 	public void setRelatedID(int relatedID) {
 		this.relatedID = relatedID;
+	}
+
+	public int getVersionNo() {
+		return versionNo;
+	}
+
+	public void setVersionNo(int versionNo) {
+		this.versionNo = versionNo;
 	}
 
 }

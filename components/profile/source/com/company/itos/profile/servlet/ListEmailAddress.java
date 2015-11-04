@@ -50,7 +50,7 @@ public class ListEmailAddress extends HttpServlet {
 		emailAddressDetail.setRelatedID(relatedID);
 		
 		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
-		List<EmailAddressDetail> emailAddressDetailList = listEmailAddressDAO.listAllStudent(emailAddressDetail);
+		List<EmailAddressDetail> emailAddressDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressDetail);
 		
 		/*PersonDetail personDetail = new PersonDetail();
 		personDetail.setEmailAddressDetail(emailAddressDetail);*/

@@ -24,7 +24,7 @@ public class ListEmailAddressDAO {
 	 * @param emailAddressDetail
 	 * @return
 	 */
-	public List<EmailAddressDetail> listAllStudent(EmailAddressDetail emailAddressDetail) {
+	public List<EmailAddressDetail> listAllEmailAddress(EmailAddressDetail emailAddressDetail) {
 
 		List<EmailAddressDetail> emailAddressDetailList = new ArrayList<EmailAddressDetail>();
 

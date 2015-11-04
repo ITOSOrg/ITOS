@@ -1,6 +1,7 @@
 package com.company.itos.profile.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.company.itos.profile.dao.ReadPhoneNumberDAO;
+import com.company.itos.profile.dao.ListPhoneNumberDAO;
+import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PhoneNumberDetail;
 
 /**
- * Servlet implementation class ReadPhoneNumber
+ * Servlet implementation class ListPhoneNumber
  */
-//@WebServlet("/ReadPhoneNumber")
-public class ReadPhoneNumber extends HttpServlet {
+//@WebServlet("/ListPhoneNumber")
+public class ListPhoneNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadPhoneNumber() {
+    public ListPhoneNumber() {
         super();
     }
 
@@ -30,35 +32,36 @@ public class ReadPhoneNumber extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String pageForwardStr = "";
-		String action = request.getParameter("act");
-		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
 		
-		Integer phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
-		phoneNumberDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
+		phoneNumberDetail.setRelatedID(relatedID);
 		
-		ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-		readPhoneNumberDAO.readPhoneNumber(phoneNumberDetail);
-		request.setAttribute("phoneNumberDetail", phoneNumberDetail);
+		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
+		List<PhoneNumberDetail> phoneNumberDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberDetail);
 		
-		if (action != null && action.equals("update")) {
-			pageForwardStr = "/UpdatePhoneNumber.jsp";
-
-		} else {
-			pageForwardStr = "/ReadPhoneNumber.jsp";
+		request.setAttribute("phoneNumberDetailList", phoneNumberDetailList);
+		request.setAttribute("relatedID", relatedID);
+		
+		if(phoneNumberDetailList!=null){
+			
+			pageForwardStr = "/ListPhoneNumber.jsp";
+			
+		}else{
+			
+			pageForwardStr = "";
+			
 		}
-		
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
+		RequestDispatcher requestDispatcher = request
+				.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}
 

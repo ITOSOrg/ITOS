@@ -96,7 +96,7 @@ public class PersonHomeDAO {
 			}
 			
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-			readPhoneNumberDAO.ReadPhoneNumber(phoneNumberDetail);
+			readPhoneNumberDAO.readPhoneNumber(phoneNumberDetail);
 			personDetail.setPhoneNumberDetail(phoneNumberDetail);
 			
 		} catch (SQLException e) {

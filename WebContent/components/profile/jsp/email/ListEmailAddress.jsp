@@ -19,7 +19,7 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 
 %>
 
-<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create</a>
+<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create</a><br>
 <form action="/ITOS/ListEmailAddress" method = "POST">
 <table border=1>
 			<thead>

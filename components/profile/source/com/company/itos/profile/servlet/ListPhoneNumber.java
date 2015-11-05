@@ -17,51 +17,52 @@ import com.company.itos.profile.pojo.PhoneNumberDetail;
 /**
  * Servlet implementation class ListPhoneNumber
  */
-//@WebServlet("/ListPhoneNumber")
+// @WebServlet("/ListPhoneNumber")
 public class ListPhoneNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListPhoneNumber() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ListPhoneNumber() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageForwardStr = "";
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
-		
+
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		phoneNumberDetail.setRelatedID(relatedID);
-		
+
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
 		List<PhoneNumberDetail> phoneNumberDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberDetail);
-		
+
 		request.setAttribute("phoneNumberDetailList", phoneNumberDetailList);
 		request.setAttribute("relatedID", relatedID);
-		
-		if(phoneNumberDetailList!=null){
-			
+
+		if (phoneNumberDetailList != null) {
+
 			pageForwardStr = "/ListPhoneNumber.jsp";
-			
-		}else{
-			
+
+		} else {
+
 			pageForwardStr = "";
-			
+
 		}
-		RequestDispatcher requestDispatcher = request
-				.getRequestDispatcher(pageForwardStr);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}
 

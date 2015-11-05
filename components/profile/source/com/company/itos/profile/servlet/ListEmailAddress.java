@@ -17,58 +17,62 @@ import com.company.itos.profile.pojo.PersonDetail;
 /**
  * Servlet implementation class ListEmailAddress
  */
-//@WebServlet("/ListEmailAddress")
+// @WebServlet("/ListEmailAddress")
 public class ListEmailAddress extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListEmailAddress() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ListEmailAddress() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String pageForwardStr = "";
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
-		
-		
-		//Integer emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
+
+		// Integer emailAddressLinkID = (new
+		// Integer(request.getParameter("emailAddressLinkID")));
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
-		//emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+		// emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
 		emailAddressDetail.setRelatedID(relatedID);
-		
+
 		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
 		List<EmailAddressDetail> emailAddressDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressDetail);
-		
-		/*PersonDetail personDetail = new PersonDetail();
-		personDetail.setEmailAddressDetail(emailAddressDetail);*/
-		
+
+		/*
+		 * PersonDetail personDetail = new PersonDetail();
+		 * personDetail.setEmailAddressDetail(emailAddressDetail);
+		 */
+
 		request.setAttribute("emailAddressDetailList", emailAddressDetailList);
-		
+
 		request.setAttribute("relatedID", relatedID);
-		
-		if(emailAddressDetailList!=null){
-			
+
+		if (emailAddressDetailList != null) {
+
 			pageForwardStr = "/components/profile/jsp/email/ListEmailAddress.jsp";
-			
-		}else{
-			
+
+		} else {
+
 			pageForwardStr = "/PersonHome";
 		}
-		RequestDispatcher requestDispatcher = request
-				.getRequestDispatcher(pageForwardStr);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}
 

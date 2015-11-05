@@ -26,23 +26,23 @@ public class UpdatePhoneNumberDAO {
 			
 			String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ?";
 			
-			PreparedStatement preparedStatement = connection.prepareStatement(phoneNumberSQLStr);
-			preparedStatement.setInt(1, phoneNumberDetail.getCountryCode());
-			preparedStatement.setInt(2, phoneNumberDetail.getAreaCode());
-			preparedStatement.setLong(3, phoneNumberDetail.getPhoneNumber());
-			preparedStatement.setInt(4, phoneNumberDetail.getExtension());
+			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
+			preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getCountryCode());
+			preparedStatementPhoneNumber.setInt(2, phoneNumberDetail.getAreaCode());
+			preparedStatementPhoneNumber.setLong(3, phoneNumberDetail.getPhoneNumber());
+			preparedStatementPhoneNumber.setInt(4, phoneNumberDetail.getExtension());
 			
-			preparedStatement.executeUpdate();
+			preparedStatementPhoneNumber.executeUpdate();
 			
 			String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ?";
 			
-			PreparedStatement preparedStatement1 = connection.prepareStatement(phoneNumberLinkSQLStr);
-			preparedStatement1.setString(1, phoneNumberDetail.getTypeCode());
-			preparedStatement1.setInt(2, phoneNumberDetail.getPrimaryInd());
-			preparedStatement1.setDate(3, phoneNumberDetail.getStartDate());
-			preparedStatement1.setDate(4, phoneNumberDetail.getEndDate());
+			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
+			preparedStatementPhoneNumberLink.setString(1, phoneNumberDetail.getTypeCode());
+			preparedStatementPhoneNumberLink.setInt(2, phoneNumberDetail.getPrimaryInd());
+			preparedStatementPhoneNumberLink.setDate(3, phoneNumberDetail.getStartDate());
+			preparedStatementPhoneNumberLink.setDate(4, phoneNumberDetail.getEndDate());
 			
-			preparedStatement.executeUpdate();
+			preparedStatementPhoneNumberLink.executeUpdate();
 		
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

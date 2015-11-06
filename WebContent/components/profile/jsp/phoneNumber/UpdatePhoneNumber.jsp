@@ -11,7 +11,7 @@
 
 <% PhoneNumberDetail phoneNumberDetail = (PhoneNumberDetail) request.getAttribute("phoneNumberDetail"); %>
 
-<form name="Update Phone Number" action="/ITOS/UpdatePhoneNumber?phoneNumberLinkID=<%= phoneNumberDetail.getPhoneNumberLinkID() %>&phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID() %> "
+<form name="Update Phone Number" action="/ITOS/UpdatePhoneNumber?phoneNumberLinkID=<%= phoneNumberDetail.getPhoneNumberLinkID() %>&phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID() %>&versionNo=<%=phoneNumberDetail.getVersionNo() %> "
 		method="POST">
 		<table>s
 		

@@ -20,6 +20,16 @@ public class UpdatePhoneNumberDAO {
 		String returnMassegeStr = "";
 		DBConnection dbConnection = new DBConnection();
 		returnVersionNumber( phoneNumberDetail);
+		
+		int versionNoFromUpdate = phoneNumberDetail.getVersionNo();
+
+		int versionNoFromDatabase = returnVersionNumber(phoneNumberDetail);
+
+		if (versionNoFromUpdate == versionNoFromDatabase) {
+
+			versionNoFromDatabase++;
+
+		
 
 		try {
 			connection = dbConnection.getDBConnection();
@@ -51,8 +61,8 @@ public class UpdatePhoneNumberDAO {
 			e.printStackTrace();
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
+		}
 		return returnMassegeStr;
-		
 	}
 	
 	

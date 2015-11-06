@@ -33,6 +33,7 @@ try {
 				phoneNumberDetail.setStartDate(resultSet.getDate("startDate"));
 				phoneNumberDetail.setEndDate(resultSet.getDate("endDate"));
 				phoneNumberDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
+				phoneNumberDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
 			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber where phoneNumberID = \'" + phoneNumberDetail.getPhoneNumberID() + "\' and RECORDSTATUS='Active'";

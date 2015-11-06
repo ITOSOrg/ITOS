@@ -26,6 +26,8 @@ public class PhoneNumberDetail {
 	private Date endDate;
 	
 	private String comments;
+	
+	private int versionNo;
 
 	public int getPhoneNumberID() {
 		return phoneNumberID;
@@ -122,6 +124,14 @@ public class PhoneNumberDetail {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	public int getVersionNo() {
+		return versionNo;
+	}
+
+	public void setVersionNo(int versionNo) {
+		this.versionNo = versionNo;
 	}
 	
 	

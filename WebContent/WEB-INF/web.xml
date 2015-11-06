@@ -93,7 +93,7 @@
     <description></description>
     <display-name>ReadEmailAddress</display-name>
     <servlet-name>ReadEmailAddress</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.ReadEmailAddress</servlet-class>
+    <servlet-class>com.company.itos.profile.email.servlet.ReadEmailAddress</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ReadEmailAddress</servlet-name>
@@ -103,7 +103,7 @@
     <description></description>
     <display-name>CreateEmailAddress</display-name>
     <servlet-name>CreateEmailAddress</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.CreateEmailAddress</servlet-class>
+    <servlet-class>com.company.itos.profile.email.servlet.CreateEmailAddress</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateEmailAddress</servlet-name>
@@ -113,7 +113,7 @@
     <description></description>
     <display-name>DeleteEmailAddress</display-name>
     <servlet-name>DeleteEmailAddress</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.DeleteEmailAddress</servlet-class>
+    <servlet-class>com.company.itos.profile.email.servlet.DeleteEmailAddress</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteEmailAddress</servlet-name>
@@ -123,10 +123,70 @@
     <description></description>
     <display-name>UpdateEmailAddress</display-name>
     <servlet-name>UpdateEmailAddress</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.UpdateEmailAddress</servlet-class>
+    <servlet-class>com.company.itos.profile.email.servlet.UpdateEmailAddress</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateEmailAddress</servlet-name>
     <url-pattern>/UpdateEmailAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListEmailAddress</display-name>
+    <servlet-name>ListEmailAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.email.servlet.ListEmailAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListEmailAddress</servlet-name>
+    <url-pattern>/ListEmailAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreatePhoneNumber</display-name>
+    <servlet-name>CreatePhoneNumber</servlet-name>
+    <servlet-class>com.company.itos.profile.phone.servlet.CreatePhoneNumber</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePhoneNumber</servlet-name>
+    <url-pattern>/CreatePhoneNumber</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadPhoneNumber</display-name>
+    <servlet-name>ReadPhoneNumber</servlet-name>
+    <servlet-class>com.company.itos.profile.phone.servlet.ReadPhoneNumber</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadPhoneNumber</servlet-name>
+    <url-pattern>/ReadPhoneNumber</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePhoneNumber</display-name>
+    <servlet-name>UpdatePhoneNumber</servlet-name>
+    <servlet-class>com.company.itos.profile.phone.servlet.UpdatePhoneNumber</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePhoneNumber</servlet-name>
+    <url-pattern>/UpdatePhoneNumber</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListPhoneNumber</display-name>
+    <servlet-name>ListPhoneNumber</servlet-name>
+    <servlet-class>com.company.itos.profile.phone.servlet.ListPhoneNumber</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPhoneNumber</servlet-name>
+    <url-pattern>/ListPhoneNumber</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePhoneNumber</display-name>
+    <servlet-name>DeletePhoneNumber</servlet-name>
+    <servlet-class>com.company.itos.profile.phone.servlet.DeletePhoneNumber</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePhoneNumber</servlet-name>
+    <url-pattern>/DeletePhoneNumber</url-pattern>
   </servlet-mapping>
 </web-app>

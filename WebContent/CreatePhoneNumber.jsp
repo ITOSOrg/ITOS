@@ -12,7 +12,7 @@ String relatedID = (String) request.getParameter("relatedID");
 System.out.println("relatedID = " + relatedID);
 
 %>
-<form name="Create Phone Number" action="/ITOS/CreatePhoneNumber?relatedID = <%= relatedID %>"
+<form name="Create Phone Number" action="/ITOS/CreatePhoneNumber?relatedID=<%= relatedID %>"
 		method="POST">
 		<table>
 		

@@ -9,7 +9,7 @@
 </head>
 <body>
 <% EmailAddressDetail emailAddressDetail = (EmailAddressDetail) request.getAttribute("emailAddressDetail"); %>
-<form action="/ITOS/UpdateEmailAddress?emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID() %>&emailAddressID=<%=emailAddressDetail.getEmailAddressID() %>" method = "POST">
+<form action="/ITOS/UpdateEmailAddress?emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID() %>&emailAddressID=<%=emailAddressDetail.getEmailAddressID() %>&versionNo=<%=emailAddressDetail.getVersionNo()%>" method = "POST">
 <table>
 			<tr>
 				<td>EmailAddress :</td>

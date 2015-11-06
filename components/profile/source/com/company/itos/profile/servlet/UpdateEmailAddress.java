@@ -49,9 +49,11 @@ public class UpdateEmailAddress extends HttpServlet {
 		emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
 		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
 		emailAddressDetail.setEmailAddressID(emailAddressID);
+		int versionNo = (new Integer(request.getParameter("versionNo")));
+		emailAddressDetail.setVersionNo(versionNo);
 
 		String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
+		
 		String emailAddress = request.getParameter("emailAddress");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");

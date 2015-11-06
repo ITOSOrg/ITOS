@@ -20,13 +20,13 @@ public class UpdateEmailAddressDAO {
 		DBConnection dbConnection = new DBConnection();
 		returnVersionNumber(emailAddressDetail);
 		
-		/*int versionNoFromUpdate = emailAddressDetail.getVersionNo();
+		int versionNoFromUpdate = emailAddressDetail.getVersionNo();
 
 		int versionNoFromDatabase = returnVersionNumber(emailAddressDetail);
 
 		if (versionNoFromUpdate == versionNoFromDatabase) {
 
-			versionNoFromDatabase++;*/
+			versionNoFromDatabase++;
 
 		try {
 			connection = dbConnection.getDBConnection();
@@ -54,7 +54,7 @@ public class UpdateEmailAddressDAO {
 			e.printStackTrace();
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
-		//}
+		}
 		return returnMassegeStr;
 	}
 	

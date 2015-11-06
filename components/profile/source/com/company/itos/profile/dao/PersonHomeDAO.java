@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.company.itos.core.util.DBConnection;
+import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
+import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
 import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.PhoneNumberDetail;

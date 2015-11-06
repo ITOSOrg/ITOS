@@ -15,6 +15,8 @@ import java.util.List;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
+import com.company.itos.profile.phone.dao.CreatePhoneNumberDAO;
 import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.PhoneNumberDetail;

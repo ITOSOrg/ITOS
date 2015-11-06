@@ -13,7 +13,7 @@ import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.dao.PersonHomeDAO;
-import com.company.itos.profile.dao.ReadEmailAddressDAO;
+import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
 
 /**
  * Servlet implementation class PersonHome

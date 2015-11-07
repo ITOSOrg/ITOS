@@ -55,7 +55,7 @@ public class ListPhoneNumber extends HttpServlet {
 
 		if (phoneNumberDetailList != null) {
 
-			pageForwardStr = "/components/profile/jsp/phoneNumber/ListPhoneNumber.jsp";
+			pageForwardStr = "/components/profile/jsp/phone/ListPhoneNumber.jsp";
 
 		} else {
 

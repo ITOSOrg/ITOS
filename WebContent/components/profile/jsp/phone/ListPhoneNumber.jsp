@@ -14,7 +14,7 @@ List<PhoneNumberDetail> phoneNumberDetailList = (List<PhoneNumberDetail>) reques
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 %>
-<a href="/components/profile/jsp/phoneNumber/CreatePhoneNumber.jsp?relatedID=<%= relatedID%>">Create</a>
+<a href="/ITOS/components/profile/jsp/phone/CreatePhoneNumber.jsp?relatedID=<%= relatedID%>">Create</a>
 <form action="/ITOS/ListPhoneNumber" method = "POST">
 <table border=1>
 			<thead>

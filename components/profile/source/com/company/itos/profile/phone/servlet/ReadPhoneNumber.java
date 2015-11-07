@@ -51,7 +51,7 @@ public class ReadPhoneNumber extends HttpServlet {
 		request.setAttribute("phoneNumberDetail", phoneNumberDetail);
 		
 		if (action != null && action.equals("update")) {
-			pageForwardStr = "/components/profile/jsp/phoneNumber/UpdatePhoneNumber.jsp";
+			pageForwardStr = "/components/profile/jsp/phone/UpdatePhoneNumber.jsp";
 
 		} else {
 			pageForwardStr = "";

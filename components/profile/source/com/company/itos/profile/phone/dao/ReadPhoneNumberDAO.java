@@ -16,7 +16,7 @@ public class ReadPhoneNumberDAO {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink where phoneNumberLinkID = \'" + phoneNumberDetail.getPhoneNumberLinkID() + "\' and RECORDSTATUS='Active'";
+		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'" + phoneNumberDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
 try {
 			
 			DBConnection dbConnection = new DBConnection();
@@ -36,7 +36,7 @@ try {
 				phoneNumberDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
-			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber where phoneNumberID = \'" + phoneNumberDetail.getPhoneNumberID() + "\' and RECORDSTATUS='Active'";
+			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberDetail.getPhoneNumberID() + "\' AND RECORDSTATUS='Active'";
 			
 			Statement	statement1	= connection.createStatement();
 			ResultSet resultSet1 = statement.executeQuery(PhoneNumberSQLstr);

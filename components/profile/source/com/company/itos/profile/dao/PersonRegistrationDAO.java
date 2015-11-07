@@ -185,8 +185,8 @@ public class PersonRegistrationDAO {
 		try {
 			connection = dbConnection.getDBConnection();
 			Statement statement = connection.createStatement();
-			String sql = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
-			ResultSet resultSet = statement.executeQuery(sql);
+			String usersSQLStr = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
+			ResultSet resultSet = statement.executeQuery(usersSQLStr);
 			while (resultSet.next()) {
 				List<String> errorMessageList = new ArrayList<String>();
 				errorMessageList.add("UserName already exist");

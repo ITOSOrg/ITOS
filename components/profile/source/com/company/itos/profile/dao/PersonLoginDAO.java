@@ -35,7 +35,7 @@ public class PersonLoginDAO {
 		String returnMassegeStr = "";
 
 		// query to find matched username & password
-		String query = "SELECT USERNAME, PASSWORD, LOGINFAILURECOUNT, accountEnabled FROM USERS WHERE USERNAME='"
+		String usersSQLStr = "SELECT USERNAME, PASSWORD, LOGINFAILURECOUNT, accountEnabled FROM USERS WHERE USERNAME='"
 				+ usersDetail.getUserName() + "'";
 
 		// create object of class DBConnection class
@@ -46,7 +46,7 @@ public class PersonLoginDAO {
 			// get database connection
 			connection = dbConnection.getDBConnection();
 
-			preparedStatement = connection.prepareStatement(query);
+			preparedStatement = connection.prepareStatement(usersSQLStr);
 
 			// store resultset object into the resultSet object
 			resultSet = preparedStatement.executeQuery();
@@ -111,10 +111,10 @@ public class PersonLoginDAO {
 
 		int accountEnabled = (loginFailureCount >= 3) ? 0 : 1;
 
-		String sql1 = "UPDATE Users SET loginFailureCount = " + loginFailureCount + " , accountEnabled = " + accountEnabled
+		String usersSQLStr = "UPDATE Users SET loginFailureCount = " + loginFailureCount + " , accountEnabled = " + accountEnabled
 				+ " WHERE userName='" + usersDetail.getUserName() + "'";
 
-		preparedStatement = connection.prepareStatement(sql1);
+		preparedStatement = connection.prepareStatement(usersSQLStr);
 
 		preparedStatement.executeQuery();
 

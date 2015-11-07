@@ -15,11 +15,10 @@ public class ReadEmailAddressDAO {
 	public EmailAddressDetail readEmailAddress(EmailAddressDetail emailAddressDetail) {
 		
 		String returnMassegeStr = "";
-		Statement statement = null;
 		ResultSet resultSet = null;
 		
 		
-		String query1 = "SELECT * FROM EmailAddressLink where emailAddressLinkID = \'" + emailAddressDetail.getEmailAddressLinkID() + "\' and RECORDSTATUS='Active'";
+		String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink WHERE emailAddressLinkID = \'" + emailAddressDetail.getEmailAddressLinkID() + "\' AND RECORDSTATUS='Active'";
 		
 		
 		try {
@@ -28,8 +27,8 @@ public class ReadEmailAddressDAO {
 			Connection connection = dbConnection.getDBConnection();
 
 
-			Statement statement1 = connection.createStatement();
-			resultSet = statement1.executeQuery(query1);
+			Statement statementemailAddressLink = connection.createStatement();
+			resultSet = statementemailAddressLink.executeQuery(emailAddressLinkSQLStr);
 
 			if (resultSet.next()) {
 				
@@ -43,10 +42,10 @@ public class ReadEmailAddressDAO {
 				emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
-			String query = "SELECT * FROM EmailAddress where emailAddressID = \'" + emailAddressDetail.getEmailAddressID() + "\' and RECORDSTATUS='Active'";
+			String emailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID = \'" + emailAddressDetail.getEmailAddressID() + "\' AND RECORDSTATUS='Active'";
 			
-			statement = connection.createStatement();
-			ResultSet	resultSet1 = statement.executeQuery(query);
+			Statement statementEmailAddress = connection.createStatement();
+			ResultSet	resultSet1 = statementEmailAddress.executeQuery(emailAddressSQLStr);
 
 
 			if (resultSet1.next()) {

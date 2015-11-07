@@ -33,7 +33,7 @@ public class PersonUpdateDAO {
 
 			try {
 				connection = dbConnection.getDBConnection();
-				String query = "UPDATE	PERSON	SET title='"
+				String personSQLStr = "UPDATE	PERSON	SET title='"
 						+ personDetail.getTitle() + "',	firstName='"
 						+ personDetail.getFirstName() + "', middleName='"
 						+ personDetail.getMiddleName() + "', lastName='"
@@ -42,7 +42,7 @@ public class PersonUpdateDAO {
 						+ versionNoFromDatabase + "' " + "	where	userName='"
 						+ personDetail.getUserName() + "'";
 
-				preparedStatement = connection.prepareStatement(query);
+				preparedStatement = connection.prepareStatement(personSQLStr);
 
 				preparedStatement.setDate(1, personDetail.getDateOfBirth());
 				preparedStatement.executeUpdate();
@@ -73,11 +73,11 @@ public class PersonUpdateDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			String query1 = "SELECT	versionNo	FROM	PERSON	WHERE	 USERNAME='"
+			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 USERNAME='"
 					+ personDetail.getUserName() + "'";
 			Statement statement = connection.createStatement();
 
-			resultSet = statement.executeQuery(query1);
+			resultSet = statement.executeQuery(personSQLStr);
 			if (resultSet.next()) {
 
 				versionNumber = resultSet.getInt("versionNo");

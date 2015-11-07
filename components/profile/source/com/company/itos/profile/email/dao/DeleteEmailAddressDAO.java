@@ -11,21 +11,22 @@ import com.company.itos.profile.pojo.EmailAddressDetail;
 public class DeleteEmailAddressDAO {
 	public String deleteEmailAddress(EmailAddressDetail emailAddressDetail)
 	{
-		Statement statement;
 		Connection connection = null;
 		String returnMassegeStr = "";
 		try{
-		String sql = "UPDATE	EmailAddress	SET	RECORDSTATUS='cancel'	WHERE emailAddressID = "
+		String emailAddressSQLStr = "UPDATE	EmailAddress	SET	RECORDSTATUS='cancel'	WHERE emailAddressID = "
 		+ emailAddressDetail.getEmailAddressID();
-		String sql1 = "UPDATE EmailAddressLink SET	RECORDSTATUS='cancel'	WHERE emailAddressLinkID= "
+		
+		String EmailAddressLinkSQLStr = "UPDATE EmailAddressLink SET	RECORDSTATUS='cancel'	WHERE emailAddressLinkID= "
 				+ emailAddressDetail.getEmailAddressLinkID();
 		DBConnection dbConnection = new DBConnection();
 		connection = dbConnection.getDBConnection();
-		statement = connection.createStatement();
-		statement.executeUpdate(sql);
 		
-		Statement statement1 = connection.createStatement();
-		statement1.executeUpdate(sql1);
+		Statement statementEmailAddress = connection.createStatement();
+		statementEmailAddress.executeUpdate(emailAddressSQLStr);
+		
+		Statement statementEmailAddressLink = connection.createStatement();
+		statementEmailAddressLink.executeUpdate(EmailAddressLinkSQLStr);
 		
 		}catch (SQLException e) {
 

@@ -24,11 +24,11 @@ public class PersonListDAO {
 		try {
 			connection = dbConnection.getDBConnection();
 
-			String query = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='active'";
+			String personSQLStr = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='active'";
 
 			statement = connection.createStatement();
 
-			resultSet = statement.executeQuery(query);
+			resultSet = statement.executeQuery(personSQLStr);
 
 			while (resultSet.next()) {
 

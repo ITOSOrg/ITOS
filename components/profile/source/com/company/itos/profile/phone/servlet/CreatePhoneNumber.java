@@ -90,7 +90,7 @@ public class CreatePhoneNumber extends HttpServlet {
 			pageForwardStr = "/ListPhoneNumber";
 			
 		}else {
-			pageForwardStr = "/components/profile/jsp/phoneNumber/CreatePhoneNumber.jsp";
+			pageForwardStr = "/components/profile/jsp/phone/CreatePhoneNumber.jsp";
 		}
 
 		pageForwardStr += "?phoneNumberLinkID=" + phoneNumberDetail.getPhoneNumberLinkID();

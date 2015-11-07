@@ -13,7 +13,6 @@ public class DeletePhoneNumberDAO {
 	
 	public String deletePhoneNumber(PhoneNumberDetail phoneNumberDetail) {
 
-		Statement statement;
 		Connection connection = null;
 		String returnMassegeStr = "";
 		try {
@@ -27,11 +26,11 @@ public class DeletePhoneNumberDAO {
 			DBConnection dbConnection = new DBConnection();
 			connection = dbConnection.getDBConnection();
 
-			statement = connection.createStatement();
-			statement.executeUpdate(phoneNumberSQLStr);
+			Statement statementPhoneNumber = connection.createStatement();
+			statementPhoneNumber.executeUpdate(phoneNumberSQLStr);
 
-			Statement statement1 = connection.createStatement();
-			statement1.executeUpdate(phoneNumberLinkSQLStr);
+			Statement statementPhoneNumberLink = connection.createStatement();
+			statementPhoneNumberLink.executeUpdate(phoneNumberLinkSQLStr);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

@@ -1,4 +1,5 @@
-<%@ page import="com.company.itos.profile.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +10,9 @@
 </head>
 <body>
 	<form action="/ITOS/ReadEmailAddress" method="POST">
-		<% EmailAddressDetail emailAddressDetail = (EmailAddressDetail) request.getAttribute("emailAddressDetail"); %>
+		<% EmailAddressLinkDetail emailAddressLinkDetail = (EmailAddressLinkDetail) request.getAttribute("emailAddressLinkDetail"); 
+		EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
+		%>
 		<table border=1>
 			<thead>
 
@@ -25,12 +28,12 @@
 			<tbody>
 				<tr>
 					<td><%=emailAddressDetail.getEmailAddress() %></td>
-					<td><%=emailAddressDetail.getTypeCode() %></td>
-					<td><%=emailAddressDetail.getPrimaryInd() %></td>
-					<td><%=emailAddressDetail.getStartDate() %></td>
-					<td><%=emailAddressDetail.getEndDate() %></td>
-					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Delete</a></td>
+					<td><%=emailAddressLinkDetail.getTypeCode() %></td>
+					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
+					<td><%=emailAddressLinkDetail.getStartDate() %></td>
+					<td><%=emailAddressLinkDetail.getEndDate() %></td>
+					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
+					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>">Delete</a></td>
 					<td><a href="/components/profile/jsp/email/CreateEmailAddress.jsp">Create</a></td>
 				</tr>
 			</tbody>

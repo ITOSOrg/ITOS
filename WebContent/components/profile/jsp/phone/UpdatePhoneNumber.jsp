@@ -1,4 +1,5 @@
-<%@ page import="com.company.itos.profile.pojo.PhoneNumberDetail" %>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail" %>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,9 +10,12 @@
 </head>
 <body>
 
-<% PhoneNumberDetail phoneNumberDetail = (PhoneNumberDetail) request.getAttribute("phoneNumberDetail"); %>
+<% PhoneNumberLinkDetail phoneNumberLinkDetail = (PhoneNumberLinkDetail) request.getAttribute("phoneNumberLinkDetail"); 
+ 	PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
-<form name="Update Phone Number" action="/ITOS/UpdatePhoneNumber?phoneNumberLinkID=<%= phoneNumberDetail.getPhoneNumberLinkID() %>&phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID() %>&versionNo=<%=phoneNumberDetail.getVersionNo() %> "
+%>
+
+<form name="Update Phone Number" action="/ITOS/UpdatePhoneNumber?phoneNumberLinkID=<%= phoneNumberLinkDetail.getPhoneNumberLinkID() %>&phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID() %>&versionNo=<%=phoneNumberDetail.getVersionNo() %>&versionNo=<%=phoneNumberLinkDetail.getVersionNo() %>&phoneNumberLinkID=<%=phoneNumberDetail.getPhoneNumberID() %> "
 		method="POST">
 		<table>s
 		
@@ -38,23 +42,23 @@
 		<tr>
 		<td> Type Code:</td>
 		<td><input type="text" name="typeCode"
-		     value="<%=phoneNumberDetail.getTypeCode()%>"></td>
+		     value="<%=phoneNumberLinkDetail.getTypeCode()%>"></td>
 		</tr>
 		<tr>
 		<td> PrimaryInd:</td>
 		<td><input type="text" name="primaryInd"
-		     value="<%=phoneNumberDetail.getPrimaryInd()%>"></td>
+		     value="<%=phoneNumberLinkDetail.getPrimaryInd()%>"></td>
 		</tr>
 		<tr>
 		<td> Start Date:</td>
 		<td><input type="text" name="startDate"
-		     value="<%=phoneNumberDetail.getStartDate()%>"></td>
+		     value="<%=phoneNumberLinkDetail.getStartDate()%>"></td>
 		</tr>
 		
 		<tr>
 		<td> End Date:</td>
 		<td><input type="text" name="endDate"
-		      value="<%=phoneNumberDetail.getEndDate()%>"></td>
+		      value="<%=phoneNumberLinkDetail.getEndDate()%>"></td>
 		</tr>
 		<td><input  type="submit" value="Submit">
 		

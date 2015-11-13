@@ -1,4 +1,8 @@
 <%@ page import="java.util.List"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
 <%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
 <%@ page
 	import="com.company.itos.profile.servlet.PersonRegistration"%>
@@ -45,6 +49,7 @@ $(document).ready(function()
 
 					for (int i = 0; i < errorMessageList.size(); i++) {
 			%>
+			
 
 			<br>
 			<font size="3" color="red"> <%
@@ -53,6 +58,13 @@ $(document).ready(function()
 			</font>
 			<%
 				}
+			%>
+			<%
+			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
+			EmailAddressDetail emailAddressDetail  = emailAddressLinkDetail.getEmailAddressDetail();
+	 
+			 PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
+			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 			%>
 			
 			<tr>
@@ -103,68 +115,68 @@ $(document).ready(function()
 			<tr>
 				<td>Email Address:</td>
 				<td><input type="text" name="emailAddress"
-					value="<%=personDetail.getEmailAddressDetail().getEmailAddress()%>"></td>
+					value="<%=emailAddressDetail.getEmailAddress()%>"></td>
 			</tr>
 			<tr>
 				<td>Type Code:</td>
 				<td><input type="text" name="typeCode"
-					value="<%=personDetail.getEmailAddressDetail().getTypeCode()%>"></td>
+					value="<%=emailAddressLinkDetail.getTypeCode()%>"></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd:</td>
 				<td><input type="text" name="primaryInd"
-					value="<%=personDetail.getEmailAddressDetail().getPrimaryInd()%>"></td>
+					value="<%=emailAddressLinkDetail.getPrimaryInd()%>"></td>
 			</tr>
 			<tr>
 				<td>Start Date:</td>
 				<td><input type="text" name="startDate"
-					value="<%=personDetail.getEmailAddressDetail().getStartDate()%>"></td>
+					value="<%=emailAddressLinkDetail.getStartDate()%>"></td>
 			</tr>
 			<tr>
 				<td>End Date:</td>
 				<td><input type="text" name="endDate"
-					value="<%=personDetail.getEmailAddressDetail().getEndDate()%>"></td>
+					value="<%=emailAddressLinkDetail.getEndDate()%>"></td>
 			</tr>
 			<tr>
 		<td> Country Code:</td>
 		<td><input type="text" name="countryCode"
-		       value="<%=personDetail.getPhoneNumberDetail().getCountryCode()%>"></td>
+		       value="<%=phoneNumberDetail.getCountryCode()%>"></td>
 		</tr>
 		<tr>
 		<td> Area Code:</td>
 		<td><input type="text" name="areaCode"
-		       value="<%=personDetail.getPhoneNumberDetail().getAreaCode()%>"></td>
+		       value="<%=phoneNumberDetail.getAreaCode()%>"></td>
 		</tr>
 		<tr>
 		<td>Phone Number:</td>
 		<td><input type="text" name="phoneNumber"
-		       value="<%=personDetail.getPhoneNumberDetail().getPhoneNumber()%>"></td>
+		       value="<%=phoneNumberDetail.getPhoneNumber()%>"></td>
 		</tr>
 		<tr>
 		<td> Extension:</td>
 		<td><input type="text" name="extension"
-		       value="<%=personDetail.getPhoneNumberDetail().getExtension()%>"></td>
+		       value="<%=phoneNumberDetail.getExtension()%>"></td>
 		</tr>
 		<tr>
 		<td> Type Code:</td>
 		<td><input type="text" name="typeCode"
-		       value="<%=personDetail.getPhoneNumberDetail().getTypeCode()%>"></td>
+		       value="<%=phoneNumberLinkDetail.getTypeCode()%>"></td>
 		</tr>
 		<tr>
 		<td> PrimaryInd:</td>
 		<td><input type="text" name="primaryInd"
-		       value="<%=personDetail.getPhoneNumberDetail().getPrimaryInd()%>"></td>
+		       value="<%=phoneNumberLinkDetail.getPrimaryInd()%>"></td>
 		</tr>
 		<tr>
 		<td> Start Date:</td>
 		<td><input type="text" name="startDate"
-		       value="<%=personDetail.getPhoneNumberDetail().getStartDate()%>"></td>
+		       value="<%=phoneNumberLinkDetail.getStartDate()%>"></td>
 		</tr>
 		
 		<tr>
 		<td> End Date:</td>
 		<td><input type="text" name="endDate"
-		      value="<%=personDetail.getPhoneNumberDetail().getEndDate()%>"></td>
+		      value="<%=phoneNumberLinkDetail.getEndDate()%>"></td>
 		</tr>
 
 			<%

@@ -1,4 +1,5 @@
-<%@ page import="com.company.itos.profile.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,7 +13,8 @@
 
 
 <%
-List<EmailAddressDetail> emailAddressDetailList = (List<EmailAddressDetail>) request.getAttribute("emailAddressDetailList");
+List<EmailAddressLinkDetail> emailAddressLinkDetailList = (List<EmailAddressLinkDetail>) request.getAttribute("emailAddressLinkDetailList");
+
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 
@@ -35,20 +37,21 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 			</thead>
 			
 			<%
-				for (int i = 0; i < emailAddressDetailList.size(); i++) {
-					EmailAddressDetail	 emailAddressDetail = emailAddressDetailList.get(i);
+				for (int i = 0; i < emailAddressLinkDetailList.size(); i++) {
+					EmailAddressLinkDetail	 emailAddressLinkDetail = emailAddressLinkDetailList.get(i);
+ 					EmailAddressDetail emailAddressDetail =  emailAddressLinkDetail.getEmailAddressDetail();
 			%>
 			
 			<tbody>
 				<tr>
 					<td><%=emailAddressDetail.getEmailAddress() %></td>
-					<td><%=emailAddressDetail.getTypeCode() %></td>
-					<td><%=emailAddressDetail.getPrimaryInd() %></td>
-					<td><%=emailAddressDetail.getStartDate() %></td>
-					<td><%=emailAddressDetail.getEndDate() %></td>
-					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">Delete</a></td>
-					<!--  <td><a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%=emailAddressDetail.getRelatedID()%>">Create</a></td>-->
+					<td><%=emailAddressLinkDetail.getTypeCode() %></td>
+					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
+					<td><%=emailAddressLinkDetail.getStartDate() %></td>
+					<td><%=emailAddressLinkDetail.getEndDate() %></td>
+					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
+					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>">Delete</a></td>
+					<!--  <td><a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">Create</a></td>-->
 				</tr>
 			</tbody><br></br>
 			<%} %>

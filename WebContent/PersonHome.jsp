@@ -1,6 +1,8 @@
 <%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
-<%@ page import="com.company.itos.profile.pojo.EmailAddressDetail"%>
-<%@ page import="com.company.itos.profile.pojo.PhoneNumberDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
+<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
 <%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -19,9 +21,11 @@
 		<%
 			PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
 			
-		EmailAddressDetail emailAddressDetail = personDetail.getEmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
+		EmailAddressDetail emailAddressDetail  = emailAddressLinkDetail.getEmailAddressDetail();
  
-		PhoneNumberDetail phoneNumberDetail = personDetail.getPhoneNumberDetail();
+		 PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
+		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
 			String name = request.getParameter("firstName");
 		%>
@@ -88,17 +92,17 @@
 	<table border=1>
 	<tbody>
 	     		<th align="left">EmailAddress: <%=emailAddressDetail.getEmailAddress()%></th>
-				<th align="left">Type Code: <%=emailAddressDetail.getTypeCode()%></th>
+				<th align="left">Type Code: <%=emailAddressLinkDetail.getTypeCode()%></th>
 	</tbody>
 	<tbody>
-	     		<th align="left">PrimaryInd: <%=emailAddressDetail.getPrimaryInd()%></th>
-				<th align="left">Start Date: <%=emailAddressDetail.getStartDate()%></th>
+	     		<th align="left">PrimaryInd: <%=emailAddressLinkDetail.getPrimaryInd()%></th>
+				<th align="left">Start Date: <%=emailAddressLinkDetail.getStartDate()%></th>
 	</tbody>
 	<tbody>
-	     		<th align="left">End Date: <%=emailAddressDetail.getEndDate()%></th>
-		<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressDetail.getEmailAddressLinkID()%>">
+	     		<th align="left">End Date: <%=emailAddressLinkDetail.getEndDate()%></th>
+		<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>">
 			EmailAddress List</a></th>-->
-		<th><a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressDetail.getRelatedID()%>">
+		<th><a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">
 			EmailAddress List</a></th>
 	</tbody>
 			
@@ -118,18 +122,18 @@
 				<th align="left">Extension: <%=phoneNumberDetail.getExtension()%></th>
 	</tbody>
 	<tbody>
-	     		<th align="left">Type Code: <%=phoneNumberDetail.getTypeCode()%></th>
-	     		<th align="left">PrimaryInd: <%=phoneNumberDetail.getPrimaryInd()%></th>
+	     		<th align="left">Type Code: <%=phoneNumberLinkDetail.getTypeCode()%></th>
+	     		<th align="left">PrimaryInd: <%=phoneNumberLinkDetail.getPrimaryInd()%></th>
 	     		
 			
 	</tbody>
 	<tbody>
-	     		<th align="left">start Date: <%=phoneNumberDetail.getStartDate()%></th>
-				<th align="left">End Date: <%=phoneNumberDetail.getEndDate()%></th>
+	     		<th align="left">start Date: <%=phoneNumberLinkDetail.getStartDate()%></th>
+				<th align="left">End Date: <%=phoneNumberLinkDetail.getEndDate()%></th>
 	</tbody>
 	<tbody>
 	
-		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberDetail.getRelatedID()%>">PhoneNumber List</a></th>
+		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">PhoneNumber List</a></th>
 	
 	</tbody>
 			

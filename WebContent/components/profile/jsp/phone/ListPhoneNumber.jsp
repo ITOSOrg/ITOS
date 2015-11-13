@@ -1,4 +1,5 @@
-<%@ page import="com.company.itos.profile.pojo.PhoneNumberDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
+<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -10,7 +11,7 @@
 </head>
 <body>
 <%
-List<PhoneNumberDetail> phoneNumberDetailList = (List<PhoneNumberDetail>) request.getAttribute("phoneNumberDetailList");
+List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = (List<PhoneNumberLinkDetail>) request.getAttribute("phoneNumberDetailList");
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 %>
@@ -33,8 +34,10 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 			</thead>
 			
 			<%
-				for (int i = 0; i < phoneNumberDetailList.size(); i++) {
-					PhoneNumberDetail	 phoneNumberDetail = phoneNumberDetailList.get(i);
+				for (int i = 0; i < PhoneNumberLinkDetailList.size(); i++) {
+					PhoneNumberLinkDetail	 phoneNumberLinkDetail = PhoneNumberLinkDetailList.get(i);
+					
+					PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 			%>
 			
 			<tbody>
@@ -43,12 +46,12 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<td><%=phoneNumberDetail.getAreaCode() %></td>
 					<td><%=phoneNumberDetail.getPhoneNumber() %></td>
 					<td><%=phoneNumberDetail.getExtension() %></td>
-					<td><%=phoneNumberDetail.getTypeCode() %></td>
-					<td><%=phoneNumberDetail.getPrimaryInd()%></td>
-					<td><%=phoneNumberDetail.getStartDate()%></td>
-					<td><%=phoneNumberDetail.getEndDate()%></td>
-					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberDetail.getPhoneNumberLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeletePhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberDetail.getPhoneNumberLinkID()%>">Delete</a></td>
+					<td><%=phoneNumberLinkDetail.getTypeCode() %></td>
+					<td><%=phoneNumberLinkDetail.getPrimaryInd()%></td>
+					<td><%=phoneNumberLinkDetail.getStartDate()%></td>
+					<td><%=phoneNumberLinkDetail.getEndDate()%></td>
+					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&act=update">Update</a> </td>
+					<td><a href="/ITOS/DeletePhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>">Delete</a></td>
 				</tr>
 			</tbody><br></br>
 			<%} %>

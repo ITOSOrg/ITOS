@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
  * Servlet implementation class ReadPhoneNumber
@@ -42,13 +43,15 @@ public class ReadPhoneNumber extends HttpServlet {
 		String action = request.getParameter("act");
 		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
-		
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new  PhoneNumberLinkDetail();
 		Integer phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
-		phoneNumberDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		
 		ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-		readPhoneNumberDAO.readPhoneNumber(phoneNumberDetail);
-		request.setAttribute("phoneNumberDetail", phoneNumberDetail);
+		readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
+		request.setAttribute("phoneNumberLinkDetail", phoneNumberLinkDetail);
 		
 		if (action != null && action.equals("update")) {
 			pageForwardStr = "/components/profile/jsp/phone/UpdatePhoneNumber.jsp";

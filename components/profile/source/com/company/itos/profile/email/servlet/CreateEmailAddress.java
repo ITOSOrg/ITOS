@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 
 /**
  * Servlet implementation class CreateEmailAddress
@@ -55,19 +56,20 @@ public class CreateEmailAddress extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 		if (emailAddress.equals(emailPattern)) {
 
 		}
 		emailAddressDetail.setEmailAddress(emailAddress);
-		emailAddressDetail.setRelatedID(relatedID);
-		emailAddressDetail.setTypeCode(typeCode);
-		emailAddressDetail.setPrimaryInd(primaryInd);
+		emailAddressLinkDetail.setRelatedID(relatedID);
+		emailAddressLinkDetail.setTypeCode(typeCode);
+		emailAddressLinkDetail.setPrimaryInd(primaryInd);
 
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			emailAddressDetail.setStartDate(sqlDate);
+			emailAddressLinkDetail.setStartDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -76,17 +78,17 @@ public class CreateEmailAddress extends HttpServlet {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			emailAddressDetail.setEndDate(sqlDate);
+			emailAddressLinkDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 		
 		
 
 		CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
-		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressDetail);
+		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
 
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
@@ -97,7 +99,7 @@ public class CreateEmailAddress extends HttpServlet {
 			pageForwardStr = "/components/profile/jsp/email/CreateEmailAddress.jsp";
 		}
 
-		pageForwardStr += "?emailAddressLinkID=" + emailAddressDetail.getEmailAddressLinkID();
+		pageForwardStr += "?emailAddressLinkID=" + emailAddressLinkDetail.getEmailAddressLinkID();
 
 		// request.setAttribute("emailAddressID", emailAddressID);
 		// request.setAttribute("emailAddressLinkID", emailAddressLinkID);

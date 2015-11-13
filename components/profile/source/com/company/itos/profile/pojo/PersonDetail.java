@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
+
 public class PersonDetail {
 
 	private int personID;
@@ -42,9 +47,13 @@ public class PersonDetail {
 	
 	private Timestamp registrationDate;
 	
-	private EmailAddressDetail emailAddressDetail = null;
+	//private EmailAddressDetail emailAddressDetail = null;
 	
-	private  PhoneNumberDetail phoneNumberDetail = null;
+	//private  PhoneNumberDetail phoneNumberDetail = null;
+	
+	private EmailAddressLinkDetail emailAddressLinkDetail = null;
+	
+	private PhoneNumberLinkDetail phoneNumberLinkDetail = null;
 	
 	//private String emailAddress;
 	
@@ -246,22 +255,6 @@ public class PersonDetail {
 		this.registrationDate = registrationDate;
 	}
 
-	public EmailAddressDetail getEmailAddressDetail() {
-		return emailAddressDetail;
-	}
-
-	public void setEmailAddressDetail(EmailAddressDetail emailAddressDetail) {
-		this.emailAddressDetail = emailAddressDetail;
-	}
-
-	public PhoneNumberDetail getPhoneNumberDetail() {
-		return phoneNumberDetail;
-	}
-
-	public void setPhoneNumberDetail(PhoneNumberDetail phoneNumberDetail) {
-		this.phoneNumberDetail = phoneNumberDetail;
-	}
-
 	public String getStreetOne() {
 		return streetOne;
 	}
@@ -324,6 +317,22 @@ public class PersonDetail {
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public EmailAddressLinkDetail getEmailAddressLinkDetail() {
+		return emailAddressLinkDetail;
+	}
+
+	public void setEmailAddressLinkDetail(EmailAddressLinkDetail emailAddressLinkDetail) {
+		this.emailAddressLinkDetail = emailAddressLinkDetail;
+	}
+
+	public PhoneNumberLinkDetail getPhoneNumberLinkDetail() {
+		return phoneNumberLinkDetail;
+	}
+
+	public void setPhoneNumberLinkDetail(PhoneNumberLinkDetail phoneNumberLinkDetail) {
+		this.phoneNumberLinkDetail = phoneNumberLinkDetail;
 	}
 
 }

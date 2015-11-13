@@ -6,19 +6,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class ReadPhoneNumberDAO {
 	
-	public PhoneNumberDetail readPhoneNumber(PhoneNumberDetail phoneNumberDetail)
+	public PhoneNumberLinkDetail readPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail)
 	{
 		String returnMassegeStr = "";
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'" + phoneNumberDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
+		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'" + phoneNumberLinkDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
 try {
-			
+	  		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
 		
@@ -26,17 +27,17 @@ try {
 			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
 
 			if (resultSet.next()) {
-				phoneNumberDetail.setRelatedID(resultSet.getInt("relatedID"));
-				phoneNumberDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
-				phoneNumberDetail.setTypeCode(resultSet.getString("typeCode"));
-				phoneNumberDetail.setPrimaryInd(resultSet.getInt("primaryInd"));
-				phoneNumberDetail.setStartDate(resultSet.getDate("startDate"));
-				phoneNumberDetail.setEndDate(resultSet.getDate("endDate"));
-				phoneNumberDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
-				phoneNumberDetail.setVersionNo(resultSet.getInt("versionNo"));
+				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setTypeCode(resultSet.getString("typeCode"));
+				phoneNumberLinkDetail.setPrimaryInd(resultSet.getInt("primaryInd"));
+				phoneNumberLinkDetail.setStartDate(resultSet.getDate("startDate"));
+				phoneNumberLinkDetail.setEndDate(resultSet.getDate("endDate"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
+				phoneNumberLinkDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
-			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberDetail.getPhoneNumberID() + "\' AND RECORDSTATUS='Active'";
+			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberLinkDetail.getPhoneNumberID() + "\' AND RECORDSTATUS='Active'";
 			
 			Statement	statement1	= connection.createStatement();
 			ResultSet resultSet1 = statement.executeQuery(PhoneNumberSQLstr);
@@ -53,7 +54,7 @@ try {
 		e.printStackTrace();
 		//returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 	}
-return phoneNumberDetail;
+return phoneNumberLinkDetail;
 
 }
 }

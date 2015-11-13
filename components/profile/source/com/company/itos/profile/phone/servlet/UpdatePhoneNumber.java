@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.dao.UpdatePhoneNumberDAO;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
  * Servlet implementation class UpdatePhoneNumber
@@ -44,9 +45,10 @@ public class UpdatePhoneNumber extends HttpServlet {
 		String pageForwardStr = "";
 		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 		
 		int phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
-		phoneNumberDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
 		int phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
 		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
 		int versionNo = (new Integer(request.getParameter("versionNo")));
@@ -65,14 +67,14 @@ public class UpdatePhoneNumber extends HttpServlet {
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
 		phoneNumberDetail.setExtension(extension);
-		phoneNumberDetail.setPrimaryInd(primaryInd);
-		phoneNumberDetail.setTypeCode(typeCode);
+		phoneNumberLinkDetail.setPrimaryInd(primaryInd);
+		phoneNumberLinkDetail.setTypeCode(typeCode);
 		
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			phoneNumberDetail.setStartDate(sqlDate);
+			phoneNumberLinkDetail.setStartDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -81,14 +83,15 @@ public class UpdatePhoneNumber extends HttpServlet {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			phoneNumberDetail.setEndDate(sqlDate);
+			phoneNumberLinkDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		 phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		
 		UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
-		String returnMassegeStr = updatePhoneNumberDAO.updatephoneNumber(phoneNumberDetail);
+		String returnMassegeStr = updatePhoneNumberDAO.updatephoneNumber(phoneNumberLinkDetail);
 		
 	
 		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
@@ -98,7 +101,7 @@ public class UpdatePhoneNumber extends HttpServlet {
 			
 			pageForwardStr = "";
 		}
-		pageForwardStr += "?relatedID=" + phoneNumberDetail.getRelatedID();
+		pageForwardStr += "?relatedID=" + phoneNumberLinkDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 		

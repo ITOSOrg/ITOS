@@ -7,18 +7,19 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 public class ReadEmailAddressDAO {
 	
 	
-	public EmailAddressDetail readEmailAddress(EmailAddressDetail emailAddressDetail) {
+	public EmailAddressLinkDetail readEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
 		
 		String returnMassegeStr = "";
 		ResultSet resultSet = null;
 		
 		
-		String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink WHERE emailAddressLinkID = \'" + emailAddressDetail.getEmailAddressLinkID() + "\' AND RECORDSTATUS='Active'";
+		String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink WHERE emailAddressLinkID = \'" + emailAddressLinkDetail.getEmailAddressLinkID() + "\' AND RECORDSTATUS='Active'";
 		
 		
 		try {
@@ -32,17 +33,17 @@ public class ReadEmailAddressDAO {
 
 			if (resultSet.next()) {
 				
-				emailAddressDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
-				emailAddressDetail.setTypeCode(resultSet.getString("typeCode"));
-				emailAddressDetail.setPrimaryInd(resultSet.getString("primaryInd"));
-				emailAddressDetail.setStartDate(resultSet.getDate("startDate"));
-				emailAddressDetail.setEndDate(resultSet.getDate("endDate"));
-				emailAddressDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-				emailAddressDetail.setRelatedID(resultSet.getInt("relatedID"));
-				emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
+				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
+				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
+				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				emailAddressLinkDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
-			String emailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID = \'" + emailAddressDetail.getEmailAddressID() + "\' AND RECORDSTATUS='Active'";
+			String emailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID = \'" + emailAddressLinkDetail.getEmailAddressID() + "\' AND RECORDSTATUS='Active'";
 			
 			Statement statementEmailAddress = connection.createStatement();
 			ResultSet	resultSet1 = statementEmailAddress.executeQuery(emailAddressSQLStr);
@@ -50,7 +51,9 @@ public class ReadEmailAddressDAO {
 
 			if (resultSet1.next()) {
 				
+				EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 				emailAddressDetail.setEmailAddress(resultSet1.getString("emailAddress"));
+				emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 			}
 
 			
@@ -59,8 +62,8 @@ public class ReadEmailAddressDAO {
 			e.printStackTrace();
 			//returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
-
-		return emailAddressDetail;
+		
+		return emailAddressLinkDetail;
 	}
 
 }

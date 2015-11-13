@@ -6,22 +6,24 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class DeletePhoneNumberDAO {
 	
 	
-	public String deletePhoneNumber(PhoneNumberDetail phoneNumberDetail) {
+	public String deletePhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 
 		Connection connection = null;
 		String returnMassegeStr = "";
 		try {
+			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
 			String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET	RECORDSTATUS='cancel'	WHERE phoneNumberID = "
 					+ phoneNumberDetail.getPhoneNumberID();
 
 			String phoneNumberLinkSQLStr = "UPDATE PhoneNumberLink SET	RECORDSTATUS='cancel'	WHERE phoneNumberLinkID= "
-					+ phoneNumberDetail.getPhoneNumberLinkID();
+					+ phoneNumberLinkDetail.getPhoneNumberLinkID();
 
 			DBConnection dbConnection = new DBConnection();
 			connection = dbConnection.getDBConnection();

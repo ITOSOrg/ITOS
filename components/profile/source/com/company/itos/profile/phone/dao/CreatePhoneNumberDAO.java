@@ -8,11 +8,12 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class CreatePhoneNumberDAO {
 	
-	public String createPhoneNumber(PhoneNumberDetail phoneNumberDetail)
+	public String createPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail)
 	{
 		String returnMassegeStr = "";
 
@@ -24,7 +25,9 @@ public class CreatePhoneNumberDAO {
 		//SupdatePhoneNumberDAO.returnVersionNumber(phoneNumberDetail);
 		
 		try {
-
+			
+			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+			
 			connection = dbConnection.getDBConnection();
 			
 			Statement statement = connection.createStatement();
@@ -39,7 +42,7 @@ public class CreatePhoneNumberDAO {
 			}
 
 			if (resultSetPNLSeq.next()) {
-				phoneNumberDetail.setPhoneNumberLinkID((resultSetPNLSeq.getInt(1)));
+				phoneNumberLinkDetail.setPhoneNumberLinkID((resultSetPNLSeq.getInt(1)));
 			}
 			
 			String PhoneNumberSQLStr = "INSERT INTO PhoneNumber (phoneNumberID, countryCode, areaCode, phoneNumber, extension, recordStatus, versionNo)" 
@@ -59,13 +62,13 @@ public class CreatePhoneNumberDAO {
 			
 			PreparedStatement preparedStatement1 = connection.prepareStatement(PhoneNumberLinkSQLStr);
 			
-			preparedStatement1.setInt(1, phoneNumberDetail.getPhoneNumberLinkID());
-			preparedStatement1.setInt(2, phoneNumberDetail.getRelatedID());
-			preparedStatement1.setInt(3, phoneNumberDetail.getPhoneNumberID());
-			preparedStatement1.setString(4, phoneNumberDetail.getTypeCode());
-			preparedStatement1.setInt(5, phoneNumberDetail.getPrimaryInd());
-			preparedStatement1.setDate(6, phoneNumberDetail.getStartDate());
-			preparedStatement1.setDate(7, phoneNumberDetail.getEndDate());
+			preparedStatement1.setInt(1, phoneNumberLinkDetail.getPhoneNumberLinkID());
+			preparedStatement1.setInt(2, phoneNumberLinkDetail.getRelatedID());
+			preparedStatement1.setInt(3, phoneNumberLinkDetail.getPhoneNumberID());
+			preparedStatement1.setString(4, phoneNumberLinkDetail.getTypeCode());
+			preparedStatement1.setInt(5, phoneNumberLinkDetail.getPrimaryInd());
+			preparedStatement1.setDate(6, phoneNumberLinkDetail.getStartDate());
+			preparedStatement1.setDate(7, phoneNumberLinkDetail.getEndDate());
 			preparedStatement1.execute();
 			
 			

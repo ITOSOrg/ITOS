@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.dao.DeletePhoneNumberDAO;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
  * Servlet implementation class DeletePhoneNumber
@@ -41,14 +42,17 @@ public class DeletePhoneNumber extends HttpServlet {
 		String pageForwardStr = "";
 		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 		
 		Integer phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
 		Integer phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
 		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
-		phoneNumberDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		
 		DeletePhoneNumberDAO deletePhoneNumberDAO = new DeletePhoneNumberDAO();
-		String returnMassegeStr = deletePhoneNumberDAO.deletePhoneNumber(phoneNumberDetail);
+		String returnMassegeStr = deletePhoneNumberDAO.deletePhoneNumber(phoneNumberLinkDetail);
 		
 		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
 		{

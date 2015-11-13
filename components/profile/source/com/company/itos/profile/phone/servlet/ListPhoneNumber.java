@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.phone.dao.ListPhoneNumberDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
  * Servlet implementation class ListPhoneNumber
@@ -43,17 +44,20 @@ public class ListPhoneNumber extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageForwardStr = "";
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
-		phoneNumberDetail.setRelatedID(relatedID);
+		phoneNumberLinkDetail.setRelatedID(relatedID);
+		
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
-		List<PhoneNumberDetail> phoneNumberDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberDetail);
+		List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberLinkDetail);
 
-		request.setAttribute("phoneNumberDetailList", phoneNumberDetailList);
+		request.setAttribute("PhoneNumberLinkDetailList", PhoneNumberLinkDetailList);
 		request.setAttribute("relatedID", relatedID);
 
-		if (phoneNumberDetailList != null) {
+		if (PhoneNumberLinkDetailList != null) {
 
 			pageForwardStr = "/components/profile/jsp/phone/ListPhoneNumber.jsp";
 

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.company.itos.profile.pojo.EmailAddressDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.dao.PersonHomeDAO;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
 
 /**
  * Servlet implementation class PersonHome

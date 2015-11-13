@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class ListPhoneNumberDAO {
 	
-	public List<PhoneNumberDetail> listAllPhoneNumber(PhoneNumberDetail phoneNumberDetail)
+	public List<PhoneNumberLinkDetail> listAllPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail)
 	{
-		List<PhoneNumberDetail> phoneNumberDetailList = new ArrayList<PhoneNumberDetail>();
+		List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = new ArrayList<PhoneNumberLinkDetail>();
 		
 		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
@@ -29,12 +30,13 @@ public class ListPhoneNumberDAO {
 		PreparedStatement preparedStatementPhoneNumber = null;
 		
 		try {
+			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 			connection = dbConnection.getDBConnection();
 			
 			String phoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE	RECORDSTATUS='Active' AND relatedID = ?";
 			
 			preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
-			preparedStatementPhoneNumberLink.setInt(1, phoneNumberDetail.getRelatedID());
+			preparedStatementPhoneNumberLink.setInt(1, phoneNumberLinkDetail.getRelatedID());
 			
 			resultSet = preparedStatementPhoneNumberLink.executeQuery();
 
@@ -44,29 +46,31 @@ public class ListPhoneNumberDAO {
 			preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
 			
 			while(resultSet.next()){
-				phoneNumberDetailFromDB = new PhoneNumberDetail();
+				//phoneNumberDetailFromDB = new PhoneNumberDetail();
+				PhoneNumberLinkDetail phoneNumberLinkDetailFromDB = new PhoneNumberLinkDetail();
 				
-				phoneNumberDetailFromDB.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
-				phoneNumberDetailFromDB.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
-				phoneNumberDetailFromDB.setRelatedID(resultSet.getInt("relatedID"));
-				phoneNumberDetailFromDB.setTypeCode(resultSet.getString("typeCode"));
-				phoneNumberDetailFromDB.setPrimaryInd(resultSet.getInt("primaryInd"));
-				phoneNumberDetailFromDB.setStartDate(resultSet.getDate("startDate"));
-				phoneNumberDetailFromDB.setEndDate(resultSet.getDate("endDate"));
+				phoneNumberLinkDetailFromDB.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
+				phoneNumberDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
+				phoneNumberLinkDetailFromDB.setRelatedID(resultSet.getInt("relatedID"));
+				phoneNumberLinkDetailFromDB.setTypeCode(resultSet.getString("typeCode"));
+				phoneNumberLinkDetailFromDB.setPrimaryInd(resultSet.getInt("primaryInd"));
+				phoneNumberLinkDetailFromDB.setStartDate(resultSet.getDate("startDate"));
+				phoneNumberLinkDetailFromDB.setEndDate(resultSet.getDate("endDate"));
 				
-				preparedStatementPhoneNumber.setInt(1, phoneNumberDetailFromDB.getPhoneNumberID());
+				preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getPhoneNumberID());
 				
 				ResultSet resultSet1 = preparedStatementPhoneNumber.executeQuery();
 				
 				while(resultSet1.next()){
 					
-					phoneNumberDetailFromDB.setCountryCode(resultSet1.getInt("countryCode"));
-					phoneNumberDetailFromDB.setAreaCode(resultSet1.getInt("areaCode"));
-					phoneNumberDetailFromDB.setPhoneNumber(resultSet1.getLong("phoneNumber"));
-					phoneNumberDetailFromDB.setExtension(resultSet1.getInt("extension"));
+					phoneNumberDetail.setCountryCode(resultSet1.getInt("countryCode"));
+					phoneNumberDetail.setAreaCode(resultSet1.getInt("areaCode"));
+					phoneNumberDetail.setPhoneNumber(resultSet1.getLong("phoneNumber"));
+					phoneNumberDetail.setExtension(resultSet1.getInt("extension"));
 					
 				}
-				phoneNumberDetailList.add(phoneNumberDetailFromDB);
+				phoneNumberLinkDetailFromDB.setPhoneNumberDetail(phoneNumberDetail);
+				PhoneNumberLinkDetailList.add(phoneNumberLinkDetailFromDB);
 			}
 		
 		
@@ -76,7 +80,7 @@ public class ListPhoneNumberDAO {
 			}
 		
 		
-		return phoneNumberDetailList;
+		return PhoneNumberLinkDetailList;
 		
 	}
 

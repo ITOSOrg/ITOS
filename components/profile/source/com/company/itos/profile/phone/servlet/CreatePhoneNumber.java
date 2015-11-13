@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.dao.CreatePhoneNumberDAO;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
  * Servlet implementation class CreatePhoneNumber
@@ -44,6 +45,7 @@ public class CreatePhoneNumber extends HttpServlet {
 		String pageForwardStr = "";
 		
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 		
 		Integer countryCode = (new Integer (request.getParameter("countryCode")));
 		Integer areaCode = (new Integer (request.getParameter("areaCode")));
@@ -58,16 +60,16 @@ public class CreatePhoneNumber extends HttpServlet {
 		phoneNumberDetail.setCountryCode(countryCode);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
-		phoneNumberDetail.setRelatedID(relatedID);;
+		phoneNumberLinkDetail.setRelatedID(relatedID);;
 		phoneNumberDetail.setExtension(extension);
-		phoneNumberDetail.setPrimaryInd(primaryInd);
-		phoneNumberDetail.setTypeCode(typeCode);
+		phoneNumberLinkDetail.setPrimaryInd(primaryInd);
+		phoneNumberLinkDetail.setTypeCode(typeCode);
 		
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			phoneNumberDetail.setStartDate(sqlDate);
+			phoneNumberLinkDetail.setStartDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -76,14 +78,15 @@ public class CreatePhoneNumber extends HttpServlet {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			phoneNumberDetail.setEndDate(sqlDate);
+			phoneNumberLinkDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
-		String returnMassegeStr = createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
+		String returnMassegeStr = createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
 		
 		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS){
 			
@@ -93,8 +96,8 @@ public class CreatePhoneNumber extends HttpServlet {
 			pageForwardStr = "/components/profile/jsp/phone/CreatePhoneNumber.jsp";
 		}
 
-		pageForwardStr += "?phoneNumberLinkID=" + phoneNumberDetail.getPhoneNumberLinkID();
-		pageForwardStr += "?relatedID=" + phoneNumberDetail.getRelatedID();
+		pageForwardStr += "?phoneNumberLinkID=" + phoneNumberLinkDetail.getPhoneNumberLinkID();
+		pageForwardStr += "?relatedID=" + phoneNumberLinkDetail.getRelatedID();
 
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

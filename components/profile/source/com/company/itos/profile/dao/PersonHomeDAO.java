@@ -8,10 +8,12 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 
 public class PersonHomeDAO {
@@ -66,7 +68,7 @@ public class PersonHomeDAO {
 			}
 			
 			//Read emailAddress information
-			EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+			EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 
 			String EmailAddressLinkSQLStr = "SELECT EmailAddressLinkID FROM EmailAddressLink WHERE relatedID='"+personDetail.getPersonID()+"' AND primaryInd = '1'";
 			
@@ -76,16 +78,16 @@ public class PersonHomeDAO {
 			resultSet = statement.executeQuery(EmailAddressLinkSQLStr);
 			if(resultSet.next())
 			{
-				emailAddressDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
 			}
 			
 			ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
-			readEmailAddressDAO.readEmailAddress(emailAddressDetail);
-			personDetail.setEmailAddressDetail(emailAddressDetail);
+			readEmailAddressDAO.readEmailAddress(emailAddressLinkDetail);
+			personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
 			
 			//Read phoneNumber information
 			
-			PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+			PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 			
 			String PhoneNumberLinkSQLStr = "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='"+personDetail.getPersonID()+"' AND primaryInd = '1'";
 			
@@ -94,12 +96,12 @@ public class PersonHomeDAO {
 			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
 			if(resultSet.next())
 			{
-				phoneNumberDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
 			}
 			
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-			readPhoneNumberDAO.readPhoneNumber(phoneNumberDetail);
-			personDetail.setPhoneNumberDetail(phoneNumberDetail);
+			readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
+			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

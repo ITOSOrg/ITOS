@@ -16,10 +16,12 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.phone.dao.CreatePhoneNumberDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.pojo.PersonSearchCriteria;
 import com.company.itos.profile.pojo.PersonSearchDetails;
@@ -42,8 +44,8 @@ public class PersonRegistrationDAO {
 		if (!personExistInd && !userNameExistInd) {
 
 			UsersDetail usersDetail = personDetail.getUsersDetail();
-			EmailAddressDetail emailAddressDetail = personDetail.getEmailAddressDetail();
-			 PhoneNumberDetail phoneNumberDetail = personDetail.getPhoneNumberDetail();
+			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
+			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 
 			String usersSQLStr = "INSERT	INTO	USERS(userName,password,recordStatus)	VALUES('" + usersDetail.getUserName() + "','"
 					+ usersDetail.getPassword() + "','active')";
@@ -59,8 +61,8 @@ public class PersonRegistrationDAO {
 				ResultSet resultSet = statement.executeQuery("SELECT PersonSEQ.nextval FROM DUAL");
 				
 				if (resultSet.next()) {
-					emailAddressDetail.setRelatedID(resultSet.getInt(1));
-					phoneNumberDetail.setRelatedID(resultSet.getInt(1));
+					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
+					phoneNumberLinkDetail.setRelatedID(resultSet.getInt(1));
 					personDetail.setPersonID(resultSet.getInt(1));
 				}
 			} catch (SQLException e1) {
@@ -113,10 +115,10 @@ public class PersonRegistrationDAO {
 				preparedStatement1.execute();
 				
 				CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
-				createEmailAddressDAO.createEmailAddress(emailAddressDetail);
+				createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
 				
 				CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
-				createPhoneNumberDAO.createPhoneNumber(phoneNumberDetail);
+				createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
 
 				// PreparedStatement preparedStatement2 =
 				// connection.prepareStatement(sql1);

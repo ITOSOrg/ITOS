@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.profile.email.dao.ListEmailAddressDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 
 /**
@@ -43,27 +44,30 @@ public class ListEmailAddress extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String pageForwardStr = "";
+		
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 
 		// Integer emailAddressLinkID = (new
 		// Integer(request.getParameter("emailAddressLinkID")));
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		// emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
-		emailAddressDetail.setRelatedID(relatedID);
+		emailAddressLinkDetail.setRelatedID(relatedID);
 
 		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
-		List<EmailAddressDetail> emailAddressDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressDetail);
+		List<EmailAddressLinkDetail> emailAddressLinkDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressLinkDetail);
 
+		
 		/*
 		 * PersonDetail personDetail = new PersonDetail();
 		 * personDetail.setEmailAddressDetail(emailAddressDetail);
 		 */
 
-		request.setAttribute("emailAddressDetailList", emailAddressDetailList);
+		request.setAttribute("emailAddressLinkDetailList", emailAddressLinkDetailList);
 
 		request.setAttribute("relatedID", relatedID);
 
-		if (emailAddressDetailList != null) {
+		if (emailAddressLinkDetailList != null) {
 
 			pageForwardStr = "/components/profile/jsp/email/ListEmailAddress.jsp";
 

@@ -15,11 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 import com.company.itos.profile.dao.PersonRegistrationDAO;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 /**
  * Servlet implementation class PersonRegistration
@@ -92,6 +94,7 @@ public class PersonRegistration extends HttpServlet {
 
 		List<String> errorMessageList = new ArrayList<String>();
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
@@ -116,13 +119,13 @@ public class PersonRegistration extends HttpServlet {
 		personDetail.setGender(gender);
 		
 		emailAddressDetail.setEmailAddress(emailAddress);
-		emailAddressDetail.setTypeCode(typeCode);
-		emailAddressDetail.setPrimaryInd(primaryInd);
+		emailAddressLinkDetail.setTypeCode(typeCode);
+		emailAddressLinkDetail.setPrimaryInd(primaryInd);
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			emailAddressDetail.setStartDate(sqlDate);
+			emailAddressLinkDetail.setStartDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -131,12 +134,13 @@ public class PersonRegistration extends HttpServlet {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			emailAddressDetail.setEndDate(sqlDate);
+			emailAddressLinkDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		personDetail.setEmailAddressDetail(emailAddressDetail);
+		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
+		personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
 		
 		/*personDetail.setStreetOne(streetOne);
 		personDetail.setStreetTwo(streetTwo);
@@ -220,6 +224,7 @@ public class PersonRegistration extends HttpServlet {
 		
 		//Phone Number Parameters
         PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+        PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 		
 		Integer countryCode = (new Integer (request.getParameter("countryCode")));
 		Integer areaCode = (new Integer (request.getParameter("areaCode")));
@@ -234,14 +239,14 @@ public class PersonRegistration extends HttpServlet {
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
 		phoneNumberDetail.setExtension(extension);
-		phoneNumberDetail.setPrimaryInd(primaryInd1);
-		phoneNumberDetail.setTypeCode(typeCode1);
+		phoneNumberLinkDetail.setPrimaryInd(primaryInd1);
+		phoneNumberLinkDetail.setTypeCode(typeCode1);
 		
 		java.util.Date date1;
 		try {
 			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate1);
 			java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
-			phoneNumberDetail.setStartDate(sqlDate);
+			phoneNumberLinkDetail.setStartDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -250,12 +255,13 @@ public class PersonRegistration extends HttpServlet {
 		try {
 			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate1);
 			java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
-			phoneNumberDetail.setEndDate(sqlDate);
+			phoneNumberLinkDetail.setEndDate(sqlDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		personDetail.setPhoneNumberDetail(phoneNumberDetail);
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
+		personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
 
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);

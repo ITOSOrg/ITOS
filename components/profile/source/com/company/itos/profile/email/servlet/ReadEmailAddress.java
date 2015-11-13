@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 /**
  * Servlet implementation class EmailAddressHome
@@ -44,11 +45,12 @@ public class ReadEmailAddress extends HttpServlet {
 		String action = request.getParameter("act");
 
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 		
 		try {
 			
 			Integer emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
-			emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+			emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
 			
 		} catch (NumberFormatException e) {
 			
@@ -58,7 +60,7 @@ public class ReadEmailAddress extends HttpServlet {
 		ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 
 
-		readEmailAddressDAO.readEmailAddress(emailAddressDetail);
+		readEmailAddressDAO.readEmailAddress(emailAddressLinkDetail);
 
 		if (action != null && action.equals("update")) {
 			pageForwardStr = "/components/profile/jsp/email/UpdateEmailAddress.jsp";
@@ -68,7 +70,7 @@ public class ReadEmailAddress extends HttpServlet {
 		}
 
 
-		request.setAttribute("emailAddressDetail", emailAddressDetail);
+		request.setAttribute("emailAddressLinkDetail", emailAddressLinkDetail);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

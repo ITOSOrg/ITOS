@@ -8,26 +8,37 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.EmailAddressDetail;
-import com.company.itos.profile.pojo.PhoneNumberDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
+import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class UpdatePhoneNumberDAO {
 	
-	public String updatephoneNumber(PhoneNumberDetail phoneNumberDetail){
+	public String updatephoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail){
 		
 		Connection connection = null;
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
 		DBConnection dbConnection = new DBConnection();
-		returnVersionNumber( phoneNumberDetail);
 		
-		int versionNoFromUpdate = phoneNumberDetail.getVersionNo();
+		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+		
+		//returnVersionNumber( phoneNumberDetail);
+		
+		int phoneNumberLinkVersionNoFromUpdate = phoneNumberLinkDetail.getVersionNo();
 
-		int versionNoFromDatabase = returnVersionNumber(phoneNumberDetail);
+		int phoneNumberLinkVersionNoFromDatabase = returnPhoneNumberLinkVersionNumber(phoneNumberLinkDetail);
+		
+		int phoneNumberVersionNoFromUpdate = phoneNumberDetail.getVersionNo();
+		
+		int phoneNumberVersionNoFromDatabase = returnPhoneNumberVersionNumber(phoneNumberDetail);
 
-		if (versionNoFromUpdate == versionNoFromDatabase) {
+		if (phoneNumberLinkVersionNoFromUpdate == phoneNumberLinkVersionNoFromDatabase) {
+			if(phoneNumberVersionNoFromUpdate == phoneNumberVersionNoFromDatabase){
 
-			versionNoFromDatabase++;
+			phoneNumberLinkVersionNoFromDatabase++;
+			
+			phoneNumberVersionNoFromDatabase++;
 
 		
 
@@ -47,10 +58,10 @@ public class UpdatePhoneNumberDAO {
 			String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ?";
 			
 			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
-			preparedStatementPhoneNumberLink.setString(1, phoneNumberDetail.getTypeCode());
-			preparedStatementPhoneNumberLink.setInt(2, phoneNumberDetail.getPrimaryInd());
-			preparedStatementPhoneNumberLink.setDate(3, phoneNumberDetail.getStartDate());
-			preparedStatementPhoneNumberLink.setDate(4, phoneNumberDetail.getEndDate());
+			preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
+			preparedStatementPhoneNumberLink.setInt(2, phoneNumberLinkDetail.getPrimaryInd());
+			preparedStatementPhoneNumberLink.setDate(3, phoneNumberLinkDetail.getStartDate());
+			preparedStatementPhoneNumberLink.setDate(4, phoneNumberLinkDetail.getEndDate());
 			
 			preparedStatementPhoneNumberLink.executeUpdate();
 		
@@ -62,11 +73,12 @@ public class UpdatePhoneNumberDAO {
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
 		}
+		}
 		return returnMassegeStr;
 	}
 	
 	
-	public int returnVersionNumber(PhoneNumberDetail phoneNumberDetail) {
+	public int returnPhoneNumberLinkVersionNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 
 		int versionNo = 0;
 		try {
@@ -75,14 +87,36 @@ public class UpdatePhoneNumberDAO {
 			Connection connection = dbConnection.getDBConnection();
 
 			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
-					+ phoneNumberDetail.getPhoneNumberLinkID() + "'";
+					+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "'";
 			Statement statement = connection.createStatement();
 
 			ResultSet resultSet = statement.executeQuery(phoneNumberLinkSQLStr);
 			if (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
-				phoneNumberDetail.setRelatedID(resultSet.getInt("relatedID"));
+				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return  versionNo;
+	}
+	public int returnPhoneNumberVersionNumber(PhoneNumberDetail phoneNumberDetail) {
+		
+		int versionNo = 0;
+		try {
+			DBConnection dbConnection = new DBConnection();
+			
+			Connection connection = dbConnection.getDBConnection();
+			
+			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberID = '"
+					+ phoneNumberDetail.getPhoneNumberID() + "'";
+			Statement statement = connection.createStatement();
+			
+			ResultSet resultSet = statement.executeQuery(phoneNumberLinkSQLStr);
+			if (resultSet.next()) {
+				
+				versionNo = resultSet.getInt("versionNo");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

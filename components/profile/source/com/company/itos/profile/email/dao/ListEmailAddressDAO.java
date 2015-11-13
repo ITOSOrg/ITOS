@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 
 /**
@@ -24,12 +25,12 @@ public class ListEmailAddressDAO {
 	 * @param emailAddressDetail
 	 * @return
 	 */
-	public List<EmailAddressDetail> listAllEmailAddress(EmailAddressDetail emailAddressDetail) {
+	public List<EmailAddressLinkDetail> listAllEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
 
-		List<EmailAddressDetail> emailAddressDetailList = new ArrayList<EmailAddressDetail>();
+		List<EmailAddressLinkDetail> emailAddressLinkDetailList = new ArrayList<EmailAddressLinkDetail>();
+
 
 		EmailAddressDetail emailAddressDetailFromDB = null;
-
 		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
@@ -39,13 +40,14 @@ public class ListEmailAddressDAO {
 		PreparedStatement preparedStatementEmailAddress = null;
 
 		try {
+			
 			connection = dbConnection.getDBConnection();
 
 			String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink	WHERE	RECORDSTATUS='Active' AND relatedID = ?";
 
 			preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
-			preparedStatementEmailAddressLink.setInt(1, emailAddressDetail.getRelatedID());
+			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetail.getRelatedID());
 
 			resultSet = preparedStatementEmailAddressLink.executeQuery();
 
@@ -57,13 +59,13 @@ public class ListEmailAddressDAO {
 
 				emailAddressDetailFromDB = new EmailAddressDetail();
 
-				emailAddressDetailFromDB.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-				emailAddressDetailFromDB.setRelatedID(resultSet.getInt("relatedID"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
 				emailAddressDetailFromDB.setEmailAddressID(resultSet.getInt("emailAddressID"));
-				emailAddressDetailFromDB.setTypeCode(resultSet.getString("typeCode"));
-				emailAddressDetailFromDB.setPrimaryInd(resultSet.getString("primaryInd"));
-				emailAddressDetailFromDB.setStartDate(resultSet.getDate("startDate"));
-				emailAddressDetailFromDB.setEndDate(resultSet.getDate("endDate"));
+				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
+				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
+				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
+				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
 
 				preparedStatementEmailAddress.setInt(1, emailAddressDetailFromDB.getEmailAddressID());
 
@@ -74,15 +76,16 @@ public class ListEmailAddressDAO {
 					emailAddressDetailFromDB.setEmailAddress(resultSetEA.getString("emailAddress"));
 
 				}
-
+				
+				emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetailFromDB);
 				// Add object in list
-				emailAddressDetailList.add(emailAddressDetailFromDB);
+				emailAddressLinkDetailList.add(emailAddressLinkDetail);
 			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return emailAddressDetailList;
+		return emailAddressLinkDetailList;
 	}
 }

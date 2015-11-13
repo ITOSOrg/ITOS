@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.dao.DeleteEmailAddressDAO;
-import com.company.itos.profile.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 /**
  * Servlet implementation class DeleteEmailAddress
@@ -40,14 +41,19 @@ public class DeleteEmailAddress extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageForwardStr = "";
+		
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
+		
 		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
 		int emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
 		emailAddressDetail.setEmailAddressID(emailAddressID);
-		emailAddressDetail.setEmailAddressLinkID(emailAddressLinkID);
+		emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
+		
+		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 
 		DeleteEmailAddressDAO deleteEmailAddressDAO = new DeleteEmailAddressDAO();
-		String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressDetail);
+		String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressLinkDetail);
 		
 		//TODO Pass relatedID to listphonenumber servlet
 		

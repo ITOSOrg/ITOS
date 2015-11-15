@@ -5,13 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class ReadPhoneNumberDAO {
 
-	public PhoneNumberLinkDetail readPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
+	public String readPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		String returnMassegeStr = "";
 
 		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'"
@@ -53,12 +54,12 @@ public class ReadPhoneNumberDAO {
 				
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}
-
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
-		return phoneNumberLinkDetail;
+		return returnMassegeStr;
 
 	}
 }

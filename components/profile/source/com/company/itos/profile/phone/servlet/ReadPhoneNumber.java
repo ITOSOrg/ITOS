@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
@@ -50,13 +51,13 @@ public class ReadPhoneNumber extends HttpServlet {
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		
 		ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-		readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
+		String returnMassegeStr = readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
 		request.setAttribute("phoneNumberLinkDetail", phoneNumberLinkDetail);
 		
-		if (action != null && action.equals("update")) {
+		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/components/profile/jsp/phone/UpdatePhoneNumber.jsp";
 
-		} else {
+		} else if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "";
 		}
 		

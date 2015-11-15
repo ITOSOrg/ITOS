@@ -39,7 +39,7 @@ public class PersonHomeDAO {
 		try {
 
 			Connection connection = dbConnection.getDBConnection();
-
+					
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(personSQLStr);

@@ -10,51 +10,55 @@ import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class ReadPhoneNumberDAO {
-	
-	public PhoneNumberLinkDetail readPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail)
-	{
+
+	public PhoneNumberLinkDetail readPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		String returnMassegeStr = "";
-		Statement statement = null;
-		ResultSet resultSet = null;
-		
-		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'" + phoneNumberLinkDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
-try {
-	  		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+
+		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'"
+				+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
+		try {
+			//PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+			PhoneNumberDetail phoneNumberDetail = null;
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
-		
-			statement	= connection.createStatement();
-			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
 
-			if (resultSet.next()) {
-				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
-				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
-				phoneNumberLinkDetail.setTypeCode(resultSet.getString("typeCode"));
-				phoneNumberLinkDetail.setPrimaryInd(resultSet.getInt("primaryInd"));
-				phoneNumberLinkDetail.setStartDate(resultSet.getDate("startDate"));
-				phoneNumberLinkDetail.setEndDate(resultSet.getDate("endDate"));
-				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
-				phoneNumberLinkDetail.setVersionNo(resultSet.getInt("versionNo"));
-			}
-			
-			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberLinkDetail.getPhoneNumberID() + "\' AND RECORDSTATUS='Active'";
-			
-			Statement	statement1	= connection.createStatement();
-			ResultSet resultSet1 = statement.executeQuery(PhoneNumberSQLstr);
-			if(resultSet1.next())
-			{
-				phoneNumberDetail.setPhoneNumberID(resultSet1.getInt("phoneNumberID"));	
-				phoneNumberDetail.setCountryCode(resultSet1.getInt("countryCode"));
-				phoneNumberDetail.setAreaCode(resultSet1.getInt("areaCode"));
-				phoneNumberDetail.setPhoneNumber(resultSet1.getLong("phoneNumber"));
-				phoneNumberDetail.setExtension(resultSet1.getInt("extension"));
+			Statement statementPhoneNumberLink = connection.createStatement();
+			ResultSet resultSetPhoneNumberLink = statementPhoneNumberLink.executeQuery(PhoneNumberLinkSQLStr);
+
+			while (resultSetPhoneNumberLink.next()) {
+				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setTypeCode(resultSetPhoneNumberLink.getString("typeCode"));
+				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getInt("primaryInd"));
+				phoneNumberLinkDetail.setStartDate(resultSetPhoneNumberLink.getDate("startDate"));
+				phoneNumberLinkDetail.setEndDate(resultSetPhoneNumberLink.getDate("endDate"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getInt("phoneNumberLinkID"));
+				phoneNumberLinkDetail.setVersionNo(resultSetPhoneNumberLink.getInt("versionNo"));
 			}
 
-} catch (SQLException e) {
-		e.printStackTrace();
-		//returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberLinkDetail.getPhoneNumberID()
+					+ "\' AND RECORDSTATUS='Active'";
+
+			Statement statementPhoneNumber = connection.createStatement();
+			ResultSet resultSetPhoneNumber = statementPhoneNumber.executeQuery(PhoneNumberSQLstr);
+			while (resultSetPhoneNumber.next()) {
+				
+				phoneNumberDetail = new PhoneNumberDetail();
+				
+				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getInt("phoneNumberID"));
+				phoneNumberDetail.setCountryCode(resultSetPhoneNumber.getInt("countryCode"));
+				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
+				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
+				phoneNumberDetail.setExtension(resultSetPhoneNumber.getInt("extension"));
+				
+				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+		}
+		return phoneNumberLinkDetail;
+
 	}
-return phoneNumberLinkDetail;
-
-}
 }

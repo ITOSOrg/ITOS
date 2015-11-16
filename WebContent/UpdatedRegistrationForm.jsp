@@ -68,7 +68,8 @@
 			<tr>
 
 				<td><input type="submit" value="submit">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Back</a></td>
+					<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Back</a></td>-->
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonList">Administrator Home</a></td>
 
 			</tr>
 

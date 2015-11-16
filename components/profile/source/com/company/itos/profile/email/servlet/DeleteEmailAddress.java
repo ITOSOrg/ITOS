@@ -46,8 +46,11 @@ public class DeleteEmailAddress extends HttpServlet {
 		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 		
 		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
+		int relatedID = (new Integer(request.getParameter("relatedID")));
 		int emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
+		
 		emailAddressDetail.setEmailAddressID(emailAddressID);
+		emailAddressLinkDetail.setRelatedID(relatedID);
 		emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
 		
 		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
@@ -62,6 +65,7 @@ public class DeleteEmailAddress extends HttpServlet {
 		} else {
 			pageForwardStr = "/ListEmailAddress";
 		}
+		pageForwardStr += "?relatedID=" +emailAddressLinkDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

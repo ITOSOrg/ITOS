@@ -21,6 +21,7 @@
 	<%
 		List<PersonDetail> personDetailList = (List<PersonDetail>) request
 			.getAttribute("personDetailList");
+	PersonDetail personDetail = null;
 	%>
 		<table border=1>
 			<thead>
@@ -45,7 +46,7 @@
 
 			<%
 				for (int i = 0; i < personDetailList.size(); i++) {
-						PersonDetail personDetail = personDetailList.get(i);
+						 personDetail = personDetailList.get(i);
 			%>
 			<tbody>
 				<tr>
@@ -85,7 +86,7 @@
 			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a><br></br>
 			
 		</table><br>
-		<a href="PersonHome.jsp">Back</a>
+		<a href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Person Home</a>
 </form>		
 </body>
 </html>

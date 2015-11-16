@@ -29,7 +29,7 @@ public class UpdateEmailAddressDAO {
 		
 		int emailAddressVersionNoFromUpdate = emailAddressDetail.getVersionNo();
 		
-		int EmailAddressVersionNoFromDatabase = returnVersionNumberFromEmailAddress(emailAddressDetail);
+		int EmailAddressVersionNoFromDatabase = returnVersionNumberFromEmailAddress(emailAddressLinkDetail);
 
 		if (emailAddressLinkVersionNoFromUpdate == EmailAddressLinkVersionNoFromDatabase) {
 			
@@ -37,7 +37,7 @@ public class UpdateEmailAddressDAO {
 
 			EmailAddressLinkVersionNoFromDatabase++;
 			
-			emailAddressVersionNoFromUpdate++;
+			EmailAddressVersionNoFromDatabase++;
 
 		try {
 			
@@ -45,7 +45,7 @@ public class UpdateEmailAddressDAO {
 			connection = dbConnection.getDBConnection();
 			
 			String updateEmailAddressSqlStr = "UPDATE	EmailAddress	SET emailAddress = '" + emailAddressDetail.getEmailAddress() + "'"
-					+ " WHERE emailAddressID = '" + emailAddressDetail.getEmailAddressID() + "'";
+					+ " WHERE emailAddressID = '" + emailAddressLinkDetail.getEmailAddressID() + "'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(updateEmailAddressSqlStr);
 			preparedStatement.executeUpdate();
@@ -80,7 +80,7 @@ public class UpdateEmailAddressDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			String emailAddressSQLStr = "SELECT	versionNo, relatedID	FROM	EmailAddressLink	WHERE	 emailAddressLinkID = '"
+			String emailAddressSQLStr = "SELECT	versionNo, relatedID, emailAddressID	FROM	EmailAddressLink	WHERE	 emailAddressLinkID = '"
 					+ emailAddressLinkDetail.getEmailAddressLinkID() + "'";
 			Statement statement = connection.createStatement();
 
@@ -89,6 +89,7 @@ public class UpdateEmailAddressDAO {
 
 				versionNo = resultSet.getInt("versionNo");
 				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
 				//emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 		} catch (SQLException e) {
@@ -96,7 +97,7 @@ public class UpdateEmailAddressDAO {
 		}
 		return  versionNo;
 	}
-	public int returnVersionNumberFromEmailAddress(EmailAddressDetail emailAddressDetail) {
+	public int returnVersionNumberFromEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
 		
 		int versionNo = 0;
 		try {
@@ -105,7 +106,7 @@ public class UpdateEmailAddressDAO {
 			Connection connection = dbConnection.getDBConnection();
 			
 			String emailAddressSQLStr = "SELECT	versionNo	FROM	EmailAddress	WHERE	 emailAddressID = '"
-					+ emailAddressDetail.getEmailAddressID() + "'";
+					+ emailAddressLinkDetail.getEmailAddressID() + "'";
 			Statement statement = connection.createStatement();
 			
 			ResultSet resultSet = statement.executeQuery(emailAddressSQLStr);

@@ -27,6 +27,7 @@ import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
  * Servlet implementation class PersonRegistration
  */
 public class PersonRegistration extends HttpServlet {
+	UsersDetail usersDetail = new UsersDetail();
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -79,6 +80,7 @@ public class PersonRegistration extends HttpServlet {
 				pageForwardStr = "/RegistrationForm.jsp";
 			}
 		}
+		pageForwardStr+= "userName=" +usersDetail.getUserName();
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
@@ -171,7 +173,6 @@ public class PersonRegistration extends HttpServlet {
 		String userName = request.getParameter("userName");
 		
 
-		UsersDetail usersDetail = new UsersDetail();
 		usersDetail.setUserName(userName);
 
 		personDetail.setUsersDetail(usersDetail);

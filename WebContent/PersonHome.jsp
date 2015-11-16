@@ -13,11 +13,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Insert title here</title>
+<link href="jquery-ui\jquery-ui.css" rel="stylesheet"/>
+<script src="js\jquery.js" type="text/javascript"></script>
+<script src="jquery-ui\jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+ <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
 </head>
 <body>
-	<form action="/ITOS/PersonHome" method="post">
-
-
 		<%
 			PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
 			
@@ -29,6 +36,10 @@
 
 			String name = request.getParameter("firstName");
 		%>
+<div id="accordion">
+	<form action="/ITOS/PersonHome" method="post">
+
+
 		<font size="3" color="green"> <%
  	out.println("Wellcome\t" + personDetail.getFirstName());
  %>
@@ -81,13 +92,15 @@
 
 				<th><a
 					href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>&act=update">Update</a></th>
-				<th><a href="/ITOS/PersonList">PersonList</a></th>
+				<th><a href="/ITOS/PersonList?personID=<%=personDetail.getPersonID()%>">PersonList</a></th>
 			</tbody>
 
 		</table>
 		
-	</form><br><br>
+	</form>
+	</div><br><br>
 	
+	<div>
 	<form action="/ITOS/ReadEmailAddress" method = "POST">
 	<table border=1>
 	<tbody>
@@ -108,9 +121,10 @@
 			
 		</table>
 		
-	</form><br><br>
+	</form>
+	</div><br><br>
 	
-	
+	<div>
 	<form action="/ITOS/ReadPhoneNumber" method = "POST">
 	<table border=1>
 	<tbody>
@@ -133,18 +147,19 @@
 	</tbody>
 	<tbody>
 	
-		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">PhoneNumber List</a></th>
+		<th><a href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberLinkDetail.getRelatedID()%>">PhoneNumber List</a></th>
 	
 	</tbody>
 			
 		</table>
 	
 	
-		<br><a href="LoginForm.jsp">Back</a>&nbsp&nbsp&nbsp&nbsp&nbsp <br>
+		<br><a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp <br>
 	
 	
 	<form action="/ITOS/PersonLogOut" method="POST">
 		<br> <input type="submit" value="LogOut">
 	</form>
+	</div>
 </body>
 </html>

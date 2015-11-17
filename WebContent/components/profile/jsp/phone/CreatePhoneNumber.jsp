@@ -50,7 +50,8 @@ System.out.println("relatedID = " + relatedID);
 		<td><input type="text" name="endDate"></td>
 		</tr>
 		<tr>
-		<td><input  type="submit" value="Submit"></td>
+		<td><input  type="submit" value="Submit">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListPhoneNumber?relatedID=<%= relatedID %>">PhoneNumberList Home</a></td></td>
 		</tr>
 		</table>
 		</form>

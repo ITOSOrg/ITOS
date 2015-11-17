@@ -17,7 +17,7 @@
 
 <form name="Update Phone Number" action="/ITOS/UpdatePhoneNumber?phoneNumberLinkID=<%= phoneNumberLinkDetail.getPhoneNumberLinkID() %>&phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID() %>&versionNo=<%=phoneNumberDetail.getVersionNo() %>&versionNo=<%=phoneNumberLinkDetail.getVersionNo() %>&phoneNumberLinkID=<%=phoneNumberDetail.getPhoneNumberID() %> "
 		method="POST">
-		<table>s
+		<table>
 		
 		<tr>
 		<td> Country Code:</td>
@@ -61,6 +61,7 @@
 		      value="<%=phoneNumberLinkDetail.getEndDate()%>"></td>
 		</tr>
 		<td><input  type="submit" value="Submit">
+		&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberLinkDetail.getRelatedID()%>">PhoneNumberList Home</a></td>
 		
 		
 		

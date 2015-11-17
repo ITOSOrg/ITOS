@@ -15,7 +15,6 @@ import com.company.itos.profile.pojo.PersonDetail;
  */
 public class PersonDeleteDAO {
 
-	Statement statement;
 	Connection connection = null;
 	ResultSet resultSet = null;
 
@@ -32,13 +31,12 @@ public class PersonDeleteDAO {
 			 * of DBConnection class
 			 */
 			connection = dbConnection.getDBConnection();
-			String personSQLStr = "UPDATE	PERSON	SET	RECORDSTATUS='cancel'	WHERE	personID="
-					+ personDetail.getPersonID();
+			String personSQLStr = "UPDATE	PERSON	SET	RECORDSTATUS='cancel'	WHERE	personID=" + personDetail.getPersonID();
 			/**
 			 * sending sql statement to the database
 			 */
-			statement = connection.createStatement();
-			statement.executeUpdate(personSQLStr);
+			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
+			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
 

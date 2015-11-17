@@ -42,9 +42,9 @@ public class PersonHomeDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			statement = connection.createStatement();
+			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
 
-			resultSet = statement.executeQuery(personSQLStr);
+			resultSet = preparedStatement.executeQuery();
 			/**
 			 * if resultSet contains values then set it to the respected
 			 * attribute
@@ -82,18 +82,21 @@ public class PersonHomeDAO {
 			PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 			phoneNumberLinkDetail.setRelatedID(personDetail.getPersonID());
 
-			/*String PhoneNumberLinkSQLStr = "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='" + personDetail.getPersonID()
-					+ "' AND primaryInd = '1'";
-
-			statement = connection.createStatement();
-
-			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
-			if (resultSet.next()) {
-				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
-			}*/
+			/*
+			 * String PhoneNumberLinkSQLStr =
+			 * "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='"
+			 * + personDetail.getPersonID() + "' AND primaryInd = '1'";
+			 * 
+			 * statement = connection.createStatement();
+			 * 
+			 * resultSet = statement.executeQuery(PhoneNumberLinkSQLStr); if
+			 * (resultSet.next()) {
+			 * phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet
+			 * .getInt("phoneNumberLinkID")); }
+			 */
 
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-			//readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
+			// readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
 			readPhoneNumberDAO.readPrimaryPhoneNumber(phoneNumberLinkDetail);
 			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
 

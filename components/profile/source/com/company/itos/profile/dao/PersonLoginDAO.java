@@ -25,11 +25,12 @@ public class PersonLoginDAO {
 	ResultSet resultSet;
 
 	/**
-	 * method for login passing object of usersDetail class because we require username & password fields from usersDetail class
+	 * method for login passing object of usersDetail class because we require
+	 * username & password fields from usersDetail class
 	 */
-	//public String login(UsersDetail usersDetail) {
-		public String login(PersonDetail personDetail) {
-			UsersDetail usersDetail = personDetail.getUsersDetail();
+	// public String login(UsersDetail usersDetail) {
+	public String login(PersonDetail personDetail) {
+		UsersDetail usersDetail = personDetail.getUsersDetail();
 		// List<String> errorMessageList = new ArrayList<String>();
 
 		// string to return success or failure
@@ -51,13 +52,12 @@ public class PersonLoginDAO {
 
 			// store resultset object into the resultSet object
 			resultSet = preparedStatementUsers.executeQuery();
-			
-			String personSQLStr = "SELECT personID FROM Person WHERE  USERNAME='"
-				+ usersDetail.getUserName() + "'";
+
+			String personSQLStr = "SELECT personID FROM Person WHERE  USERNAME='" + usersDetail.getUserName() + "'";
 			PreparedStatement preparedStatementPerson = connection.prepareStatement(personSQLStr);
 			ResultSet resultSetPerson = preparedStatementPerson.executeQuery();
-			
-			if(resultSetPerson.next()){
+
+			if (resultSetPerson.next()) {
 				personDetail.setPersonID(resultSetPerson.getInt("personID"));
 			}
 
@@ -76,7 +76,8 @@ public class PersonLoginDAO {
 						// password matched
 						returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 
-						// if users login failure is greater than 0, on successful login reset counter to 0.
+						// if users login failure is greater than 0, on
+						// successful login reset counter to 0.
 						if (loginFailureCount > 0)
 							updateLoginFailure(usersDetail, connection, 0);
 

@@ -33,14 +33,10 @@ public class PersonUpdateDAO {
 
 			try {
 				connection = dbConnection.getDBConnection();
-				String personSQLStr = "UPDATE	PERSON	SET title='"
-						+ personDetail.getTitle() + "',	firstName='"
-						+ personDetail.getFirstName() + "', middleName='"
-						+ personDetail.getMiddleName() + "', lastName='"
-						+ personDetail.getLastName() + "', gender='"
-						+ personDetail.getGender() + "', dateOfBirth = ? , versionNo ='"
-						+ versionNoFromDatabase + "' " + "	where	personID='"
-						+ personDetail.getPersonID() + "'";
+				String personSQLStr = "UPDATE	PERSON	SET title='" + personDetail.getTitle() + "',	firstName='"
+						+ personDetail.getFirstName() + "', middleName='" + personDetail.getMiddleName() + "', lastName='"
+						+ personDetail.getLastName() + "', gender='" + personDetail.getGender() + "', dateOfBirth = ? , versionNo ='"
+						+ versionNoFromDatabase + "' " + "	where	personID='" + personDetail.getPersonID() + "'";
 
 				preparedStatement = connection.prepareStatement(personSQLStr);
 
@@ -55,9 +51,7 @@ public class PersonUpdateDAO {
 			}
 
 		} else {
-			personDetail
-					.getErrorMessageList()
-					.add("This Record has been already modified by another user, Please check");
+			personDetail.getErrorMessageList().add("This Record has been already modified by another user, Please check");
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
 
@@ -73,11 +67,10 @@ public class PersonUpdateDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 personID='"
-					+ personDetail.getPersonID()+ "'";
-			Statement statement = connection.createStatement();
+			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 personID='" + personDetail.getPersonID() + "'";
+			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
 
-			resultSet = statement.executeQuery(personSQLStr);
+			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 
 				versionNumber = resultSet.getInt("versionNo");
@@ -95,10 +88,9 @@ public class PersonUpdateDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 			// PersonDetail personDetail = new PersonDetail();
-			String query = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	personID='"
-					+ personDetail.getPersonID() + "'";
-			Statement statement = connection.createStatement();
-			statement.executeQuery(query);
+			String PersonSQLStr = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	personID='" + personDetail.getPersonID() + "'";
+			PreparedStatement preparedStatement = connection.prepareStatement(PersonSQLStr);
+			preparedStatement.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

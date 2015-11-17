@@ -1,6 +1,7 @@
 package com.company.itos.profile.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -8,15 +9,14 @@ import java.util.List;
 
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.pojo.PersonDetail;
-
 import com.company.itos.profile.pojo.PersonSearchCriteria;
 import com.company.itos.profile.pojo.PersonSearchDetails;
 
 public class SearchPersonDAO {
 
-	DBConnection	dbConnection	= new DBConnection();
+	DBConnection dbConnection = new DBConnection();
 
-	Connection		connection		= null;
+	Connection connection = null;
 
 	public List<PersonDetail> searchPersonInfo(PersonSearchDetails personSearchDetails) {
 
@@ -45,11 +45,11 @@ public class SearchPersonDAO {
 
 			try {
 				connection = dbConnection.getDBConnection();
-				String query = "SELECT * " + " FROM Person " + whereStr;
+				String personSQLStr = "SELECT * " + " FROM Person " + whereStr;
 
-				Statement statement = connection.createStatement();
+				PreparedStatement preparedstatement = connection.prepareStatement(personSQLStr);
 
-				ResultSet resultSet = statement.executeQuery(query);
+				ResultSet resultSet = preparedstatement.executeQuery();
 
 				while (resultSet.next()) {
 
@@ -70,7 +70,7 @@ public class SearchPersonDAO {
 			}
 
 		} else {
-			String errorMessage="";
+			String errorMessage = "";
 
 			errorMessage = "Please enter at least one attribute";
 			personSearchDetails.setErrorMessage(errorMessage);

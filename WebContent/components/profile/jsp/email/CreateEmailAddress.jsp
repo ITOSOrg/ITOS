@@ -38,7 +38,7 @@ System.out.println("relatedID = " + relatedID);
 			<tr>
 
 				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListEmailAddress?relatedID=<%= relatedID %>">Back</a></td>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListEmailAddress?relatedID=<%= relatedID %>">EmailAddressList Home</a></td>
 
 			</tr>
 			

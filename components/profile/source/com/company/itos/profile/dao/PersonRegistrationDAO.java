@@ -53,13 +53,13 @@ public class PersonRegistrationDAO {
 			DBConnection dbConnection = new DBConnection();
 
 			Connection connection = null;
-			
+
 			Statement statement = null;
 			try {
 				connection = dbConnection.getDBConnection();
 				statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT PersonSEQ.nextval FROM DUAL");
-				
+
 				if (resultSet.next()) {
 					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
 					phoneNumberLinkDetail.setRelatedID(resultSet.getInt(1));
@@ -79,9 +79,9 @@ public class PersonRegistrationDAO {
 					+ "','"
 					+ personDetail.getLastName()
 					+ "','"
-					+ personDetail.getGender() + "' ,'" + usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?,?," + " 1 )";
-
-			
+					+ personDetail.getGender()
+					+ "' ,'"
+					+ usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?,?," + " 1 )";
 
 			// String sql1 =
 			// "INSERT INTO EmailAddress(emailAddressID, emailAddress, recordStatus, versionNo)"
@@ -94,7 +94,7 @@ public class PersonRegistrationDAO {
 			// "VALUES(AddressSEQ.naxtval, '"+personDetail.getStreetOne()+"', '"+personDetail.getStreetTwo()+"', '"+personDetail.getAptUnit()+"', '"+personDetail.getCity()+"', '"+personDetail.getCounty()+"', '"+personDetail.getState()+"', '"+personDetail.getCountry()+"', '"+personDetail.getZipCode()+"', 1)";
 
 			try {
-				//connection = dbConnection.getDBConnection();
+				// connection = dbConnection.getDBConnection();
 
 				preparedStatement = connection.prepareStatement(usersSQLStr);
 
@@ -113,10 +113,10 @@ public class PersonRegistrationDAO {
 				preparedStatement1.setTimestamp(5, timestamp);
 
 				preparedStatement1.execute();
-				
+
 				CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 				createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
-				
+
 				CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
 				createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
 
@@ -186,9 +186,9 @@ public class PersonRegistrationDAO {
 		Connection connection = null;
 		try {
 			connection = dbConnection.getDBConnection();
-			Statement statement = connection.createStatement();
 			String usersSQLStr = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
-			ResultSet resultSet = statement.executeQuery(usersSQLStr);
+			PreparedStatement preparedStatement = connection.prepareStatement(usersSQLStr);
+			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				List<String> errorMessageList = new ArrayList<String>();
 				errorMessageList.add("UserName already exist");

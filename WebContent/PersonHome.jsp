@@ -91,7 +91,7 @@
 			<tbody>
 
 				<th><a
-					href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>&act=update">Update</a></th>
+					href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>&act=update">Update</a></th>
 				<th><a href="/ITOS/PersonList?personID=<%=personDetail.getPersonID()%>">PersonList</a></th>
 			</tbody>
 

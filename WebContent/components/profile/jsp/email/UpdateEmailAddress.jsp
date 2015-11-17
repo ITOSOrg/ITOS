@@ -44,8 +44,8 @@ EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDe
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">Back</a>
+				<td><input  type="submit" value="Submit"><br><br>
+				<a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">EmailAddressList Home</a>
 				</td>
 
 			</tr>

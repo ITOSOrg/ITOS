@@ -66,7 +66,7 @@
 					
 					
 					<td><a
-						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Read</a></td>
+						href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Read</a></td>
 					<td><a
 						href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>&act=update">Update</a></td>
 

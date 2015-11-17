@@ -26,16 +26,17 @@ public class PersonListDAO {
 
 			String personSQLStr = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='active'";
 
-			statement = connection.createStatement();
+			// statement = connection.createStatement();
 
-			resultSet = statement.executeQuery(personSQLStr);
+			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
+
+			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
 
 				PersonDetail personDetail = new PersonDetail();
 				personDetail.setPersonID(resultSet.getInt("personID"));
-				personDetail.setRefrenceNumber(resultSet
-						.getInt("REFRENCENUMBER"));
+				personDetail.setRefrenceNumber(resultSet.getInt("REFRENCENUMBER"));
 				personDetail.setTitle(resultSet.getString("title"));
 				personDetail.setFirstName(resultSet.getString("FIRSTNAME"));
 				personDetail.setMiddleName(resultSet.getString("MIDDLENAME"));
@@ -49,7 +50,7 @@ public class PersonListDAO {
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
-				
+
 				personDetailList.add(personDetail);
 
 			}
@@ -62,5 +63,4 @@ public class PersonListDAO {
 
 	}
 
-	
 }

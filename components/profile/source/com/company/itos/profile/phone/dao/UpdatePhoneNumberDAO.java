@@ -13,71 +13,68 @@ import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class UpdatePhoneNumberDAO {
-	
-	public String updatephoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail){
-		
+
+	public String updatephoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
+
 		Connection connection = null;
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
 		DBConnection dbConnection = new DBConnection();
-		
+
 		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
-		
-		//returnVersionNumber( phoneNumberDetail);
-		
+
+		// returnVersionNumber( phoneNumberDetail);
+
 		int phoneNumberLinkVersionNoFromUpdate = phoneNumberLinkDetail.getVersionNo();
 
 		int phoneNumberLinkVersionNoFromDatabase = returnPhoneNumberLinkVersionNumber(phoneNumberLinkDetail);
-		
+
 		int phoneNumberVersionNoFromUpdate = phoneNumberDetail.getVersionNo();
-		
+
 		int phoneNumberVersionNoFromDatabase = returnPhoneNumberVersionNumber(phoneNumberDetail);
 
 		if (phoneNumberLinkVersionNoFromUpdate == phoneNumberLinkVersionNoFromDatabase) {
-			if(phoneNumberVersionNoFromUpdate == phoneNumberVersionNoFromDatabase){
+			if (phoneNumberVersionNoFromUpdate == phoneNumberVersionNoFromDatabase) {
 
-			phoneNumberLinkVersionNoFromDatabase++;
-			
-			phoneNumberVersionNoFromDatabase++;
+				phoneNumberLinkVersionNoFromDatabase++;
 
-		
+				phoneNumberVersionNoFromDatabase++;
 
-		try {
-			connection = dbConnection.getDBConnection();
-			
-			String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ?";
-			
-			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
-			preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getCountryCode());
-			preparedStatementPhoneNumber.setInt(2, phoneNumberDetail.getAreaCode());
-			preparedStatementPhoneNumber.setLong(3, phoneNumberDetail.getPhoneNumber());
-			preparedStatementPhoneNumber.setInt(4, phoneNumberDetail.getExtension());
-			
-			preparedStatementPhoneNumber.executeUpdate();
-			
-			String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ?";
-			
-			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
-			preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
-			preparedStatementPhoneNumberLink.setInt(2, phoneNumberLinkDetail.getPrimaryInd());
-			preparedStatementPhoneNumberLink.setDate(3, phoneNumberLinkDetail.getStartDate());
-			preparedStatementPhoneNumberLink.setDate(4, phoneNumberLinkDetail.getEndDate());
-			
-			preparedStatementPhoneNumberLink.executeUpdate();
-		
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+				try {
+					connection = dbConnection.getDBConnection();
 
-		} catch (SQLException e) {
+					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ?";
 
-			e.printStackTrace();
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
-		}
-		}
+					PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
+					preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getCountryCode());
+					preparedStatementPhoneNumber.setInt(2, phoneNumberDetail.getAreaCode());
+					preparedStatementPhoneNumber.setLong(3, phoneNumberDetail.getPhoneNumber());
+					preparedStatementPhoneNumber.setInt(4, phoneNumberDetail.getExtension());
+
+					preparedStatementPhoneNumber.executeUpdate();
+
+					String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ?";
+
+					PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
+					preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
+					preparedStatementPhoneNumberLink.setInt(2, phoneNumberLinkDetail.getPrimaryInd());
+					preparedStatementPhoneNumberLink.setDate(3, phoneNumberLinkDetail.getStartDate());
+					preparedStatementPhoneNumberLink.setDate(4, phoneNumberLinkDetail.getEndDate());
+
+					preparedStatementPhoneNumberLink.executeUpdate();
+
+					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+				}
+			}
 		}
 		return returnMassegeStr;
 	}
-	
-	
+
 	public int returnPhoneNumberLinkVersionNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 
 		int versionNo = 0;
@@ -88,9 +85,10 @@ public class UpdatePhoneNumberDAO {
 
 			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
 					+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "'";
-			Statement statement = connection.createStatement();
 
-			ResultSet resultSet = statement.executeQuery(phoneNumberLinkSQLStr);
+			PreparedStatement preparedStatementReturnPhoneNumberLinkVersionNumber = connection.prepareStatement(phoneNumberLinkSQLStr);
+
+			ResultSet resultSet = preparedStatementReturnPhoneNumberLinkVersionNumber.executeQuery();
 			if (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
@@ -99,29 +97,31 @@ public class UpdatePhoneNumberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return  versionNo;
+		return versionNo;
 	}
+
 	public int returnPhoneNumberVersionNumber(PhoneNumberDetail phoneNumberDetail) {
-		
+
 		int versionNo = 0;
 		try {
 			DBConnection dbConnection = new DBConnection();
-			
+
 			Connection connection = dbConnection.getDBConnection();
-			
+
 			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberID = '"
 					+ phoneNumberDetail.getPhoneNumberID() + "'";
-			Statement statement = connection.createStatement();
-			
-			ResultSet resultSet = statement.executeQuery(phoneNumberLinkSQLStr);
+
+			PreparedStatement preparedStatementReturnPhoneNumberVersionNumber = connection.prepareStatement(phoneNumberLinkSQLStr);
+
+			ResultSet resultSet = preparedStatementReturnPhoneNumberVersionNumber.executeQuery();
 			if (resultSet.next()) {
-				
+
 				versionNo = resultSet.getInt("versionNo");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return  versionNo;
+		return versionNo;
 	}
 
 }

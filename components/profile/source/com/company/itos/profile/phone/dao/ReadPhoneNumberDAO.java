@@ -1,6 +1,7 @@
 package com.company.itos.profile.phone.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,13 +19,14 @@ public class ReadPhoneNumberDAO {
 		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE phoneNumberLinkID = \'"
 				+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "\' AND RECORDSTATUS='Active'";
 		try {
-			//PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+			// PhoneNumberDetail phoneNumberDetail =
+			// phoneNumberLinkDetail.getPhoneNumberDetail();
 			PhoneNumberDetail phoneNumberDetail = null;
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
 
-			Statement statementPhoneNumberLink = connection.createStatement();
-			ResultSet resultSetPhoneNumberLink = statementPhoneNumberLink.executeQuery(PhoneNumberLinkSQLStr);
+			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(PhoneNumberLinkSQLStr);
+			ResultSet resultSetPhoneNumberLink = preparedStatementPhoneNumberLink.executeQuery();
 
 			while (resultSetPhoneNumberLink.next()) {
 				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
@@ -40,18 +42,18 @@ public class ReadPhoneNumberDAO {
 			String PhoneNumberSQLstr = "SELECT * FROM PhoneNumber WHERE phoneNumberID = \'" + phoneNumberLinkDetail.getPhoneNumberID()
 					+ "\' AND RECORDSTATUS='Active'";
 
-			Statement statementPhoneNumber = connection.createStatement();
-			ResultSet resultSetPhoneNumber = statementPhoneNumber.executeQuery(PhoneNumberSQLstr);
+			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(PhoneNumberSQLstr);
+			ResultSet resultSetPhoneNumber = preparedStatementPhoneNumber.executeQuery();
 			while (resultSetPhoneNumber.next()) {
-				
+
 				phoneNumberDetail = new PhoneNumberDetail();
-				
+
 				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getInt("phoneNumberID"));
 				phoneNumberDetail.setCountryCode(resultSetPhoneNumber.getInt("countryCode"));
 				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
 				phoneNumberDetail.setExtension(resultSetPhoneNumber.getInt("extension"));
-				
+
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
@@ -62,14 +64,15 @@ public class ReadPhoneNumberDAO {
 		return returnMassegeStr;
 
 	}
-	
+
 	public String readPrimaryPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		String returnMassegeStr = "";
 
-		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE relatedID = \'"
-				+ phoneNumberLinkDetail.getRelatedID() + "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
+		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE relatedID = \'" + phoneNumberLinkDetail.getRelatedID()
+				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
 		try {
-			//PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+			// PhoneNumberDetail phoneNumberDetail =
+			// phoneNumberLinkDetail.getPhoneNumberDetail();
 			PhoneNumberDetail phoneNumberDetail = null;
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
@@ -94,15 +97,15 @@ public class ReadPhoneNumberDAO {
 			Statement statementPhoneNumber = connection.createStatement();
 			ResultSet resultSetPhoneNumber = statementPhoneNumber.executeQuery(PhoneNumberSQLstr);
 			while (resultSetPhoneNumber.next()) {
-				
+
 				phoneNumberDetail = new PhoneNumberDetail();
-				
+
 				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getInt("phoneNumberID"));
 				phoneNumberDetail.setCountryCode(resultSetPhoneNumber.getInt("countryCode"));
 				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
 				phoneNumberDetail.setExtension(resultSetPhoneNumber.getInt("extension"));
-				
+
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
@@ -113,5 +116,5 @@ public class ReadPhoneNumberDAO {
 		return returnMassegeStr;
 
 	}
-	
+
 }

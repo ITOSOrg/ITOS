@@ -1,6 +1,7 @@
 package com.company.itos.profile.phone.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,8 +11,7 @@ import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class DeletePhoneNumberDAO {
-	
-	
+
 	public String deletePhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 
 		Connection connection = null;
@@ -28,11 +28,11 @@ public class DeletePhoneNumberDAO {
 			DBConnection dbConnection = new DBConnection();
 			connection = dbConnection.getDBConnection();
 
-			Statement statementPhoneNumber = connection.createStatement();
-			statementPhoneNumber.executeUpdate(phoneNumberSQLStr);
+			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
+			preparedStatementPhoneNumber.executeUpdate();
 
-			Statement statementPhoneNumberLink = connection.createStatement();
-			statementPhoneNumberLink.executeUpdate(phoneNumberLinkSQLStr);
+			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
+			preparedStatementPhoneNumberLink.executeUpdate();
 		} catch (SQLException e) {
 
 			e.printStackTrace();

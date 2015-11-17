@@ -47,23 +47,29 @@ public class PersonHome extends HttpServlet {
 		
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		
+		UsersDetail usersDetail = new UsersDetail();
+		
+		PersonDetail personDetail = new PersonDetail();
 
 		System.out.println(request.getParameter("userName"));
-		String userName = request.getParameter("userName");
+		//String userName = request.getParameter("userName");
+		
+		int personID = (new Integer (request.getParameter("personID")));
+		personDetail.setPersonID(personID);
+		
 		String action = request.getParameter("act");
 		PrintWriter printwriter = response.getWriter();
 
-		UsersDetail usersDetail = new UsersDetail();
-		usersDetail.setUserName(userName);
+		//usersDetail.setUserName(userName);
 
 		PersonHomeDAO personHomeDAO = new PersonHomeDAO();
 
-		PersonDetail personDetail = personHomeDAO
-				.readPersonDetail(usersDetail);
+		//PersonDetail personDetail = personHomeDAO.readPersonDetail(personDetail);
+		personHomeDAO.readPersonDetail(personDetail);
 		/**
 		 * 
 		 */
-		personDetail.setUserName(userName);
+		//personDetail.setUserName(userName);
 
 		request.setAttribute("personDetail", personDetail);
 		

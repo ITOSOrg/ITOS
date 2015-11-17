@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
@@ -23,18 +24,20 @@ public class PersonHomeDAO {
 	ResultSet resultSet = null;
 	Statement statement = null;
 	DBConnection dbConnection = new DBConnection();
+	String returnMassegeStr = "";
 
 	/**
 	 * method for reading student data from database
 	 */
-	public PersonDetail readPersonDetail(UsersDetail usersDetail) {
+	//public PersonDetail readPersonDetail(UsersDetail usersDetail) {
+		public String readPersonDetail(PersonDetail personDetail) {
 
-		PersonDetail personDetail = new PersonDetail();
+		//PersonDetail personDetail = new PersonDetail();
 
 		/**
 		 * query to extract person details of matched username
 		 */
-		String personSQLStr = "SELECT * FROM PERSON WHERE  USERNAME=\'" + usersDetail.getUserName() + "\' ";
+		String personSQLStr = "SELECT * FROM PERSON WHERE  personID=\'" + personDetail.getPersonID() + "\' ";
 
 		try {
 
@@ -103,13 +106,16 @@ public class PersonHomeDAO {
 			readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
 			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
 			
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+			
 		} catch (SQLException e) {
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 			e.printStackTrace();
 		}
 		/**
 		 * personDetail contains all attribute values
 		 */
-		return personDetail;
+		return returnMassegeStr;
 	}
 
 	/*

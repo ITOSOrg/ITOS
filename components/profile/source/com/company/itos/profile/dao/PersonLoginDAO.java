@@ -27,8 +27,9 @@ public class PersonLoginDAO {
 	/**
 	 * method for login passing object of usersDetail class because we require username & password fields from usersDetail class
 	 */
-	public String login(UsersDetail usersDetail) {
-
+	//public String login(UsersDetail usersDetail) {
+		public String login(PersonDetail personDetail) {
+			UsersDetail usersDetail = personDetail.getUsersDetail();
 		// List<String> errorMessageList = new ArrayList<String>();
 
 		// string to return success or failure
@@ -46,10 +47,19 @@ public class PersonLoginDAO {
 			// get database connection
 			connection = dbConnection.getDBConnection();
 
-			preparedStatement = connection.prepareStatement(usersSQLStr);
+			PreparedStatement preparedStatementUsers = connection.prepareStatement(usersSQLStr);
 
 			// store resultset object into the resultSet object
-			resultSet = preparedStatement.executeQuery();
+			resultSet = preparedStatementUsers.executeQuery();
+			
+			String personSQLStr = "SELECT personID FROM Person WHERE  USERNAME='"
+				+ usersDetail.getUserName() + "'";
+			PreparedStatement preparedStatementPerson = connection.prepareStatement(personSQLStr);
+			ResultSet resultSetPerson = preparedStatementPerson.executeQuery();
+			
+			if(resultSetPerson.next()){
+				personDetail.setPersonID(resultSetPerson.getInt("personID"));
+			}
 
 			// if resultSet contain values then return success
 

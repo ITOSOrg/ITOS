@@ -12,13 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.dao.PersonLoginDAO;
+import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
+
 import javax.servlet.RequestDispatcher;
 
 /**
  * Servlet implementation class PersonLogin
  */
 public class PersonLogin extends HttpServlet {
+
+	PersonDetail personDetail = new PersonDetail();
 	private static final long serialVersionUID = 1L;
 
 	UsersDetail usersDetail = new UsersDetail();
@@ -35,8 +39,7 @@ public class PersonLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -44,44 +47,47 @@ public class PersonLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html");
 		PrintWriter printwriter = response.getWriter();
+		String pageForwardStr = null;
 
 		boolean errorInd = validateLoginDetails(request, usersDetail);
 		if (errorInd) {
-			RequestDispatcher rd1 = request
-					.getRequestDispatcher("/LoginForm.jsp");
+			RequestDispatcher rd1 = request.getRequestDispatcher("/LoginForm.jsp");
 			rd1.forward(request, response);
 
 		} else {
+
 			PersonLoginDAO personLoginDAO = new PersonLoginDAO();
 
 			/**
 			 * calling login method of StudentDAO class & assigning return value
 			 * of method login to retrunStr
 			 */
-			String returnMassegeStr = personLoginDAO.login(usersDetail);
+			String returnMassegeStr = personLoginDAO.login(personDetail);
 
 			if (returnMassegeStr.equals(CRUDConstants.RETURN_MESSAGE_SUCCESS)) {
 
-				RequestDispatcher rd1 = request
-						.getRequestDispatcher("/PersonHome");
-				rd1.forward(request, response);
+				pageForwardStr = "/PersonHome";
+
+				
 			} else {
 
-				RequestDispatcher rd1 = request
-						.getRequestDispatcher("/LoginForm.jsp");
-				rd1.forward(request, response);
+				pageForwardStr = "/LoginForm.jsp";
+
+				
 
 			}
+			pageForwardStr += "?personID=" + personDetail.getPersonID();
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
+			requestDispatcher.forward(request, response);
 		}
 
 	}
 
-	private boolean validateLoginDetails(HttpServletRequest request,
-			UsersDetail usersDetail)
+	private boolean validateLoginDetails(HttpServletRequest request, UsersDetail usersDetail)
 
 	{
 
@@ -98,7 +104,7 @@ public class PersonLogin extends HttpServlet {
 			}
 		}
 		String password = request.getParameter("password");
-		if (password == null || password.equals("") ) {
+		if (password == null || password.equals("")) {
 			errorMessageList.add("Please	enter	password.");
 		} else {
 			try {
@@ -109,6 +115,7 @@ public class PersonLogin extends HttpServlet {
 			}
 		}
 
+		personDetail.setUsersDetail(usersDetail);
 		usersDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("usersDetail", usersDetail);
 		return !errorMessageList.isEmpty();

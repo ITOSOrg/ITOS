@@ -19,7 +19,6 @@ import com.company.itos.profile.pojo.UsersDetail;
 
 public class PersonHomeDAO {
 
-	
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
 	Statement statement = null;
@@ -29,10 +28,10 @@ public class PersonHomeDAO {
 	/**
 	 * method for reading student data from database
 	 */
-	//public PersonDetail readPersonDetail(UsersDetail usersDetail) {
-		public String readPersonDetail(PersonDetail personDetail) {
+	// public PersonDetail readPersonDetail(UsersDetail usersDetail) {
+	public String readPersonDetail(PersonDetail personDetail) {
 
-		//PersonDetail personDetail = new PersonDetail();
+		// PersonDetail personDetail = new PersonDetail();
 
 		/**
 		 * query to extract person details of matched username
@@ -42,7 +41,7 @@ public class PersonHomeDAO {
 		try {
 
 			Connection connection = dbConnection.getDBConnection();
-					
+
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(personSQLStr);
@@ -69,45 +68,35 @@ public class PersonHomeDAO {
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
-			
-			//Read emailAddress information
+
+			// Read emailAddress information
 			EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
+			emailAddressLinkDetail.setRelatedID(personDetail.getPersonID());
 
-			String EmailAddressLinkSQLStr = "SELECT EmailAddressLinkID FROM EmailAddressLink WHERE relatedID='"+personDetail.getPersonID()+"' AND primaryInd = '1'";
-			
-
-			statement = connection.createStatement();
-
-			resultSet = statement.executeQuery(EmailAddressLinkSQLStr);
-			if(resultSet.next())
-			{
-				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-			}
-			
 			ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
-			readEmailAddressDAO.readEmailAddress(emailAddressLinkDetail);
+			readEmailAddressDAO.readPrimaryEmailAddress(emailAddressLinkDetail);
 			personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
-			
-			//Read phoneNumber information
-			
+
+			// Read phoneNumber information
+
 			PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
-			
-			String PhoneNumberLinkSQLStr = "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='"+personDetail.getPersonID()+"' AND primaryInd = '1'";
-			
+
+			String PhoneNumberLinkSQLStr = "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='" + personDetail.getPersonID()
+					+ "' AND primaryInd = '1'";
+
 			statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(PhoneNumberLinkSQLStr);
-			if(resultSet.next())
-			{
+			if (resultSet.next()) {
 				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
 			}
-			
+
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
 			readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
 			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
-			
+
 		} catch (SQLException e) {
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 			e.printStackTrace();

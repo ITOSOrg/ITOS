@@ -29,7 +29,7 @@ import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 public class PersonRegistration extends HttpServlet {
 	UsersDetail usersDetail = new UsersDetail();
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -41,7 +41,8 @@ public class PersonRegistration extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -49,7 +50,8 @@ public class PersonRegistration extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -61,7 +63,7 @@ public class PersonRegistration extends HttpServlet {
 
 		// Call Validate Method
 		boolean errorInd = validatePersonDetails(request, personDetail);
-		String pageForwardStr ="";
+		String pageForwardStr = "";
 
 		if (errorInd) {
 
@@ -76,12 +78,14 @@ public class PersonRegistration extends HttpServlet {
 			if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 				pageForwardStr = "/PersonHome";
+				pageForwardStr += "?personID=" + personDetail.getPersonID();
+				
 			} else {
+				
 				pageForwardStr = "/RegistrationForm.jsp";
 			}
 		}
-		pageForwardStr+= "userName=" +usersDetail.getUserName();
-		
+
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}
@@ -101,25 +105,27 @@ public class PersonRegistration extends HttpServlet {
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
 		String gender = request.getParameter("gender");
-		
+
 		String emailAddress = request.getParameter("emailAddress");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		
-		/*String streetOne = request.getParameter("streetOne");
-		String streetTwo = request.getParameter("streetTwo");
-	 	String aptUnit = request.getParameter("aptUnit");
-		String city = request.getParameter("city");
-		String county = request.getParameter("county");
-		String state = request.getParameter("state");
-		String country = request.getParameter("country");
-		int zipCode =(new Integer (request.getParameter("zipCode")));*/
-		
+
+		/*
+		 * String streetOne = request.getParameter("streetOne"); String
+		 * streetTwo = request.getParameter("streetTwo"); String aptUnit =
+		 * request.getParameter("aptUnit"); String city =
+		 * request.getParameter("city"); String county =
+		 * request.getParameter("county"); String state =
+		 * request.getParameter("state"); String country =
+		 * request.getParameter("country"); int zipCode =(new Integer
+		 * (request.getParameter("zipCode")));
+		 */
+
 		personDetail.setTitle(title);
 		personDetail.setGender(gender);
-		
+
 		emailAddressDetail.setEmailAddress(emailAddress);
 		emailAddressLinkDetail.setTypeCode(typeCode);
 		emailAddressLinkDetail.setPrimaryInd(primaryInd);
@@ -143,18 +149,18 @@ public class PersonRegistration extends HttpServlet {
 		}
 		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 		personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
-		
-		/*personDetail.setStreetOne(streetOne);
-		personDetail.setStreetTwo(streetTwo);
-		personDetail.setAptUnit(aptUnit);
-		personDetail.setCity(city);
-		personDetail.setCounty(county);
-		personDetail.setState(state);
-		personDetail.setCountry(country);
-		personDetail.setZipCode(zipCode);*/
+
+		/*
+		 * personDetail.setStreetOne(streetOne);
+		 * personDetail.setStreetTwo(streetTwo);
+		 * personDetail.setAptUnit(aptUnit); personDetail.setCity(city);
+		 * personDetail.setCounty(county); personDetail.setState(state);
+		 * personDetail.setCountry(country); personDetail.setZipCode(zipCode);
+		 */
 
 		/**
-		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
+		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date
+		 * sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
 		 * personDetail.setDateOfBirth(sqlDate);
 		 */
 
@@ -168,10 +174,7 @@ public class PersonRegistration extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		
-
 		String userName = request.getParameter("userName");
-		
 
 		usersDetail.setUserName(userName);
 
@@ -218,31 +221,31 @@ public class PersonRegistration extends HttpServlet {
 		}
 		String password = request.getParameter("password");
 		usersDetail.setPassword(password);
-		/*if (password.length() < 8) {
-			errorMessageList.add("Password must contain at 8 charachters");
-		} */
-		
-		
-		//Phone Number Parameters
-        PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
-        PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
-		
-		Integer countryCode = (new Integer (request.getParameter("countryCode")));
-		Integer areaCode = (new Integer (request.getParameter("areaCode")));
-		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
-		Integer extension = (new Integer (request.getParameter("extension")));
-		Integer primaryInd1 = (new Integer (request.getParameter("primaryInd")));
+		/*
+		 * if (password.length() < 8) {
+		 * errorMessageList.add("Password must contain at 8 charachters"); }
+		 */
+
+		// Phone Number Parameters
+		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
+		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
+
+		Integer countryCode = (new Integer(request.getParameter("countryCode")));
+		Integer areaCode = (new Integer(request.getParameter("areaCode")));
+		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
+		Integer extension = (new Integer(request.getParameter("extension")));
+		Integer primaryInd1 = (new Integer(request.getParameter("primaryInd")));
 		String typeCode1 = request.getParameter("typeCode");
 		String startDate1 = request.getParameter("startDate");
 		String endDate1 = request.getParameter("endDate");
-		
+
 		phoneNumberDetail.setCountryCode(countryCode);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
 		phoneNumberDetail.setExtension(extension);
 		phoneNumberLinkDetail.setPrimaryInd(primaryInd1);
 		phoneNumberLinkDetail.setTypeCode(typeCode1);
-		
+
 		java.util.Date date1;
 		try {
 			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate1);

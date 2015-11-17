@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = (List<PhoneNumberLinkDetail>) request.getAttribute("phoneNumberDetailList");
+List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = (List<PhoneNumberLinkDetail>) request.getAttribute("PhoneNumberLinkDetailList");
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 %>
@@ -34,8 +34,8 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 			</thead>
 			
 			<%
-				for (int i = 0; i < PhoneNumberLinkDetailList.size(); i++) {
-					PhoneNumberLinkDetail	 phoneNumberLinkDetail = PhoneNumberLinkDetailList.get(i);
+				for (int i = 0; i < phoneNumberLinkDetailList.size(); i++) {
+					PhoneNumberLinkDetail	 phoneNumberLinkDetail = phoneNumberLinkDetailList.get(i);
 					
 					PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 			%>

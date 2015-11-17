@@ -52,12 +52,12 @@ public class ListPhoneNumber extends HttpServlet {
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
-		List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberLinkDetail);
+		List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberLinkDetail);
 
-		request.setAttribute("PhoneNumberLinkDetailList", PhoneNumberLinkDetailList);
+		request.setAttribute("PhoneNumberLinkDetailList", phoneNumberLinkDetailList);
 		request.setAttribute("relatedID", relatedID);
 
-		if (PhoneNumberLinkDetailList != null) {
+		if (phoneNumberLinkDetailList != null) {
 
 			pageForwardStr = "/components/profile/jsp/phone/ListPhoneNumber.jsp";
 

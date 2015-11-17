@@ -1,6 +1,7 @@
 package com.company.itos.profile.email.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,8 +26,8 @@ public class ReadEmailAddressDAO {
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
 
-			Statement statementemailAddressLink = connection.createStatement();
-			resultSet = statementemailAddressLink.executeQuery(emailAddressLinkSQLStr);
+			PreparedStatement preparedStatementemailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
+			resultSet = preparedStatementemailAddressLink.executeQuery();
 
 			if (resultSet.next()) {
 
@@ -43,8 +44,8 @@ public class ReadEmailAddressDAO {
 			String emailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID = \'" + emailAddressLinkDetail.getEmailAddressID()
 					+ "\' AND RECORDSTATUS='Active'";
 
-			Statement statementEmailAddress = connection.createStatement();
-			ResultSet resultSet1 = statementEmailAddress.executeQuery(emailAddressSQLStr);
+			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
+			ResultSet resultSet1 = preparedStatementEmailAddress.executeQuery();
 
 			if (resultSet1.next()) {
 
@@ -75,8 +76,8 @@ public class ReadEmailAddressDAO {
 			DBConnection dbConnection = new DBConnection();
 			Connection connection = dbConnection.getDBConnection();
 
-			Statement statementemailAddressLink = connection.createStatement();
-			resultSet = statementemailAddressLink.executeQuery(emailAddressLinkSQLStr);
+			PreparedStatement preparedStatementemailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
+			resultSet = preparedStatementemailAddressLink.executeQuery();
 
 			while (resultSet.next()) {
 
@@ -93,8 +94,8 @@ public class ReadEmailAddressDAO {
 			String emailAddressSQLStr = "SELECT * FROM EmailAddress WHERE emailAddressID = \'" + emailAddressLinkDetail.getEmailAddressID()
 					+ "\' AND RECORDSTATUS='Active'";
 
-			Statement statementEmailAddress = connection.createStatement();
-			ResultSet resultSet1 = statementEmailAddress.executeQuery(emailAddressSQLStr);
+			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
+			ResultSet resultSet1 = preparedStatementEmailAddress.executeQuery();
 
 			while (resultSet1.next()) {
 

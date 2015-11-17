@@ -19,59 +19,57 @@ public class UpdateEmailAddressDAO {
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
 		DBConnection dbConnection = new DBConnection();
-		//returnVersionNumber(emailAddressDetail);
-		
+		// returnVersionNumber(emailAddressDetail);
+
 		EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
-		
+
 		int emailAddressLinkVersionNoFromUpdate = emailAddressLinkDetail.getVersionNo();
 
 		int EmailAddressLinkVersionNoFromDatabase = returnVersionNumberFromEmailAddressLink(emailAddressLinkDetail);
-		
+
 		int emailAddressVersionNoFromUpdate = emailAddressDetail.getVersionNo();
-		
+
 		int EmailAddressVersionNoFromDatabase = returnVersionNumberFromEmailAddress(emailAddressLinkDetail);
 
 		if (emailAddressLinkVersionNoFromUpdate == EmailAddressLinkVersionNoFromDatabase) {
-			
-			if(emailAddressVersionNoFromUpdate == EmailAddressVersionNoFromDatabase){
 
-			EmailAddressLinkVersionNoFromDatabase++;
-			
-			EmailAddressVersionNoFromDatabase++;
+			if (emailAddressVersionNoFromUpdate == EmailAddressVersionNoFromDatabase) {
 
-		try {
-			
-			
-			connection = dbConnection.getDBConnection();
-			
-			String updateEmailAddressSqlStr = "UPDATE	EmailAddress	SET emailAddress = '" + emailAddressDetail.getEmailAddress() + "'"
-					+ " WHERE emailAddressID = '" + emailAddressLinkDetail.getEmailAddressID() + "'";
-			
-			PreparedStatement preparedStatement = connection.prepareStatement(updateEmailAddressSqlStr);
-			preparedStatement.executeUpdate();
-			
-			
-			String updateEmailAddressLinkSqlStr = "UPDATE EmailAddressLink SET typeCode = '" + emailAddressLinkDetail.getTypeCode()
-					+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "', startDate = ?, endDate = ?" + " WHERE emailAddressLinkID = '"
-					+ emailAddressLinkDetail.getEmailAddressLinkID() + "'";
+				EmailAddressLinkVersionNoFromDatabase++;
 
-			PreparedStatement preparedStatement1 = connection.prepareStatement(updateEmailAddressLinkSqlStr);
-			preparedStatement1.setDate(1, emailAddressLinkDetail.getStartDate());
-			preparedStatement1.setDate(2, emailAddressLinkDetail.getEndDate());
-			preparedStatement1.executeUpdate();
+				EmailAddressVersionNoFromDatabase++;
 
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+				try {
 
-		} catch (SQLException e) {
+					connection = dbConnection.getDBConnection();
 
-			e.printStackTrace();
-			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
-		}
-		}
+					String updateEmailAddressSqlStr = "UPDATE	EmailAddress	SET emailAddress = '" + emailAddressDetail.getEmailAddress()
+							+ "'" + " WHERE emailAddressID = '" + emailAddressLinkDetail.getEmailAddressID() + "'";
+
+					PreparedStatement preparedStatement = connection.prepareStatement(updateEmailAddressSqlStr);
+					preparedStatement.executeUpdate();
+
+					String updateEmailAddressLinkSqlStr = "UPDATE EmailAddressLink SET typeCode = '" + emailAddressLinkDetail.getTypeCode()
+							+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "', startDate = ?, endDate = ?"
+							+ " WHERE emailAddressLinkID = '" + emailAddressLinkDetail.getEmailAddressLinkID() + "'";
+
+					PreparedStatement preparedStatement1 = connection.prepareStatement(updateEmailAddressLinkSqlStr);
+					preparedStatement1.setDate(1, emailAddressLinkDetail.getStartDate());
+					preparedStatement1.setDate(2, emailAddressLinkDetail.getEndDate());
+					preparedStatement1.executeUpdate();
+
+					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+				}
+			}
 		}
 		return returnMassegeStr;
 	}
-	
+
 	public int returnVersionNumberFromEmailAddressLink(EmailAddressLinkDetail emailAddressLinkDetail) {
 
 		int versionNo = 0;
@@ -82,42 +80,43 @@ public class UpdateEmailAddressDAO {
 
 			String emailAddressSQLStr = "SELECT	versionNo, relatedID, emailAddressID	FROM	EmailAddressLink	WHERE	 emailAddressLinkID = '"
 					+ emailAddressLinkDetail.getEmailAddressLinkID() + "'";
-			Statement statement = connection.createStatement();
+			PreparedStatement PreparedStatementReturnVersionNumberFromEmailAddressLink = connection.prepareStatement(emailAddressSQLStr);
 
-			ResultSet resultSet = statement.executeQuery(emailAddressSQLStr);
+			ResultSet resultSet = PreparedStatementReturnVersionNumberFromEmailAddressLink.executeQuery();
 			if (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
 				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
 				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
-				//emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
+				// emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return  versionNo;
+		return versionNo;
 	}
+
 	public int returnVersionNumberFromEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
-		
+
 		int versionNo = 0;
 		try {
 			DBConnection dbConnection = new DBConnection();
-			
+
 			Connection connection = dbConnection.getDBConnection();
-			
+
 			String emailAddressSQLStr = "SELECT	versionNo	FROM	EmailAddress	WHERE	 emailAddressID = '"
 					+ emailAddressLinkDetail.getEmailAddressID() + "'";
-			Statement statement = connection.createStatement();
-			
-			ResultSet resultSet = statement.executeQuery(emailAddressSQLStr);
+			PreparedStatement preparedStatementReturnVersionNumberFromEmailAddress = connection.prepareStatement(emailAddressSQLStr);
+
+			ResultSet resultSet = preparedStatementReturnVersionNumberFromEmailAddress.executeQuery();
 			if (resultSet.next()) {
-				
+
 				versionNo = resultSet.getInt("versionNo");
-				//emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
+				// emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return  versionNo;
+		return versionNo;
 	}
 }

@@ -22,17 +22,17 @@ public class CreateEmailAddressDAO {
 
 		Connection connection = null;
 		try {
-			
+
 			EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
 
 			connection = dbConnection.getDBConnection();
 
-			Statement statement = connection.createStatement();
-			Statement statement2 = connection.createStatement();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT EmailAddressSEQ.nextval FROM DUAL");
+			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT EmailAddressLinkSEQ.nextval FROM DUAL");
 
-			ResultSet resultSetEASeq = statement.executeQuery("SELECT EmailAddressSEQ.nextval FROM DUAL");
+			ResultSet resultSetEASeq = preparedStatement.executeQuery();
 
-			ResultSet resultSetEALSeq = statement2.executeQuery("SELECT EmailAddressLinkSEQ.nextval FROM DUAL");
+			ResultSet resultSetEALSeq = preparedStatement2.executeQuery();
 
 			if (resultSetEASeq.next()) {
 				emailAddressDetail.setEmailAddressID(resultSetEASeq.getInt(1));
@@ -41,7 +41,6 @@ public class CreateEmailAddressDAO {
 			if (resultSetEALSeq.next()) {
 				emailAddressLinkDetail.setEmailAddressLinkID(resultSetEALSeq.getInt(1));
 			}
-			
 
 			String emailAddressSQLStr = "INSERT INTO EmailAddress ( emailAddressID, emailAddress, recordStatus, versionNo) "
 					+ "VALUES(?,  ?, 'Active', 1)";
@@ -53,22 +52,22 @@ public class CreateEmailAddressDAO {
 					+ emailAddressLinkDetail.getPrimaryInd()
 					+ "', ?, ?, 'Active', 1)";
 
-			PreparedStatement preparedStatement = connection.prepareStatement(emailAddressSQLStr);
+			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
 
-			preparedStatement.setInt(1, emailAddressDetail.getEmailAddressID());
-			preparedStatement.setString(2, emailAddressDetail.getEmailAddress());
+			preparedStatementEmailAddress.setInt(1, emailAddressDetail.getEmailAddressID());
+			preparedStatementEmailAddress.setString(2, emailAddressDetail.getEmailAddress());
 
-			preparedStatement.execute();
+			preparedStatementEmailAddress.execute();
 
-			PreparedStatement preparedStatement1 = connection.prepareStatement(emailAddressLinkSQLStr);
+			PreparedStatement preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
-			preparedStatement1.setInt(1, emailAddressLinkDetail.getEmailAddressLinkID());
-			preparedStatement1.setInt(2,  emailAddressLinkDetail.getRelatedID());
-			preparedStatement1.setInt(3, emailAddressDetail.getEmailAddressID());
-			preparedStatement1.setDate(4, emailAddressLinkDetail.getStartDate());
-			preparedStatement1.setDate(5, emailAddressLinkDetail.getEndDate());
+			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetail.getEmailAddressLinkID());
+			preparedStatementEmailAddressLink.setInt(2, emailAddressLinkDetail.getRelatedID());
+			preparedStatementEmailAddressLink.setInt(3, emailAddressDetail.getEmailAddressID());
+			preparedStatementEmailAddressLink.setDate(4, emailAddressLinkDetail.getStartDate());
+			preparedStatementEmailAddressLink.setDate(5, emailAddressLinkDetail.getEndDate());
 
-			preparedStatement1.execute();
+			preparedStatementEmailAddressLink.execute();
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {

@@ -28,7 +28,6 @@ public class ListEmailAddressDAO {
 
 		List<EmailAddressLinkDetail> emailAddressLinkDetailList = new ArrayList<EmailAddressLinkDetail>();
 
-
 		EmailAddressDetail emailAddressDetailFromDB = null;
 		EmailAddressLinkDetail emailAddressLinkDetail = null;
 		DBConnection dbConnection = new DBConnection();
@@ -40,7 +39,7 @@ public class ListEmailAddressDAO {
 		PreparedStatement preparedStatementEmailAddress = null;
 
 		try {
-			
+
 			connection = dbConnection.getDBConnection();
 
 			String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink	WHERE	RECORDSTATUS='Active' AND relatedID = ?";
@@ -77,7 +76,7 @@ public class ListEmailAddressDAO {
 					emailAddressDetailFromDB.setEmailAddress(resultSetEA.getString("emailAddress"));
 
 				}
-				
+
 				emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetailFromDB);
 				// Add object in list
 				emailAddressLinkDetailList.add(emailAddressLinkDetail);

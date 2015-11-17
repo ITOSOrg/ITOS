@@ -33,7 +33,7 @@ public class PersonListDAO {
 			while (resultSet.next()) {
 
 				PersonDetail personDetail = new PersonDetail();
-				personDetail.setPersonID(resultSet.getInt("PERSONID"));
+				personDetail.setPersonID(resultSet.getInt("personID"));
 				personDetail.setRefrenceNumber(resultSet
 						.getInt("REFRENCENUMBER"));
 				personDetail.setTitle(resultSet.getString("title"));

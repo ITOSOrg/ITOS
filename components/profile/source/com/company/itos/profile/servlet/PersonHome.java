@@ -46,6 +46,7 @@ public class PersonHome extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
+		String pageForwardStr = "";
 		
 		UsersDetail usersDetail = new UsersDetail();
 		
@@ -72,19 +73,23 @@ public class PersonHome extends HttpServlet {
 		//personDetail.setUserName(userName);
 
 		request.setAttribute("personDetail", personDetail);
+		request.setAttribute("personID", personID);
 		
 		/*personHomeDAO.getEmailAddressLinkID(emailAddressDetail);
 		request.setAttribute("emailAddressDetail", emailAddressDetail);*/
 		
-		RequestDispatcher requestDispatcher = null;
+		//RequestDispatcher requestDispatcher = null;
 		
 		if (action != null && action.equals("update")) {
-			requestDispatcher = request.getRequestDispatcher("/UpdatedRegistrationForm.jsp");
+			
+			pageForwardStr = "/UpdatedRegistrationForm.jsp";
+			pageForwardStr += "?personID" + personDetail.getPersonID();
+			//requestDispatcher = request.getRequestDispatcher("/UpdatedRegistrationForm.jsp");
 		} else {
-
-			requestDispatcher = request.getRequestDispatcher("/PersonHome.jsp");
+			pageForwardStr = "/PersonHome.jsp";
+			//requestDispatcher = request.getRequestDispatcher("/PersonHome.jsp");
 		}
-		
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 		
 	}

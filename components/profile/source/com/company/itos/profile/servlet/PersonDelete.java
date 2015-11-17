@@ -43,11 +43,11 @@ public class PersonDelete extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		Integer referenceNumber = new Integer(
-				request.getParameter("refrenceNumber"));
+		Integer personID = new Integer(
+				request.getParameter("personID"));
 
 		PersonDetail personDetail = new PersonDetail();
-		personDetail.setRefrenceNumber(referenceNumber);
+		personDetail.setPersonID(personID);
 
 		PersonDeleteDAO personDeleteDAO = new PersonDeleteDAO();
 		/**

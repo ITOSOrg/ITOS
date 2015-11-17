@@ -12,9 +12,11 @@
 	<%
 		PersonDetail personDetail = (PersonDetail) request
 				.getAttribute("personDetail");
+	
+	Integer personID = (Integer) request.getAttribute("personID");
 	%>
 	<form
-		action="/ITOS/PersonUpdate?userName=<%=personDetail.getUserName()%>&versionNo=<%=personDetail.getVersionNo()%>"
+		action="/ITOS/PersonUpdate?personID=<%=personID%>&versionNo=<%=personDetail.getVersionNo()%>"
 		method="POST">
 
 		<%

@@ -68,12 +68,12 @@
 					<td><a
 						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Read</a></td>
 					<td><a
-						href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>&act=update">Update</a></td>
+						href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>&act=update">Update</a></td>
 
 
 
 					<td><a
-						href="/ITOS/PersonDelete?refrenceNumber=<%=personDetail.getRefrenceNumber()%>"
+						href="/ITOS/PersonDelete?personID=<%=personDetail.getPersonID()%>"
 						onclick="openpopupwindow()">Delete </a></td>
 
 

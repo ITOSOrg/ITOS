@@ -59,15 +59,16 @@ public class PersonUpdate extends HttpServlet {
 
 		if (!errorInd) {
 
-			String userName = request.getParameter("userName");
-			personDetail.setUserName(userName);
+			int personID = (new Integer( request.getParameter("personID")));
+			personDetail.setPersonID(personID);
 
 			PersonUpdateDAO personUpdateDAO = new PersonUpdateDAO();
 			String returnMassegeStr = personUpdateDAO
 					.updatePerson(personDetail);
 			if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-				pageForwardStr = "/PersonHome";
+				//pageForwardStr = "/PersonHome";
+				pageForwardStr = "/PersonList";
 			} else {
 
 				pageForwardStr = "/PersonHome?act=update";

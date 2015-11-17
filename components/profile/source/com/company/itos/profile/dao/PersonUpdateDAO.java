@@ -39,8 +39,8 @@ public class PersonUpdateDAO {
 						+ personDetail.getMiddleName() + "', lastName='"
 						+ personDetail.getLastName() + "', gender='"
 						+ personDetail.getGender() + "', dateOfBirth = ? , versionNo ='"
-						+ versionNoFromDatabase + "' " + "	where	userName='"
-						+ personDetail.getUserName() + "'";
+						+ versionNoFromDatabase + "' " + "	where	personID='"
+						+ personDetail.getPersonID() + "'";
 
 				preparedStatement = connection.prepareStatement(personSQLStr);
 
@@ -73,8 +73,8 @@ public class PersonUpdateDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 USERNAME='"
-					+ personDetail.getUserName() + "'";
+			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 personID='"
+					+ personDetail.getPersonID()+ "'";
 			Statement statement = connection.createStatement();
 
 			resultSet = statement.executeQuery(personSQLStr);
@@ -95,8 +95,8 @@ public class PersonUpdateDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 			// PersonDetail personDetail = new PersonDetail();
-			String query = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	USERNAME='"
-					+ personDetail.getUserName() + "'";
+			String query = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	personID='"
+					+ personDetail.getPersonID() + "'";
 			Statement statement = connection.createStatement();
 			statement.executeQuery(query);
 		} catch (SQLException e) {

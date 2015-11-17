@@ -44,27 +44,25 @@ public class UpdateEmailAddress extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String pageForwardStr = "";
-		
+
 		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 
 		int emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
 		emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
-		
-		
+
 		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
 		emailAddressDetail.setEmailAddressID(emailAddressID);
-		
-		
-		
-		//int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
-		//emailAddressDetail.setEmailAddressID(emailAddressID);
+
+		// int emailAddressID = (new
+		// Integer(request.getParameter("emailAddressID")));
+		// emailAddressDetail.setEmailAddressID(emailAddressID);
 		int versionNo = (new Integer(request.getParameter("versionNo")));
 		emailAddressDetail.setVersionNo(versionNo);
 		emailAddressLinkDetail.setVersionNo(versionNo);
 
 		String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-		
+
 		String emailAddress = request.getParameter("emailAddress");
 		String typeCode = request.getParameter("typeCode");
 		String primaryInd = request.getParameter("primaryInd");
@@ -100,10 +98,10 @@ public class UpdateEmailAddress extends HttpServlet {
 
 		UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
 		String returnMassegeStr = updateEmailAddressDAO.updateEmailAddress(emailAddressLinkDetail);
-		
+
 		request.setAttribute("emailAddressLinkID", emailAddressLinkID);
 		request.setAttribute("emailAddressDetail", emailAddressDetail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/ListEmailAddress";
 

@@ -31,8 +31,7 @@ public class PersonDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -40,11 +39,11 @@ public class PersonDelete extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Integer personID = new Integer(
-				request.getParameter("personID"));
+		String pageForwardStr = null;
+
+		Integer personID = new Integer(request.getParameter("personID"));
 
 		PersonDetail personDetail = new PersonDetail();
 		personDetail.setPersonID(personID);
@@ -61,12 +60,24 @@ public class PersonDelete extends HttpServlet {
 		 */
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/PersonList");
-			requestDispatcher.forward(request, response);
+			pageForwardStr = "/PersonList";
+
+			/*
+			 * RequestDispatcher requestDispatcher =
+			 * request.getRequestDispatcher("/PersonList");
+			 * requestDispatcher.forward(request, response);
+			 */
 		} else {
-			RequestDispatcher requestDispatcher = request
-					.getRequestDispatcher("/AdministratorHome.jsp");
-			requestDispatcher.forward(request, response);
+
+			pageForwardStr = "/AdministratorHome.jsp";
+
+			/*
+			 * RequestDispatcher requestDispatcher = request
+			 * .getRequestDispatcher("/AdministratorHome.jsp");
+			 * requestDispatcher.forward(request, response);
+			 */
 		}
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
+		requestDispatcher.forward(request, response);
 	}
 }

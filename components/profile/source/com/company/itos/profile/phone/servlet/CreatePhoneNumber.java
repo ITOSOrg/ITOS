@@ -19,52 +19,55 @@ import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 /**
  * Servlet implementation class CreatePhoneNumber
  */
-//@WebServlet("/CreatePhoneNumber")
+// @WebServlet("/CreatePhoneNumber")
 public class CreatePhoneNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreatePhoneNumber() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+	public CreatePhoneNumber() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String pageForwardStr = "";
-		
+
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
 		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
-		
-		Integer countryCode = (new Integer (request.getParameter("countryCode")));
-		Integer areaCode = (new Integer (request.getParameter("areaCode")));
-		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
+
+		Integer countryCode = (new Integer(request.getParameter("countryCode")));
+		Integer areaCode = (new Integer(request.getParameter("areaCode")));
+		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
-		Integer extension = (new Integer (request.getParameter("extension")));
-		Integer primaryInd = (new Integer (request.getParameter("primaryInd")));
+		Integer extension = (new Integer(request.getParameter("extension")));
+		Integer primaryInd = (new Integer(request.getParameter("primaryInd")));
 		String typeCode = request.getParameter("typeCode");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		
+
 		phoneNumberDetail.setCountryCode(countryCode);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
-		phoneNumberLinkDetail.setRelatedID(relatedID);;
+		phoneNumberLinkDetail.setRelatedID(relatedID);
+		;
 		phoneNumberDetail.setExtension(extension);
 		phoneNumberLinkDetail.setPrimaryInd(primaryInd);
 		phoneNumberLinkDetail.setTypeCode(typeCode);
-		
+
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
@@ -83,16 +86,16 @@ public class CreatePhoneNumber extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
 		String returnMassegeStr = createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
-		
-		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS){
-			
+
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+
 			pageForwardStr = "/ListPhoneNumber";
-			
-		}else {
+
+		} else {
 			pageForwardStr = "/components/profile/jsp/phone/CreatePhoneNumber.jsp";
 		}
 

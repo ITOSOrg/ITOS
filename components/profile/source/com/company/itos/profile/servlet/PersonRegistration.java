@@ -67,8 +67,11 @@ public class PersonRegistration extends HttpServlet {
 
 		if (errorInd) {
 
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/RegistrationForm.jsp");
-			requestDispatcher.forward(request, response);
+			pageForwardStr = "/RegistrationForm.jsp";
+
+			// RequestDispatcher requestDispatcher =
+			// request.getRequestDispatcher("/RegistrationForm.jsp");
+			// requestDispatcher.forward(request, response);
 
 		} else {
 
@@ -79,9 +82,9 @@ public class PersonRegistration extends HttpServlet {
 
 				pageForwardStr = "/PersonHome";
 				pageForwardStr += "?personID=" + personDetail.getPersonID();
-				
+
 			} else {
-				
+
 				pageForwardStr = "/RegistrationForm.jsp";
 			}
 		}

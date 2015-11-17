@@ -55,8 +55,12 @@ public class PersonLogin extends HttpServlet {
 
 		boolean errorInd = validateLoginDetails(request, usersDetail);
 		if (errorInd) {
-			RequestDispatcher rd1 = request.getRequestDispatcher("/LoginForm.jsp");
-			rd1.forward(request, response);
+
+			pageForwardStr = "/LoginForm.jsp";
+
+			// RequestDispatcher rd1 =
+			// request.getRequestDispatcher("/LoginForm.jsp");
+			// rd1.forward(request, response);
 
 		} else {
 
@@ -72,12 +76,9 @@ public class PersonLogin extends HttpServlet {
 
 				pageForwardStr = "/PersonHome";
 
-				
 			} else {
 
 				pageForwardStr = "/LoginForm.jsp";
-
-				
 
 			}
 			pageForwardStr += "?personID=" + personDetail.getPersonID();

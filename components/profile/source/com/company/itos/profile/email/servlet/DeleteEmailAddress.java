@@ -41,31 +41,31 @@ public class DeleteEmailAddress extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageForwardStr = "";
-		
+
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
-		
+
 		int emailAddressID = (new Integer(request.getParameter("emailAddressID")));
 		int relatedID = (new Integer(request.getParameter("relatedID")));
 		int emailAddressLinkID = (new Integer(request.getParameter("emailAddressLinkID")));
-		
+
 		emailAddressDetail.setEmailAddressID(emailAddressID);
 		emailAddressLinkDetail.setRelatedID(relatedID);
 		emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
-		
+
 		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 
 		DeleteEmailAddressDAO deleteEmailAddressDAO = new DeleteEmailAddressDAO();
 		String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressLinkDetail);
-		
-		//TODO Pass relatedID to listphonenumber servlet
-		
+
+		// TODO Pass relatedID to listphonenumber servlet
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/ListEmailAddress";
 		} else {
 			pageForwardStr = "/ListEmailAddress";
 		}
-		pageForwardStr += "?relatedID=" +emailAddressLinkDetail.getRelatedID();
+		pageForwardStr += "?relatedID=" + emailAddressLinkDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

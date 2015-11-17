@@ -84,8 +84,6 @@ public class CreateEmailAddress extends HttpServlet {
 			e.printStackTrace();
 		}
 		emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
-		
-		
 
 		CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);

@@ -38,8 +38,7 @@ public class PersonUpdate extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -47,8 +46,7 @@ public class PersonUpdate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		boolean errorInd = false;
 		String pageForwardStr = "";
@@ -59,15 +57,14 @@ public class PersonUpdate extends HttpServlet {
 
 		if (!errorInd) {
 
-			int personID = (new Integer( request.getParameter("personID")));
+			int personID = (new Integer(request.getParameter("personID")));
 			personDetail.setPersonID(personID);
 
 			PersonUpdateDAO personUpdateDAO = new PersonUpdateDAO();
-			String returnMassegeStr = personUpdateDAO
-					.updatePerson(personDetail);
+			String returnMassegeStr = personUpdateDAO.updatePerson(personDetail);
 			if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-				//pageForwardStr = "/PersonHome";
+				// pageForwardStr = "/PersonHome";
 				pageForwardStr = "/PersonList";
 			} else {
 
@@ -101,20 +98,20 @@ public class PersonUpdate extends HttpServlet {
 		rd1.forward(request, response);
 	}
 
-	private boolean personValidate(HttpServletRequest request,
-			PersonDetail personDetail) {
+	private boolean personValidate(HttpServletRequest request, PersonDetail personDetail) {
 
 		List<String> errorMessageList = new ArrayList<String>();
 
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
 		String gender = request.getParameter("gender");
-		
+
 		personDetail.setTitle(title);
 		personDetail.setGender(gender);
 
 		/**
-		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
+		 * JavaUtildates javaUtildates = new JavaUtildates(); java.sql.Date
+		 * sqlDate = javaUtildates.stringToDateConversion(dateOfBirth);
 		 * personDetail.setDateOfBirth(sqlDate);
 		 */
 
@@ -127,13 +124,12 @@ public class PersonUpdate extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		String pattern = "^[a-zA-Z]*$";
 
 		String firstName = request.getParameter("firstName");
 		if (firstName == null || !firstName.matches(pattern)) {
-			errorMessageList
-					.add("FirstName	must	contain	A-Z	or	a-z	characters	only.");
+			errorMessageList.add("FirstName	must	contain	A-Z	or	a-z	characters	only.");
 			personDetail.setFirstName(firstName);
 		} else {
 			personDetail.setFirstName(firstName);
@@ -141,8 +137,7 @@ public class PersonUpdate extends HttpServlet {
 
 		String middleName = request.getParameter("middleName");
 		if (middleName == null || !middleName.matches(pattern)) {
-			errorMessageList
-					.add("MiddleName	must	contain	A-Z	or	a-z	characters	only.");
+			errorMessageList.add("MiddleName	must	contain	A-Z	or	a-z	characters	only.");
 			personDetail.setMiddleName(middleName);
 		} else {
 			personDetail.setMiddleName(middleName);
@@ -150,13 +145,12 @@ public class PersonUpdate extends HttpServlet {
 
 		String lastName = request.getParameter("lastName");
 		if (lastName == null || !lastName.matches(pattern)) {
-			errorMessageList
-					.add("MiddleName	must	contain	A-Z	or	a-z	characters	only.");
+			errorMessageList.add("MiddleName	must	contain	A-Z	or	a-z	characters	only.");
 			personDetail.setLastName(lastName);
 		} else {
 			personDetail.setLastName(lastName);
 		}
-		
+
 		personDetail.setVersionNo(Integer.parseInt(request.getParameter("versionNo")));
 
 		personDetail.setErrorMessageList(errorMessageList);

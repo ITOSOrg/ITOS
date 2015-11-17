@@ -21,7 +21,7 @@ import com.company.itos.profile.pojo.PersonSearchResult;
  */
 public class SearchPerson extends HttpServlet {
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -32,7 +32,8 @@ public class SearchPerson extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,41 +42,41 @@ public class SearchPerson extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String firstName = request.getParameter("firstName");
 		String middleName = request.getParameter("middleName");
 		String lastName = request.getParameter("lastName");
-		
 
-			PersonSearchCriteria personSearchCriteria = new PersonSearchCriteria();
-			personSearchCriteria.setFirstName(firstName == null ? "" : firstName);
-			personSearchCriteria.setMiddleName(middleName == null ? "" : middleName);
-			personSearchCriteria.setLastName(lastName == null ? "" : lastName);
+		PersonSearchCriteria personSearchCriteria = new PersonSearchCriteria();
+		personSearchCriteria.setFirstName(firstName == null ? "" : firstName);
+		personSearchCriteria.setMiddleName(middleName == null ? "" : middleName);
+		personSearchCriteria.setLastName(lastName == null ? "" : lastName);
 
-			PersonSearchDetails personSearchDetails = new PersonSearchDetails();
-			personSearchDetails.setPersonSearchCriteria(personSearchCriteria);
+		PersonSearchDetails personSearchDetails = new PersonSearchDetails();
+		personSearchDetails.setPersonSearchCriteria(personSearchCriteria);
 
-			//
-			SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
+		//
+		SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
 
-			//
-			List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
+		//
+		List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
 
-			long numberOfPerson = personDetailList.size();
+		long numberOfPerson = personDetailList.size();
 
-			PersonSearchResult personSearchResult = new PersonSearchResult();
+		PersonSearchResult personSearchResult = new PersonSearchResult();
 
-			personSearchResult.setNumberOfPerson(numberOfPerson);
-			personSearchResult.setPersonDetailList(personDetailList);
+		personSearchResult.setNumberOfPerson(numberOfPerson);
+		personSearchResult.setPersonDetailList(personDetailList);
 
-			personSearchDetails.setPersonSearchResult(personSearchResult);
+		personSearchDetails.setPersonSearchResult(personSearchResult);
 
-			request.setAttribute("personSearchDetails", personSearchDetails);
+		request.setAttribute("personSearchDetails", personSearchDetails);
 
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SearchedPersonInforamation.jsp");
-			requestDispatcher.forward(request, response);
-		}
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SearchedPersonInforamation.jsp");
+		requestDispatcher.forward(request, response);
 	}
+}

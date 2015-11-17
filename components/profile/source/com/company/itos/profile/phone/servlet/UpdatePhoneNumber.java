@@ -19,57 +19,59 @@ import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 /**
  * Servlet implementation class UpdatePhoneNumber
  */
-//@WebServlet("/UpdatePhoneNumber")
+// @WebServlet("/UpdatePhoneNumber")
 public class UpdatePhoneNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdatePhoneNumber() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UpdatePhoneNumber() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String pageForwardStr = "";
-		
+
 		PhoneNumberDetail phoneNumberDetail = new PhoneNumberDetail();
 		PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
-		
+
 		int phoneNumberLinkID = (new Integer(request.getParameter("phoneNumberLinkID")));
 		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
 		int phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
 		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
 		int versionNo = (new Integer(request.getParameter("versionNo")));
 		phoneNumberDetail.setVersionNo(versionNo);
-		
-		Integer countryCode = (new Integer (request.getParameter("countryCode")));
-		Integer areaCode = (new Integer (request.getParameter("areaCode")));
-		Long phoneNumber = (new Long (request.getParameter("phoneNumber")));
-		Integer extension = (new Integer (request.getParameter("extension")));
-		Integer primaryInd = (new Integer (request.getParameter("primaryInd")));
+
+		Integer countryCode = (new Integer(request.getParameter("countryCode")));
+		Integer areaCode = (new Integer(request.getParameter("areaCode")));
+		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
+		Integer extension = (new Integer(request.getParameter("extension")));
+		Integer primaryInd = (new Integer(request.getParameter("primaryInd")));
 		String typeCode = request.getParameter("typeCode");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
-		
+
 		phoneNumberDetail.setCountryCode(countryCode);
 		phoneNumberDetail.setAreaCode(areaCode);
 		phoneNumberDetail.setPhoneNumber(phoneNumber);
 		phoneNumberDetail.setExtension(extension);
 		phoneNumberLinkDetail.setPrimaryInd(primaryInd);
 		phoneNumberLinkDetail.setTypeCode(typeCode);
-		
+
 		java.util.Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
@@ -88,24 +90,21 @@ public class UpdatePhoneNumber extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		 phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
-		
+		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
+
 		UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
 		String returnMassegeStr = updatePhoneNumberDAO.updatephoneNumber(phoneNumberLinkDetail);
-		
-	
-		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS)
-		{
+
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/ListPhoneNumber";
-		}else{
-			
+		} else {
+
 			pageForwardStr = "";
 		}
 		pageForwardStr += "?relatedID=" + phoneNumberLinkDetail.getRelatedID();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
-		
-		
+
 	}
 
 }

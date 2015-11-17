@@ -48,7 +48,7 @@ public class ListPhoneNumber extends HttpServlet {
 
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		phoneNumberLinkDetail.setRelatedID(relatedID);
-		
+
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();

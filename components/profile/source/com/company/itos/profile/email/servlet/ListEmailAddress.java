@@ -44,7 +44,7 @@ public class ListEmailAddress extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String pageForwardStr = "";
-		
+
 		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
 
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
@@ -52,9 +52,6 @@ public class ListEmailAddress extends HttpServlet {
 
 		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
 		List<EmailAddressLinkDetail> emailAddressLinkDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressLinkDetail);
-
-		
-		
 
 		request.setAttribute("emailAddressLinkDetailList", emailAddressLinkDetailList);
 
@@ -68,7 +65,7 @@ public class ListEmailAddress extends HttpServlet {
 
 			pageForwardStr = "/PersonHome";
 		}
-		
+
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

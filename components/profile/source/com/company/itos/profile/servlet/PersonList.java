@@ -31,8 +31,7 @@ public class PersonList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -40,23 +39,30 @@ public class PersonList extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PersonListDAO personListDAO = new PersonListDAO();
+
+		String pageForwardStr = null;
+
 		List<PersonDetail> personDetailList = personListDAO.listAllStudent();
 		request.setAttribute("personDetailList", personDetailList);
 
 		if (personDetailList != null) {
-			RequestDispatcher rd = request
-					.getRequestDispatcher("/AdministratorHome.jsp");
-			rd.forward(request, response);
-		} else {
-			RequestDispatcher rd1 = request.getRequestDispatcher("/Login.jsp");
-			rd1.forward(request, response);
 
+			pageForwardStr = "/AdministratorHome.jsp";
+
+			/*
+			 * RequestDispatcher rd = request
+			 * .getRequestDispatcher("/AdministratorHome.jsp");
+			 * rd.forward(request, response);
+			 */
+		} else {
+			pageForwardStr = "/Login.jsp";
 		}
-		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
+		requestDispatcher.forward(request, response);
+
 	}
 
 }

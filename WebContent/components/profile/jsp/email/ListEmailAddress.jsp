@@ -20,8 +20,9 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 
 
 %>
+			<a href="/ITOS/PersonHome?personID=<%= relatedID%>">Person Home</a><br><br>
 
-<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create</a><br>
+<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create Email Address</a><br>
 <form action="/ITOS/ListEmailAddress" method = "POST">
 <table border=1>
 			<thead>
@@ -53,8 +54,7 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Delete</a></td>
 				</tr>
 				
-			</tbody><br></br>
-			<a href="/ITOS/PersonHome?personID=<%=emailAddressLinkDetail.getRelatedID()%>">Person Home</a>
+			</tbody>
 			<%} %>
 		</table>
 		</form>

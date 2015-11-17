@@ -11,7 +11,6 @@ import java.util.List;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
-import com.company.itos.profile.pojo.PersonDetail;
 
 /**
  * 
@@ -25,12 +24,13 @@ public class ListEmailAddressDAO {
 	 * @param emailAddressDetail
 	 * @return
 	 */
-	public List<EmailAddressLinkDetail> listAllEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
+	public List<EmailAddressLinkDetail> listAllEmailAddress(EmailAddressLinkDetail emailAddressLinkDetailkey) {
 
 		List<EmailAddressLinkDetail> emailAddressLinkDetailList = new ArrayList<EmailAddressLinkDetail>();
 
 
 		EmailAddressDetail emailAddressDetailFromDB = null;
+		EmailAddressLinkDetail emailAddressLinkDetail = null;
 		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
@@ -47,7 +47,7 @@ public class ListEmailAddressDAO {
 
 			preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
-			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetail.getRelatedID());
+			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetailkey.getRelatedID());
 
 			resultSet = preparedStatementEmailAddressLink.executeQuery();
 
@@ -58,6 +58,7 @@ public class ListEmailAddressDAO {
 			while (resultSet.next()) {
 
 				emailAddressDetailFromDB = new EmailAddressDetail();
+				emailAddressLinkDetail = new EmailAddressLinkDetail();
 
 				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
 				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));

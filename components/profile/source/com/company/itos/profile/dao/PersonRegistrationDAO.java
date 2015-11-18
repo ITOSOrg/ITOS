@@ -31,12 +31,12 @@ import com.company.itos.profile.pojo.PersonSearchDetails;
  */
 public class PersonRegistrationDAO {
 
-	PreparedStatement preparedStatement;
 
 	ResultSet resultSet;
 
 	public String registerPerson(PersonDetail personDetail) {
 
+		PreparedStatement preparedStatement = null;
 		String returnMassegeStr = "";
 		boolean personExistInd = personExist(personDetail);
 		boolean userNameExistInd = checkingUserName(personDetail);
@@ -47,8 +47,8 @@ public class PersonRegistrationDAO {
 			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
 			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 
-			String usersSQLStr = "INSERT	INTO	USERS(userName,password,recordStatus)	VALUES('" + usersDetail.getUserName() + "','"
-					+ usersDetail.getPassword() + "','active')";
+			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName() + "','"
+					+ usersDetail.getPassword() + "','active', ?)";
 
 			DBConnection dbConnection = new DBConnection();
 
@@ -95,8 +95,9 @@ public class PersonRegistrationDAO {
 
 			try {
 				// connection = dbConnection.getDBConnection();
-
+				
 				preparedStatement = connection.prepareStatement(usersSQLStr);
+				preparedStatement.setInt(1, personDetail.getPersonID());
 
 				preparedStatement.execute();
 

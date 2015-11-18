@@ -15,6 +15,8 @@ import java.util.List;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.address.dao.CreateAddressDAO;
+import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -31,7 +33,6 @@ import com.company.itos.profile.pojo.PersonSearchDetails;
  */
 public class PersonRegistrationDAO {
 
-
 	ResultSet resultSet;
 
 	public String registerPerson(PersonDetail personDetail) {
@@ -46,9 +47,10 @@ public class PersonRegistrationDAO {
 			UsersDetail usersDetail = personDetail.getUsersDetail();
 			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
 			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
+			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
 
-			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName() + "','"
-					+ usersDetail.getPassword() + "','active', ?)";
+			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
+					+ "','" + usersDetail.getPassword() + "','active', ?)";
 
 			DBConnection dbConnection = new DBConnection();
 
@@ -64,6 +66,7 @@ public class PersonRegistrationDAO {
 					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
 					phoneNumberLinkDetail.setRelatedID(resultSet.getInt(1));
 					personDetail.setPersonID(resultSet.getInt(1));
+					addressLinkDetail.setRelatedID(resultSet.getInt(1));
 				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -95,7 +98,7 @@ public class PersonRegistrationDAO {
 
 			try {
 				// connection = dbConnection.getDBConnection();
-				
+
 				preparedStatement = connection.prepareStatement(usersSQLStr);
 				preparedStatement.setInt(1, personDetail.getPersonID());
 
@@ -120,6 +123,9 @@ public class PersonRegistrationDAO {
 
 				CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
 				createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
+
+				CreateAddressDAO createAddressDAO = new CreateAddressDAO();
+				createAddressDAO.createAddress(addressLinkDetail);
 
 				// PreparedStatement preparedStatement2 =
 				// connection.prepareStatement(sql1);

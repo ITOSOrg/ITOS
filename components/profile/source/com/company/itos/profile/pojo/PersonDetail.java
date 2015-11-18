@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
@@ -72,6 +73,8 @@ public class PersonDetail {
 	private String country;
 	
 	private int zipCode;
+	
+	private AddressLinkDetail addressLinkDetail = null;
 	
 	
 
@@ -333,6 +336,14 @@ public class PersonDetail {
 
 	public void setPhoneNumberLinkDetail(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		this.phoneNumberLinkDetail = phoneNumberLinkDetail;
+	}
+
+	public AddressLinkDetail getAddressLinkDetail() {
+		return addressLinkDetail;
+	}
+
+	public void setAddressLinkDetail(AddressLinkDetail addressLinkDetail) {
+		this.addressLinkDetail = addressLinkDetail;
 	}
 
 }

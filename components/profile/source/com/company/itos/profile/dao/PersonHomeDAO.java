@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
+import com.company.itos.profile.address.dao.ReadAddressDAO;
+import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -68,6 +70,8 @@ public class PersonHomeDAO {
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
+			
+			
 
 			// Read emailAddress information
 			EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
@@ -76,29 +80,25 @@ public class PersonHomeDAO {
 			ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 			readEmailAddressDAO.readPrimaryEmailAddress(emailAddressLinkDetail);
 			personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
+			
+			
 
 			// Read phoneNumber information
 
 			PhoneNumberLinkDetail phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 			phoneNumberLinkDetail.setRelatedID(personDetail.getPersonID());
 
-			/*
-			 * String PhoneNumberLinkSQLStr =
-			 * "SELECT phoneNumberLinkID FROM PhoneNumberLink WHERE relatedID='"
-			 * + personDetail.getPersonID() + "' AND primaryInd = '1'";
-			 * 
-			 * statement = connection.createStatement();
-			 * 
-			 * resultSet = statement.executeQuery(PhoneNumberLinkSQLStr); if
-			 * (resultSet.next()) {
-			 * phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet
-			 * .getInt("phoneNumberLinkID")); }
-			 */
-
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
-			// readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
 			readPhoneNumberDAO.readPrimaryPhoneNumber(phoneNumberLinkDetail);
 			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
+			
+			//Read Address information
+			AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
+			addressLinkDetail.setRelatedID(personDetail.getPersonID());
+			
+			ReadAddressDAO readAddressDAO = new ReadAddressDAO();
+			readAddressDAO.readPrimaryAddress(addressLinkDetail);
+			personDetail.setAddressLinkDetail(addressLinkDetail);
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

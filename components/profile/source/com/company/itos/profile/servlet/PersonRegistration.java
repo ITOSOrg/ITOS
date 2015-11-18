@@ -19,6 +19,8 @@ import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
+import com.company.itos.profile.address.pojo.AddressDetail;
+import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.dao.PersonRegistrationDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -269,6 +271,61 @@ public class PersonRegistration extends HttpServlet {
 		}
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 		personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
+		
+		
+		// insert data for Address table
+		
+		
+		AddressDetail addressDetail = new AddressDetail();
+		
+		String streetOne = request.getParameter("streetOne");
+		String streetTwo = request.getParameter("streetTwo");
+		String aptUnit = request.getParameter("aptUnit");
+		String city = request.getParameter("city");
+		String county = request.getParameter("county");
+		String state = request.getParameter("state");
+		String country = request.getParameter("country");
+		int zipCode =(new Integer (request.getParameter("zipCode")));
+		
+		addressDetail.setStreetOne(streetOne);
+		addressDetail.setStreetTwo(streetTwo);
+		addressDetail.setAptUnit(aptUnit);
+		addressDetail.setCity(city);
+		addressDetail.setCounty(county);
+		addressDetail.setState(state);
+		addressDetail.setCountry(country);
+		addressDetail.setZipCode(zipCode);
+		
+		AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
+		
+		String typeCode2 = request.getParameter("typeCode");
+		int primaryInd2 =(new Integer (request.getParameter("primaryInd")));
+		String startDate2 = request.getParameter("startDate");
+		String endDate2 = request.getParameter("endDate");
+		
+		addressLinkDetail.setTypeCode(typeCode2);
+		addressLinkDetail.setPrimaryInd(primaryInd2);
+		
+		java.util.Date date2;
+		try {
+			date2 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+			java.sql.Date sqlDate = new java.sql.Date(date2.getTime());
+			addressLinkDetail.setStartDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			date2 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+			java.sql.Date sqlDate = new java.sql.Date(date2.getTime());
+			addressLinkDetail.setEndDate(sqlDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		addressLinkDetail.setAddressDetail(addressDetail);
+		personDetail.setAddressLinkDetail(addressLinkDetail);
 
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);

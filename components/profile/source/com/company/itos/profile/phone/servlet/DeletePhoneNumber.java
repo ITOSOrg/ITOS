@@ -50,6 +50,8 @@ public class DeletePhoneNumber extends HttpServlet {
 		Integer phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
 		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
 		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
+		phoneNumberLinkDetail.setRelatedID(relatedID);
 
 		phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 
@@ -58,9 +60,11 @@ public class DeletePhoneNumber extends HttpServlet {
 
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/ListPhoneNumber";
+			pageForwardStr += "?relatedID" + phoneNumberLinkDetail.getRelatedID();
 		} else {
 			pageForwardStr = "/ListPhoneNumber";
 		}
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

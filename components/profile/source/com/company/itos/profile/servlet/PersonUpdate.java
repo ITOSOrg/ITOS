@@ -117,7 +117,7 @@ public class PersonUpdate extends HttpServlet {
 
 		try {
 
-			java.util.Date date = new SimpleDateFormat("MM-dd-yyyy").parse(dateOfBirth);
+			java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 			personDetail.setDateOfBirth(sqlDate);
 

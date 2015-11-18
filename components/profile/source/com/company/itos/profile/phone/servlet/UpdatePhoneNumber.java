@@ -53,8 +53,10 @@ public class UpdatePhoneNumber extends HttpServlet {
 		phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
 		int phoneNumberID = (new Integer(request.getParameter("phoneNumberID")));
 		phoneNumberDetail.setPhoneNumberID(phoneNumberID);
-		int versionNo = (new Integer(request.getParameter("versionNo")));
-		phoneNumberDetail.setVersionNo(versionNo);
+		int versionNoPN = (new Integer(request.getParameter("versionNo")));
+		phoneNumberDetail.setVersionNo(versionNoPN);
+		int versionNoPNL = (new Integer(request.getParameter("versionNo")));
+		phoneNumberLinkDetail.setVersionNo(versionNoPNL);
 
 		Integer countryCode = (new Integer(request.getParameter("countryCode")));
 		Integer areaCode = (new Integer(request.getParameter("areaCode")));

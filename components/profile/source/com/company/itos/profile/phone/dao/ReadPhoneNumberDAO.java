@@ -53,6 +53,7 @@ public class ReadPhoneNumberDAO {
 				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
 				phoneNumberDetail.setExtension(resultSetPhoneNumber.getInt("extension"));
+				phoneNumberDetail.setVersionNo(resultSetPhoneNumber.getInt("versionNo"));
 
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}

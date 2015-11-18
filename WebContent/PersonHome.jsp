@@ -13,18 +13,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Insert title here</title>
-<link href="jquery-ui\jquery-ui.css" rel="stylesheet"/>
-<script src="js\jquery.js" type="text/javascript"></script>
-<script src="jquery-ui\jquery-ui.js" type="text/javascript"></script>
-<script type="text/javascript">
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 
- <script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+  <script>
+
   $(function() {
-    $( "#accordion" ).accordion();
+    $( "#myaccordion" ).accordion();
   });
   </script>
 </head>
 <body>
+<div id="myaccordion">
+<h2>Person Detail</h2>
+<div>
+
 		<%
 			PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
 			
@@ -36,7 +42,8 @@
 
 			String name = request.getParameter("firstName");
 		%>
-<div id="accordion">
+		
+		
 	<form action="/ITOS/PersonHome" method="post">
 
 
@@ -98,9 +105,12 @@
 		</table>
 		
 	</form>
-	</div><br><br>
+	</div>
+	<br><br>
 	
+	<h2>Email Address Detail</h2>
 	<div>
+	
 	<form action="/ITOS/ReadEmailAddress" method = "POST">
 	<table border=1>
 	<tbody>
@@ -122,9 +132,12 @@
 		</table>
 		
 	</form>
-	</div><br><br>
+	</div>
+	<br><br>
 	
+	<h2>Phone Number Detail</h2>
 	<div>
+	
 	<form action="/ITOS/ReadPhoneNumber" method = "POST">
 	<table border=1>
 	<tbody>
@@ -157,9 +170,12 @@
 		<br><a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp <br>
 	
 	
+	</form>
 	<form action="/ITOS/PersonLogOut" method="POST">
 		<br> <input type="submit" value="LogOut">
-	</form>
 	</div>
+	</div>
+	
+	
 </body>
 </html>

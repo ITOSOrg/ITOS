@@ -43,7 +43,7 @@ public class UpdatePhoneNumberDAO {
 				try {
 					connection = dbConnection.getDBConnection();
 
-					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ?";
+					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ? WHERE phoneNumberID = '"+phoneNumberLinkDetail.getPhoneNumberID()+"'";
 
 					PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
 					preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getCountryCode());
@@ -53,7 +53,7 @@ public class UpdatePhoneNumberDAO {
 
 					preparedStatementPhoneNumber.executeUpdate();
 
-					String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ?";
+					String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ? WHERE phoneNumberLinkID = '"+phoneNumberLinkDetail.getPhoneNumberLinkID()+"' ";
 
 					PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
 					preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
@@ -83,7 +83,7 @@ public class UpdatePhoneNumberDAO {
 
 			Connection connection = dbConnection.getDBConnection();
 
-			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
+			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID,phoneNumberID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
 					+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "'";
 
 			PreparedStatement preparedStatementReturnPhoneNumberLinkVersionNumber = connection.prepareStatement(phoneNumberLinkSQLStr);
@@ -93,6 +93,7 @@ public class UpdatePhoneNumberDAO {
 
 				versionNo = resultSet.getInt("versionNo");
 				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

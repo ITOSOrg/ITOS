@@ -11,11 +11,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#myaccordion").accordion();
+	});
+</script>
 </head>
 <body>
 
 
-
+<div id="myaccordion">
+		<h2>Administrator Home</h2>
+		<div>
 	
 	<form action="/ITOS/PersonList" method="post">
 	<%
@@ -82,11 +97,13 @@
 			<%
 				}
 			%>
-			<a href="RegistrationForm.jsp">Add User</a>
-			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a><br></br>
+		<a href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Person Home</a><br><br>
 			
 		</table><br>
-		<a href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Person Home</a>
-</form>		
+			<a href="RegistrationForm.jsp">Add User</a>
+			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a><br></br>
+</form>
+</div>
+</div>		
 </body>
 </html>

@@ -4,6 +4,9 @@
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
 <%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
+<%@ page import="com.company.itos.profile.pojo.UsersDetail"%>
+<%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
+<%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page
 	import="com.company.itos.profile.servlet.PersonRegistration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -60,12 +63,19 @@ $(document).ready(function()
 				}
 			%>
 			<%
+			UsersDetail usersDetail = personDetail.getUsersDetail();
+			
 			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
 			EmailAddressDetail emailAddressDetail  = emailAddressLinkDetail.getEmailAddressDetail();
 	 
 			 PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+			
+			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
+			AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
 			%>
+			
+			<!-- update Person table parameter -->
 			
 			<tr>
 				<td>Title :</td>
@@ -102,16 +112,21 @@ $(document).ready(function()
 					value="<%=personDetail.getDateOfBirth()%>"></td>
 			</tr>
 			
+			<!-- update Users table parameter -->
+			
 			<tr>
 				<td>UserName:</td>
 				<td><input type="text" name="userName"
-					value="<%=personDetail.getUsersDetail().getUserName()%>"></td>
+					value="<%=usersDetail.getUserName()%>"></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
 				<td><input type="text" name="password"
-					value="<%=personDetail.getUsersDetail().getPassword()%>"></td>
+					value="<%=usersDetail.getPassword()%>"></td>
 			</tr>
+			
+			<!-- update EmailAddress table parameter -->
+			
 			<tr>
 				<td>Email Address:</td>
 				<td><input type="text" name="emailAddress"
@@ -137,6 +152,9 @@ $(document).ready(function()
 				<td><input type="text" name="endDate"
 					value="<%=emailAddressLinkDetail.getEndDate()%>"></td>
 			</tr>
+			
+			<!-- update phoneNumber table parameter -->
+			
 			<tr>
 		<td> Country Code:</td>
 		<td><input type="text" name="countryCode"
@@ -178,6 +196,75 @@ $(document).ready(function()
 		<td><input type="text" name="endDate"
 		      value="<%=phoneNumberLinkDetail.getEndDate()%>"></td>
 		</tr>
+		
+		<!-- update Address table parameter -->
+		<tr>
+				<td>StreetOne:</td>
+				<td><input type="text" name="streetOne" maxlength="50"
+				     value="<%=addressDetail.getStreetOne()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>StreetTwo:</td>
+				<td><input type="text" name="streetTwo" maxlength="50"
+				    value="<%=addressDetail.getStreetTwo()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>AptUnit:</td>
+				<td><input type="text" name="aptUnit" maxlength="20"
+				      value="<%=addressDetail.getAptUnit()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>City:</td>
+				<td><input type="text" name="city"
+				    value="<%=addressDetail.getCity()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>County:</td>
+				<td><input type="text" name="county"
+				   value="<%=addressDetail.getCounty()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="state"
+				   value="<%=addressDetail.getState()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>Country</td>
+				<td><input type="text" name="country"
+				  value="<%=addressDetail.getCountry()%>"></td>
+			</tr>
+			
+			<tr>
+				<td>ZipCode:</td>
+				<td><input type="text" name="zipCode"
+				  value="<%=addressDetail.getZipCode()%>"></td>
+			</tr>
+			<tr>
+				<td>Type Code :</td>
+				<td><input type="text" name="typeCode"
+				   value="<%=addressLinkDetail.getTypeCode()%>"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd :</td>
+				<td><input type="text" name="primaryInd"
+				    value="<%=addressLinkDetail.getPrimaryInd()%>"></td>
+			</tr>
+			<tr>
+				<td>Start Date :</td>
+				<td><input type="text" name="startDate"
+				   value="<%=addressLinkDetail.getStartDate()%>"></td>
+			</tr>
+			<tr>
+				<td>End Date :</td>
+				<td><input type="text" name="endDate"
+				   value="<%=addressLinkDetail.getEndDate()%>"></td>
+			</tr> 
 
 			<%
 				} else {
@@ -292,8 +379,8 @@ $(document).ready(function()
 		<td><input type="text" name="endDate"></td>
 		</tr>
 			
-			
-			<!-- <tr>
+			<!-- Enter Address table parameter -->
+		<tr>
 				<td>StreetOne:</td>
 				<td><input type="text" name="streetOne" maxlength="50"></td>
 			</tr>
@@ -331,7 +418,23 @@ $(document).ready(function()
 			<tr>
 				<td>ZipCode:</td>
 				<td><input type="text" name="zipCode"></td>
-			</tr> -->
+			</tr>
+			<tr>
+				<td>Type Code :</td>
+				<td><input type="text" name="typeCode"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd :</td>
+				<td><input type="text" name="primaryInd"></td>
+			</tr>
+			<tr>
+				<td>Start Date :</td>
+				<td><input type="text" name="startDate"></td>
+			</tr>
+			<tr>
+				<td>End Date :</td>
+				<td><input type="text" name="endDate"></td>
+			</tr> 
 
 			
 			<%

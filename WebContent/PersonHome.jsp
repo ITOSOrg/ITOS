@@ -6,6 +6,8 @@
 <%@ page
 	import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
 <%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
+<%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
+<%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -42,6 +44,9 @@
 
 				PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 				PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
+				
+				AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
+				AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
 
 				String name = request.getParameter("firstName");
 			%>
@@ -110,7 +115,6 @@
 
 			</form>
 		</div>
-		<br> <br>
 
 		<h2>Email Address Detail</h2>
 		<div>
@@ -138,7 +142,6 @@
 
 			</form>
 		</div>
-		<br> <br>
 
 		<h2>Phone Number Detail</h2>
 		<div>
@@ -176,15 +179,55 @@
 
 				</table>
 
-
-				<br> <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
-				<br>
-
-
 			</form>
+		</div>
+		<h2>Address Detail</h2>
+		<div>
+		<form action="/ITOS/ReadAddress" method="POST">
+		<table border=1>
+		
+		<tbody>
+						<th align="left">StreetOne: <%=addressDetail.getStreetOne()%></th>
+						<th align="left">StreetTwo: <%=addressDetail.getStreetTwo()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">AptUnit: <%=addressDetail.getAptUnit()%></th>
+						<th align="left">City: <%=addressDetail.getCity()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">County: <%=addressDetail.getCounty()%></th>
+						<th align="left">State: <%=addressDetail.getState()%></th>
+
+					</tbody>
+					<tbody>
+						<th align="left">Country: <%=addressDetail.getCountry()%></th>
+						<th align="left">ZipCode: <%=addressDetail.getZipCode()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">Type Code: <%=addressLinkDetail.getTypeCode()%></th>
+						<th align="left">PrimaryInd: <%=addressLinkDetail.getPrimaryInd()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">Start Date: <%=addressLinkDetail.getStartDate()%></th>
+						<th align="left">End Date: <%=addressLinkDetail.getEndDate()%></th>
+					</tbody>
+					<tbody>
+						<th><a
+							href="/ITOS/ListAddress?relatedID=<%=addressLinkDetail.getRelatedID()%>">Address
+								List</a></th>
+
+					</tbody>
+
+				</table>
+		
+		
 			<form action="/ITOS/PersonLogOut" method="POST">
 				<br> <input type="submit" value="LogOut">
+				<br><br> <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+				<br>
+		</form>
 		</div>
+		</form>
 	</div>
 
 

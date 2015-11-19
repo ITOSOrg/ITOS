@@ -8,6 +8,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#myaccordion").accordion();
+	});
+</script>
 </head>
 <body>
 <%
@@ -15,6 +28,11 @@ List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = (List<PhoneNumberLinkDet
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 %>
+
+<div id="myaccordion">
+		<h2>Phone Number List Workspace</h2>
+		<div>
+
 <a href="/ITOS/PersonHome?personID=<%= relatedID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 <a href="/ITOS/components/profile/jsp/phone/CreatePhoneNumber.jsp?relatedID=<%= relatedID%>">Create Phone Number</a>
@@ -59,5 +77,7 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 			<%} %>
 		</table>
 		</form>
+		</div>
+		</div>
 </body>
 </html>

@@ -22,7 +22,7 @@
 					<th>PrimaryInd:</th>
 					<th>Start Date:</th>
 					<th>End Date:</th>
-					<th colspan=3>Action</th>
+					<th>Record Status:</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,12 +32,11 @@
 					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
 					<td><%=emailAddressLinkDetail.getStartDate() %></td>
 					<td><%=emailAddressLinkDetail.getEndDate() %></td>
-					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>">Delete</a></td>
-					<td><a href="/components/profile/jsp/email/CreateEmailAddress.jsp">Create</a></td>
+					<td><%=emailAddressDetail.getRecordStatus() %></td>
 				</tr>
 			</tbody>
 		</table>
+				<br><a href="/ITOS/ListEmailAddress?relatedID=<%= emailAddressLinkDetail.getRelatedID() %>">EmailAddressList Home</a></td>
 		
 	</form>
 </body>

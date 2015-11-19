@@ -14,7 +14,7 @@ public class PhoneNumberDetail {
 	
 	private int extension;
 	
-	
+	private String recordStatus;
 	
 	private int versionNo;
 
@@ -65,6 +65,14 @@ public class PhoneNumberDetail {
 
 	public void setVersionNo(int versionNo) {
 		this.versionNo = versionNo;
+	}
+
+	public String getRecordStatus() {
+		return recordStatus;
+	}
+
+	public void setRecordStatus(String recordStatus) {
+		this.recordStatus = recordStatus;
 	}
 	
 	

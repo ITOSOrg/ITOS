@@ -51,6 +51,7 @@ public class ReadEmailAddressDAO {
 
 				EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 				emailAddressDetail.setEmailAddress(resultSet1.getString("emailAddress"));
+				emailAddressDetail.setRecordStatus(resultSet1.getString("recordStatus"));
 				emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetail);
 			}
 

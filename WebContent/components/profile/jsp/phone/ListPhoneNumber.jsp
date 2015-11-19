@@ -49,7 +49,7 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<th>PrimaryInd:</th>
 					<th>Start Date:</th>
 					<th>End Date:</th>
-					<th colspan=2>Action</th>
+					<th colspan=3>Action</th>
 				</tr>
 			</thead>
 			
@@ -72,6 +72,7 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<td><%=phoneNumberLinkDetail.getEndDate()%></td>
 					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&act=update">Update</a> </td>
 					<td><a href="/ITOS/DeletePhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&relatedID=<%=relatedID%>">Delete</a></td>
+					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&relatedID=<%=relatedID%>">Read</a></td>
 				</tr>
 			</tbody><br></br>
 			<%} %>

@@ -60,7 +60,7 @@ public class ReadPhoneNumber extends HttpServlet {
 			pageForwardStr = "/components/profile/jsp/phone/UpdatePhoneNumber.jsp";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "";
+			pageForwardStr = "/components/profile/jsp/phone/ReadPhoneNumber.jsp";
 		}
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);

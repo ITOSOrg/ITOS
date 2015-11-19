@@ -54,6 +54,7 @@ public class ReadPhoneNumberDAO {
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
 				phoneNumberDetail.setExtension(resultSetPhoneNumber.getInt("extension"));
 				phoneNumberDetail.setVersionNo(resultSetPhoneNumber.getInt("versionNo"));
+				phoneNumberDetail.setRecordStatus(resultSetPhoneNumber.getString("recordStatus"));
 
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}

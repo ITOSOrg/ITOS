@@ -10,6 +10,8 @@ public class EmailAddressDetail {
 	
 	private int versionNo;
 	
+	private String recordStatus;
+	
 
 	
 
@@ -35,6 +37,14 @@ public class EmailAddressDetail {
 
 	public void setVersionNo(int versionNo) {
 		this.versionNo = versionNo;
+	}
+
+	public String getRecordStatus() {
+		return recordStatus;
+	}
+
+	public void setRecordStatus(String recordStatus) {
+		this.recordStatus = recordStatus;
 	}
 
 }

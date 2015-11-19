@@ -48,6 +48,9 @@ public class ReadAddress extends HttpServlet {
 
 			Integer addressLinkID = (new Integer(request.getParameter("addressLinkID")));
 			addressLinkDetail.setAddressLinkID(addressLinkID);
+			
+			Integer relatedID = (new Integer(request.getParameter("relatedID")));
+			addressLinkDetail.setRelatedID(relatedID);
 
 		} catch (NumberFormatException e) {
 
@@ -56,13 +59,13 @@ public class ReadAddress extends HttpServlet {
 
 		ReadAddressDAO readAddressDAO = new ReadAddressDAO();
 
-		String returnMassegeStr = readAddressDAO.readPrimaryAddress(addressLinkDetail);
+		String returnMassegeStr = readAddressDAO.readAddress(addressLinkDetail);
 
 		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "";
+			pageForwardStr = "/components/profile/jsp/address/UpdateAddress.jsp";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "";
+			pageForwardStr = "/components/profile/jsp/address/ReadAddress.jsp";
 		}
 
 		request.setAttribute("addressLinkDetail", addressLinkDetail);

@@ -70,9 +70,11 @@ public class CreateAddress extends HttpServlet {
 		int primaryInd =(new Integer (request.getParameter("primaryInd")));
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
+		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		
 		addressLinkDetail.setTypeCode(typeCode);
 		addressLinkDetail.setPrimaryInd(primaryInd);
+		addressLinkDetail.setRelatedID(relatedID);
 		
 		java.util.Date date;
 		try {
@@ -99,7 +101,7 @@ public class CreateAddress extends HttpServlet {
 		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			pageForwardStr = "/";
+			pageForwardStr = "/ListAddress";
 
 		} else {
 			

@@ -34,6 +34,8 @@ public class ReadAddressDAO {
 				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getInt("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
 				addressLinkDetail.setEndDate(resultSetaddressLink.getDate("endDate"));
+				addressLinkDetail.setVersionNo(resultSetaddressLink.getInt("versionNo"));
+				addressLinkDetail.setRecordStatus(resultSetaddressLink.getString("recordStatus"));
 			}
 			
 			
@@ -45,6 +47,7 @@ public class ReadAddressDAO {
 			while(resultSetaddress.next()){
 				AddressDetail addressDetail = new AddressDetail();
 				
+				addressDetail.setAddressId(resultSetaddress.getInt("addressID"));
 				addressDetail.setStreetOne(resultSetaddress.getString("streetOne"));
 				addressDetail.setStreetTwo(resultSetaddress.getString("streetTwo"));
 				addressDetail.setAptUnit(resultSetaddress.getString("aptUnit"));
@@ -53,6 +56,67 @@ public class ReadAddressDAO {
 				addressDetail.setState(resultSetaddress.getString("state"));
 				addressDetail.setCountry(resultSetaddress.getString("country"));
 				addressDetail.setZipCode(resultSetaddress.getInt("zipCode"));
+				addressDetail.setVersionNo(resultSetaddress.getInt("versionNo"));
+				
+				addressLinkDetail.setAddressDetail(addressDetail);
+			}
+			
+			
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+		}
+		return returnMassegeStr;
+		
+	}
+	
+	public String readAddress(AddressLinkDetail addressLinkDetail){
+		String returnMassegeStr = "";
+		
+		try {
+
+			DBConnection dbConnection = new DBConnection();
+			Connection connection = dbConnection.getDBConnection();
+			
+			String addressLinkSQLStr = "SELECT * FROM AddressLink WHERE addressLinkID = \'" + addressLinkDetail.getAddressLinkID()
+				+ "\' AND RECORDSTATUS='Active'";
+			
+			PreparedStatement preparedStatementAddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
+			ResultSet resultSetaddressLink = preparedStatementAddressLinkSQLStr.executeQuery();
+			
+			while(resultSetaddressLink.next()){
+				addressLinkDetail.setAddressLinkID(resultSetaddressLink.getInt("addressLinkID"));
+				addressLinkDetail.setRelatedID(resultSetaddressLink.getInt("relatedID"));
+				addressLinkDetail.setAddressID(resultSetaddressLink.getInt("addressID"));
+				addressLinkDetail.setTypeCode(resultSetaddressLink.getString("typeCode"));
+				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getInt("primaryInd"));
+				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
+				addressLinkDetail.setEndDate(resultSetaddressLink.getDate("endDate"));
+				addressLinkDetail.setVersionNo(resultSetaddressLink.getInt("versionNo"));
+				addressLinkDetail.setRecordStatus(resultSetaddressLink.getString("recordStatus"));
+			}
+			
+			
+			String addressSQLStr = "SELECT * FROM Address WHERE addressID = \'" + addressLinkDetail.getAddressID()+ "\'";
+			
+			PreparedStatement preparedStatementaddressSQLStr = connection.prepareStatement(addressSQLStr);
+			ResultSet resultSetaddress = preparedStatementaddressSQLStr.executeQuery();
+			
+			while(resultSetaddress.next()){
+				AddressDetail addressDetail = new AddressDetail();
+				
+				addressDetail.setAddressId(resultSetaddress.getInt("addressID"));
+				addressDetail.setStreetOne(resultSetaddress.getString("streetOne"));
+				addressDetail.setStreetTwo(resultSetaddress.getString("streetTwo"));
+				addressDetail.setAptUnit(resultSetaddress.getString("aptUnit"));
+				addressDetail.setCity(resultSetaddress.getString("city"));
+				addressDetail.setCounty(resultSetaddress.getString("county"));
+				addressDetail.setState(resultSetaddress.getString("state"));
+				addressDetail.setCountry(resultSetaddress.getString("country"));
+				addressDetail.setZipCode(resultSetaddress.getInt("zipCode"));
+				addressDetail.setVersionNo(resultSetaddress.getInt("versionNo"));
 				
 				addressLinkDetail.setAddressDetail(addressDetail);
 			}

@@ -51,6 +51,7 @@ Integer personID = (Integer) request.getAttribute("personID");
 					<td><%=personIdentityDetail.getStartDate() %></td>
 					<td><%=personIdentityDetail.getEndDate() %></td>
 					<td><a href="/ITOS/ReadPersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>">Read</a></td>
+					<td><a href="/ITOS/DeletePersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>&personID=<%=personIdentityDetail.getPersonID()%>">Delete</a></td>
 				</tr>
 				
 			</tbody>

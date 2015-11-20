@@ -8,6 +8,7 @@
 <%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
+<%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,6 +48,8 @@
 				
 				AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
 				AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
+				
+				PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
 
 				String name = request.getParameter("firstName");
 			%>
@@ -178,6 +181,32 @@
 					</tbody>
 
 				</table>
+
+			</form>
+		</div>
+		
+		<h2>Person Identity Detail</h2>
+		<div>
+
+			<form action="/ITOS/ReadPersonIdentity" method="POST">
+				<table border=1>
+				
+					<tbody>
+						<th align="left">AlternateID: <%=personIdentityDetail.getAlternateID()%></th>
+						<th align="left">PrimaryInd: <%=personIdentityDetail.getPrimaryInd()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">Type Code: <%=personIdentityDetail.getTypeCode()%></th>
+						<th align="left">Start Date: <%=personIdentityDetail.getStartDate()%></th>
+					</tbody>
+					<tbody>
+						<th align="left">End Date: <%=personIdentityDetail.getEndDate()%></th>
+						<th><a
+							href="/ITOS/ListPersonIdentity?personID=<%=personIdentityDetail.getPersonID()%>">Person Identity
+								List</a></th>
+					</tbody>
+
+					</table>
 
 			</form>
 		</div>

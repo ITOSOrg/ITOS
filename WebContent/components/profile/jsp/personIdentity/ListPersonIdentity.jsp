@@ -50,6 +50,7 @@ Integer personID = (Integer) request.getAttribute("personID");
 					<td><%=personIdentityDetail.getPrimaryInd() %></td>
 					<td><%=personIdentityDetail.getStartDate() %></td>
 					<td><%=personIdentityDetail.getEndDate() %></td>
+					<td><a href="/ITOS/ReadPersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>">Read</a></td>
 				</tr>
 				
 			</tbody>

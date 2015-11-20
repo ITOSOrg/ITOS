@@ -66,7 +66,7 @@ public class CreatePhoneNumberDAO {
 			preparedStatementPhoneNumberLink.setInt(2, phoneNumberLinkDetail.getRelatedID());
 			preparedStatementPhoneNumberLink.setInt(3, phoneNumberDetail.getPhoneNumberID());
 			preparedStatementPhoneNumberLink.setString(4, phoneNumberLinkDetail.getTypeCode());
-			preparedStatementPhoneNumberLink.setInt(5, phoneNumberLinkDetail.getPrimaryInd());
+			preparedStatementPhoneNumberLink.setString(5, phoneNumberLinkDetail.getPrimaryInd());
 			preparedStatementPhoneNumberLink.setDate(6, phoneNumberLinkDetail.getStartDate());
 			preparedStatementPhoneNumberLink.setDate(7, phoneNumberLinkDetail.getEndDate());
 			preparedStatementPhoneNumberLink.execute();

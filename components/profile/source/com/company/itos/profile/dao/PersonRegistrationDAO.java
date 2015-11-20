@@ -20,6 +20,8 @@ import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
+import com.company.itos.profile.personIdentity.dao.CreatePersonIdentityDAO;
+import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.dao.CreatePhoneNumberDAO;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
@@ -48,6 +50,7 @@ public class PersonRegistrationDAO {
 			EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
 			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
+			PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
 
 			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
 					+ "','" + usersDetail.getPassword() + "','active', ?)";
@@ -67,6 +70,7 @@ public class PersonRegistrationDAO {
 					phoneNumberLinkDetail.setRelatedID(resultSet.getInt(1));
 					personDetail.setPersonID(resultSet.getInt(1));
 					addressLinkDetail.setRelatedID(resultSet.getInt(1));
+					personIdentityDetail.setPersonID(resultSet.getInt(1));
 				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -126,6 +130,9 @@ public class PersonRegistrationDAO {
 
 				CreateAddressDAO createAddressDAO = new CreateAddressDAO();
 				createAddressDAO.createAddress(addressLinkDetail);
+				
+				CreatePersonIdentityDAO createPersonIdentityDAO = new CreatePersonIdentityDAO();
+				createPersonIdentityDAO.CreatePrimaryPersonIdentity(personIdentityDetail);
 
 				// PreparedStatement preparedStatement2 =
 				// connection.prepareStatement(sql1);

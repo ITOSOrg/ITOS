@@ -12,7 +12,7 @@ public class AddressLinkDetail {
 	
 	private String typeCode;
 	
-	private int primaryInd;
+	private String primaryInd;
 	
 	private Date startDate;
 	
@@ -58,11 +58,13 @@ public class AddressLinkDetail {
 		this.typeCode = typeCode;
 	}
 
-	public int getPrimaryInd() {
+	
+
+	public String getPrimaryInd() {
 		return primaryInd;
 	}
 
-	public void setPrimaryInd(int primaryInd) {
+	public void setPrimaryInd(String primaryInd) {
 		this.primaryInd = primaryInd;
 	}
 

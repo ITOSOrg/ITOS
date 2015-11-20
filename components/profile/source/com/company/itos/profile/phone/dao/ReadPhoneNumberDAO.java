@@ -32,7 +32,7 @@ public class ReadPhoneNumberDAO {
 				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
 				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getInt("phoneNumberID"));
 				phoneNumberLinkDetail.setTypeCode(resultSetPhoneNumberLink.getString("typeCode"));
-				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getInt("primaryInd"));
+				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSetPhoneNumberLink.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSetPhoneNumberLink.getDate("endDate"));
 				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getInt("phoneNumberLinkID"));
@@ -86,7 +86,7 @@ public class ReadPhoneNumberDAO {
 				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
 				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getInt("phoneNumberID"));
 				phoneNumberLinkDetail.setTypeCode(resultSetPhoneNumberLink.getString("typeCode"));
-				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getInt("primaryInd"));
+				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSetPhoneNumberLink.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSetPhoneNumberLink.getDate("endDate"));
 				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getInt("phoneNumberLinkID"));

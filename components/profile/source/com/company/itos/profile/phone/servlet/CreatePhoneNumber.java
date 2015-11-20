@@ -54,7 +54,7 @@ public class CreatePhoneNumber extends HttpServlet {
 		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));
 		Integer extension = (new Integer(request.getParameter("extension")));
-		Integer primaryInd = (new Integer(request.getParameter("primaryInd")));
+		String primaryInd = request.getParameter("primaryIndP");
 		String typeCode = request.getParameter("typeCode");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");

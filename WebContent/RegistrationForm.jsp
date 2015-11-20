@@ -328,11 +328,21 @@ $(document).ready(function()
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><select name="typeCode">
+					<option  value="primary" >Primary</option>	
+				<option  value="secondary" >Secondary.</option>	
+				<option  value="persnal" >Persnal</option>	
+				<option  value="business" >Business</option>	
+			      </select>
+			    </td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"></td>
+				<td>
+					<input type="radio" name="primaryInd" value="true" checked> True
+        			<input type="radio" name="primaryInd" value="false"> False
+					<!--  <input type="text" name="primaryInd">-->
+				</td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
@@ -362,12 +372,22 @@ $(document).ready(function()
 		<td><input type="text" name="extension"></td>
 		</tr>
 		<tr>
-		<td> Type Code:</td>
-		<td><input type="text" name="typeCode"></td>
+		   <td>Type Code :</td>
+				<td><select name="typeCode">
+					<option  value="primary" >Primary</option>	
+				<option  value="secondary" >Secondary.</option>	
+				<option  value="persnal" >Persnal</option>	
+				<option  value="business" >Business</option>	
+			      </select>
+			</td>
 		</tr>
 		<tr>
 		<td> PrimaryInd:</td>
-		<td><input type="text" name="primaryInd"></td>
+		<td>
+			<input type="radio" name="primaryIndP" value="true" checked> True
+        	<input type="radio" name="primaryIndP" value="false"> False
+		<!-- <input type="text" name="primaryInd"> -->
+		</td>
 		</tr>
 		<tr>
 		<td> Start Date:</td>
@@ -421,11 +441,21 @@ $(document).ready(function()
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><select name="typeCode">
+					<option  value="primary" >Primary</option>	
+					<option  value="secondary" >Secondary.</option>	
+					<option  value="persnal" >Persnal</option>	
+					<option  value="business" >Business</option>	
+			        </select>
+			    </td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"></td>
+				<td>
+					<input type="radio" name="primaryIndA" value="true" checked> True
+        			<input type="radio" name="primaryIndA" value="false"> False
+					<!--  <input type="text" name="primaryInd">-->
+				</td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
@@ -435,7 +465,33 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr> 
-
+			
+			<!-- Insert Person Identity Parameters -->
+			
+			<tr>
+				<td>AlternateID :</td>
+				<td><input type="text" name="alternateID"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd :</td>
+				<td>
+					<input type="radio" name="primaryIndI" value="true" checked> True
+        			<input type="radio" name="primaryIndI" value="false"> False
+					<!--  <input type="text" name="primaryInd">-->
+				</td>
+			</tr>
+			<tr>
+				<td>Type Code :</td>
+				<td><input type="text" name="typeCode"></td>
+			</tr>
+			<tr>
+				<td>Start Date :</td>
+				<td><input type="text" name="startDate"></td>
+			</tr>
+			<tr>
+				<td>End Date :</td>
+				<td><input type="text" name="endDate"></td>
+			</tr>
 			
 			<%
 				}

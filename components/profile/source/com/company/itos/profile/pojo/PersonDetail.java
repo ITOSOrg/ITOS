@@ -7,6 +7,7 @@ import java.util.List;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
+import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -75,6 +76,8 @@ public class PersonDetail {
 	private int zipCode;
 	
 	private AddressLinkDetail addressLinkDetail = null;
+	
+	private PersonIdentityDetail personIdentityDetail = null;
 	
 	
 
@@ -344,6 +347,14 @@ public class PersonDetail {
 
 	public void setAddressLinkDetail(AddressLinkDetail addressLinkDetail) {
 		this.addressLinkDetail = addressLinkDetail;
+	}
+
+	public PersonIdentityDetail getPersonIdentityDetail() {
+		return personIdentityDetail;
+	}
+
+	public void setPersonIdentityDetail(PersonIdentityDetail personIdentityDetail) {
+		this.personIdentityDetail = personIdentityDetail;
 	}
 
 }

@@ -67,7 +67,7 @@ public class CreateAddress extends HttpServlet {
 		AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
 		
 		String typeCode = request.getParameter("typeCode");
-		int primaryInd =(new Integer (request.getParameter("primaryInd")));
+		String primaryInd = request.getParameter("primaryIndA");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		Integer relatedID = (new Integer(request.getParameter("relatedID")));

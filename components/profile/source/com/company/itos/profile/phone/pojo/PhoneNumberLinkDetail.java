@@ -3,25 +3,25 @@ package com.company.itos.profile.phone.pojo;
 import java.sql.Date;
 
 public class PhoneNumberLinkDetail {
-	
+
 	private int phoneNumberLinkID;
-	
+
 	private int relatedID;
-	
+
 	private String typeCode;
-	
-	private int primaryInd;
-	
+
+	private String primaryInd;
+
 	private Date startDate;
-	
+
 	private Date endDate;
-	
+
 	private String comments;
-	
+
 	private int versionNo;
-	
+
 	private int phoneNumberID;
-	
+
 	private PhoneNumberDetail phoneNumberDetail = null;
 
 	public int getPhoneNumberLinkID() {
@@ -48,11 +48,11 @@ public class PhoneNumberLinkDetail {
 		this.typeCode = typeCode;
 	}
 
-	public int getPrimaryInd() {
+	public String getPrimaryInd() {
 		return primaryInd;
 	}
 
-	public void setPrimaryInd(int primaryInd) {
+	public void setPrimaryInd(String primaryInd) {
 		this.primaryInd = primaryInd;
 	}
 

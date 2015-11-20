@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 import com.company.itos.profile.pojo.PersonDetail;
@@ -239,7 +240,7 @@ public class PersonRegistration extends HttpServlet {
 		Integer areaCode = (new Integer(request.getParameter("areaCode")));
 		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
 		Integer extension = (new Integer(request.getParameter("extension")));
-		Integer primaryInd1 = (new Integer(request.getParameter("primaryInd")));
+		String primaryInd1 = request.getParameter("primaryIndP");
 		String typeCode1 = request.getParameter("typeCode");
 		String startDate1 = request.getParameter("startDate");
 		String endDate1 = request.getParameter("endDate");
@@ -299,7 +300,7 @@ public class PersonRegistration extends HttpServlet {
 		AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
 		
 		String typeCode2 = request.getParameter("typeCode");
-		int primaryInd2 =(new Integer (request.getParameter("primaryInd")));
+		String primaryInd2 = request.getParameter("primaryIndA");
 		String startDate2 = request.getParameter("startDate");
 		String endDate2 = request.getParameter("endDate");
 		
@@ -326,6 +327,40 @@ public class PersonRegistration extends HttpServlet {
 		}
 		addressLinkDetail.setAddressDetail(addressDetail);
 		personDetail.setAddressLinkDetail(addressLinkDetail);
+		
+		//Enter PersonIdentity parameters
+		
+		PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
+		 
+		 int alternateID =(new Integer (request.getParameter("alternateID")));
+		 String primaryInd3 = request.getParameter("primaryIndI");
+		 String typeCode3 = request.getParameter("typeCode");
+		 String startDate3 = request.getParameter("startDate");
+		 String endDate3 = request.getParameter("endDate");
+		 
+		 personIdentityDetail.setAlternateID(alternateID);
+		 personIdentityDetail.setPrimaryInd(primaryInd3);
+		 personIdentityDetail.setTypeCode(typeCode3);
+		 
+		 java.util.Date date3;
+			try {
+				date3 = new SimpleDateFormat("yyyy-MM-dd").parse(startDate3);
+				java.sql.Date sqlDate = new java.sql.Date(date3.getTime());
+				personIdentityDetail.setStartDate(sqlDate);
+
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				date3 = new SimpleDateFormat("yyyy-MM-dd").parse(endDate3);
+				java.sql.Date sqlDate = new java.sql.Date(date3.getTime());
+				personIdentityDetail.setEndDate(sqlDate);
+
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			personDetail.setPersonIdentityDetail(personIdentityDetail);
 
 		personDetail.setErrorMessageList(errorMessageList);
 		request.setAttribute("personDetail", personDetail);

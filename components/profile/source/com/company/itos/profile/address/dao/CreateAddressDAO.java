@@ -61,7 +61,7 @@ public class CreateAddressDAO {
 			preparedStatementaddressLinkSQLStr.setInt(2, addressLinkDetail.getRelatedID());
 			preparedStatementaddressLinkSQLStr.setInt(3, addressDetail.getAddressId());
 			preparedStatementaddressLinkSQLStr.setString(4, addressLinkDetail.getTypeCode());
-			preparedStatementaddressLinkSQLStr.setInt(5, addressLinkDetail.getPrimaryInd());
+			preparedStatementaddressLinkSQLStr.setString(5, addressLinkDetail.getPrimaryInd());
 			preparedStatementaddressLinkSQLStr.setDate(6, addressLinkDetail.getStartDate());
 			preparedStatementaddressLinkSQLStr.setDate(7, addressLinkDetail.getEndDate());
 			preparedStatementaddressLinkSQLStr.execute();

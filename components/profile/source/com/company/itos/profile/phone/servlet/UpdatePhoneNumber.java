@@ -62,7 +62,7 @@ public class UpdatePhoneNumber extends HttpServlet {
 		Integer areaCode = (new Integer(request.getParameter("areaCode")));
 		Long phoneNumber = (new Long(request.getParameter("phoneNumber")));
 		Integer extension = (new Integer(request.getParameter("extension")));
-		Integer primaryInd = (new Integer(request.getParameter("primaryInd")));
+		String primaryInd = request.getParameter("primaryIndP");
 		String typeCode = request.getParameter("typeCode");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");

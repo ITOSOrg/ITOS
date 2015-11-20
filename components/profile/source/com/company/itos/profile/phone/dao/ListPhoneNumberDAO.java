@@ -55,7 +55,7 @@ public class ListPhoneNumberDAO {
 				phoneNumberDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
 				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
 				phoneNumberLinkDetail.setTypeCode(resultSet.getString("typeCode"));
-				phoneNumberLinkDetail.setPrimaryInd(resultSet.getInt("primaryInd"));
+				phoneNumberLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSet.getDate("endDate"));
 

@@ -57,7 +57,7 @@ public class UpdatePhoneNumberDAO {
 
 					PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
 					preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
-					preparedStatementPhoneNumberLink.setInt(2, phoneNumberLinkDetail.getPrimaryInd());
+					preparedStatementPhoneNumberLink.setString(2, phoneNumberLinkDetail.getPrimaryInd());
 					preparedStatementPhoneNumberLink.setDate(3, phoneNumberLinkDetail.getStartDate());
 					preparedStatementPhoneNumberLink.setDate(4, phoneNumberLinkDetail.getEndDate());
 

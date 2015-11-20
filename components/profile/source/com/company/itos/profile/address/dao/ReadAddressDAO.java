@@ -31,7 +31,7 @@ public class ReadAddressDAO {
 				addressLinkDetail.setRelatedID(resultSetaddressLink.getInt("relatedID"));
 				addressLinkDetail.setAddressID(resultSetaddressLink.getInt("addressID"));
 				addressLinkDetail.setTypeCode(resultSetaddressLink.getString("typeCode"));
-				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getInt("primaryInd"));
+				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
 				addressLinkDetail.setEndDate(resultSetaddressLink.getDate("endDate"));
 				addressLinkDetail.setVersionNo(resultSetaddressLink.getInt("versionNo"));
@@ -91,7 +91,7 @@ public class ReadAddressDAO {
 				addressLinkDetail.setRelatedID(resultSetaddressLink.getInt("relatedID"));
 				addressLinkDetail.setAddressID(resultSetaddressLink.getInt("addressID"));
 				addressLinkDetail.setTypeCode(resultSetaddressLink.getString("typeCode"));
-				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getInt("primaryInd"));
+				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
 				addressLinkDetail.setEndDate(resultSetaddressLink.getDate("endDate"));
 				addressLinkDetail.setVersionNo(resultSetaddressLink.getInt("versionNo"));

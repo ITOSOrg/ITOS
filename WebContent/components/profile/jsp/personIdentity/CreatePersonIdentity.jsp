@@ -9,11 +9,11 @@
 <body>
 
 <%
-String relatedID = (String) request.getParameter("relatedID");
-System.out.println("relatedID = " + relatedID);
+String personID = (String) request.getParameter("personID");
+System.out.println("personID = " + personID);
 
 %>
-<form name="Create Person Identity" action="/ITOS/CreatePersonIdentity?relatedID=<%= relatedID %>"
+<form name="Create Person Identity" action="/ITOS/CreatePersonIdentity?personID=<%= personID %>"
 		method="POST">
 		<table>
 		  
@@ -40,7 +40,7 @@ System.out.println("relatedID = " + relatedID);
 			<tr>
 
 				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListEmailAddress?relatedID=<%= relatedID %>">EmailAddressList Home</a></td>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListPersonIdentity?personID=<%= personID %>">PersonIdentityList Home</a></td>
 
 			</tr>
 			

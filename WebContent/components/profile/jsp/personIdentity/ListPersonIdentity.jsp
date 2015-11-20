@@ -20,7 +20,7 @@ Integer personID = (Integer) request.getAttribute("personID");
 
 <a href="/ITOS/PersonHome?personID=<%= personID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?personID=<%= personID%>">Create Person Identity</a><br><br>
+<a href="/ITOS/components/profile/jsp/personIdentity/CreatePersonIdentity.jsp?personID=<%= personID%>">Create PersonIdentity</a><br><br>
 
 
 

@@ -13,6 +13,8 @@ import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
+import com.company.itos.profile.personIdentity.dao.ReadPersonIdentityDAO;
+import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
@@ -99,6 +101,14 @@ public class PersonHomeDAO {
 			ReadAddressDAO readAddressDAO = new ReadAddressDAO();
 			readAddressDAO.readPrimaryAddress(addressLinkDetail);
 			personDetail.setAddressLinkDetail(addressLinkDetail);
+			
+			//Read PersonIdentity Information
+			PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
+			personIdentityDetail.setPersonID(personDetail.getPersonID());
+			
+			ReadPersonIdentityDAO readPersonIdentityDAO = new ReadPersonIdentityDAO();
+			readPersonIdentityDAO.readPrimaryPersonIdentity(personIdentityDetail);
+			personDetail.setPersonIdentityDetail(personIdentityDetail);
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

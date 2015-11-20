@@ -132,7 +132,7 @@ public class PersonRegistrationDAO {
 				createAddressDAO.createAddress(addressLinkDetail);
 				
 				CreatePersonIdentityDAO createPersonIdentityDAO = new CreatePersonIdentityDAO();
-				createPersonIdentityDAO.CreatePrimaryPersonIdentity(personIdentityDetail);
+				createPersonIdentityDAO.CreatePersonIdentity(personIdentityDetail);
 
 				// PreparedStatement preparedStatement2 =
 				// connection.prepareStatement(sql1);

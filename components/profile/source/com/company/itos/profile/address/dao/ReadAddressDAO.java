@@ -21,7 +21,7 @@ public class ReadAddressDAO {
 			Connection connection = dbConnection.getDBConnection();
 			
 			String addressLinkSQLStr = "SELECT * FROM AddressLink WHERE relatedID = \'" + addressLinkDetail.getRelatedID()
-				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
+				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
 			
 			PreparedStatement preparedStatementAddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
 			ResultSet resultSetaddressLink = preparedStatementAddressLinkSQLStr.executeQuery();

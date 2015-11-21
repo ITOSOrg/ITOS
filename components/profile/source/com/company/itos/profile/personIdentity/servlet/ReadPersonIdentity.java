@@ -49,7 +49,7 @@ public class ReadPersonIdentity extends HttpServlet {
 		String returnMassegeStr = readPersonIdentityDAO.readPersonIdentity(personIdentityDetail);
 		
 		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "/components/profile/jsp/email/UpdateEmailAddress.jsp";
+			pageForwardStr = "/components/profile/jsp/personIdentity/UpdatePersonIdentity.jsp";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/components/profile/jsp/personIdentity/ReadPersonIdentity.jsp";

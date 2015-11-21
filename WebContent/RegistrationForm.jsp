@@ -7,6 +7,7 @@
 <%@ page import="com.company.itos.profile.pojo.UsersDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
+<%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page
 	import="com.company.itos.profile.servlet.PersonRegistration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -73,6 +74,8 @@ $(document).ready(function()
 			
 			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
 			AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
+			
+			PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
 			%>
 			
 			<!-- update Person table parameter -->
@@ -265,6 +268,34 @@ $(document).ready(function()
 				<td><input type="text" name="endDate"
 				   value="<%=addressLinkDetail.getEndDate()%>"></td>
 			</tr> 
+			
+			<!-- Update PersonIdentity Table -->
+			
+			<tr>
+				<td>alternateID :</td>
+				<td><input type="text" name="alternateID"
+					value="<%=personIdentityDetail.getAlternateID()%>"></td>
+			</tr>
+			<tr>
+				<td>PrimaryInd :</td>
+				<td><input type="text" name="primaryInd"
+				      value = "<%=personIdentityDetail.getPrimaryInd()%>"></td>
+			</tr>
+			<tr>
+				<td>Type Code :</td>
+				<td><input type="text" name="typeCode"
+				      value = "<%=personIdentityDetail.getTypeCode()%>"></td>
+			</tr>
+			<tr>
+				<td>Start Date :</td>
+				<td><input type="text" name="startDate"
+				      value = "<%=personIdentityDetail.getStartDate()%>"></td>
+			</tr>
+			<tr>
+				<td>End Date :</td>
+				<td><input type="text" name="endDate"
+				      value = "<%=personIdentityDetail.getEndDate()%>"></td>
+			</tr>
 
 			<%
 				} else {
@@ -329,18 +360,18 @@ $(document).ready(function()
 			<tr>
 				<td>Type Code :</td>
 				<td><select name="typeCode">
-					<option  value="primary" >Primary</option>	
-				<option  value="secondary" >Secondary.</option>	
-				<option  value="persnal" >Persnal</option>	
-				<option  value="business" >Business</option>	
+					<option  value="Primary" >Primary</option>	
+				<option  value="Secondary" >Secondary.</option>	
+				<option  value="Persnal" >Persnal</option>	
+				<option  value="Business" >Business</option>	
 			      </select>
 			    </td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<input type="radio" name="primaryInd" value="true" checked> True
-        			<input type="radio" name="primaryInd" value="false"> False
+					<input type="radio" name="primaryInd" value="True" checked> True
+        			<input type="radio" name="primaryInd" value="False"> False
 					<!--  <input type="text" name="primaryInd">-->
 				</td>
 			</tr>
@@ -374,18 +405,18 @@ $(document).ready(function()
 		<tr>
 		   <td>Type Code :</td>
 				<td><select name="typeCode">
-					<option  value="primary" >Primary</option>	
-				<option  value="secondary" >Secondary.</option>	
-				<option  value="persnal" >Persnal</option>	
-				<option  value="business" >Business</option>	
+					<option  value="Primary" >Primary</option>	
+				<option  value="Secondary" >Secondary.</option>	
+				<option  value="Persnal" >Persnal</option>	
+				<option  value="Business" >Business</option>	
 			      </select>
 			</td>
 		</tr>
 		<tr>
 		<td> PrimaryInd:</td>
 		<td>
-			<input type="radio" name="primaryIndP" value="true" checked> True
-        	<input type="radio" name="primaryIndP" value="false"> False
+			<input type="radio" name="primaryIndP" value="True" checked> True
+        	<input type="radio" name="primaryIndP" value="False"> False
 		<!-- <input type="text" name="primaryInd"> -->
 		</td>
 		</tr>
@@ -442,18 +473,18 @@ $(document).ready(function()
 			<tr>
 				<td>Type Code :</td>
 				<td><select name="typeCode">
-					<option  value="primary" >Primary</option>	
-					<option  value="secondary" >Secondary.</option>	
-					<option  value="persnal" >Persnal</option>	
-					<option  value="business" >Business</option>	
+					<option  value="Primary" >Primary</option>	
+					<option  value="Secondary" >Secondary.</option>	
+					<option  value="Persnal" >Persnal</option>	
+					<option  value="Business" >Business</option>	
 			        </select>
 			    </td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<input type="radio" name="primaryIndA" value="true" checked> True
-        			<input type="radio" name="primaryIndA" value="false"> False
+					<input type="radio" name="primaryIndA" value="True" checked> True
+        			<input type="radio" name="primaryIndA" value="False"> False
 					<!--  <input type="text" name="primaryInd">-->
 				</td>
 			</tr>
@@ -475,14 +506,20 @@ $(document).ready(function()
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<input type="radio" name="primaryIndI" value="true" checked> True
-        			<input type="radio" name="primaryIndI" value="false"> False
+					<input type="radio" name="primaryIndI" value="True" checked> True
+        			<input type="radio" name="primaryIndI" value="False"> False
 					<!--  <input type="text" name="primaryInd">-->
 				</td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><select name="typeCode">
+					<option  value="Primary" >Primary</option>	
+					<option  value="Secondary" >Secondary.</option>	
+					<option  value="Persnal" >Persnal</option>	
+					<option  value="Business" >Business</option>	
+			        </select>
+			    </td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>

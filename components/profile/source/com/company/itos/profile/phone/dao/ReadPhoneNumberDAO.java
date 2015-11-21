@@ -71,7 +71,7 @@ public class ReadPhoneNumberDAO {
 		String returnMassegeStr = "";
 
 		String PhoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE relatedID = \'" + phoneNumberLinkDetail.getRelatedID()
-				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
+				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
 		try {
 			// PhoneNumberDetail phoneNumberDetail =
 			// phoneNumberLinkDetail.getPhoneNumberDetail();

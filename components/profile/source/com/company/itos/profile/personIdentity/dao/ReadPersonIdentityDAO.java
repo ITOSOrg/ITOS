@@ -19,7 +19,7 @@ public class ReadPersonIdentityDAO {
 			Connection connection = dbConnection.getDBConnection();
 			
 			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personID = \'" + personIdentityDetail.getPersonID()
-					+ "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
+					+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
 			
 			PreparedStatement preparedStatementpersonIdentity =  connection.prepareStatement(personIdentitySQLStr);
 			ResultSet resultSet = preparedStatementpersonIdentity.executeQuery();

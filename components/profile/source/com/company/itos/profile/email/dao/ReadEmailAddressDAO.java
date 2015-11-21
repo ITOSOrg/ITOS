@@ -70,7 +70,7 @@ public class ReadEmailAddressDAO {
 		ResultSet resultSet = null;
 
 		String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink WHERE relatedID = \'" + emailAddressLinkDetail.getRelatedID()
-				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'primary'";
+				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
 
 		try {
 

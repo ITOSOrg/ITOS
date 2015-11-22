@@ -16,11 +16,38 @@
 
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+<script src="http://www.jqueryscript.net/tags.php?/Modal/"></script>
+
 <script>
 	$(function() {
 		$("#myaccordion").accordion();
 	});
 </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#dialog").dialog({
+      autoOpen: false,
+      modal: true
+    });
+  });
+  $(".confirmLink").click(function(e) {
+	    e.preventDefault();
+	    var targetUrl = $(this).attr("href");
+
+	    $("#dialog").dialog({
+	      buttons : {
+	        "Confirm" : function() {
+	          window.location.href = targetUrl;
+	        },
+	        "Cancel" : function() {
+	          $(this).dialog("close");
+	        }
+	      }
+	    });
+
+	    $("#dialog").dialog("open");
+	  });
+  </script>
 </head>
 <body>
 
@@ -69,9 +96,9 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
 					<td><%=emailAddressLinkDetail.getStartDate() %></td>
 					<td><%=emailAddressLinkDetail.getEndDate() %></td>
+					<td><a  href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a></td>
 					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Delete</a></td>
-					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a></td>
+					<td><a class="js-open-modal" href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Delete</a></td>
 				</tr>
 				
 			</tbody>

@@ -77,14 +77,11 @@
 							<td><%=addressDetail.getZipCode()%></td>
 							<td><%=addressLinkDetail.getStartDate()%></td>
 							<td><%=addressLinkDetail.getEndDate()%></td>
-							<td><a
-								href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>&act=update">Update</a>
+							<td><a href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a>
 							</td>
-							<td><a
-								href="/ITOS/DeleteAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%=relatedID%>">Delete</a></td>
-							<td><a
-								href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a>
+							<td><a href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>&act=update">Update</a>
 							</td>
+							<td><a href="/ITOS/DeleteAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%=relatedID%>">Delete</a></td>
 						</tr>
 
 					</tbody>

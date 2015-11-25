@@ -46,6 +46,9 @@ public class ReadCodeTableItem extends HttpServlet {
 		String code = request.getParameter("code");
 		codeTableItemDetail.setCode(code);
 		
+		String tableName = request.getParameter("tableName");
+		codeTableItemDetail.setTableName(tableName);
+		
 		ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
 		String returnMassegeStr = readCodeTableItemDAO.readCodeTableItem(codeTableItemDetail);
 		

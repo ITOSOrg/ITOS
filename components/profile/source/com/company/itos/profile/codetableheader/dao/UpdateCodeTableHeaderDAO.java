@@ -29,7 +29,7 @@ public class UpdateCodeTableHeaderDAO {
 					DBConnection dbConnection = new DBConnection();
 					connection = dbConnection.getDBConnection();
 					
-					String codeTableHeaderSQLStr = "UPDATE	CodeTableHeader	SET tableName = ?, defaultCode = ?, recordStatus = ?, versionNo = ?, createdBy = ?, lastModifiedBy = ? "+ "WHERE defaultCode = '" + codeTableHeaderDetail.getDefaultCode() + "'";
+					String codeTableHeaderSQLStr = "UPDATE	CodeTableHeader	SET tableName = ?, defaultCode = ?, recordStatus = ?, versionNo = ?, createdBy = ?, lastModifiedBy = ? "+ "WHERE tableName = '" + codeTableHeaderDetail.getTableName() + "'";
 					
 					PreparedStatement preparedStatement = connection.prepareStatement(codeTableHeaderSQLStr);
 					
@@ -62,8 +62,8 @@ public class UpdateCodeTableHeaderDAO {
 
 					Connection connection = dbConnection.getDBConnection();
 					
-					String codeTableHeaderSQLStr = "SELECT	versionNo	FROM	CodeTableHeader	WHERE	 defaultCode = '"
-							+ codeTableHeaderDetail.getDefaultCode() + "'";
+					String codeTableHeaderSQLStr = "SELECT	versionNo	FROM	CodeTableHeader	WHERE	 tableName = '"
+							+ codeTableHeaderDetail.getTableName() + "'";
 					
 					PreparedStatement preparedStatement = connection.prepareStatement(codeTableHeaderSQLStr);
 					ResultSet resultSet = preparedStatement.executeQuery();

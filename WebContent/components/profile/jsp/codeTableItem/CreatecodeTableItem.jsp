@@ -30,7 +30,7 @@ String tableName = (String) request.getParameter("tableName");
 			<tr>
 
 				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListCodeTableItem">Back</a></td>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ReadCodeTableHeader?tableName=<%=tableName%>">Back</a></td>
 
 			</tr>
 			

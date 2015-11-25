@@ -50,7 +50,8 @@ public class ReadCodeTableHeader extends HttpServlet {
 		
 		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/components/profile/jsp/codeTableHeader/UpdateCodeTableHeader.jsp";
-
+			pageForwardStr += "?tableName=" +codeTableHeaderDetail.getTableName();
+			
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "/components/profile/jsp/codeTableHeader/ReadCodeTableHeader.jsp";
 		}

@@ -16,7 +16,7 @@ List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) 
 
 %>
 			 <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<a href="/ITOS/components/profile/jsp/codeTableHeader/CreateCodeTableHeader.jsp">Create Code Table Header</a><br><br>
+					<a href="/ITOS/components/profile/jsp/codeTableHeader/CreateCodeTableHeader.jsp">Create Code Table </a><br><br>
 
 <form action="/ITOS/ListCodeTableHeader" method = "POST">
 <table border=1>
@@ -47,7 +47,7 @@ List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) 
 					<td><%=codeTableHeaderDetail.getLastModifiedBy() %></td>
 					<td><%=codeTableHeaderDetail.getLastModifiedOn() %></td>
 					<td><a href = "/ITOS/ReadCodeTableHeader?tableName=<%=codeTableHeaderDetail.getTableName()%>">Read</a> </td>
-					<td><a href = "/ITOS/ReadCodeTableHeader?defaultCode=<%=codeTableHeaderDetail.getDefaultCode()%>&act=update">Update</a> </td>
+					<td><a href = "/ITOS/ReadCodeTableHeader?tableName=<%=codeTableHeaderDetail.getTableName()%>&act=update">Update</a> </td>
 					<td><a href = "/ITOS/DeleteCodeTableHeader?defaultCode=<%=codeTableHeaderDetail.getDefaultCode()%>">Delete</a> </td>
 					
 				</tr>
@@ -55,7 +55,6 @@ List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) 
 			</tbody>
 			<%} %>
 		</table>
-		<br><br><a href="/ITOS/ListCodeTableItem">List CodeTableItem</a><br></br>
 		</form>
 
 </body>

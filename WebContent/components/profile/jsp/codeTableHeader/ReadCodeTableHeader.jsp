@@ -87,9 +87,9 @@ CodeTableHeaderDetail codeTableHeaderDetail = (CodeTableHeaderDetail) request.ge
 					<td><%=codeTableItemDetail.getCreatedOn() %></td>
 					<td><%=codeTableItemDetail.getLastModifiedBy() %></td>
 					<td><%=codeTableItemDetail.getLastModifiedOn() %></td>
-					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>">Read</a> </td>
-					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&act=update">Update</a> </td>
-					<td><a href = "/ITOS/DeleteCodeTableItem?code=<%=codeTableItemDetail.getCode()%>">Delete</a> </td>
+					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>">Read</a> </td>
+					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>&act=update">Update</a> </td>
+					<td><a href = "/ITOS/DeleteCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>">Delete</a> </td>
 					
 				</tr>
 				

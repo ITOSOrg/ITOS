@@ -41,15 +41,16 @@ public class UpdateCodeTableHeader extends HttpServlet {
 		
 		CodeTableHeaderDetail codeTableHeaderDetail = new CodeTableHeaderDetail();
 		
-		String defaultCode = request.getParameter("defaultCode");
 		String tableName = request.getParameter("tableName");
+		codeTableHeaderDetail.setTableName(tableName);
+		
+		String defaultCode = request.getParameter("defaultCode");
 		String recordStatus = request.getParameter("recordStatus");
 		String createdBy = request.getParameter("createdBy");
 		String lastModifiedBy = request.getParameter("lastModifiedBy");
 		int versionNo = (new Integer (request.getParameter("versionNo")));
 		
 		codeTableHeaderDetail.setDefaultCode(defaultCode);
-		codeTableHeaderDetail.setTableName(tableName);
 		codeTableHeaderDetail.setRecordStatus(recordStatus);
 		codeTableHeaderDetail.setCreatedBy(createdBy);
 		codeTableHeaderDetail.setLastModifiedBy(lastModifiedBy);

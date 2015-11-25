@@ -48,7 +48,8 @@
 			<tr>
 
 				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListCodeTableItem">Back</a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ReadCodeTableHeader?tableName=<%=codeTableItemDetail.getTableName()%>">Back</a><br><br>
+
 				</td>
 
 			</tr>

@@ -52,7 +52,7 @@ List<CodeTableItemDetail> codeTableItemDetailList = (List<CodeTableItemDetail>) 
 					<td><%=codeTableItemDetail.getLastModifiedBy() %></td>
 					<td><%=codeTableItemDetail.getLastModifiedOn() %></td>
 					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>">Read</a> </td>
-					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&act=update">Update</a> </td>
+					<td><a href = "/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName() %>&act=update">Update</a> </td>
 					<td><a href = "/ITOS/DeleteCodeTableItem?code=<%=codeTableItemDetail.getCode()%>">Delete</a> </td>
 					
 				</tr>

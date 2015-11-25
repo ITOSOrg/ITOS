@@ -43,16 +43,19 @@ public class DeleteCodeTableItem extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		 codeTableItemDetail.setCode(code);
+		
+		 String tableName = request.getParameter("tableName");
+		 codeTableItemDetail.setTableName(tableName);
 		 
 		 DeleteCodeTableItemDAO deleteCodeTableItemDAO = new DeleteCodeTableItemDAO();
 		 String returnMassegeStr = deleteCodeTableItemDAO.deleteCodeTableItem(codeTableItemDetail);
 		 
 		 if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-				pageForwardStr = "/ListCodeTableItem";
+				pageForwardStr = "/ReadCodeTableHeader";
+				pageForwardStr += "?tableName=" + codeTableItemDetail.getTableName();
 			} else {
 				pageForwardStr = "/ListCodeTableItem";
 			}
-			//pageForwardStr += "?code=" + codeTableItemDetail.getCode();
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 			requestDispatcher.forward(request, response);
 	}

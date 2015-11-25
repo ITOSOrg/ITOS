@@ -61,11 +61,12 @@ public class UpdateCodeTableItem extends HttpServlet {
 		String returnMassegeStr = updateCodeTableItemDAO.UpdateCodeTableItem(codeTableItemDetail);
 		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "/ListCodeTableItem";
+			pageForwardStr = "/ReadCodeTableHeader";
+			pageForwardStr += "?tableName=" + codeTableItemDetail.getTableName();
 		} else {
 			pageForwardStr = "/ListCodeTableItem";
 		}
-		pageForwardStr += "?code=" + codeTableItemDetail.getCode();
+		//pageForwardStr += "?code=" + codeTableItemDetail.getCode();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);
 	}

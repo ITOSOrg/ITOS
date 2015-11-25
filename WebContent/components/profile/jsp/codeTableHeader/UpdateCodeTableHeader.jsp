@@ -12,8 +12,10 @@
 
 CodeTableHeaderDetail codeTableHeaderDetail = (CodeTableHeaderDetail) request.getAttribute("codeTableHeaderDetail");
 
+String tableName = (String) request.getParameter("tableName");
+
 %>
-<form action="/ITOS/UpdateCodeTableHeader?defaultCode=<%=codeTableHeaderDetail.getDefaultCode() %>" method = "POST">
+<form action="/ITOS/UpdateCodeTableHeader?tableName=<%=tableName %>" method = "POST">
 
 
 				

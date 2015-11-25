@@ -9,7 +9,7 @@
 </head>
 <body>
 <% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) request.getAttribute("codeTableItemDetail"); %>
-<a href="/ITOS/ListCodeTableItem">Back</a><br><br>
+<a href="/ITOS/ReadCodeTableHeader?tableName=<%=codeTableItemDetail.getTableName()%>">Back</a><br><br>
 
 <form action="/ITOS/ReadCodeTableItem" method = "POST">
 <table border=1>

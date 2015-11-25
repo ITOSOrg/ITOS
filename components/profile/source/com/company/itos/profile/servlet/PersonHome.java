@@ -66,9 +66,6 @@ public class PersonHome extends HttpServlet {
 		// PersonDetail personDetail =
 		// personHomeDAO.readPersonDetail(personDetail);
 		personHomeDAO.readPersonDetail(personDetail);
-		/**
-		 * 
-		 */
 		// personDetail.setUserName(userName);
 
 		request.setAttribute("personDetail", personDetail);
@@ -79,18 +76,12 @@ public class PersonHome extends HttpServlet {
 		 * request.setAttribute("emailAddressDetail", emailAddressDetail);
 		 */
 
-		// RequestDispatcher requestDispatcher = null;
-
 		if (action != null && action.equals("update")) {
 
 			pageForwardStr = "/UpdatedRegistrationForm.jsp";
 			pageForwardStr += "?personID" + personDetail.getPersonID();
-			// requestDispatcher =
-			// request.getRequestDispatcher("/UpdatedRegistrationForm.jsp");
 		} else {
 			pageForwardStr = "/PersonHome.jsp";
-			// requestDispatcher =
-			// request.getRequestDispatcher("/PersonHome.jsp");
 		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

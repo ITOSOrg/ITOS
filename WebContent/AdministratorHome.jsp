@@ -102,6 +102,8 @@
 		</table><br>
 			<a href="RegistrationForm.jsp">Add User</a>
 			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/SearchPerson">Search</a><br></br>
+			&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/components/profile/jsp/codeTableItem/CreatecodeTableItem.jsp">Create Code Table Item</a><br></br>
+			
 </form>
 </div>
 </div>		

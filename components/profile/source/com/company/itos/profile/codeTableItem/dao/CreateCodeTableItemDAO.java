@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 
 public class CreateCodeTableItemDAO {
 	

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdateCodeTableItemDAO {

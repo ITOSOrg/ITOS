@@ -1,6 +1,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.company.itos.profile.codetableheader.pojo.CodeTableHeaderDetail"%>
-<%@ page import="com.company.itos.profile.codeTable.pojo.CodeTableItemDetail"%>
+<%@ page import="com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

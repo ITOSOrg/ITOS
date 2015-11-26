@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.itos.core.util.DBConnection;
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 import com.company.itos.profile.codetableheader.pojo.CodeTableHeaderDetail;
 
 public class ListCodeTableHeaderDAO {

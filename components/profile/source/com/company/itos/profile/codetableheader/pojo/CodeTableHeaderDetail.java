@@ -3,7 +3,7 @@ package com.company.itos.profile.codetableheader.pojo;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 
 public class CodeTableHeaderDetail {
 			

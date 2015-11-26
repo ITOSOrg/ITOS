@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
 import com.company.itos.profile.codeTableItem.dao.ListCodeTableItemDAO;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 
 /**
  * Servlet implementation class ListCodeTableItem

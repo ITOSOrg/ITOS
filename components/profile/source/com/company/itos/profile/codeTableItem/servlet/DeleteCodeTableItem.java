@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.profile.codeTable.pojo.CodeTableItemDetail;
 import com.company.itos.profile.codeTableItem.dao.DeleteCodeTableItemDAO;
+import com.company.itos.profile.codeTableItem.pojo.CodeTableItemDetail;
 
 /**
  * Servlet implementation class DeleteCodeTableItem

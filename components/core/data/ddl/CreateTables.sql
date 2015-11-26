@@ -2,15 +2,19 @@
 -- Application Core Table Create SQL
 
 
-CREATE TABLE PROPERTIES (	
-   	"PROPERTYID" NUMBER(19,0) NOT NULL, 
-	"CATEGORY" VARCHAR2(10 BYTE), 
-	"NAME" VARCHAR2(254 BYTE), 
-	"VALUE" VARCHAR2(100 BYTE), 
-	"TYPE" VARCHAR2(10 BYTE), 
-	"DEFAULTVALUE" VARCHAR2(100 BYTE), 
-	"DYNAMIC" CHAR(1 BYTE) NOT NULL, 
-	"VERSIONNO" NUMBER(*,0) NOT NULL
+CREATE TABLE Properties (	
+   	propertyID NUMBER(19,0) NOT NULL, 
+	category VARCHAR2(10 BYTE), 
+	name VARCHAR2(254 BYTE), 
+	value VARCHAR2(100 BYTE), 
+	type VARCHAR2(10 BYTE), 
+	defaultValue VARCHAR2(100 BYTE), 
+	dynamic CHAR(1 BYTE) NOT NULL, 
+	createdBy varchar2(35),
+	createdOn timestamp(6),
+	lastModifiedBy varchar2(35),
+	lastModifiedOn timestamp(6),
+	versionNo NUMBER(*,0) NOT NULL
 );
 
 CREATE TABLE CodeTableHeader

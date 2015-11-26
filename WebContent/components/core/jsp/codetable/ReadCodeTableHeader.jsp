@@ -52,7 +52,7 @@ CodeTableHeaderDetail codeTableHeaderDetail = (CodeTableHeaderDetail) request.ge
 		<%
 		List<CodeTableItemDetail> codeTableItemDetailList = codeTableHeaderDetail.getCodeTableItemDetailList();
 		%>
-		<a href="/ITOS/components/profile/jsp/codeTableItem/CreatecodeTableItem.jsp?tableName=<%=codeTableHeaderDetail.getTableName()%>">Create Code Table Item</a><br></br>
+		<a href="/ITOS/components/core/jsp/codetable/CreatecodeTableItem.jsp?tableName=<%=codeTableHeaderDetail.getTableName()%>">Create Code Table Item</a><br></br>
 		<form action="" method = "POST">
 <table border=1>
 			<thead>

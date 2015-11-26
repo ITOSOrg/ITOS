@@ -16,7 +16,7 @@ List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) 
 
 %>
 			 <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<a href="/ITOS/components/profile/jsp/codeTableHeader/CreateCodeTableHeader.jsp">Create Code Table </a><br><br>
+					<a href="/ITOS/components/core/jsp/codetable/CreateCodeTableHeader.jsp">Create Code Table </a><br><br>
 
 <form action="/ITOS/ListCodeTableHeader" method = "POST">
 <table border=1>

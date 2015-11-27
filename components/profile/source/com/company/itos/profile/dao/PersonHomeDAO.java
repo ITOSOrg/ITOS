@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
+import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.dao.ReadAddressDAO;
@@ -53,6 +55,7 @@ public class PersonHomeDAO {
 			 * if resultSet contains values then set it to the respected
 			 * attribute
 			 */
+			
 
 			if (resultSet.next()) {
 
@@ -73,7 +76,15 @@ public class PersonHomeDAO {
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 			
+			CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
+			codeTableItemKey.setCode(personDetail.getGender());
 			
+			codeTableItemKey.setTableName("Gender");
+			
+			ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
+			readCodeTableItemDAO.readCodeTableItemDescription(codeTableItemKey);
+			
+			personDetail.setGender(codeTableItemKey.getDescription());
 
 			// Read emailAddress information
 			EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();

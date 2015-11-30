@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,17 +16,12 @@ import com.company.itos.profile.dao.PersonLoginDAO;
 import com.company.itos.profile.pojo.PersonDetail;
 import com.company.itos.profile.pojo.UsersDetail;
 
-import javax.servlet.RequestDispatcher;
-
 /**
  * Servlet implementation class PersonLogin
  */
 public class PersonLogin extends HttpServlet {
 
-	PersonDetail personDetail = new PersonDetail();
 	private static final long serialVersionUID = 1L;
-
-	UsersDetail usersDetail = new UsersDetail();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,7 +35,8 @@ public class PersonLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -47,20 +44,20 @@ public class PersonLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
+		PersonDetail personDetail = new PersonDetail();
 		response.setContentType("text/html");
-		PrintWriter printwriter = response.getWriter();
 		String pageForwardStr = null;
 
-		boolean errorInd = validateLoginDetails(request, usersDetail);
+		boolean errorInd = validateLoginDetails(request, personDetail);
+
 		if (errorInd) {
 
-			pageForwardStr = "/LoginForm.jsp";
+			request.setAttribute("usersDetail", personDetail.getUsersDetail());
 
-			// RequestDispatcher rd1 =
-			// request.getRequestDispatcher("/LoginForm.jsp");
-			// rd1.forward(request, response);
+			pageForwardStr = "/LoginForm.jsp";
 
 		} else {
 
@@ -75,50 +72,55 @@ public class PersonLogin extends HttpServlet {
 			if (returnMassegeStr.equals(CRUDConstants.RETURN_MESSAGE_SUCCESS)) {
 
 				pageForwardStr = "/PersonHome";
+				pageForwardStr += "?personID=" + personDetail.getPersonID();
 
 			} else {
 
 				pageForwardStr = "/LoginForm.jsp";
+				request.setAttribute("usersDetail",
+						personDetail.getUsersDetail());
 
 			}
-			pageForwardStr += "?personID=" + personDetail.getPersonID();
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
-			requestDispatcher.forward(request, response);
 		}
+
+		RequestDispatcher requestDispatcher = getServletContext()
+				.getRequestDispatcher(pageForwardStr);
+		requestDispatcher.forward(request, response);
 
 	}
 
-	private boolean validateLoginDetails(HttpServletRequest request, UsersDetail usersDetail)
+	private boolean validateLoginDetails(HttpServletRequest request,
+			PersonDetail personDetail) {
 
-	{
-
+		UsersDetail usersDetail = new UsersDetail();
 		List<String> errorMessageList = new ArrayList<String>();
 		String userName = request.getParameter("userName");
+		
 		if (userName == null || userName.equals("")) {
+			
 			errorMessageList.add("Please	enter	username.");
+		
 		} else {
-			try {
-				usersDetail.setUserName(userName);
+			
+			usersDetail.setUserName(userName);
 
-			} catch (Exception E) {
-
-			}
 		}
+		
 		String password = request.getParameter("password");
+		
 		if (password == null || password.equals("")) {
+			
 			errorMessageList.add("Please	enter	password.");
+		
 		} else {
-			try {
-				usersDetail.setPassword(password);
+			
+			usersDetail.setPassword(password);
 
-			} catch (Exception E) {
-
-			}
 		}
 
-		personDetail.setUsersDetail(usersDetail);
 		usersDetail.setErrorMessageList(errorMessageList);
-		request.setAttribute("usersDetail", usersDetail);
+		personDetail.setUsersDetail(usersDetail);
+
 		return !errorMessageList.isEmpty();
 	}
 

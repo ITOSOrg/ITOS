@@ -50,7 +50,7 @@ public class ListProperties extends HttpServlet {
 
 		if (propertiesList != null) {
 
-			pageForwardStr = "/components/profile/jsp/properties/ListProperties.jsp";
+			pageForwardStr = "/components/core/jsp/properties/ListProperties.jsp";
 
 		} else {
 

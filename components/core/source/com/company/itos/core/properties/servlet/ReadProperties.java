@@ -49,10 +49,10 @@ public class ReadProperties extends HttpServlet {
 		String returnMassegeStr = readPropertiesDAO.ReadProperties(propertiesDetail);
 		
 		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "/components/profile/jsp/properties/UpdateProperties.jsp";
+			pageForwardStr = "/components/core/jsp/properties/UpdateProperties.jsp";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			pageForwardStr = "/components/profile/jsp/properties/ReadProperties.jsp";
+			pageForwardStr = "/components/core/jsp/properties/ReadProperties.jsp";
 		}
 
 		request.setAttribute("propertiesDetail", propertiesDetail);

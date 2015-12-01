@@ -63,7 +63,7 @@ public class CreateProperties extends HttpServlet {
 			//pageForwardStr += "?tableName=" + codeTableItemDetail.getTableName();
 
 		} else {
-			pageForwardStr = "/components/profile/jsp/";
+			pageForwardStr = "/components/core/jsp/";
 		}
 
 

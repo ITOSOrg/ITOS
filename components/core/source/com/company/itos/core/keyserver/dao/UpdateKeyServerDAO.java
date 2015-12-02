@@ -39,6 +39,9 @@ public class UpdateKeyServerDAO {
 				preparedStatement.setString(6, keyServerDetail.getRecordStatus());
 				preparedStatement.setString(7, keyServerDetail.getCreatedBy());
 				preparedStatement.setString(8, keyServerDetail.getLastModifiedBy());
+				
+				preparedStatement.executeUpdate();
+				
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 				
 			} catch (SQLException e) {

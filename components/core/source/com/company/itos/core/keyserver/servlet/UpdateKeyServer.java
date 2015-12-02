@@ -47,6 +47,22 @@ public class UpdateKeyServer extends HttpServlet {
 		int versionNo = (new Integer(request.getParameter("versionNo")));
 		keyServerDetail.setVersionNo(versionNo);
 		
+		int nextUniqueIdBlock = ( new Integer (request.getParameter("nextUniqueIdBlock")));
+		String humanReadable = request.getParameter("humanReadable");
+		String annotation = request.getParameter("annotation");
+		String strategy = request.getParameter("strategy");
+		String recordStatus = request.getParameter("recordStatus");
+		String createdBy = request.getParameter("createdBy");
+		String lastModifiedBy = request.getParameter("lastModifiedBy");
+		
+		keyServerDetail.setNextUniqueIdBlock(nextUniqueIdBlock);
+		keyServerDetail.setHumanReadable(humanReadable);
+		keyServerDetail.setAnnotation(annotation);
+		keyServerDetail.setStrategy(strategy);
+		keyServerDetail.setRecordStatus(recordStatus);
+		keyServerDetail.setCreatedBy(createdBy);
+		keyServerDetail.setLastModifiedBy(lastModifiedBy);
+		
 		UpdateKeyServerDAO updateKeyServerDAO = new UpdateKeyServerDAO();
 		String returnMassegeStr = updateKeyServerDAO.UpdateKeyServer(keyServerDetail);
 		

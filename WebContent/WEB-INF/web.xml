@@ -13,7 +13,7 @@
     <description></description>
     <display-name>PersonHome</display-name>
     <servlet-name>PersonHome</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonHome</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonHome</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonHome</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>PersonRegistration</display-name>
     <servlet-name>PersonRegistration</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonRegistration</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.personPersonRegistration</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonRegistration</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>PersonDelete</display-name>
     <servlet-name>PersonDelete</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonDelete</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonDelete</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonDelete</servlet-name>
@@ -43,7 +43,7 @@
     <description></description>
     <display-name>PersonList</display-name>
     <servlet-name>PersonList</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonList</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonList</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonList</servlet-name>
@@ -53,7 +53,7 @@
     <description></description>
     <display-name>PersonLogin</display-name>
     <servlet-name>PersonLogin</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonLogin</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonLogin</servlet-name>
@@ -63,7 +63,7 @@
     <description></description>
     <display-name>PersonUpdate</display-name>
     <servlet-name>PersonUpdate</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonUpdate</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonUpdate</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonUpdate</servlet-name>
@@ -73,7 +73,7 @@
     <description></description>
     <display-name>SearchPerson</display-name>
     <servlet-name>SearchPerson</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.SearchPerson</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.SearchPerson</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchPerson</servlet-name>
@@ -83,7 +83,7 @@
     <description></description>
     <display-name>PersonLogOut</display-name>
     <servlet-name>PersonLogOut</servlet-name>
-    <servlet-class>com.company.itos.profile.servlet.PersonLogOut</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonLogOut</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonLogOut</servlet-name>
@@ -188,5 +188,385 @@
   <servlet-mapping>
     <servlet-name>DeletePhoneNumber</servlet-name>
     <url-pattern>/DeletePhoneNumber</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateAddress</display-name>
+    <servlet-name>CreateAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.address.servlet.CreateAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAddress</servlet-name>
+    <url-pattern>/CreateAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadAddress</display-name>
+    <servlet-name>ReadAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.address.servlet.ReadAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadAddress</servlet-name>
+    <url-pattern>/ReadAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListAddress</display-name>
+    <servlet-name>ListAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.address.servlet.ListAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListAddress</servlet-name>
+    <url-pattern>/ListAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateAddress</display-name>
+    <servlet-name>UpdateAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.address.servlet.UpdateAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAddress</servlet-name>
+    <url-pattern>/UpdateAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAddress</display-name>
+    <servlet-name>DeleteAddress</servlet-name>
+    <servlet-class>com.company.itos.profile.address.servlet.DeleteAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAddress</servlet-name>
+    <url-pattern>/DeleteAddress</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreatePersonIdentity</display-name>
+    <servlet-name>CreatePersonIdentity</servlet-name>
+    <servlet-class>com.company.itos.profile.personIdentity.servlet.CreatePersonIdentity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePersonIdentity</servlet-name>
+    <url-pattern>/CreatePersonIdentity</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadPersonIdentity</display-name>
+    <servlet-name>ReadPersonIdentity</servlet-name>
+    <servlet-class>com.company.itos.profile.personIdentity.servlet.ReadPersonIdentity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadPersonIdentity</servlet-name>
+    <url-pattern>/ReadPersonIdentity</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListPersonIdentity</display-name>
+    <servlet-name>ListPersonIdentity</servlet-name>
+    <servlet-class>com.company.itos.profile.personIdentity.servlet.ListPersonIdentity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPersonIdentity</servlet-name>
+    <url-pattern>/ListPersonIdentity</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePersonIdentity</display-name>
+    <servlet-name>DeletePersonIdentity</servlet-name>
+    <servlet-class>com.company.itos.profile.personIdentity.servlet.DeletePersonIdentity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePersonIdentity</servlet-name>
+    <url-pattern>/DeletePersonIdentity</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePersonIdentity</display-name>
+    <servlet-name>UpdatePersonIdentity</servlet-name>
+    <servlet-class>com.company.itos.profile.personIdentity.servlet.UpdatePersonIdentity</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePersonIdentity</servlet-name>
+    <url-pattern>/UpdatePersonIdentity</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateCodeTableItem</display-name>
+    <servlet-name>CreateCodeTableItem</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.CreateCodeTableItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCodeTableItem</servlet-name>
+    <url-pattern>/CreateCodeTableItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListCodeTableItem</display-name>
+    <servlet-name>ListCodeTableItem</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.ListCodeTableItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListCodeTableItem</servlet-name>
+    <url-pattern>/ListCodeTableItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateCodeTableItem</display-name>
+    <servlet-name>UpdateCodeTableItem</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.UpdateCodeTableItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCodeTableItem</servlet-name>
+    <url-pattern>/UpdateCodeTableItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadCodeTableItem</display-name>
+    <servlet-name>ReadCodeTableItem</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.ReadCodeTableItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadCodeTableItem</servlet-name>
+    <url-pattern>/ReadCodeTableItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCodeTableItem</display-name>
+    <servlet-name>DeleteCodeTableItem</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.DeleteCodeTableItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCodeTableItem</servlet-name>
+    <url-pattern>/DeleteCodeTableItem</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateCodeTableHeader</display-name>
+    <servlet-name>CreateCodeTableHeader</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.CreateCodeTableHeader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCodeTableHeader</servlet-name>
+    <url-pattern>/CreateCodeTableHeader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListCodeTableHeader</display-name>
+    <servlet-name>ListCodeTableHeader</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.ListCodeTableHeader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListCodeTableHeader</servlet-name>
+    <url-pattern>/ListCodeTableHeader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadCodeTableHeader</display-name>
+    <servlet-name>ReadCodeTableHeader</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.ReadCodeTableHeader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadCodeTableHeader</servlet-name>
+    <url-pattern>/ReadCodeTableHeader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCodeTableHeader</display-name>
+    <servlet-name>DeleteCodeTableHeader</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.DeleteCodeTableHeader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCodeTableHeader</servlet-name>
+    <url-pattern>/DeleteCodeTableHeader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateCodeTableHeader</display-name>
+    <servlet-name>UpdateCodeTableHeader</servlet-name>
+    <servlet-class>com.company.itos.core.codetable.servlet.UpdateCodeTableHeader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCodeTableHeader</servlet-name>
+    <url-pattern>/UpdateCodeTableHeader</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateProperties</display-name>
+    <servlet-name>CreateProperties</servlet-name>
+    <servlet-class>com.company.itos.core.properties.servlet.CreateProperties</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateProperties</servlet-name>
+    <url-pattern>/CreateProperties</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListProperties</display-name>
+    <servlet-name>ListProperties</servlet-name>
+    <servlet-class>com.company.itos.core.properties.servlet.ListProperties</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProperties</servlet-name>
+    <url-pattern>/ListProperties</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadProperties</display-name>
+    <servlet-name>ReadProperties</servlet-name>
+    <servlet-class>com.company.itos.core.properties.servlet.ReadProperties</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadProperties</servlet-name>
+    <url-pattern>/ReadProperties</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateProperties</display-name>
+    <servlet-name>UpdateProperties</servlet-name>
+    <servlet-class>com.company.itos.core.properties.servlet.UpdateProperties</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProperties</servlet-name>
+    <url-pattern>/UpdateProperties</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateKeyServer</display-name>
+    <servlet-name>CreateKeyServer</servlet-name>
+    <servlet-class>com.company.itos.core.keyserver.servlet.CreateKeyServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateKeyServer</servlet-name>
+    <url-pattern>/CreateKeyServer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListKeyServer</display-name>
+    <servlet-name>ListKeyServer</servlet-name>
+    <servlet-class>com.company.itos.core.keyserver.servlet.ListKeyServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListKeyServer</servlet-name>
+    <url-pattern>/ListKeyServer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateKeyServer</display-name>
+    <servlet-name>UpdateKeyServer</servlet-name>
+    <servlet-class>com.company.itos.core.keyserver.servlet.UpdateKeyServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateKeyServer</servlet-name>
+    <url-pattern>/UpdateKeyServer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadKeyServer</display-name>
+    <servlet-name>ReadKeyServer</servlet-name>
+    <servlet-class>com.company.itos.core.keyserver.servlet.ReadKeyServer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadKeyServer</servlet-name>
+    <url-pattern>/ReadKeyServer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateRole</display-name>
+    <servlet-name>CreateRole</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.CreateRole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateRole</servlet-name>
+    <url-pattern>/CreateRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListRole</display-name>
+    <servlet-name>ListRole</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.ListRole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListRole</servlet-name>
+    <url-pattern>/ListRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadRole</display-name>
+    <servlet-name>ReadRole</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.ReadRole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadRole</servlet-name>
+    <url-pattern>/ReadRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateRole</display-name>
+    <servlet-name>UpdateRole</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.UpdateRole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateRole</servlet-name>
+    <url-pattern>/UpdateRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteRole</display-name>
+    <servlet-name>DeleteRole</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.DeleteRole</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRole</servlet-name>
+    <url-pattern>/DeleteRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateUserRoleLink</display-name>
+    <servlet-name>CreateUserRoleLink</servlet-name>
+    <servlet-class>com.company.itos.core.userrolelink.servlet.CreateUserRoleLink</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateUserRoleLink</servlet-name>
+    <url-pattern>/CreateUserRoleLink</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReadUserRoleLink</display-name>
+    <servlet-name>ReadUserRoleLink</servlet-name>
+    <servlet-class>com.company.itos.core.userrolelink.servlet.ReadUserRoleLink</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadUserRoleLink</servlet-name>
+    <url-pattern>/ReadUserRoleLink</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListUserRoleLink</display-name>
+    <servlet-name>ListUserRoleLink</servlet-name>
+    <servlet-class>com.company.itos.core.userrolelink.servlet.ListUserRoleLink</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListUserRoleLink</servlet-name>
+    <url-pattern>/ListUserRoleLink</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUserRoleLink</display-name>
+    <servlet-name>UpdateUserRoleLink</servlet-name>
+    <servlet-class>com.company.itos.core.userrolelink.servlet.UpdateUserRoleLink</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserRoleLink</servlet-name>
+    <url-pattern>/UpdateUserRoleLink</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUserRoleLink</display-name>
+    <servlet-name>DeleteUserRoleLink</servlet-name>
+    <servlet-class>com.company.itos.core.userrolelink.servlet.DeleteUserRoleLink</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserRoleLink</servlet-name>
+    <url-pattern>/DeleteUserRoleLink</url-pattern>
   </servlet-mapping>
 </web-app>

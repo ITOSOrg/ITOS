@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.company.itos.profile.email.dao.ListEmailAddressDAO;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
-import com.company.itos.profile.pojo.PersonDetail;
+import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
  * Servlet implementation class ListEmailAddress

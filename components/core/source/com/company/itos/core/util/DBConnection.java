@@ -7,24 +7,36 @@ import java.sql.*;
  */
 public class DBConnection {
 
-	Connection connection = null;
-	String oracleUrlStr = "jdbc:oracle:thin:@//localhost:1521/orcl";
 
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
 	public Connection getDBConnection() throws SQLException {
+
+		Connection connection = null;
+		String oracleUrlStr = "jdbc:oracle:thin:@//localhost:1521/orcl";
 
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection(oracleUrlStr, "itos",
-					"password");
+			connection = DriverManager.getConnection(oracleUrlStr, "itos", "password");
+			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+		
 		} catch (ClassNotFoundException e) {
+			
 			e.printStackTrace();
+		
 		} finally {
-			//connection.close();
+			// connection.close();
 		}
 
 		return connection;
 	}
+	
+	
 }

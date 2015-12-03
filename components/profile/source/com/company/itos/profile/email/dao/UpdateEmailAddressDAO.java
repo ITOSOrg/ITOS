@@ -10,7 +10,7 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
-import com.company.itos.profile.pojo.PersonDetail;
+import com.company.itos.profile.person.pojo.PersonDetail;
 
 public class UpdateEmailAddressDAO {
 

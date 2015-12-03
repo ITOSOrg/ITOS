@@ -44,21 +44,11 @@ public class CreateUserRoleLink extends HttpServlet {
 		UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
 		
 		String username = request.getParameter("username");
-		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		
 userRoleLinkDetail.setUsername(username);
 		
 		java.util.Date date;
-		try {
-			date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
-			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			userRoleLinkDetail.setStartDate(sqlDate);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());

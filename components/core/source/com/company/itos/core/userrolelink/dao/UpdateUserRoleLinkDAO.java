@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.JavaUtildates;
 
 public class UpdateUserRoleLinkDAO {
 
@@ -33,7 +35,12 @@ public class UpdateUserRoleLinkDAO {
 				PreparedStatement preparedStatementuserRoleLink = connection.prepareStatement(userRoleLinkSQLStr);
 
 				preparedStatementuserRoleLink.setString(1, userRoleLinkDetail.getUsername());
-				preparedStatementuserRoleLink.setDate(2, userRoleLinkDetail.getStartDate());
+
+				String crrentDateTime = JavaUtildates.getCurrentDateTime();
+
+				Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
+				preparedStatementuserRoleLink.setTimestamp(2, timestamp);
+				
 				preparedStatementuserRoleLink.setDate(3, userRoleLinkDetail.getEndDate());
 				preparedStatementuserRoleLink.execute();
 

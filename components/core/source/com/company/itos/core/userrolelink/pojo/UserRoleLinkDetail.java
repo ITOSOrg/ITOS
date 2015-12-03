@@ -1,12 +1,13 @@
 package com.company.itos.core.userrolelink.pojo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class UserRoleLinkDetail {
 	
 	private String username;
 	
-	private Date startDate;
+	private Timestamp startDate;
 	
 	private Date endDate;
 	
@@ -28,11 +29,11 @@ public class UserRoleLinkDetail {
 		this.username = username;
 	}
 
-	public Date getStartDate() {
+	public Timestamp getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Timestamp startDate) {
 		this.startDate = startDate;
 	}
 

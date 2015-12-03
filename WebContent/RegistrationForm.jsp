@@ -3,13 +3,13 @@
 <%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
-<%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
-<%@ page import="com.company.itos.profile.pojo.UsersDetail"%>
+<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
+<%@ page import="com.company.itos.profile.person.pojo.UsersDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page
-	import="com.company.itos.profile.servlet.PersonRegistration"%>
+	import="com.company.itos.profile.person.servlet.PersonRegistration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -300,8 +300,13 @@ $(document).ready(function()
 			<%
 				} else {
 			%>
-
-			
+			<br><table border=1 width="100%" hight="40%">
+			<table  width="90%" >
+			 <thead>
+                    <tr>
+                        <th colspan="2">Enter personal Information Here</th>
+                    </tr>
+                </thead>
 			<tr>
 				<td>Title :</td>
 				<td><select name="title">
@@ -330,8 +335,8 @@ $(document).ready(function()
 			 <tr>
 			<td>Gender</td>
 			<td><select name="gender">
-				<option  value="Male" >Male</option>	
-				<option  value="Female" >Female</option>	
+				<option  value="GEN0001" >Male</option>	
+				<option  value="GEN0002" >Female</option>	
 			</select></td>
 			
 			</tr> 
@@ -350,9 +355,17 @@ $(document).ready(function()
 				<td>Password:</td>
 				<td><input type="text" name="password"></td>
 			</tr>
+			</table>
+			</table>
 			
 			<!-- Enter Email Address Parameter -->
-			
+			<br><table border=1 width="100%" hight="40%">
+			<table  width="90%" >
+			 <thead>
+                    <tr>
+                        <th colspan="2">Enter Email Address Information Here</th>
+                    </tr>
+                </thead>
 			<tr>
 				<td>Email Address:</td>
 				<td><input  type="text" name="emailAddress"></td>
@@ -383,9 +396,18 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr>
+			</table>
+			</table>
 			
 			<!-- Enter Phone Number Parameter -->
 			
+			<br><table border=1 width="100%" hight="40%">
+			<table  width="90%" >
+			 <thead>
+                    <tr>
+                        <th colspan="2">Enter Phone Number Information Here</th>
+                    </tr>
+                </thead>
 			<tr>
 		<td> Country Code:</td>
 		<td><input type="text" name="countryCode"></td>
@@ -429,8 +451,17 @@ $(document).ready(function()
 		<td> End Date:</td>
 		<td><input type="text" name="endDate"></td>
 		</tr>
+		</table>
+		</table>
 			
 			<!-- Enter Address table parameter -->
+			<br><table border=1 width="100%" hight="40%">
+			<table  width="90%" >
+			 <thead>
+                    <tr>
+                        <th colspan="2">Enter Address Information Here</th>
+                    </tr>
+                </thead>
 		<tr>
 				<td>StreetOne:</td>
 				<td><input type="text" name="streetOne" maxlength="50"></td>
@@ -458,7 +489,14 @@ $(document).ready(function()
 			
 			<tr>
 				<td>State:</td>
-				<td><input type="text" name="state"></td>
+				<td><select name="state">
+				    <option  value="ST0001" >New York</option>	
+					<option  value="ST0002" >New Jersy</option>	
+					<option  value="ST0003" >Washington DC</option>	
+					<option  value="ST0004" >Chicago</option>	
+					<option  value="ST0005" >Maryland</option>	
+				</select>
+				</td>
 			</tr>
 			
 			<tr>
@@ -496,9 +534,18 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr> 
+			</table>
+			</table>
 			
 			<!-- Insert Person Identity Parameters -->
 			
+			<br><table border=1 width="100%" hight="40%">
+			<table  width="90%" >
+			 <thead>
+                    <tr>
+                        <th colspan="2">Enter Identity Information Here</th>
+                    </tr>
+                </thead>
 			<tr>
 				<td>AlternateID :</td>
 				<td><input type="text" name="alternateID"></td>
@@ -529,13 +576,15 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr>
+			</table>
+			</table>
 			
 			<%
 				}
 			%>
 			<tr>
 
-				<td><input id="submit" type="submit" value="Submit"></td>
+				<td><br><input id="submit" type="submit" value="Submit"></td>
 
 			</tr>
 

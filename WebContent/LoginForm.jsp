@@ -1,6 +1,6 @@
 <%@	page import="java.util.List"%>
-<%@	page import="com.company.itos.profile.servlet.PersonLogin"%>
-<%@	page import="com.company.itos.profile.pojo.UsersDetail"%>
+<%@	page import="com.company.itos.profile.person.servlet.PersonLogin"%>
+<%@	page import="com.company.itos.profile.person.pojo.UsersDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,6 +62,11 @@
 				<br><br><a href="/ITOS/ListCodeTableHeader">List Code Table </a>
 				
 				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties"> Properties List</a>
+			
+				<br><br><a href="/ITOS/ListKeyServer"> List KeyServer</a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> List Role</a><br><br>
+				<a href="/ITOS/ListUserRoleLink"> List UserRoleLink</a>
+				
 
 			</table>
 	</form>

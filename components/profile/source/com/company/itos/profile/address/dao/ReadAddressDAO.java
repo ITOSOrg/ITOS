@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
+import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
@@ -58,6 +60,14 @@ public class ReadAddressDAO {
 				addressDetail.setZipCode(resultSetaddress.getInt("zipCode"));
 				addressDetail.setVersionNo(resultSetaddress.getInt("versionNo"));
 				
+				CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
+				codeTableItemKey.setCode(addressDetail.getState());
+				
+				codeTableItemKey.setTableName("State");
+				ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
+				readCodeTableItemDAO.readCodeTableItemDescription(codeTableItemKey);
+				
+				addressDetail.setState(codeTableItemKey.getDescription());
 				addressLinkDetail.setAddressDetail(addressDetail);
 			}
 			

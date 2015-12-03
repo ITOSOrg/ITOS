@@ -1,11 +1,11 @@
-<%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
+<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
 <%@ page
 	import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
 <%@ page
 	import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
-<%@ page import="com.company.itos.profile.dao.PersonRegistrationDAO"%>
+<%@ page import="com.company.itos.profile.person.dao.PersonRegistrationDAO"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>

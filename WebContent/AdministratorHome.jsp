@@ -1,7 +1,7 @@
-<%@ page import="com.company.itos.profile.pojo.PersonDetail"%>
-<%@ page import="com.company.itos.profile.dao.PersonListDAO"%>
-<%@ page import="com.company.itos.profile.servlet.PersonList"%>
-<%@ page import="com.company.itos.profile.dao.PersonListDAO"%>
+<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
+<%@ page import="com.company.itos.profile.person.dao.PersonListDAO"%>
+<%@ page import="com.company.itos.profile.person.servlet.PersonList"%>
+<%@ page import="com.company.itos.profile.person.dao.PersonListDAO"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>

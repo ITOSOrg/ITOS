@@ -37,4 +37,15 @@ INSERT INTO CodeTableItem (tableName,	   code,	 description,       annotation,  
 	
 INSERT INTO CodeTableItem (tableName,	   code,	 description,       annotation,        isEnabled, 	sortorder,	 parentCode,   	comments,  		recordStatus,	  createdBy,	        createdOn,	                          lastModifiedBy,  		    lastModifiedOn, 				versionNo) 
 				     VALUES ('Gender',	 'GEN0002',      'Female',       'Is a Gender',	   1,   	null,	    	null,		'comment',		'Active',	   		'Rahul',	    '26-NOV-15 02.48.50.000000000 AM',                'Rahul',		 '26-NOV-15 02.48.50.000000000 AM',         1);
+
+					 
+INSERT INTO CodeTableItem (tableName,	   code,	 description,       annotation,        isEnabled, 	sortorder,	 parentCode,   	comments,  		recordStatus,	  createdBy,	        createdOn,	                          lastModifiedBy,  		    lastModifiedOn, 				versionNo) 
+				     VALUES ('City',	 'CITY0001',      'Baltimore',       'Is a City',	   1,   	null,	    	null,		'comment',		'Active',	   		'Rahul',	    '26-NOV-15 02.48.50.000000000 AM',                'Rahul',		 '26-NOV-15 02.48.50.000000000 AM',         1);
+									 
+INSERT INTO CodeTableItem (tableName,	   code,	 description,       annotation,        isEnabled, 	sortorder,	 parentCode,   	comments,  		recordStatus,	  createdBy,	        createdOn,	                          lastModifiedBy,  		    lastModifiedOn, 				versionNo) 
+				     VALUES ('City',	 'CITY0002',      'Lincoln',       'Is a City',	   1,   	null,	    	null,		'comment',		'Active',	   		'Rahul',	    '26-NOV-15 02.48.50.000000000 AM',                'Rahul',		 '26-NOV-15 02.48.50.000000000 AM',         1);
+				
+
+INSERT INTO CodeTableItem (tableName,	   code,	 description,       annotation,        isEnabled, 	sortorder,	 parentCode,   	comments,  		recordStatus,	  createdBy,	        createdOn,	                          lastModifiedBy,  		    lastModifiedOn, 				versionNo) 
+				     VALUES ('City',	 'CITY0003',      'Omaha',       'Is a City',	   1,   	null,	    	null,		'comment',		'Active',	   		'Rahul',	    '26-NOV-15 02.48.50.000000000 AM',                'Rahul',		 '26-NOV-15 02.48.50.000000000 AM',         1);
 				

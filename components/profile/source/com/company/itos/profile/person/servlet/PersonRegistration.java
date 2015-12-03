@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.person.dao.PersonRegistrationDAO;
@@ -72,9 +73,6 @@ public class PersonRegistration extends HttpServlet {
 
 			pageForwardStr = "/RegistrationForm.jsp";
 
-			// RequestDispatcher requestDispatcher =
-			// request.getRequestDispatcher("/RegistrationForm.jsp");
-			// requestDispatcher.forward(request, response);
 
 		} else {
 
@@ -107,7 +105,15 @@ public class PersonRegistration extends HttpServlet {
 		List<String> errorMessageList = new ArrayList<String>();
 		EmailAddressDetail emailAddressDetail = new EmailAddressDetail();
 		EmailAddressLinkDetail emailAddressLinkDetail = new EmailAddressLinkDetail();
-
+		RoleDetail roleDetail = new RoleDetail();
+			
+		//enter role type
+		String roleType = request.getParameter("roleType");
+		roleDetail.setRoleType(roleType);
+		
+		personDetail.setRoleDetail(roleDetail);
+		
+		// enter person detail
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String title = request.getParameter("title");
 		String gender = request.getParameter("gender");

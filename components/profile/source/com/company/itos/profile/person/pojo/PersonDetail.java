@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -78,6 +79,8 @@ public class PersonDetail {
 	private AddressLinkDetail addressLinkDetail = null;
 	
 	private PersonIdentityDetail personIdentityDetail = null;
+	
+	private RoleDetail roleDetail = null;
 	
 	
 
@@ -355,6 +358,14 @@ public class PersonDetail {
 
 	public void setPersonIdentityDetail(PersonIdentityDetail personIdentityDetail) {
 		this.personIdentityDetail = personIdentityDetail;
+	}
+
+	public RoleDetail getRoleDetail() {
+		return roleDetail;
+	}
+
+	public void setRoleDetail(RoleDetail roleDetail) {
+		this.roleDetail = roleDetail;
 	}
 
 }

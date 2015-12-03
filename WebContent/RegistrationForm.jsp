@@ -562,7 +562,7 @@ $(document).ready(function()
 				<td>Type Code :</td>
 				<td><select name="typeCode">
 					<option  value="Primary" >Primary</option>	
-					<option  value="Secondary" >Secondary.</option>	
+					<option  value="Secondary" >Secondary</option>	
 					<option  value="Persnal" >Persnal</option>	
 					<option  value="Business" >Business</option>	
 			        </select>
@@ -575,6 +575,14 @@ $(document).ready(function()
 			<tr>
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
+			</tr>
+			<tr>
+				<td>Role Type :</td>
+				<td><select name="roleType">
+				    <option  value="Administrator" >Administrator</option>	
+					<option  value="Employee" >Employee</option>	
+			        </select>
+				</td>
 			</tr>
 			</table>
 			</table>

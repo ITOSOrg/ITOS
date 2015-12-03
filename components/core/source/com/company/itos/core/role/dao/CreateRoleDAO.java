@@ -58,5 +58,49 @@ public class CreateRoleDAO {
 		return returnMassegeStr;
 
 	}
+	
+	public String createRoleUsingRegistrationForm(RoleDetail roleDetail){
+		
+		String returnMassegeStr = "";
+
+		DBConnection dbConnection = new DBConnection();
+
+		Connection connection = null;
+
+		try {
+
+			connection = dbConnection.getDBConnection();
+
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				roleDetail.setRoleID(resultSet.getInt(1));
+			}
+
+			String roleSQLStr = "INSERT INTO Role(roleID, roleType, workspace, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo)"
+					+ "VALUES(?, ?, 'Emp', 'Active', 'Rahul', ?, 'Rahul', ?, 1)";
+
+			PreparedStatement preparedStatementRole = connection.prepareStatement(roleSQLStr);
+
+			preparedStatementRole.setInt(1, roleDetail.getRoleID());
+			preparedStatementRole.setString(2, roleDetail.getRoleType());
+
+			String crrentDateTime = JavaUtildates.getCurrentDateTime();
+
+			Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
+			preparedStatementRole.setTimestamp(3, timestamp);
+			preparedStatementRole.setTimestamp(4, timestamp);
+
+			preparedStatementRole.execute();
+
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+		}
+		return returnMassegeStr;
+		
+	}
 
 }

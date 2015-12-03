@@ -12,6 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.company.itos.core.role.dao.CreateRoleDAO;
+import com.company.itos.core.role.pojo.RoleDetail;
+import com.company.itos.core.userrolelink.dao.CreateUserRoleLinkDAO;
+import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
@@ -134,15 +138,19 @@ public class PersonRegistrationDAO {
 				CreatePersonIdentityDAO createPersonIdentityDAO = new CreatePersonIdentityDAO();
 				createPersonIdentityDAO.CreatePersonIdentity(personIdentityDetail);
 
-				// PreparedStatement preparedStatement2 =
-				// connection.prepareStatement(sql1);
-				// preparedStatement2.execute();
-
-				/*
-				 * PreparedStatement preparedStatement3 = connection
-				 * .prepareStatement(sql2); preparedStatement3.execute();
-				 */
-
+				//For Role table
+				
+				RoleDetail roleDetail = personDetail.getRoleDetail();
+				CreateRoleDAO createRoleDAO = new CreateRoleDAO();
+				createRoleDAO.createRoleUsingRegistrationForm(roleDetail);
+				
+				//For UserRoleLink
+				UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
+				userRoleLinkDetail.setUsername(usersDetail.getUserName());
+				userRoleLinkDetail.setRoleID(roleDetail.getRoleID());
+				CreateUserRoleLinkDAO createUserRoleLinkDAO = new CreateUserRoleLinkDAO();
+				createUserRoleLinkDAO.createUserRoleLinkUsingRegistrationform(userRoleLinkDetail);
+				
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 			} catch (SQLException e) {
 				personDetail.getErrorMessageList().add("Username already exist");

@@ -23,7 +23,7 @@
     <description></description>
     <display-name>PersonRegistration</display-name>
     <servlet-name>PersonRegistration</servlet-name>
-    <servlet-class>com.company.itos.profile.person.servlet.personPersonRegistration</servlet-class>
+    <servlet-class>com.company.itos.profile.person.servlet.PersonRegistration</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonRegistration</servlet-name>
@@ -518,6 +518,16 @@
   <servlet-mapping>
     <servlet-name>DeleteRole</servlet-name>
     <url-pattern>/DeleteRole</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListRoleForSinglePerson</display-name>
+    <servlet-name>ListRoleForSinglePerson</servlet-name>
+    <servlet-class>com.company.itos.core.role.servlet.ListRoleForSinglePerson</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListRoleForSinglePerson</servlet-name>
+    <url-pattern>/ListRoleForSinglePerson</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

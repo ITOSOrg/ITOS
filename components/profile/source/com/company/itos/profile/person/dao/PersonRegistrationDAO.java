@@ -141,8 +141,7 @@ public class PersonRegistrationDAO {
 				//For Role table
 				
 				RoleDetail roleDetail = personDetail.getRoleDetail();
-				CreateRoleDAO createRoleDAO = new CreateRoleDAO();
-				createRoleDAO.createRoleUsingRegistrationForm(roleDetail);
+				
 				
 				//For UserRoleLink
 				UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();

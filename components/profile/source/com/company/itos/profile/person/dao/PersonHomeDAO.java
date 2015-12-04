@@ -76,6 +76,19 @@ public class PersonHomeDAO {
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
+			
+			// For User
+			
+			String usersSQLStr = "SELECT * FROM Users WHERE relatedID=\'" + personDetail.getPersonID() + "\'";
+			PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
+
+			ResultSet resultSetUsers = preparedStatementusers.executeQuery();
+			
+			while(resultSetUsers.next()){
+				personDetail.setUserName(resultSetUsers.getString("userName"));
+			}
+			
+			
 			//For Gender
 			CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
 			codeTableItemKey.setCode(personDetail.getGender());

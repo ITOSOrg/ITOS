@@ -108,8 +108,8 @@ public class PersonRegistration extends HttpServlet {
 		RoleDetail roleDetail = new RoleDetail();
 			
 		//enter role type
-		String roleType = request.getParameter("roleType");
-		roleDetail.setRoleType(roleType);
+		int roleID = (new Integer (request.getParameter("roleID")));
+		roleDetail.setRoleID(roleID);
 		
 		personDetail.setRoleDetail(roleDetail);
 		

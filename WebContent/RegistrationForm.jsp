@@ -35,13 +35,13 @@ $(document).ready(function()
 
 </script>
 </head>
-<body>
+<body bgcolor="	#F4A460">
 	<h> Registration Form</h><br><br>
 
 
 	<form name="Registration" action="/ITOS/PersonRegistration"
 		method="POST">
-		<fieldset style="width: 800px; height: 1200px;">
+		<fieldset style="width: 1050px; height: 1200px;">
 		<table>
 			<%
 				PersonDetail personDetail = (PersonDetail) request
@@ -539,10 +539,11 @@ $(document).ready(function()
 				<td><input type="text" name="endDate"></td>
 			</tr>
 			<tr>
-				<td>Role Type :</td>
-				<td><select name="roleType">
-				    <option  value="Administrator" >Administrator</option>	
-					<option  value="Employee" >Employee</option>	
+				<td>Role :</td>
+				<td><select name="roleID">
+				    <option  value="9001" >Administrator</option>	
+					<option  value="9002" >Employee</option>	
+					<option  value="9003" >Devloper</option>	
 			        </select>
 				</td>
 			</tr>

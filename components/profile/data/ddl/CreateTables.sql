@@ -127,7 +127,7 @@ CREATE TABLE UserRoleLink
 ( userRoleLinkID NUMBER(10) NOT NULL,
   username VARCHAR2(30),
   roleID NUMBER(10),
-  startDate DATE,
+  startDate timestamp(6),
   endDate DATE,
   comments VARCHAR2(30),
   recordStatus VARCHAR2(30),

@@ -36,11 +36,12 @@ $(document).ready(function()
 </script>
 </head>
 <body>
-	<h> Registration Form</h>
+	<h> Registration Form</h><br><br>
 
 
 	<form name="Registration" action="/ITOS/PersonRegistration"
 		method="POST">
+		<fieldset style="width: 800px; height: 1200px;">
 		<table>
 			<%
 				PersonDetail personDetail = (PersonDetail) request
@@ -300,13 +301,7 @@ $(document).ready(function()
 			<%
 				} else {
 			%>
-			<br><table border=1 width="100%" hight="40%">
-			<table  width="90%" >
-			 <thead>
-                    <tr>
-                        <th colspan="2">Enter personal Information Here</th>
-                    </tr>
-                </thead>
+			
 			<tr>
 				<td>Title :</td>
 				<td><select name="title">
@@ -355,17 +350,9 @@ $(document).ready(function()
 				<td>Password:</td>
 				<td><input type="text" name="password"></td>
 			</tr>
-			</table>
-			</table>
 			
 			<!-- Enter Email Address Parameter -->
-			<br><table border=1 width="100%" hight="40%">
-			<table  width="90%" >
-			 <thead>
-                    <tr>
-                        <th colspan="2">Enter Email Address Information Here</th>
-                    </tr>
-                </thead>
+			 
 			<tr>
 				<td>Email Address:</td>
 				<td><input  type="text" name="emailAddress"></td>
@@ -396,18 +383,10 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr>
-			</table>
-			</table>
 			
 			<!-- Enter Phone Number Parameter -->
 			
-			<br><table border=1 width="100%" hight="40%">
-			<table  width="90%" >
-			 <thead>
-                    <tr>
-                        <th colspan="2">Enter Phone Number Information Here</th>
-                    </tr>
-                </thead>
+			 
 			<tr>
 		<td> Country Code:</td>
 		<td><input type="text" name="countryCode"></td>
@@ -451,17 +430,9 @@ $(document).ready(function()
 		<td> End Date:</td>
 		<td><input type="text" name="endDate"></td>
 		</tr>
-		</table>
-		</table>
 			
 			<!-- Enter Address table parameter -->
-			<br><table border=1 width="100%" hight="40%">
-			<table  width="90%" >
-			 <thead>
-                    <tr>
-                        <th colspan="2">Enter Address Information Here</th>
-                    </tr>
-                </thead>
+			
 		<tr>
 				<td>StreetOne:</td>
 				<td><input type="text" name="streetOne" maxlength="50"></td>
@@ -534,18 +505,9 @@ $(document).ready(function()
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr> 
-			</table>
-			</table>
 			
 			<!-- Insert Person Identity Parameters -->
 			
-			<br><table border=1 width="100%" hight="40%">
-			<table  width="90%" >
-			 <thead>
-                    <tr>
-                        <th colspan="2">Enter Identity Information Here</th>
-                    </tr>
-                </thead>
 			<tr>
 				<td>AlternateID :</td>
 				<td><input type="text" name="alternateID"></td>
@@ -584,8 +546,7 @@ $(document).ready(function()
 			        </select>
 				</td>
 			</tr>
-			</table>
-			</table>
+		
 			
 			<%
 				}
@@ -596,6 +557,7 @@ $(document).ready(function()
 
 			</tr>
 
+		
 		</table>
 
 	</form>
@@ -603,6 +565,7 @@ $(document).ready(function()
 		<br> <input type="submit" value="Cancel">
 	</form>
 
+		</fieldset>
 
 </body>
 </html>

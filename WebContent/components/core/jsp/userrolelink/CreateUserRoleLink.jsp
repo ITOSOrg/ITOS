@@ -24,6 +24,17 @@
 				<td>End Date :</td>
 				<td><input type="text" name="endDate"></td>
 			</tr>
+			
+			<tr>
+				<td>Role :</td>
+				<td><select name="roleID">
+				    <option  value="9001" >Administrator</option>	
+					<option  value="9002" >Employee</option>	
+					<option  value="9003" >Devloper</option>	
+			        </select>
+				</td>
+			</tr>
+			
 			<tr>
 
 				<td><input  type="submit" value="Submit">

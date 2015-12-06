@@ -12,7 +12,10 @@
 <%
 
 List<RoleDetail> SinglePersonRolelist = (List<RoleDetail>) request.getAttribute("SinglePersonRolelist");
+Integer personID = new Integer (request.getParameter("personID"));
 %>
+<a href="/ITOS/PersonHome?personID=<%=personID%>">Person Home</a>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/components/core/jsp/role/CreateRole.jsp"> Create Role</a><br><br>
 
 <form action="/ITOS/ListRole" method = "POST">
 <table border=1>
@@ -43,6 +46,8 @@ List<RoleDetail> SinglePersonRolelist = (List<RoleDetail>) request.getAttribute(
 					<td><%=roleDetail.getCreatedOn() %></td>
 					<td><%=roleDetail.getLastModifiedBy() %></td>
 					<td><%=roleDetail.getLastModifiedOn() %></td>
+					<td><a href="/ITOS/ReadRole?roleID=<%=roleDetail.getRoleID()%>">Read</a></td>
+					<td><a href="/ITOS/ReadRole?roleID=<%=roleDetail.getRoleID()%>&act=update">Update</a></td>
 				</tr>
 				
 			</tbody>

@@ -45,8 +45,10 @@ public class CreateUserRoleLink extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String endDate = request.getParameter("endDate");
+		int roleID = (new Integer( request.getParameter("roleID")));
 		
-userRoleLinkDetail.setUsername(username);
+		userRoleLinkDetail.setUsername(username);
+		userRoleLinkDetail.setRoleID(roleID);
 		
 		java.util.Date date;
 		try {

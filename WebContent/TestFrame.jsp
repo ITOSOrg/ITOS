@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 
-<frameset bordercolor="#708090" bgcolor="#708090" rows="30,*">
+<frameset bordercolor="#708090"  rows="30,*">
 
 	<frame>
 

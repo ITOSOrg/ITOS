@@ -40,7 +40,7 @@ public class CreateUserRoleLinkDAO {
 
 			preparedStatementuserRoleLink.setInt(1, userRoleLinkDetail.getUserRoleLinkID());
 			preparedStatementuserRoleLink.setString(2, userRoleLinkDetail.getUsername());
-			preparedStatementuserRoleLink.setInt(3, roleDeatail.getRoleID());
+			preparedStatementuserRoleLink.setInt(3, userRoleLinkDetail.getRoleID());
 
 			String crrentDateTime = JavaUtildates.getCurrentDateTime();
 

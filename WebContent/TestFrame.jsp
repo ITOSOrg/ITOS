@@ -15,7 +15,7 @@
 	<frameset cols="15%,85%">
 
 		<frame src="SideBrowseFunction.jsp">
-		<frame src="LoginForm.jsp">
+		<frame src="/ITOS/components/common/authentication/Login.jsp">
 
 	</frameset>
 </frameset>

@@ -86,7 +86,7 @@ public class PersonRegistration extends HttpServlet {
 
 			} else {
 
-				pageForwardStr = "/RegistrationForm.jsp";
+				pageForwardStr = "/components/profile/jsp/person/RegisterPerson.jsp";
 			}
 		}
 

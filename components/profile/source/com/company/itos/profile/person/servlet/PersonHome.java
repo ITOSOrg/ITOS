@@ -78,10 +78,10 @@ public class PersonHome extends HttpServlet {
 
 		if (action != null && action.equals("update")) {
 
-			pageForwardStr = "/UpdatedRegistrationForm.jsp";
+			pageForwardStr = "/components/profile/jsp/person/UpdatePerson.jsp";
 			pageForwardStr += "?personID" + personDetail.getPersonID();
 		} else {
-			pageForwardStr = "/PersonHome.jsp";
+			pageForwardStr = "/components/profile/jsp/person/PersonHome.jsp";
 		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(pageForwardStr);
 		requestDispatcher.forward(request, response);

@@ -75,7 +75,7 @@ public class SearchPerson extends HttpServlet {
 
 		request.setAttribute("personSearchDetails", personSearchDetails);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SearchedPersonInforamation.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/components/profile/jsp/person/SearchPerson.jsp");
 		requestDispatcher.forward(request, response);
 	}
 }

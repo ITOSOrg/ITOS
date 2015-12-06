@@ -255,7 +255,7 @@
 		
 			<form action="/ITOS/PersonLogOut" method="POST">
 				<br> <input type="submit" value="LogOut">
-				<br><br> <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+				<br><br> <a href="/ITOS/components/common/authentication/Login.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
 				<br>
 		</form>
 		</div>

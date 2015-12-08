@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <package name="ITOS" namespace="/" extends="struts-default">
+    
+        <result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+     
+        <action name="login">
+            <result>pages/login.jsp</result>
+        </action>
+     
+        <action name="index">
+            <result type="tiles">index</result>
+        </action>
+     
+        <action name="CreateProperties">        
+            <result>/components/core/jsp/properties/CreateProperties.jsp</result>
+        </action>
+        
+        <action name="CreatePropertiesSubmit" class="com.company.itos.core.properties.actions.CreatePropertiesAction">        
+            <result name="success" type="redirect">
+                <param name="location">/ListProperties</param>
+            </result>
+            <result name="error">/components/core/jsp/properties/CreateProperties.jsp</result>
+        </action>
+        
+        <action name="ListProperties" class="com.company.itos.core.properties.actions.ListPropertiesAction">        
+            
+            <result name="success" type="tiles">ListProperties</result>
+            <result name="error">/index.jsp</result>
+      
+        </action>
+        
+        <action name="ReadProperties" class="com.company.itos.core.properties.actions.ReadPropertiesAction">        
+            
+            <result name="success">/components/core/jsp/properties/ReadProperties.jsp</result>
+            <result name="SENTTOUPDATE">/components/core/jsp/properties/UpdateProperties.jsp</result>
+            <result name="error">/components/core/jsp/properties/ListProperties.jsp</result>
+       
+        </action>
+        
+        <action name="UpdateProperties" class="com.company.itos.core.properties.actions.UpdatePropertiesAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/ListProperties</param>
+            </result>
+            <result name="error">/components/core/jsp/properties/UpdateProperties.jsp</result>
+       
+        </action>
+        
+    </package>
+</struts>

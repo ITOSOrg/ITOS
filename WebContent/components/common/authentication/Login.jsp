@@ -59,6 +59,7 @@
 				<input type="submit" name="submit" value="Login"></input> &nbsp&nbsp
 				<a href="/ITOS/components/profile/jsp/person/RegisterPerson.jsp">New User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<a href="/ITOS/SearchPerson">Search</a>
+				
 				<br><br><a href="/ITOS/ListCodeTableHeader">List Code Table </a>
 				
 				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties"> Properties List</a>

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,47 +8,46 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+	<%
 String relatedID = (String) request.getParameter("relatedID");
 System.out.println("relatedID = " + relatedID);
 
 %>
-<form name="Create Properties" action="/ITOS/CreateProperties"
+	<s:form name="Create Properties" action="/ITOS/CreatePropertiesSubmit"
 		method="POST">
 		<table>
-		  <tr>
+			<tr>
 				<td>Category :</td>
-				<td><input type="text" name="category"></td>
+				<td><s:textfield type="text" name="propertiesDetail.category" /></td>
 			</tr>
 			<tr>
 				<td>Name :</td>
-				<td><input type="text" name="name"></td>
+				<td><s:textfield type="text" name="propertiesDetail.name"/></td>
 			</tr>
 			<tr>
 				<td>Value :</td>
-				<td><input type="text" name="value"></td>
+				<td><s:textfield type="text" name="propertiesDetail.value"/></td>
 			</tr>
 			<tr>
 				<td>Type :</td>
-				<td><input type="text" name="type"></td>
+				<td><s:textfield type="text" name="propertiesDetail.type"/></td>
 			</tr>
 			<tr>
-				<td>Defaul tValue :</td>
-				<td><input type="text" name="defaultValue"></td>
+				<td>Default Value :</td>
+				<td><s:textfield type="text" name="propertiesDetail.defaultValue"/></td>
 			</tr>
 			<tr>
 				<td>Dynamic :</td>
-				<td><input type="text" name="dynamic"></td>
+				<td><s:textfield type="text" name="propertiesDetail.dynamic"/></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a>
-				</td>
+				<td><s:submit type="submit" value="Submit"/>
+					&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a></td>
 			</tr>
-			
-		
+
+
 		</table>
-		</form>
+	</s:form>
 </body>
 </html>

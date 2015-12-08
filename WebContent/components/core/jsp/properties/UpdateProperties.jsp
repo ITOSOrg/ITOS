@@ -1,6 +1,7 @@
 <%@ page import="com.company.itos.core.properties.pojo.PropertiesDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,62 +9,52 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-PropertiesDetail propertiesDetail = (PropertiesDetail) request.getAttribute("propertiesDetail"); 
 
-%>
 
-<form action="/ITOS/UpdateProperties?propertyID=<%=propertiesDetail.getPropertyID() %>&versionNo=<%=propertiesDetail.getVersionNo()%>" method = "POST">
-<table>
+	<s:form action="/ITOS/UpdateProperties" method="POST">
+		<table>
 			<tr>
 				<td>Category :</td>
-				<td><input type="text" name="category"
-					value="<%=propertiesDetail.getCategory()%>"></td>
+				<td><s:textfield name="propertiesDetail.category" /></td>
 			</tr>
 			<tr>
 				<td>Name :</td>
-				<td><input type="text" name="name"
-				      value = "<%=propertiesDetail.getName()%>"></td>
+				<td><s:textfield name="propertiesDetail.name" /></td>
 			</tr>
 			<tr>
 				<td>Value :</td>
-				<td><input type="text" name="value"
-				      value = "<%=propertiesDetail.getValue()%>"></td>
+				<td><s:textfield name="propertiesDetail.value" /></td>
 			</tr>
 			<tr>
 				<td>Type :</td>
-				<td><input type="text" name="Type"
-				      value = "<%=propertiesDetail.getType()%>"></td>
+				<td><s:textfield name="propertiesDetail.Type" /></td>
 			</tr>
 			<tr>
 				<td>DefaultValue :</td>
-				<td><input type="text" name="defaultValue"
-				      value = "<%=propertiesDetail.getDefaultValue()%>"></td>
+				<td><s:textfield name="propertiesDetail.defaultValue" /></td>
 			</tr>
 			<tr>
 				<td>Dynamic :</td>
-				<td><input type="text" name="dynamic"
-				      value = "<%=propertiesDetail.getDynamic()%>"></td>
+				<td><s:textfield name="propertiesDetail.dynamic" /></td>
 			</tr>
 			<tr>
 				<td>CreatedBy :</td>
-				<td><input type="text" name="createdBy"
-				      value = "<%=propertiesDetail.getCreatedBy()%>"></td>
+				<td><s:textfield name="propertiesDetail.createdBy" /></td>
 			</tr>
 			<tr>
 				<td>LastModifiedBy :</td>
-				<td><input type="text" name="lastModifiedBy"
-				      value = "<%=propertiesDetail.getLastModifiedBy()%>"></td>
+				<td><s:textfield name="propertiesDetail.lastModifiedBy" /></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a>
-				</td>
+				<td><s:submit type="submit" value="Submit" /> <s:hidden
+						name="propertiesDetail.propertyID"></s:hidden> <s:hidden
+						name="propertiesDetail.versionNo"></s:hidden> &nbsp&nbsp&nbsp&nbsp<a
+					href="/ITOS/ListProperties">Back</a></td>
 
 			</tr>
-</table>
-</form>
+		</table>
+	</s:form>
 
 </body>
 </html>

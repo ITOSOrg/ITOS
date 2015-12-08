@@ -10,13 +10,14 @@
 </head>
 <body>
 <%
-List<PropertiesDetail> propertiesList = (List<PropertiesDetail>) request.getAttribute("propertiesList");
+List<PropertiesDetail> propertiesList = (List<PropertiesDetail>) session.getAttribute("propertiesList");
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 
 %>
  <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <a href="/ITOS/components/profile/jsp/properties/CreateProperties.jsp">Create Properties</a><br><br>
+<a href="/ITOS/CreateProperties">Create Properties New</a><br><br>
 
 <form action="/ITOS/ListProperties" method = "POST">
 <table border=1>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% PropertiesDetail propertiesDetail = (PropertiesDetail) request.getAttribute("propertiesDetail"); 
+<% PropertiesDetail propertiesDetail = (PropertiesDetail) session.getAttribute("propertiesDetail"); 
 System.out.println("propertyID=" +propertiesDetail.getPropertyID());
 		%>
 		<a href="/ITOS/ListProperties">Back</a><br><br>

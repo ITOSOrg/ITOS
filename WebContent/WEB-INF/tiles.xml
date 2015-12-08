@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/components/common/layout/BaseLayout.jsp">
+        <put-attribute name="title" value="ITOS Default" />
+        <put-attribute name="header" value="/components/common/layout/Header.jsp" />
+        <put-attribute name="menu" value="/components/common/layout/Menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/components/common/layout/Footer.jsp" />
+    </definition>
+    <definition name="/welcome.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="body" value="/Welcome.jsp" />
+    </definition>
+    <definition name="/customer.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Customer Form" />
+        <put-attribute name="body" value="/Customer.jsp" />
+    </definition>
+    <definition name="/customer.success.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Customer Added" />
+        <put-attribute name="body" value="/SuccessCustomer.jsp" />
+    </definition>
+    
+    <definition name="landingPageLayout" template="/components/common/layout/landingpage/LandingPageLayout.jsp">
+        <put-attribute name="title" value="ITOS Default" />
+        <put-attribute name="header" value="/components/common/layout/landingpage/LandingPageHeader.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/components/common/layout/landingpage/LandingPageFooter.jsp" />
+    </definition>
+    
+    
+    <definition name="index" extends="landingPageLayout">
+        <put-attribute name="title" value="ITOS LandingPage" />
+        <put-attribute name="body" value="/components/common/authentication/Login.jsp" />
+    </definition>
+    
+    
+    
+    <definition name="userWorkspaceLayout" template="/components/common/layout/userworkspace/UserWorkspaceLayout.jsp">
+        <put-attribute name="title" value="ITOS Default" />
+        <put-attribute name="header" value="/components/common/layout/userworkspace/UserWorkspaceHeader.jsp" />
+        <put-attribute name="menu" value="/components/common/layout/userworkspace/UserWorkspaceMenu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/components/common/layout/userworkspace/UserWorkspaceFooter.jsp" />
+    </definition>
+    
+    <definition name="adminWorkspace" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List Properties" />
+        <put-attribute name="menu" value="/components/common/layout/userworkspace/UserWorkspaceMenu.jsp" />
+        <put-attribute name="body" value="/components/core/jsp/properties/ListProperties.jsp" />
+    </definition>
+    
+    <definition name="ListProperties" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List Properties" />
+        <put-attribute name="body" value="/components/core/jsp/properties/ListProperties.jsp" />
+    </definition>
+    
+</tiles-definitions>

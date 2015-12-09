@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/ITOS/ListKeyServer "> List KeyServer Home</a><br><br>
 <%
 
 KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keyServerDetail");

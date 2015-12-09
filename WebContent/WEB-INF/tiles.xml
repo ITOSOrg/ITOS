@@ -78,4 +78,9 @@
         <put-attribute name="body" value="/components/core/jsp/keyServer/UpdateKeyServer.jsp" />
     </definition>
     
+    <definition name="SearchPerson" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Search Person" />
+        <put-attribute name="body" value="/components/profile/jsp/person/SearchPerson.jsp" />
+    </definition>
+    
 </tiles-definitions>

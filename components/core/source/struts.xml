@@ -55,6 +55,11 @@
        
         </action>
         
+        
+        <action name="SearchPerson">        
+            <result type="tiles">SearchPerson</result>
+        </action>
+        
         <action name="CreateKeyServer">        
             <result type="tiles">CreateKeyServer</result>
         </action>

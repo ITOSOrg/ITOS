@@ -11,7 +11,7 @@
 <body>
 
 
-	<s:form action="/ITOS/UpdateProperties" method="POST">
+	<s:form action="/ITOS/UpdatePropertiesSubmit" method="POST">
 		<table>
 			<tr>
 				<td>Category :</td>

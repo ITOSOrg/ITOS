@@ -8,11 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-String relatedID = (String) request.getParameter("relatedID");
-System.out.println("relatedID = " + relatedID);
-
-%>
+	
 	<s:form name="Create Properties" action="/ITOS/CreatePropertiesSubmit"
 		method="POST">
 		<table>

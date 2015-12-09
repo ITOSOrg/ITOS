@@ -60,7 +60,7 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 		String returnMassegeStr = updatePropertiesDAO.updateProperties(propertiesDetail);
 		session.put("propertiesDetail", propertiesDetail);
 
-		return SUCCESS;
+		return returnMassegeStr;
 	}
 
 }

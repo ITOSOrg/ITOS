@@ -38,24 +38,12 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 		this.propertiesDetail = propertiesDetail;
 	}
 
+	/**
+	 * 
+	 */
 	public String execute() throws Exception {
+		
 		String pageForwardStr = "";
-		
-		/*PropertiesDetail propertiesDetail = new PropertiesDetail();
-		
-		String category = request.getParameter("category");
-		String name = request.getParameter("name");
-		String value = request.getParameter("value");
-		String type = request.getParameter("Type");
-		String defaultValue = request.getParameter("defaultValue");
-		String dynamic = request.getParameter("dynamic");
-		
-		propertiesDetail.setCategory(category);
-		propertiesDetail.setName(name);
-		propertiesDetail.setValue(defaultValue);
-		propertiesDetail.setType(type);
-		propertiesDetail.setDefaultValue(defaultValue);
-		propertiesDetail.setDynamic(dynamic);*/
 		
 		CreatePropertiesDAO createPropertiesDAO = new CreatePropertiesDAO();
 		String returnMassegeStr = createPropertiesDAO.createProperties(propertiesDetail);
@@ -63,7 +51,6 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = SUCCESS;
-			//pageForwardStr += "?tableName=" + codeTableItemDetail.getTableName();
 
 		} else {
 			pageForwardStr = ERROR;

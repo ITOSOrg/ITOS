@@ -53,10 +53,27 @@
         <put-attribute name="body" value="/components/core/jsp/properties/ListProperties.jsp" />
     </definition>
     
+    
     <definition name="ListProperties" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List Properties" />
         <put-attribute name="body" value="/components/core/jsp/properties/ListProperties.jsp" />
     </definition>
+    
+    <definition name="CreateProperties" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create Properties" />
+        <put-attribute name="body" value="/components/core/jsp/properties/CreateProperties.jsp" />
+    </definition>
+    
+    <definition name="ReadProperties" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read Properties" />
+        <put-attribute name="body" value="/components/core/jsp/properties/ReadProperties.jsp" />
+    </definition>
+    
+    <definition name="UpdateProperties" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update Properties" />
+        <put-attribute name="body" value="/components/core/jsp/properties/UpdateProperties.jsp" />
+    </definition>
+    
     
     <definition name="ListKeyServer" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List KeyServer" />

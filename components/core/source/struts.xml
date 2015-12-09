@@ -21,7 +21,7 @@
         </action>
      
         <action name="CreateProperties">        
-            <result>/components/core/jsp/properties/CreateProperties.jsp</result>
+            <result type="tiles">CreateProperties</result>
         </action>
         
         <action name="CreatePropertiesSubmit" class="com.company.itos.core.properties.actions.CreatePropertiesAction">        
@@ -40,18 +40,26 @@
         
         <action name="ReadProperties" class="com.company.itos.core.properties.actions.ReadPropertiesAction">        
             
-            <result name="success">/components/core/jsp/properties/ReadProperties.jsp</result>
-            <result name="SENTTOUPDATE">/components/core/jsp/properties/UpdateProperties.jsp</result>
-            <result name="error">/components/core/jsp/properties/ListProperties.jsp</result>
+            <result name="success" type="tiles">ReadProperties</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdateProperties</result>
+            <result name="error" type="redirect">
+                <param name="location">/ListProperties</param>
+            </result>
        
         </action>
         
-        <action name="UpdateProperties" class="com.company.itos.core.properties.actions.UpdatePropertiesAction">        
+        <action name="UpdateProperties">        
+            
+          <result type="tiles">UpdateProperties</result>
+       
+        </action>
+        
+        <action name="UpdatePropertiesSubmit" class="com.company.itos.core.properties.actions.UpdatePropertiesAction">        
             
            <result name="success" type="redirect">
                 <param name="location">/ListProperties</param>
             </result>
-            <result name="error">/components/core/jsp/properties/UpdateProperties.jsp</result>
+            <result name="error" type="tiles">UpdateProperties</result>
        
         </action>
         
@@ -68,7 +76,7 @@
             <result name="success" type="redirect">
                 <param name="location">/ListKeyServer</param>
             </result>
-            <result name="error">/components/core/jsp/properties/CreateProperties.jsp</result>
+            <result name="error" type="tiles">CreateKeyServer</result>
         </action>
         
         <action name="ListKeyServer" class="com.company.itos.core.keyserver.actions.ListKeyServerAction">        
@@ -82,7 +90,9 @@
             
             <result name="success" type="tiles">ReadKeyServer</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateKeyServer</result>
-            <result name="error">/components/core/jsp/keyServer/ListKeyServer.jsp</result>
+            <result name="error" type="redirect">
+                <param name="location">/ListKeyServer</param>
+            </result>
        
         </action>
         
@@ -91,7 +101,7 @@
            <result name="success" type="redirect">
                 <param name="location">/ListKeyServer</param>
             </result>
-            <result name="error">/components/core/jsp/keyServer/UpdateKeyServer.jsp</result>
+            <result name="error" type="tiles">UpdateKeyServer</result>
        
         </action>
         

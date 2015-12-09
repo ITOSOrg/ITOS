@@ -12,9 +12,10 @@
 <a href="/ITOS/ListKeyServer "> List KeyServer Home</a><br><br>
 <%
 
-KeyServerDetail keyServerDetail = (KeyServerDetail) request.getAttribute("keyServerDetail");
+KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keyServerDetail");
 
 %>
+<a href="/ITOS/ListKeyServer">Back</a><br><br>
 <form action="/ITOS/ReadKeyServer" method = "POST">
 <table border=1>
 			<thead>

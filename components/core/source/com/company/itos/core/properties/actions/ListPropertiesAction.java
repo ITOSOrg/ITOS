@@ -37,11 +37,9 @@ public class ListPropertiesAction extends ActionSupport implements SessionAware 
 		
 		List<PropertiesDetail> propertiesList =  listPropertiesDAO.ListProperties(propertiesDetail);
 		
-		//request.setAttribute("propertiesList", propertiesList);
 		
 		session.put("propertiesList", propertiesList);
 
-		//request.setAttribute("personID", personID);
 
 		return SUCCESS;
 	}

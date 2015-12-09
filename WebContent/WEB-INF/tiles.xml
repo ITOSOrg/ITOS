@@ -58,4 +58,14 @@
         <put-attribute name="body" value="/components/core/jsp/properties/ListProperties.jsp" />
     </definition>
     
+    <definition name="ListKeyServer" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List KeyServer" />
+        <put-attribute name="body" value="/components/core/jsp/keyServer/ListKeyServer.jsp" />
+    </definition>
+    
+    <definition name="CreateKeyServer" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create KeyServer" />
+        <put-attribute name="body" value="/components/core/jsp/keyServer/CreateKeyServer.jsp" />
+    </definition>
+    
 </tiles-definitions>

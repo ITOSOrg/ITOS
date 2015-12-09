@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,40 +8,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="Create KeyServer" action="/ITOS/CreateKeyServer"
+<a href="/ITOS/ListKeyServer">Back</a><br><br>
+<s:form name="Create KeyServer" action="/ITOS/CreateKeyServerSubmit"
 		method="POST">
 		<table>
 		  
 			<tr>
 				<td>Keyset Code :</td>
-				<td><input type="text" name="keysetCode"></td>
+				<td><s:textfield type="text" name="keyServerDetail.keysetCode"/></td>
 			</tr>
 			<tr>
 				<td>Next UniqueIdBlock :</td>
-				<td><input type="text" name="nextUniqueIdBlock"></td>
+				<td><s:textfield type="text" name="keyServerDetail.nextUniqueIdBlock"/></td>
 			</tr>
 			<tr>
 				<td>Human Readable :</td>
-				<td><input type="text" name="humanReadable"></td>
+				<td><s:textfield type="text" name="keyServerDetail.humanReadable"/></td>
 			</tr>
 			<tr>
 				<td>Annotation :</td>
-				<td><input type="text" name="annotation"></td>
+				<td><s:textfield type="text" name="keyServerDetail.annotation"/></td>
 			</tr>
 			<tr>
 				<td>Strategy :</td>
-				<td><input type="text" name="strategy"></td>
+				<td><s:textfield type="text" name="keyServerDetail.strategy"/></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListKeyServer "> List KeyServer Home</a>
+				<td><s:textfield  type="submit" value="Submit"/>
 
 			</tr>
 			
 		
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

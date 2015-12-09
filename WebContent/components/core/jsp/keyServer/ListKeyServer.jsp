@@ -10,10 +10,10 @@
 </head>
 <body>
 		 <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<a href="/ITOS/components/core/jsp/keyServer/CreateKeyServer.jsp"> Create KeyServer</a><br><br>
+<a href="/ITOS/CreateKeyServer"> Create KeyServer</a><br><br>
 <%
 
-List<KeyServerDetail> KeyServerList = (List<KeyServerDetail>) request.getAttribute("KeyServerList");
+List<KeyServerDetail> keyServerList = (List<KeyServerDetail>) session.getAttribute("keyServerList");
 
 %>
 
@@ -37,8 +37,8 @@ List<KeyServerDetail> KeyServerList = (List<KeyServerDetail>) request.getAttribu
 			</thead>
 			
 			<%
-				for (int i = 0; i < KeyServerList.size(); i++) {
-					KeyServerDetail	 keyServerDetail = KeyServerList.get(i);
+				for (int i = 0; i < keyServerList.size(); i++) {
+					KeyServerDetail	 keyServerDetail = keyServerList.get(i);
 			%>
 			
 			<tbody>

@@ -12,7 +12,7 @@ import com.company.itos.core.util.DBConnection;
 
 public class ListKeyServerDAO {
 	
-	public List<KeyServerDetail> ListKeyServer(KeyServerDetail keyServerDetailkey){
+	public List<KeyServerDetail> listKeyServer(KeyServerDetail keyServerDetailkey){
 			
 		List<KeyServerDetail> KeyServerList = new ArrayList<KeyServerDetail>();
 		

@@ -55,5 +55,40 @@
        
         </action>
         
+        <action name="CreateKeyServer">        
+            <result type="tiles">CreateKeyServer</result>
+        </action>
+        
+        <action name="CreateKeyServerSubmit" class="com.company.itos.core.keyserver.actions.CreateKeyServerAction">        
+            <result name="success" type="redirect">
+                <param name="location">/ListKeyServer</param>
+            </result>
+            <result name="error">/components/core/jsp/properties/CreateProperties.jsp</result>
+        </action>
+        
+        <action name="ListKeyServer" class="com.company.itos.core.keyserver.actions.ListKeyServerAction">        
+            
+            <result name="success" type="tiles">ListKeyServer</result>
+            <result name="error">/index.jsp</result>
+      
+        </action>
+        
+         <action name="ReadKeyServer" class="com.company.itos.core.keyserver.actions.ReadKeyServerAction">        
+            
+            <result name="success">/components/core/jsp/keyServer/ReadKeyServer.jsp</result>
+            <result name="SENTTOUPDATE">/components/core/jsp/keyServer/UpdateKeyServer.jsp</result>
+            <result name="error">/components/core/jsp/keyServer/ListKeyServer.jsp</result>
+       
+        </action>
+        
+        <action name="UpdateKeyServer" class="com.company.itos.core.keyserver.actions.UpdateKeyServerAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/ListKeyServer</param>
+            </result>
+            <result name="error">/components/core/jsp/keyServer/UpdateKeyServer.jsp</result>
+       
+        </action>
+        
     </package>
 </struts>

@@ -42,7 +42,7 @@ public class ListKeyServer extends HttpServlet {
 		KeyServerDetail keyServerDetail = new KeyServerDetail();
 		
 		ListKeyServerDAO listKeyServerDAO = new ListKeyServerDAO();
-		List<KeyServerDetail> KeyServerList = listKeyServerDAO.ListKeyServer(keyServerDetail);
+		List<KeyServerDetail> KeyServerList = listKeyServerDAO.listKeyServer(keyServerDetail);
 		
 		request.setAttribute("KeyServerList", KeyServerList);
 

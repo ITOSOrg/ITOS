@@ -49,7 +49,7 @@ public class CreateProperties extends HttpServlet {
 		
 		propertiesDetail.setCategory(category);
 		propertiesDetail.setName(name);
-		propertiesDetail.setValue(defaultValue);
+		propertiesDetail.setValue(value);
 		propertiesDetail.setType(type);
 		propertiesDetail.setDefaultValue(defaultValue);
 		propertiesDetail.setDynamic(dynamic);

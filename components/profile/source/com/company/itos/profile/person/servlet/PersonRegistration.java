@@ -15,17 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.address.pojo.AddressDetail;
+import com.company.itos.profile.address.pojo.AddressLinkDetail;
+import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.dao.PersonRegistrationDAO;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.UsersDetail;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
-import com.company.itos.profile.address.pojo.AddressDetail;
-import com.company.itos.profile.address.pojo.AddressLinkDetail;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
-import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 /**
  * Servlet implementation class PersonRegistration

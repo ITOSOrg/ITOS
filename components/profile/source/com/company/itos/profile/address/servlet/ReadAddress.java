@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.address.dao.ReadAddressDAO;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
-import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
 
 /**
  * Servlet implementation class ReadAddress

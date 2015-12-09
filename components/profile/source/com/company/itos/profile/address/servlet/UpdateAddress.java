@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,8 +14,6 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.address.dao.UpdateAddressDAO;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
-import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 /**
  * Servlet implementation class UpdateAddress

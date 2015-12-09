@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.profile.email.dao.ListEmailAddressDAO;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
-import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
  * Servlet implementation class ListEmailAddress

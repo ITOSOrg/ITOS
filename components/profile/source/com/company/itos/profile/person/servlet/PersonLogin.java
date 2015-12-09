@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +15,6 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.person.dao.PersonLoginDAO;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.UsersDetail;
-
-import javax.servlet.RequestDispatcher;
 
 /**
  * Servlet implementation class PersonLogin

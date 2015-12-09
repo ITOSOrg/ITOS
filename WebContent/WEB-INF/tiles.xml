@@ -95,6 +95,42 @@
         <put-attribute name="body" value="/components/core/jsp/keyServer/UpdateKeyServer.jsp" />
     </definition>
     
+    <definition name="ListRoles" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List Roles" />
+        <put-attribute name="body" value="/components/core/jsp/role/ListRole.jsp" />
+    </definition>
+    
+    <definition name="CreateRole" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create Role" />
+        <put-attribute name="body" value="/components/core/jsp/role/CreateRole.jsp" />
+    </definition>
+    
+    <definition name="ReadRole" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read Role" />
+        <put-attribute name="body" value="/components/core/jsp/role/ReadRole.jsp" />
+    </definition>
+    
+    <definition name="UpdateRole" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update Role" />
+        <put-attribute name="body" value="/components/core/jsp/role/UpdateRole.jsp" />
+    </definition>
+    
+    <definition name="ListCodeTable" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List CodeTable" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/ListCodeTableHeader.jsp" />
+    </definition>
+    
+    <definition name="CreateCodeTableHeader" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create CodeTableHeader" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/CreateCodeTableHeader.jsp" />
+    </definition>
+    
+   
+   
+   
+   
+   
+   
     <definition name="SearchPerson" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Search Person" />
         <put-attribute name="body" value="/components/profile/jsp/person/SearchPerson.jsp" />

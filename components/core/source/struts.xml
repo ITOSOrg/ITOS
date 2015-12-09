@@ -64,9 +64,7 @@
         </action>
         
         
-        <action name="SearchPerson">        
-            <result type="tiles">SearchPerson</result>
-        </action>
+        
         
         <action name="CreateKeyServer">        
             <result type="tiles">CreateKeyServer</result>
@@ -103,6 +101,83 @@
             </result>
             <result name="error" type="tiles">UpdateKeyServer</result>
        
+        </action>
+        
+        
+        
+        
+         <action name="CreateRole">        
+            <result type="tiles">CreateRole</result>
+        </action>
+        
+        <action name="UpdateRole">        
+            
+          <result type="tiles">UpdateRole</result>
+       
+        </action>
+        
+        <action name="UpdateRoleSubmit" class="com.company.itos.core.role.action.UpdateRoleAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/ListRoles</param>
+            </result>
+            <result name="error" type="tiles">UpdateRole</result>
+       
+        </action>
+        
+        <action name="ListRoles" class="com.company.itos.core.role.action.ListRoleAction">        
+            
+            <result name="success" type="tiles">ListRoles</result>
+            <result name="error">/index.jsp</result>
+      
+        </action>
+        
+        <action name="CreateRoleSubmit" class="com.company.itos.core.role.action.CreateRoleAction">        
+            <result name="success" type="redirect">
+                <param name="location">/ListRoles</param>
+            </result>
+            <result name="error" type="tiles">CreateRole</result>
+        </action>
+        
+        <action name="ReadRole" class="com.company.itos.core.role.action.ReadRoleAction">        
+            
+            <result name="success" type="tiles">ReadRole</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdateRole</result>
+            <result name="error" type="redirect">
+                <param name="location">/ListRoles</param>
+            </result>
+       
+        </action>
+        
+         <action name="DeleteRole" class="com.company.itos.core.role.action.DeleteRoleAction">        
+            
+          <result name="success" type="tiles">ListRoles</result>
+       
+        </action>
+        
+        
+        <action name="ListCodeTable" class="com.company.itos.core.codetable.action.ListCodeTableHeaderAction">
+        <result name="success" type="tiles">ListCodeTable</result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+        <action name="CreateCodeTableHeader">        
+            <result type="tiles">CreateCodeTableHeader</result>
+        </action>
+        
+        <action name="CreateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableHeaderAction">        
+            <result name="success" type="redirect">
+                <param name="location">/ListCodeTable</param>
+            </result>
+            <result name="error">CreateCodeTableHeader</result>
+        </action>
+        
+        
+        
+        
+        <action name="SearchPerson">        
+            <result type="tiles">SearchPerson</result>
         </action>
         
     </package>

@@ -11,9 +11,9 @@
 <body>
 <%
 
-RoleDetail roleDetail = (RoleDetail) request.getAttribute("roleDetail");
+RoleDetail roleDetail = (RoleDetail) session.getAttribute("roleDetail");
 %>
-<a href="/ITOS/ListRole"> List Role Home</a><br><br>
+<a href="/ITOS/ListRoles">Back</a>
 <form action="/ITOS/ReadRole" method = "POST">
 <table border=1>
 			<thead>

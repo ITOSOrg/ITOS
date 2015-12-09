@@ -2,6 +2,7 @@
 <%@ page import="com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,41 +12,44 @@
 <body>
 <%
 
-RoleDetail roleDetail = (RoleDetail) request.getAttribute("roleDetail");
+RoleDetail roleDetail = (RoleDetail) session.getAttribute("roleDetail");
 %>
 
 
-<form action="/ITOS/UpdateRole?roleID=<%=roleDetail.getRoleID() %>&versionNo=<%=roleDetail.getVersionNo()%>" method = "POST">
+<s:form action="/ITOS/UpdateRoleSubmit" method = "POST">
 <table>
 			<tr>
 				<td>Role Type :</td>
-				<td><input type="text" name="roleType"
-					value="<%=roleDetail.getRoleType()%>"></td>
+				<td><s:textfield type="text" name="roleDetail.roleType"
+					/></td>
 			</tr>
 			<tr>
 				<td>Workspace :</td>
-				<td><input type="text" name="workspace"
-				      value = "<%=roleDetail.getWorkspace()%>"></td>
+				<td><s:textfield type="text" name="roleDetail.workspace"
+				      /></td>
 			</tr>
 			<tr>
 				<td>CreatedBy :</td>
-				<td><input type="text" name="createdBy"
-				      value = "<%=roleDetail.getCreatedBy()%>"></td>
+				<td><s:textfield type="text" name="roleDetail.createdBy"
+				      /></td>
 			</tr>
 			<tr>
 				<td>LastModifiedBy :</td>
-				<td><input type="text" name="lastModifiedBy"
-				      value = "<%=roleDetail.getLastModifiedBy()%>"></td>
+				<td><s:textfield type="text" name="roleDetail.lastModifiedBy"
+				      /></td>
 			</tr>
 			
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> List Role Home</a>
+				<td><s:textfield  type="submit" value="Submit"/>
+				<s:hidden name="roleDetail.roleID"></s:hidden> 
+				<s:hidden name="roleDetail.versionNo"></s:hidden>
+				&nbsp&nbsp&nbsp&nbsp<a
+					href="/ITOS/ListRoles">Back</a></td>
 				</td>
 
 			</tr>
 </table>
-</form>
+</s:form>
 </body>
 </html>

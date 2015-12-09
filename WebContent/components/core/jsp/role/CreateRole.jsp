@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,27 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="Create Role" action="/ITOS/CreateRole"
+<s:form name="Create Role" action="/ITOS/CreateRoleSubmit"
 		method="POST">
 		<table>
 		  
 			<tr>
 				<td>Role Type :</td>
-				<td><input type="text" name="roleType"></td>
+				<td><s:textfield type="text" name="roleDeatail.roleType"/></td>
 			</tr>
 			<tr>
 				<td>Workspace :</td>
-				<td><input type="text" name="workspace"></td>
+				<td><s:textfield type="text" name="roleDeatail.workspace"/></td>
 			</tr>
 			
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> List Role Home</a>
+				<td><s:textfield  type="submit" value="Submit"/>
+				&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRoles">Back</a></td>
+				
 			</tr>
 			
 		
 		</table>
-		</form>
+		</s:form>
 </body>
 </html>

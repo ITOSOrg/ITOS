@@ -12,12 +12,10 @@
 <body>
 <%
 
-List<RoleDetail> roleDetailList = (List<RoleDetail>) request.getAttribute("roleDetailList");
+List<RoleDetail> roleDetailList = (List<RoleDetail>) session.getAttribute("roleDetailList");
 %>
 
-<a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-<a href="/ITOS/components/core/jsp/role/CreateRole.jsp"> Create Role</a><br><br>
+<a href="/ITOS/CreateRole"> Create Role</a><br><br>
 
 <form action="/ITOS/ListRole" method = "POST">
 <table border=1>

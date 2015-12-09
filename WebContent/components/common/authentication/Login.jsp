@@ -17,7 +17,7 @@
 
 
 		<fieldset style="width: 400px">
-			<table>
+			<table align="center">
 				<%
 					UsersDetail usersDetail = (UsersDetail) request
 							.getAttribute("usersDetail");
@@ -60,13 +60,13 @@
 				<a href="/ITOS/components/profile/jsp/person/RegisterPerson.jsp">New User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<a href="/ITOS/SearchPerson">Search</a>
 				
-				<br><br><a href="/ITOS/ListCodeTableHeader">List Code Table </a>
+				<br><br><a href="/ITOS/ListCodeTableHeader">Code Table </a>
 				
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties"> Properties List</a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties"> Properties </a>
 			
-				<br><br><a href="/ITOS/ListKeyServer"> List KeyServer</a>
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> List Role</a><br><br>
-				<a href="/ITOS/ListUserRoleLink"> List UserRoleLink</a>
+				<br><br><a href="/ITOS/ListKeyServer"> KeyServer</a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> Roles</a><br><br>
+				<a href="/ITOS/ListUserRoleLink"> UserRoleLink</a>
 				
 
 			</table>

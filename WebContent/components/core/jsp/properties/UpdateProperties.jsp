@@ -47,9 +47,9 @@
 			</tr>
 			<tr>
 
-				<td><s:submit type="submit" value="Submit" /> <s:hidden
-						name="propertiesDetail.propertyID"></s:hidden> <s:hidden
-						name="propertiesDetail.versionNo"></s:hidden> &nbsp&nbsp&nbsp&nbsp<a
+				<td><s:submit type="submit" value="Submit" /> 
+				<s:hidden name="propertiesDetail.propertyID"></s:hidden> 
+				<s:hidden name="propertiesDetail.versionNo"></s:hidden> &nbsp&nbsp&nbsp&nbsp<a
 					href="/ITOS/ListProperties">Back</a></td>
 
 			</tr>

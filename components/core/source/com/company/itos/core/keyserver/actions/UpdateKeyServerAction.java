@@ -51,7 +51,7 @@ public class UpdateKeyServerAction extends ActionSupport implements SessionAware
 	
 	public String execute() throws Exception {
 		
-		KeyServerDetail keyServerDetail = new KeyServerDetail();
+		//KeyServerDetail keyServerDetail = new KeyServerDetail();
 		
 		UpdateKeyServerDAO updateKeyServerDAO = new UpdateKeyServerDAO();
 		String returnMassegeStr = updateKeyServerDAO.UpdateKeyServer(keyServerDetail);

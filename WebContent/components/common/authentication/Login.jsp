@@ -58,17 +58,9 @@
 				<br>
 				<input type="submit" name="submit" value="Login"></input> &nbsp&nbsp
 				<a href="/ITOS/components/profile/jsp/person/RegisterPerson.jsp">New User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<a href="/ITOS/SearchPerson">Search</a>
 				
-				<br><br><a href="/ITOS/ListCodeTableHeader">Code Table </a>
 				
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties"> Properties </a>
-			
-				<br><br><a href="/ITOS/ListKeyServer"> KeyServer</a>
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListRole"> Roles</a><br><br>
-				<a href="/ITOS/ListUserRoleLink"> UserRoleLink</a>
-				
-
+            <a href="ListProperties">Properties</a><br><br>
 			</table>
 	</form>
 </body>

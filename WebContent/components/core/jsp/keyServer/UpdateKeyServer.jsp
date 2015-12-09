@@ -12,7 +12,7 @@
 <body>
 <%
 
-KeyServerDetail keyServerDetail = (KeyServerDetail) request.getAttribute("keyServerDetail");
+KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keyServerDetail");
 
 %>
 
@@ -21,11 +21,7 @@ KeyServerDetail keyServerDetail = (KeyServerDetail) request.getAttribute("keySer
 <s:form action="/ITOS/UpdateKeyServer" method = "POST">
 	
 	<table>
-			<tr>
-				<td>Keyset Code :</td>
-				<td><s:textfield type="text" name="keyServerDetail.keysetCode"
-					/></td>
-			</tr>
+			
 			<tr>
 				<td>Next UniqueIdBlock :</td>
 				<td><s:textfield type="text" name="keyServerDetail.nextUniqueIdBlock"

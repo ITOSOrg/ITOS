@@ -15,9 +15,7 @@ List<PropertiesDetail> propertiesList = (List<PropertiesDetail>) session.getAttr
 Integer relatedID = (Integer) request.getAttribute("relatedID");
 
 %>
- <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<a href="/ITOS/components/profile/jsp/properties/CreateProperties.jsp">Create Properties</a><br><br>
-<a href="/ITOS/CreateProperties">Create Properties New</a><br><br>
+<a href="/ITOS/CreateProperties">Create Properties</a><br><br>
 
 <form action="/ITOS/ListProperties" method = "POST">
 <table border=1>

@@ -9,7 +9,11 @@
 </head>
 <body>
 
-<s:a href="ListProperties">Properties</s:a>
+<s:a href="SearchPerson">Search Person</s:a><br><br>
+<s:a href="ListProperties">Properties</s:a><br><br>
+<s:a href="ListKeyServer">KeyServers</s:a><br><br>
+<s:a href="ListCodeTable">CodeTables</s:a><br><br>
+<s:a href="ListRoles">Roles</s:a><br><br>
 
 </body>
 </html>

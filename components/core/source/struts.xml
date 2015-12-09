@@ -75,8 +75,8 @@
         
          <action name="ReadKeyServer" class="com.company.itos.core.keyserver.actions.ReadKeyServerAction">        
             
-            <result name="success">/components/core/jsp/keyServer/ReadKeyServer.jsp</result>
-            <result name="SENTTOUPDATE">/components/core/jsp/keyServer/UpdateKeyServer.jsp</result>
+            <result name="success" type="tiles">ReadKeyServer</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdateKeyServer</result>
             <result name="error">/components/core/jsp/keyServer/ListKeyServer.jsp</result>
        
         </action>

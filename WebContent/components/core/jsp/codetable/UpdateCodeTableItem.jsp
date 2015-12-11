@@ -2,6 +2,7 @@
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,49 +13,48 @@
 <% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) request.getAttribute("codeTableItemDetail"); 
 		%>
 		
-		<form action="/ITOS/UpdateCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&versionNo=<%=codeTableItemDetail.getVersionNo()%>" method = "POST">
+		<s:form action="/ITOS/UpdateCodeTableItemSubmit" method = "POST">
 	
 	<table>
 			<tr>
 				<td>Table Name :</td>
-				<td><input type="text" name="tableName"
-					value="<%=codeTableItemDetail.getTableName()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.tableName"
+					/></td>
 			</tr>
 			<tr>
 				<td>Code :</td>
-				<td><input type="text" name="code"
-				      value = "<%=codeTableItemDetail.getCode()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.code"
+				      /></td>
 			</tr>
 			<tr>
 				<td>Description :</td>
-				<td><input type="text" name="description"
-				      value = "<%=codeTableItemDetail.getDescription()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.description"
+				      /></td>
 			</tr>
 			<tr>
 				<td>Annotation :</td>
-				<td><input type="text" name="annotation"
-				      value = "<%=codeTableItemDetail.getAnnotation()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.annotation"
+				      "/></td>
 			</tr>
 			<tr>
 				<td>Is Enabled :</td>
-				<td><input type="text" name="isEnabled"
-				      value = "<%=codeTableItemDetail.getIsEnabled()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.isEnabled"
+				      "/></td>
 			</tr>
 			<tr>
 				<td>Record Status :</td>
-				<td><input type="text" name="recordStatus"
-				      value = "<%=codeTableItemDetail.getRecordStatus()%>"></td>
+				<td><s:textfield type="text" name="codeTableItemDetail.recordStatus"
+				      /></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ReadCodeTableHeader?tableName=<%=codeTableItemDetail.getTableName()%>">Back</a><br><br>
+						<td><s:submit  type="submit" value="Submit"/>
 
 				</td>
 
 			</tr>
 </table>
 	
-</form>
+</s:form>
 </body>
 </html>

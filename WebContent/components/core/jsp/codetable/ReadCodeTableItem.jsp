@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) request.getAttribute("codeTableItemDetail"); %>
+<% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) session.getAttribute("codeTableItemDetail"); %>
 <a href="/ITOS/ReadCodeTableHeader?tableName=<%=codeTableItemDetail.getTableName()%>">Back</a><br><br>
 
 <form action="/ITOS/ReadCodeTableItem" method = "POST">

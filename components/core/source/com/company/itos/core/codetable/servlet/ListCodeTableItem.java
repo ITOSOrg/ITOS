@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.company.itos.core.codetable.dao.ListCodeTableItemDAO;
+import com.company.itos.core.codetable.pojo.CodeTableHeaderDetail;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 
 /**
@@ -39,6 +40,7 @@ public class ListCodeTableItem extends HttpServlet {
 		
 		String pageForwardStr = "";
 		CodeTableItemDetail codeTableItemDetail = new CodeTableItemDetail();
+		CodeTableHeaderDetail codeTableHeaderDetail = new CodeTableHeaderDetail();
 		
 		//String code = request.getParameter("code");
 		//codeTableItemDetail.setCode(code);
@@ -47,6 +49,7 @@ public class ListCodeTableItem extends HttpServlet {
 		List<CodeTableItemDetail> codeTableItemDetailList = listCodeTableItemDAO.listCodeTableItem(codeTableItemDetail);
 		
 		request.setAttribute("codeTableItemDetailList", codeTableItemDetailList);
+	
 
 		if (codeTableItemDetailList != null) {
 

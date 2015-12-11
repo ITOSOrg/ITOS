@@ -12,11 +12,10 @@
 <body>
 <%
 
-List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) request.getAttribute("codeTableHeaderList");
+List<CodeTableHeaderDetail> codeTableHeaderList = (List<CodeTableHeaderDetail>) session.getAttribute("codeTableHeaderList");
 
 %>
-			 <a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					<a href="/ITOS/components/core/jsp/codetable/CreateCodeTableHeader.jsp">Create Code Table </a><br><br>
+					<a href="/ITOS/CreateCodeTableHeader">Create CodeTable </a><br><br>
 
 <form action="/ITOS/ListCodeTableHeader" method = "POST">
 <table border=1>

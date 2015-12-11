@@ -125,6 +125,8 @@
        
         </action>
         
+        
+        
         <action name="ListRoles" class="com.company.itos.core.role.action.ListRoleAction">        
             
             <result name="success" type="tiles">ListRoles</result>
@@ -171,6 +173,59 @@
                 <param name="location">/ListCodeTable</param>
             </result>
             <result name="error">CreateCodeTableHeader</result>
+        </action>
+        
+        <action name="ReadCodeTableHeader" class="com.company.itos.core.codetable.action.ReadCodeTableHeaderAction">        
+            
+            <result name="success" type="tiles">ReadCodeTableHeader</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdateCodeTableHeader</result>
+            <result name="error" type="redirect">
+                <param name="location">/ListCodeTable</param>
+            </result>
+       
+        </action>
+        
+        <action name="UpdateCodeTableHeader">        
+            
+          <result type="tiles">UpdateCodeTableHeader</result>
+       
+        </action>
+        
+        <action name="UpdateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableHeaderAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/ListCodeTable</param>
+            </result>
+            <result name="error" type="tiles">UpdateCodeTableHeader</result>
+       
+        </action>
+        
+        <action name="CreatecodeTableItem">        
+            
+          <result type="tiles">CreatecodeTableItem</result>
+       
+        </action>
+        
+          <action name="CreateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableItemAction">
+        <result name="success" type="tiles">ReadCodeTableHeader</result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+          <action name="ReadCodeTableItem" class="com.company.itos.core.codetable.action.ReadCodeTableItemAction">
+        <result name="success" type="tiles">ReadCodeTableItem</result>
+        <result name="SENTTOUPDATE" type="tiles">UpdateCodeTableItem</result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+        <action name="UpdateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableItemAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">ReadCodeTableItem</param>
+            </result>
+            <result name="error" type="tiles">UpdateCodeTableItem</result>
+       
         </action>
         
         

@@ -125,6 +125,33 @@
         <put-attribute name="body" value="/components/core/jsp/codetable/CreateCodeTableHeader.jsp" />
     </definition>
     
+    <definition name="ReadCodeTableHeader" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read CodeTableHeader" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/ReadCodeTableHeader.jsp" />
+    </definition>
+    
+    <definition name="UpdateCodeTableHeader" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update CodeTableHeader" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/UpdateCodeTableHeader.jsp" />
+    </definition>
+    
+    <definition name="CreatecodeTableItem" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create codeTableItem" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/CreatecodeTableItem.jsp" />
+    </definition>
+    
+    <definition name="ReadCodeTableItem" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read CodeTableItem" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/ReadCodeTableItem.jsp" />
+    </definition>
+    
+    <definition name="UpdateCodeTableItem" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update CodeTableItem" />
+        <put-attribute name="body" value="/components/core/jsp/codetable/UpdateCodeTableItem.jsp" />
+    </definition>
+    
+   
+    
    
    
    

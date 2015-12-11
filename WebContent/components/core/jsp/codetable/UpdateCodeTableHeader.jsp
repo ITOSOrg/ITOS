@@ -1,6 +1,6 @@
-<%@ page import="com.company.itos.core.codetable.pojo.CodeTableHeaderDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,57 +8,43 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-CodeTableHeaderDetail codeTableHeaderDetail = (CodeTableHeaderDetail) request.getAttribute("codeTableHeaderDetail");
-
-String tableName = (String) request.getParameter("tableName");
-
-%>
-<form action="/ITOS/UpdateCodeTableHeader?tableName=<%=tableName %>" method = "POST">
+	<s:form action="/ITOS/UpdateCodeTableHeaderSubmit" method="POST">
 
 
-				
-				<table>
-			<tr>
-				<td>Table Name :</td>
-				<td><input type="text" name="tableName"
-					value="<%=codeTableHeaderDetail.getTableName()%>"></td>
-			</tr>
+
+		<table>
+
 			<tr>
 				<td>Default Code :</td>
-				<td><input type="text" name="defaultCode"
-				      value = "<%=codeTableHeaderDetail.getDefaultCode()%>"></td>
+				<td><s:textfield type="text"
+						name="codeTableHeaderDetail.defaultCode" /></td>
 			</tr>
 			<tr>
 				<td>Record Status :</td>
-				<td><input type="text" name="recordStatus"
-				      value = "<%=codeTableHeaderDetail.getRecordStatus()%>"></td>
+				<td><s:textfield type="text"
+						name="codeTableHeaderDetail.recordStatus" /></td>
 			</tr>
 			<tr>
 				<td>Created By :</td>
-				<td><input type="text" name="createdBy"
-				      value = "<%=codeTableHeaderDetail.getCreatedBy()%>"></td>
+				<td><s:textfield type="text"
+						name="codeTableHeaderDetail.createdBy" /></td>
 			</tr>
 			<tr>
 				<td>LastModified By :</td>
-				<td><input type="text" name="lastModifiedBy"
-				      value = "<%=codeTableHeaderDetail.getLastModifiedBy()%>"></td>
+				<td><s:textfield type="text"
+						name="codeTableHeaderDetail.lastModifiedBy" /></td>
 			</tr>
-			<tr>
-				<td>VersionNo :</td>
-				<td><input type="text" name="versionNo"
-				      value = "<%=codeTableHeaderDetail.getVersionNo()%>"></td>
-			</tr>
+
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListCodeTableHeader">Back</a>
-				</td>
+				<td><s:submit type="submit" value="Submit" /> <s:hidden
+						name="codeTableHeaderDetail.tableName" /> <s:hidden
+						name="codeTableHeaderDetail.versionNo" /></td>
 
 			</tr>
-</table>
-			
-		</form>
+		</table>
+
+	</s:form>
 </body>
 </html>

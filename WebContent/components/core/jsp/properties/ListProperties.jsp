@@ -53,7 +53,7 @@
 							
 							<s:url var="updatePropertiesURL" action="/ITOS/ReadProperties" escapeAmp="false">
 								<s:param name="propertiesDetail.propertyID" value="%{propertyID}"/>
-								<s:param name="act" value="update"/>
+								<s:param name="act" value="%{updateAction}"/>
 							</s:url>
 							<a href="<s:property value="#updatePropertiesURL"/>"> Update</a>
 							

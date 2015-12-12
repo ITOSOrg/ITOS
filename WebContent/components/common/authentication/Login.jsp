@@ -1,8 +1,6 @@
-<%@	page import="java.util.List"%>
-<%@	page import="com.company.itos.profile.person.servlet.PersonLogin"%>
-<%@	page import="com.company.itos.profile.person.pojo.UsersDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,55 +11,31 @@
 <br>
 <body>
 
-	<form action="/ITOS/PersonLogin" method="POST">
+	<s:form action="/ITOS/PersonLogin" method="POST">
 
+		<table border="1">
+			<!--   <fieldset style="width: 400px;height: 400px">-->
 
-		<fieldset style="width: 400px">
-			<table align="center">
-				<%
-					UsersDetail usersDetail = (UsersDetail) request
-							.getAttribute("usersDetail");
+			<tr>
+				<td>USERNAME:</td>
+				<td><s:textfield type="text" name="usersDetail.userName" /></td>
+			</tr>
+			<tr>
+				<td>PASSWORD:</td>
+				<td><s:textfield type="password" name="usersDetail.password" /></td>
+			</tr>
+			<s:submit type="submit" name="submit" value="Login" />
+		</table>
 
-					if (null != usersDetail) {
-						List<String>errorMessageList=usersDetail.getErrorMessageList();
-						for(int	i=0;i<errorMessageList.size();i++)
-						{%>
+		<br>
+		<a href="/ITOS/components/profile/jsp/person/RegisterPerson.jsp">New
+			User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<br>
-				<font size="3" color="red"> <% out.println(errorMessageList.get(i));%>
-				</font>
+		<br>
 
-				<% }
-				%>
-				<br>
-				<br>USERNAME:
-				<input type="text" name="userName"></input>
-				<br>
-				<br> PASSWORD:
-				<input type="password" name="password"></input>
-				<br>
-
-				<%
-					} else {
-				%>
-				<br>
-				<br>USERNAME:
-				<input type="text" name="userName"></input>
-				<br>
-				<br> PASSWORD:
-				<input type="password" name="password"></input>
-
-
-				<%
-					}
-				%>
-				<br>
-				<br>
-				<input type="submit" name="submit" value="Login"></input> &nbsp&nbsp
-				<a href="/ITOS/components/profile/jsp/person/RegisterPerson.jsp">New User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				
-				
-            <a href="ListProperties">Properties</a><br><br>
-			</table>
-	</form>
+		<a href="ListProperties">Properties</a>
+		<br>
+		<br>
+	</s:form>
 </body>
 </html>

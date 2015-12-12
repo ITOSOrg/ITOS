@@ -61,9 +61,8 @@
 		href="/ITOS/CreatecodeTableItem?tableName=<%=codeTableHeaderDetail.getTableName()%>">Create
 		Code Table Item</a>
 		<br>
-		<s:url value="/ITOS/CreatecodeTableItem">Create	Code Table Item New
-			<s:param name="tableName" value="<%=codeTableHeaderDetail.getTableName()%>"/>
-		</s:url>
+		<a href="/ITOS/CreatecodeTableItem">Create	Code Table Item New
+			<a/>
 		
 	<br></br>
 	<form action="" method="POST">

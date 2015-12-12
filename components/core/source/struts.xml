@@ -225,7 +225,28 @@
                 <param name="location">ReadCodeTableItem</param>
             </result>
             <result name="error" type="tiles">UpdateCodeTableItem</result>
+        </action>
        
+          <action name="PersonLogin" class="com.company.itos.profile.person.action.PersonLoginAction">
+        <result name="success" type="redirect">
+                <param name="location">/PersonHome</param>
+                <param name="personDetail.personID">${usersDetail.relatedID}</param>
+        </result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+          <action name="PersonHome" class="com.company.itos.profile.person.action.PersonHomeAction">
+        <result name="success" type="tiles">PersonHome</result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+
+        
+          <action name="PersonList" class="com.company.itos.profile.person.action.PersonListAction">
+        <result name="success" type="tiles">PersonList</result>
+        <result name="error">/index.jsp</result>
+        
         </action>
         
         

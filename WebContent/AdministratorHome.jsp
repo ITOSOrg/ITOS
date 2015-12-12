@@ -34,7 +34,7 @@
 	
 	<form action="/ITOS/PersonList" method="post">
 	<%
-		List<PersonDetail> personDetailList = (List<PersonDetail>) request
+		List<PersonDetail> personDetailList = (List<PersonDetail>) session
 			.getAttribute("personDetailList");
 	PersonDetail personDetail = null;
 	%>

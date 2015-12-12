@@ -29,8 +29,8 @@ public class PersonLoginDAO {
 	 * username & password fields from usersDetail class
 	 */
 	// public String login(UsersDetail usersDetail) {
-	public String login(PersonDetail personDetail) {
-		UsersDetail usersDetail = personDetail.getUsersDetail();
+	public String login(UsersDetail usersDetail) {
+		//UsersDetail usersDetail = personDetail.getUsersDetail();
 		// List<String> errorMessageList = new ArrayList<String>();
 
 		// string to return success or failure
@@ -58,7 +58,7 @@ public class PersonLoginDAO {
 			ResultSet resultSetPerson = preparedStatementPerson.executeQuery();
 
 			if (resultSetPerson.next()) {
-				personDetail.setPersonID(resultSetPerson.getInt("relatedID"));
+				usersDetail.setRelatedID(resultSetPerson.getInt("relatedID"));
 			}
 
 			// if resultSet contain values then return success

@@ -21,9 +21,9 @@ import com.company.itos.profile.person.pojo.UsersDetail;
  */
 public class PersonLogin extends HttpServlet {
 
-	PersonDetail personDetail = new PersonDetail();
 	private static final long serialVersionUID = 1L;
 
+	PersonDetail personDetail = new PersonDetail();
 	UsersDetail usersDetail = new UsersDetail();
 
 	/**
@@ -56,10 +56,6 @@ public class PersonLogin extends HttpServlet {
 		if (errorInd) {
 
 			pageForwardStr = "/LoginForm.jsp";
-
-			// RequestDispatcher rd1 =
-			// request.getRequestDispatcher("/LoginForm.jsp");
-			// rd1.forward(request, response);
 
 		} else {
 

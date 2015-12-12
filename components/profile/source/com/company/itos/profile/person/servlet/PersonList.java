@@ -40,9 +40,9 @@ public class PersonList extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		PersonListDAO personListDAO = new PersonListDAO();
 
 		String pageForwardStr = null;
+		PersonListDAO personListDAO = new PersonListDAO();
 
 		List<PersonDetail> personDetailList = personListDAO.listAllStudent();
 		request.setAttribute("personDetailList", personDetailList);

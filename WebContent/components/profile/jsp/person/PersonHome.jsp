@@ -38,7 +38,7 @@
 		<div>
 
 			<%
-				PersonDetail personDetail = (PersonDetail) request.getAttribute("personDetail");
+				PersonDetail personDetail = (PersonDetail) session.getAttribute("personDetail");
 
 				EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
 				EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();

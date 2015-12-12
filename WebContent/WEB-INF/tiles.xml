@@ -34,7 +34,8 @@
     
     <definition name="index" extends="landingPageLayout">
         <put-attribute name="title" value="ITOS LandingPage" />
-        <put-attribute name="body" value="/components/common/authentication/Login.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="login" value="/components/common/authentication/Login.jsp" />
     </definition>
     
     
@@ -148,6 +149,16 @@
     <definition name="UpdateCodeTableItem" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Update CodeTableItem" />
         <put-attribute name="body" value="/components/core/jsp/codetable/UpdateCodeTableItem.jsp" />
+    </definition>
+    
+    <definition name="PersonHome" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Person Home" />
+        <put-attribute name="body" value="/components/profile/jsp/person/PersonHome.jsp" />
+    </definition>
+    
+    <definition name="PersonList" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Person List" />
+        <put-attribute name="body" value="/ITOS/WebContent/AdministratorHome.jsp" />
     </definition>
     
    

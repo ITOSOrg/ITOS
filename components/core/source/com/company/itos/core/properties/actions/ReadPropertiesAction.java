@@ -35,6 +35,22 @@ public class ReadPropertiesAction extends ActionSupport implements SessionAware,
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	PropertiesDetail propertiesDetail;
+	String act = "";
+
+	/**
+	 * @return the act
+	 */
+	public String getAct() {
+		return act;
+	}
+
+	/**
+	 * @param act
+	 *            the act to set
+	 */
+	public void setAct(String act) {
+		this.act = act;
+	}
 
 	/**
 	 * @return the propertiesDetail
@@ -74,23 +90,24 @@ public class ReadPropertiesAction extends ActionSupport implements SessionAware,
 
 	public String execute() throws Exception {
 
-		PropertiesDetail propertiesDetail = new PropertiesDetail();
+		// PropertiesDetail propertiesDetail = new PropertiesDetail();
 
 		String pageForwardStr = "";
-		String action = (String) getServletRequest().getParameter("act");
+		// String action = (String) getServletRequest().getParameter("act");
 
-		int propertyID = new Integer((String) getServletRequest().getParameter("propertyID")).intValue();
+		// int propertyID = new Integer((String)
+		// getServletRequest().getParameter("propertyID")).intValue();
 
-		propertiesDetail.setPropertyID(propertyID);
+		// propertiesDetail.setPropertyID(propertyID);
 
 		ReadPropertiesDAO readPropertiesDAO = new ReadPropertiesDAO();
 		String returnMassegeStr = readPropertiesDAO.ReadProperties(propertiesDetail);
 
 		setPropertiesDetail(propertiesDetail);
 
-		session.put("propertiesDetail", propertiesDetail);
+		//session.put("propertiesDetail", propertiesDetail);
 
-		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {

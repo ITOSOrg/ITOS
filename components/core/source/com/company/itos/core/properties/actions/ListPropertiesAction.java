@@ -24,8 +24,24 @@ public class ListPropertiesAction extends ActionSupport implements SessionAware 
 	private static final long serialVersionUID = 1L;
 	
 	private Map<String,Object> session;
+	
+	private List<PropertiesDetail> propertiesList;
 
-    public void setSession(Map<String,Object> session){ 
+    /**
+	 * @return the propertiesList
+	 */
+	public List<PropertiesDetail> getPropertiesList() {
+		return propertiesList;
+	}
+
+	/**
+	 * @param propertiesList the propertiesList to set
+	 */
+	public void setPropertiesList(List<PropertiesDetail> propertiesList) {
+		this.propertiesList = propertiesList;
+	}
+
+	public void setSession(Map<String,Object> session){ 
         this.session = session;
     }
     
@@ -40,8 +56,9 @@ public class ListPropertiesAction extends ActionSupport implements SessionAware 
 		
 		List<PropertiesDetail> propertiesList =  listPropertiesDAO.ListProperties(propertiesDetail);
 		
+		setPropertiesList(propertiesList);
 		
-		session.put("propertiesList", propertiesList);
+		//session.put("propertiesList", propertiesList);
 
 
 		return SUCCESS;

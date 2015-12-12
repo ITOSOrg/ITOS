@@ -1,4 +1,3 @@
-<%@ page import="com.company.itos.core.properties.pojo.PropertiesDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -47,13 +46,15 @@
 			</tr>
 			<tr>
 
-				<td><s:submit type="submit" value="Submit" /> 
-				<s:hidden name="propertiesDetail.propertyID"></s:hidden> 
-				<s:hidden name="propertiesDetail.versionNo"></s:hidden> &nbsp&nbsp&nbsp&nbsp<a
-					href="/ITOS/ListProperties">Back</a></td>
+				<td><s:submit type="submit" value="Submit" /></td>
 
 			</tr>
 		</table>
+		
+		<s:hidden name="propertiesDetail.propertyID"></s:hidden>
+		<s:hidden name="propertiesDetail.versionNo"></s:hidden>
+		<a href="/ITOS/ListProperties">Back</a>
+		
 	</s:form>
 
 </body>

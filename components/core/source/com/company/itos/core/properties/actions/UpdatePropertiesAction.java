@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.company.itos.core.properties.dao.UpdatePropertiesDAO;
 import com.company.itos.core.properties.pojo.PropertiesDetail;
+import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdatePropertiesAction extends ActionSupport implements SessionAware, ServletRequestAware {
@@ -49,6 +50,7 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 	}
 
 	public String execute() throws Exception {
+		String pageForwardStr = "";
 
 		/*int propertyID = new Integer((String) getServletRequest().getParameter("propertyID")).intValue();
 		propertiesDetail.setPropertyID(propertyID);
@@ -59,8 +61,17 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 		UpdatePropertiesDAO updatePropertiesDAO = new UpdatePropertiesDAO();
 		String returnMassegeStr = updatePropertiesDAO.updateProperties(propertiesDetail);
 		session.put("propertiesDetail", propertiesDetail);
+		
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-		return returnMassegeStr;
+			pageForwardStr = SUCCESS;
+
+		} else {
+			pageForwardStr = ERROR;
+		}
+
+
+		return pageForwardStr;
 	}
 
 }

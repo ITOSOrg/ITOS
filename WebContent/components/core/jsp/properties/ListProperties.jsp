@@ -1,7 +1,6 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.company.itos.core.properties.pojo.PropertiesDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,16 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-List<PropertiesDetail> propertiesList = (List<PropertiesDetail>) session.getAttribute("propertiesList");
 
-Integer relatedID = (Integer) request.getAttribute("relatedID");
+	<a href="/ITOS/CreateProperties">Create Properties</a>
+	<br>
+	<br>
 
-%>
-<a href="/ITOS/CreateProperties">Create Properties</a><br><br>
-
-<form action="/ITOS/ListProperties" method = "POST">
-<table border=1>
+	<s:form action="/ITOS/ListProperties" method="POST">
+		<table border=1>
 			<thead>
 
 				<tr>
@@ -35,32 +31,40 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 					<th colspan=2>Action</th>
 				</tr>
 			</thead>
-			
-			<%
-				for (int i = 0; i < propertiesList.size(); i++) {
-					PropertiesDetail	 propertiesDetail = propertiesList.get(i);
-			%>
-			
-			<tbody>
-				<tr>
-					<td><%=propertiesDetail.getCategory() %></td>
-					<td><%=propertiesDetail.getName() %></td>
-					<td><%=propertiesDetail.getValue() %></td>
-					<td><%=propertiesDetail.getType() %></td>
-					<td><%=propertiesDetail.getDefaultValue() %></td>
-					<td><%=propertiesDetail.getDynamic() %></td>
-					<td><%=propertiesDetail.getCreatedBy() %></td>
-					<td><%=propertiesDetail.getCreatedOn() %></td>
-					<td><%=propertiesDetail.getLastModifiedBy() %></td>
-					<td><%=propertiesDetail.getLastModifiedOn() %></td>
-					<td><a  href="/ITOS/ReadProperties?propertyID=<%=propertiesDetail.getPropertyID()%>">Read</a></td>
-					<td><a  href="/ITOS/ReadProperties?propertyID=<%=propertiesDetail.getPropertyID()%>&act=update">Update</a></td>
-				</tr>
-				
-			</tbody>
-			<%} %>
+
+			<s:iterator value="propertiesList" status="stat">
+
+				<tbody>
+					<tr>
+						<td><s:property value="category" /></td>
+						<td><s:property value="name" /></td>
+						<td><s:property value="value" /></td>
+						<td><s:property value="type" /></td>
+						<td><s:property value="defaultValue" /></td>
+						<td><s:property value="dynamic" /></td>
+						<td><s:property value="createdBy" /></td>
+						<td><s:property value="createdOn" /></td>
+						<td><s:property value="lastModifiedBy" /></td>
+						<td><s:property value="lastModifiedOn" /></td>
+						<td><s:url id="readPropertiesURL" action="/ITOS/ReadProperties" escapeAmp="false">
+								<s:param name="propertiesDetail.propertyID" value="%{propertyID}"/>
+							</s:url>
+							<s:a href="%{readPropertiesURL}">View</s:a>
+							
+							<s:url var="updatePropertiesURL" action="/ITOS/ReadProperties" escapeAmp="false">
+								<s:param name="propertiesDetail.propertyID" value="%{propertyID}"/>
+								<s:param name="act" value="update"/>
+							</s:url>
+							<a href="<s:property value="#updatePropertiesURL"/>"> Update</a>
+							
+						</td>
+
+					</tr>
+
+				</tbody>
+			</s:iterator>
 		</table>
-		</form>
+	</s:form>
 
 </body>
 </html>

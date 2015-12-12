@@ -1,6 +1,6 @@
-<%@ page import="com.company.itos.core.properties.pojo.PropertiesDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% PropertiesDetail propertiesDetail = (PropertiesDetail) session.getAttribute("propertiesDetail"); 
-System.out.println("propertyID=" +propertiesDetail.getPropertyID());
-		%>
-		<a href="/ITOS/ListProperties">Back</a><br><br>
-		
-		<form action="/ITOS/ReadProperties?propertyID=<%=propertiesDetail.getPropertyID() %>" method = "POST">
-<table border=1>
+
+	<a href="/ITOS/ListProperties">Back</a>
+	<br>
+	<br>
+
+	<s:form action="/ITOS/ReadProperties" method="POST">
+		<table border=1>
 			<thead>
 
 				<tr>
@@ -31,27 +31,27 @@ System.out.println("propertyID=" +propertiesDetail.getPropertyID());
 					<th>Version Number:</th>
 				</tr>
 			</thead>
-			
-			
-			
+
+
+
 			<tbody>
 				<tr>
-					<td><%=propertiesDetail.getCategory() %></td>
-					<td><%=propertiesDetail.getName() %></td>
-					<td><%=propertiesDetail.getValue() %></td>
-					<td><%=propertiesDetail.getType() %></td>
-					<td><%=propertiesDetail.getDefaultValue() %></td>
-					<td><%=propertiesDetail.getDynamic() %></td>
-					<td><%=propertiesDetail.getCreatedBy() %></td>
-					<td><%=propertiesDetail.getCreatedOn() %></td>
-					<td><%=propertiesDetail.getLastModifiedBy() %></td>
-					<td><%=propertiesDetail.getLastModifiedOn() %></td>
-					<td><%=propertiesDetail.getVersionNo() %></td>
+					<td><s:property value="propertiesDetail.category" /></td>
+					<td><s:property value="propertiesDetail.name" /></td>
+					<td><s:property value="propertiesDetail.value" /></td>
+					<td><s:property value="propertiesDetail.type" /></td>
+					<td><s:property value="propertiesDetail.defaultValue" /></td>
+					<td><s:property value="propertiesDetail.dynamic" /></td>
+					<td><s:property value="propertiesDetail.createdBy" /></td>
+					<td><s:property value="propertiesDetail.createdOn" /></td>
+					<td><s:property value="propertiesDetail.lastModifiedBy" /></td>
+					<td><s:property value="propertiesDetail.lastModifiedOn" /></td>
+					<td><s:property value="propertiesDetail.versionNo" /></td>
 				</tr>
-				
+
 			</tbody>
 		</table>
-		</form>
-		
+	</s:form>
+
 </body>
 </html>

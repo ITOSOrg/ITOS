@@ -252,6 +252,19 @@
         
         
         
+        
+        
+        
+        
+          <action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
+        <result name="success" type="tiles">ListEmailAddress
+        <param name="personDetail.personID">${usersDetail.relatedID}</param>
+        </result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+        
         <action name="SearchPerson">        
             <result type="tiles">SearchPerson</result>
         </action>

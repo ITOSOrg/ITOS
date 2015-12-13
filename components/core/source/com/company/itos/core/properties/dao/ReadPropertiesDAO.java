@@ -28,7 +28,7 @@ public class ReadPropertiesDAO {
 			while(resultSet.next()){
 				//PropertiesDetail propertiesDetail = new PropertiesDetail();
 				
-				propertiesDetail.setPropertyID(resultSet.getInt("propertyID"));
+				propertiesDetail.setPropertyID(resultSet.getLong("propertyID"));
 				propertiesDetail.setCategory(resultSet.getString("category"));
 				propertiesDetail.setName(resultSet.getString("name"));
 				propertiesDetail.setValue(resultSet.getString("value"));

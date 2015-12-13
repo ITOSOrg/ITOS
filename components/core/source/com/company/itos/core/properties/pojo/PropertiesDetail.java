@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class PropertiesDetail {
 		
-	private int propertyID;
+	private long propertyID;
 	
 	private String category;
 	
@@ -76,11 +76,11 @@ public class PropertiesDetail {
 
 	private int versionNo;
 
-	public int getPropertyID() {
+	public long getPropertyID() {
 		return propertyID;
 	}
 
-	public void setPropertyID(int propertyID) {
+	public void setPropertyID(long propertyID) {
 		this.propertyID = propertyID;
 	}
 

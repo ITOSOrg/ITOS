@@ -9,6 +9,7 @@ import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.core.util.type.UniqueID;
 
 public class CreatePropertiesDAO {
 		
@@ -24,22 +25,24 @@ public class CreatePropertiesDAO {
 			connection = dbConnection.getDBConnection();
 			
 			String propertiesSQLStr = "INSERT INTO Properties ( propertyID, category, name, value, type, defaultValue, dynamic, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo) "
-					+ "VALUES(PropertiesSEQ.nextval, ?, ?, ?, ?, ?, ?, 'Rahul', ?, 'Rahul', ?, 1)";
+					//+ "VALUES(PropertiesSEQ.nextval, ?, ?, ?, ?, ?, ?, 'Rahul', ?, 'Rahul', ?, 1)";
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Rahul', ?, 'Rahul', ?, 1)";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(propertiesSQLStr);
 			
-			preparedStatement.setString(1, propertiesDetail.getCategory());
-			preparedStatement.setString(2, propertiesDetail.getName());
-			preparedStatement.setString(3, propertiesDetail.getValue());
-			preparedStatement.setString(4, propertiesDetail.getType());
-			preparedStatement.setString(5, propertiesDetail.getDefaultValue());
-			preparedStatement.setString(6, propertiesDetail.getDynamic());
+			preparedStatement.setLong(1, UniqueID.nextUniqueID());
+			preparedStatement.setString(2, propertiesDetail.getCategory());
+			preparedStatement.setString(3, propertiesDetail.getName());
+			preparedStatement.setString(4, propertiesDetail.getValue());
+			preparedStatement.setString(5, propertiesDetail.getType());
+			preparedStatement.setString(6, propertiesDetail.getDefaultValue());
+			preparedStatement.setString(7, propertiesDetail.getDynamic());
 			
 			String crrentDateTime = JavaUtildates.getCurrentDateTime();
 
 			Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
-			preparedStatement.setTimestamp(7, timestamp);
 			preparedStatement.setTimestamp(8, timestamp);
+			preparedStatement.setTimestamp(9, timestamp);
 			
 			preparedStatement.executeQuery();
 			

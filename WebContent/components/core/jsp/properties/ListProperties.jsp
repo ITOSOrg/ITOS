@@ -46,6 +46,7 @@
 						<td><s:property value="createdOn" /></td>
 						<td><s:property value="lastModifiedBy" /></td>
 						<td><s:property value="lastModifiedOn" /></td>
+						
 						<td><s:url id="readPropertiesURL" action="/ITOS/ReadProperties" escapeAmp="false">
 								<s:param name="propertiesDetail.propertyID" value="%{propertyID}"/>
 							</s:url>
@@ -55,7 +56,8 @@
 								<s:param name="propertiesDetail.propertyID" value="%{propertyID}"/>
 								<s:param name="act" value="%{updateAction}"/>
 							</s:url>
-							<a href="<s:property value="#updatePropertiesURL"/>"> Update</a>
+							<s:a href="%{updatePropertiesURL}">Update</s:a>
+						<!--  	<a href="<s:property value="#updatePropertiesURL"/>"> Update</a> -->
 							
 						</td>
 

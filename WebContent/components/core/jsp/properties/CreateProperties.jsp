@@ -39,7 +39,7 @@
 			<tr>
 
 				<td><s:submit type="submit" value="Submit"/>
-					&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a></td>
+					&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a></td><br><br>
 			</tr>
 
 

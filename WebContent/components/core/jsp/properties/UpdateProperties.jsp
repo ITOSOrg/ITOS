@@ -46,14 +46,18 @@
 			</tr>
 			<tr>
 
-				<td><s:submit type="submit" value="Submit" /></td>
+				<td><s:submit type="submit" value="Submit" />
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ListProperties">Back</a><br><br>
+				</td>
+				<td>
+				
+				</td>
 
 			</tr>
 		</table>
 		
 		<s:hidden name="propertiesDetail.propertyID"></s:hidden>
 		<s:hidden name="propertiesDetail.versionNo"></s:hidden>
-		<a href="/ITOS/ListProperties">Back</a>
 		
 	</s:form>
 

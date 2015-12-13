@@ -65,7 +65,7 @@ public class PersonLogin extends HttpServlet {
 			 * calling login method of StudentDAO class & assigning return value
 			 * of method login to retrunStr
 			 */
-			String returnMassegeStr = personLoginDAO.login(personDetail);
+			String returnMassegeStr = personLoginDAO.login(personDetail.getUsersDetail());
 
 			if (returnMassegeStr.equals(CRUDConstants.RETURN_MESSAGE_SUCCESS)) {
 

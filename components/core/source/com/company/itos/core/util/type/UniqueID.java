@@ -4,13 +4,11 @@
 package com.company.itos.core.util.type;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.Random;
 
-import com.company.itos.core.util.keyserver.KeyServerInterface;
 import com.company.itos.core.util.keyserver.KeyServerBlock;
-import com.company.itos.core.util.resources.Configuration;
+import com.company.itos.core.util.keyserver.KeyServerInterface;
 
 /**
  * 

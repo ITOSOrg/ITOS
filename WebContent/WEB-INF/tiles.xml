@@ -153,12 +153,13 @@
     
     <definition name="PersonHome" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Person Home" />
+        <put-attribute name="menu" value="/components/common/layout/userworkspace/UserWorkspaceMenu.jsp" />
         <put-attribute name="body" value="/components/profile/jsp/person/PersonHome.jsp" />
     </definition>
     
     <definition name="PersonList" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Person List" />
-        <put-attribute name="body" value="/ITOS/WebContent/AdministratorHome.jsp" />
+        <put-attribute name="body" value="/components/profile/jsp/person/ListPerson.jsp" />
     </definition>
     
    
@@ -168,6 +169,10 @@
    
    
    
+    <definition name="ListEmailAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="EmailAddress List" />
+        <put-attribute name="body" value="/components/profile/jsp/email/ListEmailAddress.jsp" />
+    </definition>
    
     <definition name="SearchPerson" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Search Person" />

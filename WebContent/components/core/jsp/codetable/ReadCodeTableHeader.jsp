@@ -1,9 +1,3 @@
-<%@ page import="java.util.List"%>
-<%@ page
-	import="com.company.itos.core.codetable.pojo.CodeTableHeaderDetail"%>
-<%@ page
-	import="com.company.itos.core.codetable.pojo.CodeTableItemDetail"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -14,14 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		CodeTableHeaderDetail codeTableHeaderDetail = (CodeTableHeaderDetail) session.getAttribute("codeTableHeaderDetail");
-	%>
-	<a href="/ITOS/ListCodeTableHeader">Back</a>&nbsp
-	<br>
-	<br>
 
-	<form action="/ITOS/ReadCodeTableHeader" method="POST">
+	<a href="/ITOS/ListCodeTable">Back</a>&nbsp
+	<br><br>
+
+	<s:form action="/ITOS/ReadCodeTableHeader" method="POST">
 		<table border=1>
 			<thead>
 
@@ -35,37 +26,38 @@
 				</tr>
 			</thead>
 
+
 			<tbody>
 				<tr>
-					<td><%=codeTableHeaderDetail.getTableName()%></td>
-					<td><%=codeTableHeaderDetail.getDefaultCode()%></td>
-					<td><%=codeTableHeaderDetail.getCreatedBy()%></td>
-					<td><%=codeTableHeaderDetail.getCreatedOn()%></td>
-					<td><%=codeTableHeaderDetail.getLastModifiedBy()%></td>
-					<td><%=codeTableHeaderDetail.getLastModifiedOn()%></td>
+					<td><s:property value="codeTableHeaderDetail.tableName" /></td>
+					<td><s:property value="codeTableHeaderDetail.defaultCode" /></td>
+					<td><s:property value="codeTableHeaderDetail.createdBy" /></td>
+					<td><s:property value="codeTableHeaderDetail.createdOn" /></td>
+					<td><s:property value="codeTableHeaderDetail.lastModifiedBy" /></td>
+					<td><s:property value="codeTableHeaderDetail.lastModifiedOn" /></td>
 
 				</tr>
 
 			</tbody>
 		</table>
-	</form>
+	<!--</s:form>-->
 	<br>
 	<br>
 
 	<!-- List of code Table Items -->
 
-	<%
-		List<CodeTableItemDetail> codeTableItemDetailList = codeTableHeaderDetail.getCodeTableItemDetailList();
-	%>
-	<a
-		href="/ITOS/CreatecodeTableItem?tableName=<%=codeTableHeaderDetail.getTableName()%>">Create
-		Code Table Item</a>
-		<br>
-		<a href="/ITOS/CreatecodeTableItem">Create	Code Table Item New
-			<a/>
-		
-	<br></br>
-	<form action="" method="POST">
+
+	<s:url id="CreatecodeTableItemURL" action="/ITOS/CreatecodeTableItem"
+		escapeAmp="false">
+
+		<s:param name="CodeTableItemDetail.tableName"
+			value="%{CodeTableHeaderDetail.tableName}" />
+
+	</s:url>
+	<s:a href="%{CreatecodeTableItemURL}">Create Code Table Item</s:a>
+	<br>
+	<br>
+	<!--<s:form action="" method="POST">-->
 		<table border=1>
 			<thead>
 
@@ -83,40 +75,48 @@
 				</tr>
 			</thead>
 
-			<%
-				for (int i = 0; i < codeTableItemDetailList.size(); i++) {
-					CodeTableItemDetail codeTableItemDetail = codeTableItemDetailList.get(i);
-			%>
 
-			<tbody>
-				<tr>
-					<td><%=codeTableItemDetail.getTableName()%></td>
-					<td><%=codeTableItemDetail.getCode()%></td>
-					<td><%=codeTableItemDetail.getDescription()%></td>
-					<td><%=codeTableItemDetail.getAnnotation()%></td>
-					<td><%=codeTableItemDetail.getIsEnabled()%></td>
-					<td><%=codeTableItemDetail.getCreatedBy()%></td>
-					<td><%=codeTableItemDetail.getCreatedOn()%></td>
-					<td><%=codeTableItemDetail.getLastModifiedBy()%></td>
-					<td><%=codeTableItemDetail.getLastModifiedOn()%></td>
-					<td><a
-						href="/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>">Read</a>
-					</td>
-					<td><a
-						href="/ITOS/ReadCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>&act=update">Update</a>
-					</td>
-					<td><a
-						href="/ITOS/DeleteCodeTableItem?code=<%=codeTableItemDetail.getCode()%>&tableName=<%=codeTableItemDetail.getTableName()%>">Delete</a>
-					</td>
+			<s:iterator value="codeTableHeaderDetail.codeTableItemDetailList"
+				status="stat">
 
-				</tr>
+				<tbody>
+					<tr>
+						<td><s:property value="tableName" /></td>
+						<td><s:property value="code" /></td>
+						<td><s:property value="description" /></td>
+						<td><s:property value="annotation" /></td>
+						<td><s:property value="isEnabled" /></td>
+						<td><s:property value="createdBy" /></td>
+						<td><s:property value="createdOn" /></td>
+						<td><s:property value="lastModifiedBy" /></td>
+						<td><s:property value="lastModifiedOn" /></td>
+						<td>
+						
+						<s:url id="ReadCodeTableItemURL" action="/ITOS/ReadCodeTableItem" escapeAmp="false">
+								<s:param name="codeTableItemDetail.tableName" value="%{tableName}"/>
+								<s:param name="codeTableItemDetail.code" value="%{code}"/>
+					</s:url>
+							
+					<s:a href="%{ReadCodeTableItemURL}">View</s:a>
+					
+					<s:url id="UpdateCodeTableItemrURL" action="/ITOS/ReadCodeTableItem" escapeAmp="false">
+								<s:param name="codeTableItemDetail.tableName" value="%{tableName}"/>
+								<s:param name="codeTableItemDetail.code" value="%{code}"/>
+								<s:param name="act" value="%{updateAction}"/>
+					</s:url>
+							
+					<s:a href="%{UpdateCodeTableItemrURL}">Update</s:a>
+						
+						</td>
 
-			</tbody>
-			<%
-				}
-			%>
+
+					</tr>
+
+				</tbody>
+			</s:iterator>
+
 		</table>
-	</form>
+	</s:form>
 
 
 

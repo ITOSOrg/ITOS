@@ -178,8 +178,7 @@
 					<tbody>
 
 						<th><a
-							href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberLinkDetail.getRelatedID()%>">PhoneNumber
-								List</a></th>
+							href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberLinkDetail.getRelatedID()%>">PhoneNumber List</a></th>
 
 					</tbody>
 

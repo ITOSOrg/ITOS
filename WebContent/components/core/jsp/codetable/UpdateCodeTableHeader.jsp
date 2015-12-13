@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="/ITOS/ListCodeTable">Back</a><br><br>
 
 	<s:form action="/ITOS/UpdateCodeTableHeaderSubmit" method="POST">
 

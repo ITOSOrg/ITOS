@@ -9,6 +9,19 @@
 </head>
 <body>
 
+<s:a href="PersonList">Person List</s:a><br><br>
+
+<s:url id="ListEmailAddressURL" action="ITOS/ListEmailAddress" escapeAmp="false">
+
+<s:param name="emailAddressLinkDetail.relatedID" value="%{personDetail.personID}"/>
+
+</s:url>
+<s:a href="%{ListEmailAddressURL}">new Email Addresses</s:a><br><br>
+
+<s:a href="ListEmailAddress">Email Addresses</s:a><br><br>
+<s:a href="ListPhoneNumber">Phone Numbers</s:a><br><br>
+<s:a href="ListPersonIdentity">Person Identities</s:a><br><br>
+<s:a href="ListAddress">Addresses</s:a><br><br>
 <s:a href="SearchPerson">Search Person</s:a><br><br>
 <s:a href="ListProperties">Properties</s:a><br><br>
 <s:a href="ListKeyServer">KeyServers</s:a><br><br>

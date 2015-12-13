@@ -26,6 +26,23 @@ public class CodeTableHeaderDetail {
 			private Timestamp lastModifiedOn;
 			
 			List<CodeTableItemDetail> codeTableItemDetailList = null;
+			
+			private String updateAction = "update";
+			
+			/**
+			 * @return the updateAction
+			 */
+			public String getUpdateAction() {
+				return updateAction;
+			}
+
+			/**
+			 * @param updateAction the updateAction to set
+			 */
+			public void setUpdateAction(String updateAction) {
+				this.updateAction = "update";
+			}
+
 
 			public List<CodeTableItemDetail> getCodeTableItemDetailList() {
 				return codeTableItemDetailList;

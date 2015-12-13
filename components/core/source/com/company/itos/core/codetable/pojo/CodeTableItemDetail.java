@@ -32,6 +32,22 @@ public class CodeTableItemDetail {
 
 	private String recordStatus;
 	
+	private String updateAction = "update";
+	
+	/**
+	 * @return the updateAction
+	 */
+	public String getUpdateAction() {
+		return updateAction;
+	}
+
+	/**
+	 * @param updateAction the updateAction to set
+	 */
+	public void setUpdateAction(String updateAction) {
+		this.updateAction = "update";
+	}
+	
 	public String getTableName() {
 		return tableName;
 	}

@@ -53,7 +53,7 @@
 
 
 <%
-List<EmailAddressLinkDetail> emailAddressLinkDetailList = (List<EmailAddressLinkDetail>) request.getAttribute("emailAddressLinkDetailList");
+List<EmailAddressLinkDetail> emailAddressLinkDetailList = (List<EmailAddressLinkDetail>) session.getAttribute("emailAddressLinkDetailList");
 
 
 Integer relatedID = (Integer) request.getAttribute("relatedID");

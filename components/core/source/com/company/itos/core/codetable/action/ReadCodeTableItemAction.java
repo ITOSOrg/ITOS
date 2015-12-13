@@ -17,6 +17,22 @@ public class ReadCodeTableItemAction extends ActionSupport implements SessionAwa
 	private Map<String,Object> session;
 	HttpServletRequest request;
 	private CodeTableItemDetail codeTableItemDetail;
+	String act = "";
+
+	/**
+	 * @return the act
+	 */
+	public String getAct() {
+		return act;
+	}
+
+	/**
+	 * @param act
+	 *            the act to set
+	 */
+	public void setAct(String act) {
+		this.act = act;
+	}
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -60,15 +76,15 @@ public class ReadCodeTableItemAction extends ActionSupport implements SessionAwa
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
-		String action = (String) getServletRequest().getParameter("act");
+		//String action = (String) getServletRequest().getParameter("act");
 		
-		CodeTableItemDetail codeTableItemDetail = new CodeTableItemDetail();
+		//CodeTableItemDetail codeTableItemDetail = new CodeTableItemDetail();
 		
-		String tableName = (String) getServletRequest().getParameter("tableName");
-		String code = (String) getServletRequest().getParameter("code");
+		//String tableName = (String) getServletRequest().getParameter("tableName");
+		//String code = (String) getServletRequest().getParameter("code");
 		
-		codeTableItemDetail.setTableName(tableName);
-		codeTableItemDetail.setCode(code);
+		//codeTableItemDetail.setTableName(tableName);
+		//codeTableItemDetail.setCode(code);
 		
 		
 		ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
@@ -77,7 +93,7 @@ public class ReadCodeTableItemAction extends ActionSupport implements SessionAwa
 		setCodeTableItemDetail(codeTableItemDetail);
 		session.put("codeTableItemDetail", codeTableItemDetail);
 		
-		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {

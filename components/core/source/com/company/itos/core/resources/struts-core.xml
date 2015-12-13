@@ -5,7 +5,7 @@
 
 <struts>
     
-    <package name="ITOS" namespace="/" extends="struts-default">
+    <package name="Core" namespace="/" extends="struts-default">
     
         <result-types>
             <result-type name="tiles"
@@ -256,13 +256,13 @@
         
         
         
-          <action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
+          <!--<action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
         <result name="success" type="tiles">ListEmailAddress
         <param name="personDetail.personID">${usersDetail.relatedID}</param>
         </result>
         <result name="error">/index.jsp</result>
         
-        </action>
+        </action>-->
         
         
         <action name="SearchPerson">        

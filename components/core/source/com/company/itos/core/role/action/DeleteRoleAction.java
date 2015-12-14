@@ -54,11 +54,11 @@ public class DeleteRoleAction extends ActionSupport implements SessionAware {
 	
 		public String execute() throws Exception {
 		
-			RoleDetail roleDetail = new RoleDetail();
+			//RoleDetail roleDetail = new RoleDetail();
 			
-			int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
+			//int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
 			
-			roleDetail.setRoleID(roleID);
+			//roleDetail.setRoleID(roleID);
 			
 		DeleteRoleDAO deleteRoleDAO = new DeleteRoleDAO();
 		String returnMassegeStr = deleteRoleDAO.deleteRole(roleDetail);

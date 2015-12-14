@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ListRoleAction extends ActionSupport implements SessionAware {
 	
 	private Map<String,Object> session;
+	private List<RoleDetail> roleDetailList;
 	
 	public void setSession(Map<String, Object> session) {
 		
@@ -20,6 +21,20 @@ public class ListRoleAction extends ActionSupport implements SessionAware {
 		
 	}
 	
+	/**
+	 * @return the roleDetailList
+	 */
+	public List<RoleDetail> getRoleDetailList() {
+		return roleDetailList;
+	}
+
+	/**
+	 * @param roleDetailList the roleDetailList to set
+	 */
+	public void setRoleDetailList(List<RoleDetail> roleDetailList) {
+		this.roleDetailList = roleDetailList;
+	}
+
 	public String execute() throws Exception {
 		
 		RoleDetail roleDetail = new RoleDetail();
@@ -27,7 +42,9 @@ public class ListRoleAction extends ActionSupport implements SessionAware {
 		ListRoleDAO listRoleDAO = new ListRoleDAO();
 		List<RoleDetail> roleDetailList = listRoleDAO.ListRole(roleDetail);
 		
-		session.put("roleDetailList", roleDetailList);
+		setRoleDetailList(roleDetailList);
+		
+		//session.put("roleDetailList", roleDetailList);
 		
 		return SUCCESS;
 	}

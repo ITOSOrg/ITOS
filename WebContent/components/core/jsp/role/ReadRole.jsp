@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.core.role.pojo.RoleDetail"%>
-<%@ page import="com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-RoleDetail roleDetail = (RoleDetail) session.getAttribute("roleDetail");
-%>
 <a href="/ITOS/ListRoles">Back</a>
-<form action="/ITOS/ReadRole" method = "POST">
+<s:form action="/ITOS/ReadRole" method = "POST">
 <table border=1>
 			<thead>
 
@@ -34,19 +30,19 @@ RoleDetail roleDetail = (RoleDetail) session.getAttribute("roleDetail");
 			
 			<tbody>
 				<tr>
-					<td><%=roleDetail.getRoleType() %></td>
-					<td><%=roleDetail.getWorkspace() %></td>
-					<td><%=roleDetail.getRecordStatus() %></td>
-					<td><%=roleDetail.getCreatedBy() %></td>
-					<td><%=roleDetail.getCreatedOn() %></td>
-					<td><%=roleDetail.getLastModifiedBy() %></td>
-					<td><%=roleDetail.getLastModifiedOn() %></td>
-					<td><%=roleDetail.getVersionNo()%></td>
+					<td><s:property value="roleDetail.roleType"/></td>
+					<td><s:property value="roleDetail.workspace"/></td>
+					<td><s:property value="roleDetail.recordStatus"/></td>
+					<td><s:property value="roleDetail.createdBy"/></td>
+					<td><s:property value="roleDetail.createdOn"/></td>
+					<td><s:property value="roleDetail.lastModifiedBy"/></td>
+					<td><s:property value="roleDetail.lastModifiedOn"/></td>
+					<td><s:property value="roleDetail.versionNo" /></td>
 				</tr>
 				
 			</tbody>
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

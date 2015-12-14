@@ -153,7 +153,9 @@
         
          <action name="DeleteRole" class="com.company.itos.core.role.action.DeleteRoleAction">        
             
-          <result name="success" type="tiles">ListRoles</result>
+          <result name="success" type="redirect">
+             <param name="location">/ListRoles</param>
+          </result>
        
         </action>
         

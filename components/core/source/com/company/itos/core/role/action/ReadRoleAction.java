@@ -17,9 +17,25 @@ public class ReadRoleAction extends ActionSupport implements SessionAware, Servl
 	
 	private static final long serialVersionUID = 1L;
 	
+	String act = "";
 	private Map<String,Object> session;
 	private RoleDetail roleDetail;
 	HttpServletRequest request;
+
+	/**
+	 * @return the act
+	 */
+	public String getAct() {
+		return act;
+	}
+
+	/**
+	 * @param act
+	 *            the act to set
+	 */
+	public void setAct(String act) {
+		this.act = act;
+	}
 	
 	public void setSession(Map<String, Object> sessionInput) {
 
@@ -60,21 +76,21 @@ public class ReadRoleAction extends ActionSupport implements SessionAware, Servl
 		public String execute() throws Exception {
 		
 		String pageForwardStr = "";
-		RoleDetail roleDetail = new RoleDetail();
+		//RoleDetail roleDetail = new RoleDetail();
 		
-		String action = (String) getServletRequest().getParameter("act");
-		int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
+		//String action = (String) getServletRequest().getParameter("act");
+		//int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
 		
-		roleDetail.setRoleID(roleID);
+		//roleDetail.setRoleID(roleID);
 		
 		ReadRoleDAO readRoleDAO = new ReadRoleDAO();
 		String returnMassegeStr = readRoleDAO.readRole(roleDetail);
 		
 		setRoleDetail(roleDetail);
 		
-		session.put("roleDetail", roleDetail);
+		//session.put("roleDetail", roleDetail);
 		
-		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			
 			pageForwardStr = "SENTTOUPDATE";
 			

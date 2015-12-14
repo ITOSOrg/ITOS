@@ -11,23 +11,41 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ListKeyServerAction extends ActionSupport implements SessionAware {
 
-	private Map<String,Object> session;
-	
+	private Map<String, Object> session;
+	private List<KeyServerDetail> keyServerList;
+
 	public void setSession(Map<String, Object> session) {
-		
-		 this.session = session;
+
+		this.session = session;
 
 	}
-	
+
+	/**
+	 * @return the keyServerList
+	 */
+	public List<KeyServerDetail> getKeyServerList() {
+		return keyServerList;
+	}
+
+	/**
+	 * @param keyServerList
+	 *            the keyServerList to set
+	 */
+	public void setKeyServerList(List<KeyServerDetail> keyServerList) {
+		this.keyServerList = keyServerList;
+	}
+
 	public String execute() throws Exception {
-		
+
 		KeyServerDetail keyServerDetail = new KeyServerDetail();
-		
+
 		ListKeyServerDAO listKeyServerDAO = new ListKeyServerDAO();
 		List<KeyServerDetail> keyServerList = listKeyServerDAO.listKeyServer(keyServerDetail);
-		
-		session.put("keyServerList", keyServerList);
-		
+
+		setKeyServerList(keyServerList);
+
+		// session.put("keyServerList", keyServerList);
+
 		return SUCCESS;
 	}
 }

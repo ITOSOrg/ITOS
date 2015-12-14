@@ -14,9 +14,24 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ReadKeyServerAction extends ActionSupport implements SessionAware, ServletRequestAware {
 	
-	private Map<String,Object> session;
-	private KeyServerDetail keyServerDetail;
 	HttpServletRequest request;
+	private KeyServerDetail keyServerDetail;
+	private Map<String,Object> session;
+	String act = "";
+	
+	/**
+	 * @return the act
+	 */
+	public String getAct() {
+		return act;
+	}
+
+	/**
+	 * @param act the act to set
+	 */
+	public void setAct(String act) {
+		this.act = act;
+	}
 	
 	/**
 	 * @return the keyServerDetail
@@ -53,20 +68,20 @@ public class ReadKeyServerAction extends ActionSupport implements SessionAware, 
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
-		String action = (String) getServletRequest().getParameter("act");
-		KeyServerDetail keyServerDetail = new KeyServerDetail();
+		//String action = (String) getServletRequest().getParameter("act");
+		//KeyServerDetail keyServerDetail = new KeyServerDetail();
 		
-		String keysetCode = (String) getServletRequest().getParameter("keysetCode");
-		keyServerDetail.setKeysetCode(keysetCode);
+		//String keysetCode = (String) getServletRequest().getParameter("keysetCode");
+		//keyServerDetail.setKeysetCode(keysetCode);
 		
 		ReadKeyServerDAO readKeyServerDAO = new ReadKeyServerDAO();
 		String returnMassegeStr = readKeyServerDAO.ReadKeyServer(keyServerDetail);
 		setKeyServerDetail(keyServerDetail);
 		
 		//request.setAttribute("keysetCode", keysetCode);
-		session.put("keyServerDetail", keyServerDetail);
+		//session.put("keyServerDetail", keyServerDetail);
 		
-		if (action != null && action.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 				
 			pageForwardStr = "SENTTOUPDATE";
 			

@@ -25,6 +25,22 @@ public class KeyServerDetail {
 	private Timestamp lastModifiedOn;
 	
 	private int versionNo;
+	
+	private String updateAction = "update";
+	
+	/**
+	 * @return the updateAction
+	 */
+	public String getUpdateAction() {
+		return updateAction;
+	}
+
+	/**
+	 * @param updateAction the updateAction to set
+	 */
+	public void setUpdateAction(String updateAction) {
+		this.updateAction = "update";
+	}
 
 	public String getKeysetCode() {
 		return keysetCode;

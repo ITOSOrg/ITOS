@@ -56,7 +56,7 @@ public class UpdateKeyServerAction extends ActionSupport implements SessionAware
 		UpdateKeyServerDAO updateKeyServerDAO = new UpdateKeyServerDAO();
 		String returnMassegeStr = updateKeyServerDAO.UpdateKeyServer(keyServerDetail);
 		
-		session.put("keyServerDetail", keyServerDetail);
+		//session.put("keyServerDetail", keyServerDetail);
 		
 		return SUCCESS;
 		

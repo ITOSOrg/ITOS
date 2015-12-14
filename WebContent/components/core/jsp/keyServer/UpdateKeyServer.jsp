@@ -1,5 +1,3 @@
-<%@ page import="com.company.itos.core.keyserver.pojo.KeyServerDetail"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -10,11 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keyServerDetail");
-
-%>
 
 <a href="/ITOS/ListKeyServer">Back</a><br><br>
 

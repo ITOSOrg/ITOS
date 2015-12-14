@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.core.keyserver.pojo.KeyServerDetail"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,13 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keyServerDetail");
-
-%>
 <a href="/ITOS/ListKeyServer">Back</a><br><br>
-<form action="/ITOS/ReadKeyServer" method = "POST">
+<s:form action="/ITOS/ReadKeyServer" method = "POST">
 <table border=1>
 			<thead>
 
@@ -35,21 +30,21 @@ KeyServerDetail keyServerDetail = (KeyServerDetail) session.getAttribute("keySer
 			
 			<tbody>
 				<tr>
-					<td><%=keyServerDetail.getKeysetCode() %></td>
-					<td><%=keyServerDetail.getNextUniqueIdBlock() %></td>
-					<td><%=keyServerDetail.getHumanReadable() %></td>
-					<td><%=keyServerDetail.getAnnotation() %></td>
-					<td><%=keyServerDetail.getStrategy() %></td>
-					<td><%=keyServerDetail.getRecordStatus() %></td>
-					<td><%=keyServerDetail.getCreatedBy() %></td>
-					<td><%=keyServerDetail.getCreatedOn() %></td>
-					<td><%=keyServerDetail.getLastModifiedBy() %></td>
-					<td><%=keyServerDetail.getLastModifiedOn() %></td>
+					<td><s:property value="keyServerDetail.keysetCode"/></td>
+					<td><s:property value="keyServerDetail.nextUniqueIdBlock"/></td>
+					<td><s:property value="keyServerDetail.humanReadable"/></td>
+					<td><s:property value="keyServerDetail.annotation"/></td>
+					<td><s:property value="keyServerDetail.strategy"/></td>
+					<td><s:property value="keyServerDetail.recordStatus"/></td>
+					<td><s:property value="keyServerDetail.createdBy"/></td>
+					<td><s:property value="keyServerDetail.createdOn"/></td>
+					<td><s:property value="keyServerDetail.lastModifiedBy"/></td>
+					<td><s:property value="keyServerDetail.lastModifiedOn"/></td>
 				</tr>
 				
 			</tbody>
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

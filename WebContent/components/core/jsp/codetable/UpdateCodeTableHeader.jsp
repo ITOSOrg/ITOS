@@ -40,8 +40,9 @@
 			<tr>
 
 				<td><s:submit type="submit" value="Submit" /> <s:hidden
-						name="codeTableHeaderDetail.tableName" /> <s:hidden
-						name="codeTableHeaderDetail.versionNo" /></td>
+						name="codeTableHeaderDetail.tableName" /> 
+						<s:hidden name="codeTableHeaderDetail.versionNo" /></td>
+						
 
 			</tr>
 		</table>

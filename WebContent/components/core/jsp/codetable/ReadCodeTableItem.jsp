@@ -1,6 +1,6 @@
-<%@ page import="com.company.itos.core.codetable.pojo.CodeTableItemDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,10 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) session.getAttribute("codeTableItemDetail"); %>
-<a href="/ITOS/ReadCodeTableHeader?tableName=<%=codeTableItemDetail.getTableName()%>">Back</a><br><br>
 
-<form action="/ITOS/ReadCodeTableItem" method = "POST">
+<s:url id="ReadCodeTableItemURL" action="/ITOS/ReadCodeTableHeader" escapeAmp="false">
+								<s:param name="codeTableHeaderDetail.tableName" value="%{codeTableItemDetail.tableName}"/>
+					</s:url>
+							
+					<s:a href="%{ReadCodeTableItemURL}">Back New</s:a>
+
+
+<s:form action="/ITOS/ReadCodeTableItem" method = "POST">
 <table border=1>
 			<thead>
 
@@ -30,21 +35,21 @@
 			
 			<tbody>
 				<tr>
-					<td><%=codeTableItemDetail.getTableName() %></td>
-					<td><%=codeTableItemDetail.getCode() %></td>
-					<td><%=codeTableItemDetail.getDescription() %></td>
-					<td><%=codeTableItemDetail.getAnnotation() %></td>
-					<td><%=codeTableItemDetail.getIsEnabled() %></td>
-					<td><%=codeTableItemDetail.getCreatedBy() %></td>
-					<td><%=codeTableItemDetail.getCreatedOn() %></td>
-					<td><%=codeTableItemDetail.getLastModifiedBy() %></td>
-					<td><%=codeTableItemDetail.getLastModifiedOn() %></td>
+					<td><s:property value="codeTableItemDetail.tableName"/></td>
+					<td><s:property value="codeTableItemDetail.code"/></td>
+					<td><s:property value="codeTableItemDetail.description"/></td>
+					<td><s:property value="codeTableItemDetail.annotation"/></td>
+					<td><s:property value="codeTableItemDetail.isEnabled"/></td>
+					<td><s:property value="codeTableItemDetail.createdBy"/></td>
+					<td><s:property value="codeTableItemDetail.createdOn"/></td>
+					<td><s:property value="codeTableItemDetail.lastModifiedBy"/></td>
+					<td><s:property value="codeTableItemDetail.lastModifiedOn"/></td>
 					
 				</tr>
 				
 			</tbody>
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

@@ -207,7 +207,10 @@
         </action>
         
           <action name="CreateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableItemAction">
-        <result name="success" type="tiles">ReadCodeTableHeader</result>
+        <result name="success" type="redirect">
+        <param name="location">/ReadCodeTableHeader</param>
+        <param name="CodeTableItemDetail.tableName">${CodeTableHeaderDetail.tableName}</param>
+        </result>
         <result name="error">/index.jsp</result>
         
         </action>
@@ -222,7 +225,9 @@
         <action name="UpdateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableItemAction">        
             
            <result name="success" type="redirect">
-                <param name="location">ReadCodeTableItem</param>
+           
+                <param name="location">/ReadCodeTableHeader</param>
+                 <param name="CodeTableHeaderDetail.tableName">${CodeTableItemDetail.tableName}</param>
             </result>
             <result name="error" type="tiles">UpdateCodeTableItem</result>
         </action>

@@ -1,5 +1,3 @@
-<%@ page import="com.company.itos.core.codetable.pojo.CodeTableItemDetail"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -10,22 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% CodeTableItemDetail codeTableItemDetail = (CodeTableItemDetail) request.getAttribute("codeTableItemDetail"); 
-		%>
+
 		
 		<s:form action="/ITOS/UpdateCodeTableItemSubmit" method = "POST">
 	
 	<table>
-			<tr>
-				<td>Table Name :</td>
-				<td><s:textfield type="text" name="codeTableItemDetail.tableName"
-					/></td>
-			</tr>
-			<tr>
-				<td>Code :</td>
-				<td><s:textfield type="text" name="codeTableItemDetail.code"
-				      /></td>
-			</tr>
+			
 			<tr>
 				<td>Description :</td>
 				<td><s:textfield type="text" name="codeTableItemDetail.description"
@@ -34,12 +22,12 @@
 			<tr>
 				<td>Annotation :</td>
 				<td><s:textfield type="text" name="codeTableItemDetail.annotation"
-				      "/></td>
+				   /></td>
 			</tr>
 			<tr>
 				<td>Is Enabled :</td>
 				<td><s:textfield type="text" name="codeTableItemDetail.isEnabled"
-				      "/></td>
+				      /></td>
 			</tr>
 			<tr>
 				<td>Record Status :</td>
@@ -49,6 +37,17 @@
 			<tr>
 
 						<td><s:submit  type="submit" value="Submit"/>
+						
+						<s:hidden
+						name="codeTableItemDetail.tableName" /> <s:hidden
+						name="codeTableItemDetail.versionNo" />
+						<s:hidden name="codeTableItemDetail.code" />
+						
+						<s:url id="ReadCodeTableItemURL" action="/ITOS/ReadCodeTableHeader" escapeAmp="false">
+							<s:param name="codeTableHeaderDetail.tableName" value="%{codeTableItemDetail.tableName}"/>
+						</s:url>
+							
+					<s:a href="%{ReadCodeTableItemURL}">Back New</s:a>
 
 				</td>
 

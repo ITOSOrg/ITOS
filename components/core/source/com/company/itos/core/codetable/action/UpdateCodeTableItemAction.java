@@ -58,7 +58,10 @@ public class UpdateCodeTableItemAction extends ActionSupport implements SessionA
 		UpdateCodeTableItemDAO updateCodeTableItemDAO = new UpdateCodeTableItemDAO();
 		String returnMassegeStr = updateCodeTableItemDAO.UpdateCodeTableItem(codeTableItemDetail);
 		
-		session.put("codeTableItemDetail", codeTableItemDetail);
+		setCodeTableItemDetail(codeTableItemDetail);
+		//setCodeTableItemDetail(codeTableItemDetail);
+		
+		//session.put("codeTableItemDetail", codeTableItemDetail);
 		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS){
 			
 			return SUCCESS;

@@ -8,11 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-String tableName = (String) request.getParameter("tableName");
-System.out.println("tableName=" +tableName);
+<s:url id="ReadCodeTableItemURL" action="/ITOS/ReadCodeTableHeader" escapeAmp="false">
+								<s:param name="codeTableHeaderDetail.tableName" value="%{codeTableHeaderDetail.tableName}"/>
+					</s:url>
+							
+					<s:a href="%{ReadCodeTableItemURL}">Back </s:a><br><br>
 
-%>
 <s:form name="Create Code Table Item" action="/ITOS/CreateCodeTableItemSubmit"
 		method="POST">
 		<table>
@@ -33,7 +34,6 @@ System.out.println("tableName=" +tableName);
 
 				<td><s:submit  type="submit" value="Submit"/>
 				<s:hidden name="codeTableItemDetail.tableName" value="%{tableName}"/>
-				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/ReadCodeTableHeader?tableName=<%=tableName%>">Back</a></td>
 
 			</tr>
 			

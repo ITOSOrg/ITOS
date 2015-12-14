@@ -1,4 +1,4 @@
-package com.company.itos.core.codetable.action;
+			package com.company.itos.core.codetable.action;
 
 import java.util.Map;
 
@@ -81,7 +81,7 @@ public class ReadCodeTableHeaderAction extends ActionSupport implements SessionA
 		String returnMassegeStr =  readCodeTableHeaderDAO.ReadCodeTableHeader(codeTableHeaderDetail);
 		
 		setCodeTableHeaderDetail(codeTableHeaderDetail);
-		session.put("codeTableHeaderDetail", codeTableHeaderDetail);
+		//session.put("codeTableHeaderDetail", codeTableHeaderDetail);
 		
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";

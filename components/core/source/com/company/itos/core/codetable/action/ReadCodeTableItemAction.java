@@ -91,7 +91,7 @@ public class ReadCodeTableItemAction extends ActionSupport implements SessionAwa
 		String returnMassegeStr = readCodeTableItemDAO.readCodeTableItem(codeTableItemDetail);
 		
 		setCodeTableItemDetail(codeTableItemDetail);
-		session.put("codeTableItemDetail", codeTableItemDetail);
+	//	session.put("codeTableItemDetail", codeTableItemDetail);
 		
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";

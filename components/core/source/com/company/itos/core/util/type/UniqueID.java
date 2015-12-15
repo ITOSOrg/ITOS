@@ -51,7 +51,7 @@ public abstract class UniqueID {
 	public static long nextUniqueID() { // throws AppRuntimeException, AppException, DatabaseException {
 		
 		String defaultSetName = null;
-		// Configuration.getProperty("curam.keyserver.default.unique.set");
+		// Configuration.getProperty("keyserver.default.unique.set");
 		
 		if (defaultSetName == null) {
 			defaultSetName = "DEFAULT";

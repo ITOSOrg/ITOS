@@ -8,18 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.itos.core.properties.pojo.PropertiesDetail;
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 
 public class ListPropertiesDAO {
 	
 	public List<PropertiesDetail> ListProperties(PropertiesDetail propertiesDetailkey){
 		
 		List<PropertiesDetail> propertiesList = new ArrayList<PropertiesDetail>();
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String propertiesSQLStr = "SELECT * FROM Properties";
 			

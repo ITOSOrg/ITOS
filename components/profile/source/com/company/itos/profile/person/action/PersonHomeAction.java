@@ -15,9 +15,26 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 	
 	private static final long serialVersionUID = 1L;
 
+	String act = "";
+	private PersonDetail personDetail;
 	private Map<String, Object> session;
 	HttpServletRequest request;
-	private PersonDetail personDetail;
+
+	/**
+	 * @return the act
+	 */
+	public String getAct() {
+		return act;
+	}
+
+	/**
+	 * @param act
+	 *            the act to set
+	 */
+	public void setAct(String act) {
+		this.act = act;
+	}
+
 	
 	/**
 	 * @return the personDetail
@@ -65,15 +82,13 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 	
 		session.put("personDetail", personDetail);
 		//session.put("personID", personID);
-		if (returnMassegeStr==CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+			pageForwardStr = "SENTTOUPDATE";
 
+		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = SUCCESS;
-
-		} else {
-			
-			pageForwardStr = ERROR;
-
 		}
+
 		return pageForwardStr;
 	}
 

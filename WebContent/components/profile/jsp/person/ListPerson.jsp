@@ -34,11 +34,7 @@
 		<div>
 	
 	<s:form action="/ITOS/PersonList" method="post">
-	<%
-		List<PersonDetail> personDetailList = (List<PersonDetail>) session
-			.getAttribute("personDetailList");
-	PersonDetail personDetail = null;
-	%>
+	
 		<table border=1>
 			<thead>
 
@@ -60,45 +56,46 @@
 				</tr>
 			</thead>
 
-			<%
-				for (int i = 0; i < personDetailList.size(); i++) {
-						 personDetail = personDetailList.get(i);
-			%>
+			
+            <s:iterator value="personDetailList" status="stat">
+            
 			<tbody>
 				<tr>
-					<td><%=personDetail.getTitle()%></td>
-					<td><%=personDetail.getFirstName()%></td>
-					<td><%=personDetail.getMiddleName()%></td>
-					<td><%=personDetail.getLastName()%></td>
-					<td><%=personDetail.getDateOfBirth()%></td>
-					<td><%=personDetail.getGender()%></td>
-					<td><%=personDetail.getCreatedBy()%></td>
-					<td><%=personDetail.getCreatedOn()%></td>
-					<td><%=personDetail.getModifiedBy()%></td>
-					<td><%=personDetail.getModifiedOn()%></td>
-					<td><%=personDetail.getRegistrationDate()%></td>
+					<td><s:property value="title" /></td>
+					<td><s:property value="firstName" /></td>
+					<td><s:property value="middleName" /></td>
+					<td><s:property value="lastName" /></td>
+					<td><s:property value="dateOfBirth" /></td>
+					<td><s:property value="gender" /></td>
+					<td><s:property value="createdBy" /></td>
+					<td><s:property value="createdOn" /></td>
+					<td><s:property value="modifiedBy" /></td>
+					<td><s:property value="modifiedOn" /></td>
+					<td><s:property value="registrationDate" /></td>
 					
-					
-					
-					
-					<td><a
-						href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Read</a></td>
-					<td><a
-						href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>&act=update">Update</a></td>
-
-
-
-					<td><a
-						href="/ITOS/PersonDelete?personID=<%=personDetail.getPersonID()%>"
-						onclick="openpopupwindow()">Delete </a></td>
-
+					<td>
+                    
+                    <s:url id="ReadPersonHomeURL" action="/ITOS/PersonHome" escapeAmp="false">
+                                <s:param name="personDetail.personID" value="%{personID}"/>
+                            </s:url>
+                            <s:a href="%{ReadPersonHomeURL}">View</s:a>
+                            
+                            <s:url var="updatePersonHomeURL" action="/ITOS/PersonHome" escapeAmp="false">
+                                <s:param name="personDetail.personID" value="%{personID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{updatePersonHomeURL}">Update</s:a>
+                            
+                            <s:url id="PersonDeleteURL" action="/ITOS/PersonDelete" escapeAmp="false">
+                                <s:param name="personDetail.personID" value="%{personID}"/>
+                            </s:url>
+                            <s:a href="%{PersonDeleteURL}">Delete</s:a>
+                    
+                    </td>
 
 				</tr>
 			</tbody>
-			<%
-				}
-			%>
-		<a href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>">Person Home</a><br><br>
+			</s:iterator>
 			
 		</table><br>
 			<a href="RegistrationForm.jsp">Add User</a>

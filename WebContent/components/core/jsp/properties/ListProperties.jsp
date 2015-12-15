@@ -76,7 +76,6 @@
 								<s:param name="act" value="%{updateAction}"/>
 							</s:url>
 							<s:a href="%{updatePropertiesURL}">Update</s:a>
-						<!--  	<a href="<s:property value="#updatePropertiesURL"/>"> Update</a> -->
 							
 						</td>
 

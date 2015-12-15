@@ -18,6 +18,7 @@ public class PersonListAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 	HttpServletRequest request;
+	private List<PersonDetail> personDetailList;
 	
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
@@ -38,6 +39,21 @@ public class PersonListAction extends ActionSupport implements SessionAware {
 		this.request = request;
 	}
 	
+	
+	/**
+	 * @return the personDetailList
+	 */
+	public List<PersonDetail> getPersonDetailList() {
+		return personDetailList;
+	}
+
+	/**
+	 * @param personDetailList the personDetailList to set
+	 */
+	public void setPersonDetailList(List<PersonDetail> personDetailList) {
+		this.personDetailList = personDetailList;
+	}
+
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
@@ -45,7 +61,9 @@ public class PersonListAction extends ActionSupport implements SessionAware {
 		PersonListDAO personListDAO = new PersonListDAO();
 
 		List<PersonDetail> personDetailList = personListDAO.listAllStudent();
-		session.put("personDetailList", personDetailList);
+		
+		setPersonDetailList(personDetailList);
+		//session.put("personDetailList", personDetailList);
 		
 		
 		if (personDetailList != null) {

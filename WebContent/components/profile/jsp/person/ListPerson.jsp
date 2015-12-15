@@ -30,7 +30,7 @@
 
 
 <div id="myaccordion">
-		<h2>Administrator Home</h2>
+		<h2>Person List</h2>
 		<div>
 	
 	<s:form action="/ITOS/PersonList" method="post">

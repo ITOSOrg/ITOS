@@ -33,7 +33,7 @@
 			<tr>
 
 				<td><s:submit  type="submit" value="Submit"/>
-				<s:hidden name="codeTableItemDetail.tableName" value="%{tableName}"/>
+				<s:hidden name="codeTableItemDetail.tableName" value="%{codeTableItemDetail.tableName}"/>
 
 			</tr>
 			

@@ -12,13 +12,7 @@
                 class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
      
-        <action name="login">
-            <result>pages/login.jsp</result>
-        </action>
-     
-        <action name="index">
-            <result type="tiles">index</result>
-        </action>
+        
      
         <action name="CreateProperties">        
             <result type="tiles">CreateProperties</result>
@@ -106,6 +100,7 @@
         
         
         
+        
          <action name="CreateRole">        
             <result type="tiles">CreateRole</result>
         </action>
@@ -160,7 +155,10 @@
         </action>
         
         
+        
+        
         <action name="ListCodeTable" class="com.company.itos.core.codetable.action.ListCodeTableHeaderAction">
+        
         <result name="success" type="tiles">ListCodeTable</result>
         <result name="error">/index.jsp</result>
         
@@ -202,17 +200,21 @@
        
         </action>
         
+        
+        
+        
+        
         <action name="CreatecodeTableItem">        
             
           <result type="tiles">CreatecodeTableItem</result>
        
         </action>
         
-          <action name="CreateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableItemAction">
-        <result name="success" type="redirect">
-        <param name="location">/ReadCodeTableHeader</param>
-        <param name="CodeTableItemDetail.tableName">${CodeTableHeaderDetail.tableName}</param>
-        </result>
+        <action name="CreateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableItemAction">
+           <result name="success" type="redirect">
+               <param name="location">/ReadCodeTableHeader</param>
+                <param name="CodeTableItemDetail.tableName">${CodeTableHeaderDetail.tableName}</param>
+            </result>
         <result name="error">/index.jsp</result>
         
         </action>
@@ -234,47 +236,7 @@
             <result name="error" type="tiles">UpdateCodeTableItem</result>
         </action>
        
-          <action name="PersonLogin" class="com.company.itos.profile.person.action.PersonLoginAction">
-        <result name="success" type="redirect">
-                <param name="location">/PersonHome</param>
-                <param name="personDetail.personID">${usersDetail.relatedID}</param>
-        </result>
-        <result name="error">/index.jsp</result>
-        
-        </action>
-        
-          <action name="PersonHome" class="com.company.itos.profile.person.action.PersonHomeAction">
-        <result name="success" type="tiles">PersonHome</result>
-        <result name="error">/index.jsp</result>
-        
-        </action>
-
-        
-          <action name="PersonList" class="com.company.itos.profile.person.action.PersonListAction">
-        <result name="success" type="tiles">PersonList</result>
-        <result name="error">/index.jsp</result>
-        
-        </action>
-        
-        
-        
-        
-        
-        
-        
-        
-          <!--<action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
-        <result name="success" type="tiles">ListEmailAddress
-        <param name="personDetail.personID">${usersDetail.relatedID}</param>
-        </result>
-        <result name="error">/index.jsp</result>
-        
-        </action>-->
-        
-        
-        <action name="SearchPerson">        
-            <result type="tiles">SearchPerson</result>
-        </action>
+         
         
     </package>
 </struts>

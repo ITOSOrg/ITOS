@@ -7,8 +7,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#myaccordion").accordion();
+	});
+</script>
+
 </head>
 <body>
+
+<div id="myaccordion">
+		<h2> Role List</h2>
+		<div>
+
 <%
 
 List<RoleDetail> SinglePersonRolelist = (List<RoleDetail>) request.getAttribute("SinglePersonRolelist");
@@ -55,6 +75,7 @@ Integer personID = new Integer (request.getParameter("personID"));
 		</table>
 		</form>
 
-
+</div>
+</div>
 </body>
 </html>

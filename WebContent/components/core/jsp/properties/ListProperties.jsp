@@ -6,8 +6,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#myaccordion").accordion();
+	});
+</script>
+
 </head>
 <body>
+
+<div id="myaccordion">
+		<h2>Properties List</h2>
+		<div>
 
 	<a href="/ITOS/CreateProperties">Create Properties</a>
 	<br>
@@ -67,6 +86,7 @@
 			</s:iterator>
 		</table>
 	</s:form>
-
+</div>
+</div>
 </body>
 </html>

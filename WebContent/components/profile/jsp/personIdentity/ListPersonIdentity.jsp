@@ -2,6 +2,7 @@
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,9 +19,8 @@ Integer personID = (Integer) request.getAttribute("personID");
 
 %>
 
-<a href="/ITOS/PersonHome?personID=<%= personID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-<a href="/ITOS/components/profile/jsp/personIdentity/CreatePersonIdentity.jsp?personID=<%= personID%>">Create PersonIdentity</a><br><br>
+<a href="/ITOS/CreatePersonIdentity">Create PersonIdentity</a><br><br>
 
 
 
@@ -38,25 +38,43 @@ Integer personID = (Integer) request.getAttribute("personID");
 				</tr>
 			</thead>
 			
-			<%
-				for (int i = 0; i < personIdentityDetailList.size(); i++) {
-					PersonIdentityDetail	 personIdentityDetail = personIdentityDetailList.get(i);
-			%>
+			
+             <s:iterator value="personIdentityDetailList" status="stat">
 			
 			<tbody>
 				<tr>
-					<td><%=personIdentityDetail.getAlternateID() %></td>
-					<td><%=personIdentityDetail.getTypeCode() %></td>
-					<td><%=personIdentityDetail.getPrimaryInd() %></td>
-					<td><%=personIdentityDetail.getStartDate() %></td>
-					<td><%=personIdentityDetail.getEndDate() %></td>
-					<td><a href="/ITOS/ReadPersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>">Read</a></td>
-					<td><a href="/ITOS/ReadPersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>&act=update">Update</a></td>
-					<td><a href="/ITOS/DeletePersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>&personID=<%=personIdentityDetail.getPersonID()%>">Delete</a></td>
+					<td><s:property value="alternateID" /></td>
+					<td><s:property value="typeCode" /></td>
+					<td><s:property value="primaryInd" /></td>
+					<td><s:property value="startDate" /></td>
+					<td><s:property value="endDate" /></td>
+					
+                     <td><s:url id="ReadPersonIdentityURL" action="/ITOS/ReadPersonIdentity" escapeAmp="false">
+                                <s:param name="personIdentityDetail.personIdentityID" value="%{personIdentityID}"/>
+                            </s:url>
+                            <s:a href="%{ReadPersonIdentityURL}">View</s:a>
+                            
+                            
+                            <s:url var="UpdatePersonIdentityURL" action="/ITOS/ReadPersonIdentity" escapeAmp="false">
+                                  <s:param name="personIdentityDetail.personIdentityID" value="%{personIdentityID}"/>     
+                                  <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdatePersonIdentityURL}">Update</s:a>
+                            
+                            
+                            
+                            <s:url var="DeletePersonIdentityURL" action="/ITOS/DeletePersonIdentity" escapeAmp="false">
+                                    <s:param name="personIdentityDetail.personIdentityID" value="%{personIdentityID}"/>
+                            </s:url>
+                            <s:a href="%{DeletePersonIdentityURL}">Delete</s:a>
+                        </td>
+                    
+                    
+                    
 				</tr>
 				
 			</tbody>
-			<%} %>
+            </s:iterator>
 		</table>
 		</form>
 

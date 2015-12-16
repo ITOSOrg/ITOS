@@ -1,7 +1,6 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,76 +8,55 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		PersonDetail personDetail = (PersonDetail) request
-				.getAttribute("personDetail");
 	
-	Integer personID = (Integer) request.getAttribute("personID");
-	%>
-	<form
-		action="/ITOS/PersonUpdate?personID=<%=personID%>&versionNo=<%=personDetail.getVersionNo()%>"
+	<s:form
+		action="/ITOS/PersonUpdate"
 		method="POST">
 
-		<%
-			if (personDetail != null) {
-				List<String> errorMessageList = personDetail
-						.getErrorMessageList();
-				for (int i = 0; i < errorMessageList.size(); i++) {
-		%>
-		<br> <font size="3" color="red"> <%
-				out.println(errorMessageList.get(i));
-			%>
-		</font>
-		<%
-			}
-			}
-		%>
-
+		
 		<table>
 			<tr>
 				<td>Title :</td>
-				<td><input type="text" name="title"
-					value="<%=personDetail.getTitle()%>"></td>
+				<td><input type="text" name="personDetail.title"
+					></td>
 			</tr>
 
 			<tr>
 				<td>First Name :</td>
-				<td><input type="text" name="firstName"
-					value="<%=personDetail.getFirstName()%>"></td>
+				<td><input type="text" name="personDetail.firstName"
+					></td>
 			</tr>
 			<tr>
 				<td>Middle Name:</td>
-				<td><input type="text" name="middleName"
-					value="<%=personDetail.getMiddleName()%>"></td>
+				<td><input type="text" name="personDetail.middleName"
+					></td>
 			</tr>
 			<tr>
 				<td>Last Name:</td>
-				<td><input type="text" name="lastName"
-					value="<%=personDetail.getLastName()%>"></td>
+				<td><input type="text" name="personDetail.lastName"
+					></td>
 			</tr>
 			<tr>
 				<td>Gender:</td>
-				<td><input type="text" name="gender"
-					value="<%=personDetail.getGender()%>"></td>
+				<td><input type="text" name="personDetail.gender"
+					></td>
 			</tr>
 			<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="text" name="dateOfBirth"
-					value="<%=personDetail.getDateOfBirth()%>"></td>
+				<td><input type="text" name="personDetail.dateOfBirth"
+					></td>
 			</tr>
 
 			<tr>
 
 				<td><input type="submit" value="submit">
-					<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonHome?userName=<%=personDetail.getUserName()%>">Back</a></td>-->
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/PersonList">Administrator Home</a></td>
 
 			</tr>
 
 
 		</table>
 
-	</form>
+	</s:form>
 
 
 </body>

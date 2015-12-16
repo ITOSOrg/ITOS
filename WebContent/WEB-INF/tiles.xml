@@ -162,7 +162,15 @@
         <put-attribute name="body" value="/components/profile/jsp/person/ListPerson.jsp" />
     </definition>
     
+    <definition name="ReadPerson" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read Person" />
+        <put-attribute name="body" value="/components/profile/jsp/person/ReadPerson.jsp" />
+    </definition>
    
+    <definition name="UpdatePerson" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update Person" />
+        <put-attribute name="body" value="/components/profile/jsp/person/UpdatePerson.jsp" />
+    </definition>
     
    
    
@@ -173,7 +181,28 @@
         <put-attribute name="title" value="EmailAddress List" />
         <put-attribute name="body" value="/components/profile/jsp/email/ListEmailAddress.jsp" />
     </definition>
+    
+    
+    <definition name="ListPhoneNumber" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List PhoneNumber" />
+        <put-attribute name="body" value="/components/profile/jsp/phone/ListPhoneNumber.jsp" />
+    </definition>
    
+    <definition name="ListPersonIdentity" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List PersonIdentity" />
+        <put-attribute name="body" value="/components/profile/jsp/personIdentity/ListPersonIdentity.jsp" />
+    </definition>
+    
+    
+    <definition name="ListAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List Address" />
+        <put-attribute name="body" value="/components/profile/jsp/address/ListAddress.jsp" />
+    </definition>
+    
+    
+    
+    
+    
     <definition name="SearchPerson" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Search Person" />
         <put-attribute name="body" value="/components/profile/jsp/person/SearchPerson.jsp" />

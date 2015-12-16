@@ -3,6 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,8 +36,8 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 
 <a href="/ITOS/PersonHome?personID=<%= relatedID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-<a href="/ITOS/components/profile/jsp/phone/CreatePhoneNumber.jsp?relatedID=<%= relatedID%>">Create Phone Number</a>
-<form action="/ITOS/ListPhoneNumber" method = "POST">
+<a href="/ITOS/CreatePhoneNumber">Create Phone Number</a>
+<s:form action="/ITOS/ListPhoneNumber" method = "POST">
 <table border=1>
 			<thead>
 
@@ -53,31 +54,44 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 				</tr>
 			</thead>
 			
-			<%
-				for (int i = 0; i < phoneNumberLinkDetailList.size(); i++) {
-					PhoneNumberLinkDetail	 phoneNumberLinkDetail = phoneNumberLinkDetailList.get(i);
-					
-					PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
-			%>
+            <s:iterator value="phoneNumberLinkDetailList" status="stat">
 			
 			<tbody>
 				<tr>
-					<td><%=phoneNumberDetail.getCountryCode() %></td>
-					<td><%=phoneNumberDetail.getAreaCode() %></td>
-					<td><%=phoneNumberDetail.getPhoneNumber() %></td>
-					<td><%=phoneNumberDetail.getExtension() %></td>
-					<td><%=phoneNumberLinkDetail.getTypeCode() %></td>
-					<td><%=phoneNumberLinkDetail.getPrimaryInd()%></td>
-					<td><%=phoneNumberLinkDetail.getStartDate()%></td>
-					<td><%=phoneNumberLinkDetail.getEndDate()%></td>
-					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&relatedID=<%=relatedID%>">Read</a></td>
-					<td><a href="/ITOS/ReadPhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&act=update">Update</a> </td>
-					<td><a href="/ITOS/DeletePhoneNumber?phoneNumberID=<%=phoneNumberDetail.getPhoneNumberID()%>&phoneNumberLinkID=<%=phoneNumberLinkDetail.getPhoneNumberLinkID()%>&relatedID=<%=relatedID%>">Delete</a></td>
+					<td><s:property value="phoneNumberDetail.countryCode" /></td>
+					<td><s:property value="phoneNumberDetail.areaCode" /></td>
+					<td><s:property value="phoneNumberDetail.phoneNumber" /></td>
+					<td><s:property value="phoneNumberDetail.extension" /></td>
+					<td><s:property value="typeCode" /></td>
+					<td><s:property value="primaryInd" /></td>
+					<td><s:property value="startDate" /></td>
+					<td><s:property value="endDate" /></td>
+                    
+                    <td><s:url id="ReadPhoneNumberURL" action="/ITOS/ReadPhoneNumber" escapeAmp="false">
+                                <s:param name="phoneNumberLinkDetail.phoneNumberLinkID" value="%{phoneNumberLinkID}"/>
+                            </s:url>
+                            <s:a href="%{ReadPhoneNumberURL}">View</s:a>
+                            
+                            <s:url var="UpdatePhoneNumberURL" action="/ITOS/ReadPhoneNumber" escapeAmp="false">
+                                <s:param name="phoneNumberLinkDetail.phoneNumberLinkID" value="%{phoneNumberLinkID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdatePhoneNumberURL}">Update</s:a>
+                            
+                            
+                            <s:url var="DeletePhoneNumberURL" action="/ITOS/DeletePhoneNumber" escapeAmp="false">
+                                <s:param name="phoneNumberLinkDetail.phoneNumberLinkID" value="%{phoneNumberLinkID}"/>
+                            </s:url>
+                            <s:a href="%{DeletePhoneNumberURL}">Delete</s:a>
+                            
+                        </td>
+                    
+					
 				</tr>
 			</tbody><br></br>
-			<%} %>
+            </s:iterator>
 		</table>
-		</form>
+		</s:form>
 		</div>
 		</div>
 </body>

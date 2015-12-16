@@ -56,11 +56,12 @@ public class PersonUpdateAction extends ActionSupport implements SessionAware {
 		
 		String pageForwardStr = "";
 		
-		int personID = new Integer((String) getServletRequest().getParameter("personID")).intValue();
-		personDetail.setPersonID(personID);
+		//int personID = new Integer((String) getServletRequest().getParameter("personID")).intValue();
+		//personDetail.setPersonID(personID);
 		
 		PersonUpdateDAO personUpdateDAO = new PersonUpdateDAO();
 		String returnMassegeStr = personUpdateDAO.updatePerson(personDetail);
+		setPersonDetail(personDetail);
 		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			

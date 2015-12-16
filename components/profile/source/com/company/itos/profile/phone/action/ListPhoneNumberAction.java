@@ -20,6 +20,7 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PhoneNumberLinkDetail phoneNumberLinkDetail;
+	private List<PhoneNumberLinkDetail> phoneNumberLinkDetailList;
 	
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
@@ -54,12 +55,28 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 		this.phoneNumberLinkDetail = phoneNumberLinkDetail;
 	}
 
+	/**
+	 * @return the phoneNumberLinkDetailList
+	 */
+	public List<PhoneNumberLinkDetail> getPhoneNumberLinkDetailList() {
+		return phoneNumberLinkDetailList;
+	}
+
+	/**
+	 * @param phoneNumberLinkDetailList the phoneNumberLinkDetailList to set
+	 */
+	public void setPhoneNumberLinkDetailList(List<PhoneNumberLinkDetail> phoneNumberLinkDetailList) {
+		this.phoneNumberLinkDetailList = phoneNumberLinkDetailList;
+	}
+
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
 		
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
 		List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberLinkDetail);
+		
+		setPhoneNumberLinkDetailList(phoneNumberLinkDetailList);
 		
 		 if (phoneNumberLinkDetailList != null) {
 				

@@ -18,7 +18,8 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private EmailAddressLinkDetail emailAddressLinkDetail;
-	
+		private List<EmailAddressLinkDetail> emailAddressLinkDetailList;
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
@@ -52,6 +53,20 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 		this.emailAddressLinkDetail = emailAddressLinkDetail;
 	}
 
+	/**
+	 * @return the emailAddressLinkDetailList
+	 */
+	public List<EmailAddressLinkDetail> getEmailAddressLinkDetailList() {
+		return emailAddressLinkDetailList;
+	}
+
+	/**
+	 * @param emailAddressLinkDetailList the emailAddressLinkDetailList to set
+	 */
+	public void setEmailAddressLinkDetailList(List<EmailAddressLinkDetail> emailAddressLinkDetailList) {
+		this.emailAddressLinkDetailList = emailAddressLinkDetailList;
+	}
+
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
@@ -59,8 +74,9 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 	
 	ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
 	List<EmailAddressLinkDetail> emailAddressLinkDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressLinkDetail);
+	setEmailAddressLinkDetailList(emailAddressLinkDetailList);
 
-	request.setAttribute("emailAddressLinkDetailList", emailAddressLinkDetailList);
+//	request.setAttribute("emailAddressLinkDetailList", emailAddressLinkDetailList);
 	
 	if (emailAddressLinkDetailList != null) {
 

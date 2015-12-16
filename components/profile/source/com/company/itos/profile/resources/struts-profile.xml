@@ -46,18 +46,66 @@
         
         </action>
         
+          <action name="ReadPerson" class="com.company.itos.profile.person.action.ReadPersonAction">
+        <result name="success" type="tiles">ReadPerson</result>
+         <result name="SENTTOUPDATE" type="tiles">UpdatePerson</result>
+        <result name="error">/index.jsp</result>
+        
+        </action>
+        
+         <action name="UpdatePerson">        
+            
+          <result type="tiles">UpdatePerson</result>
+       
+        </action>
+        
+        <action name="UpdatePersonSubmit" class="com.company.itos.profile.person.action.PersonUpdateAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/PersonList</param>
+            </result>
+            <result name="error" type="tiles">UpdatePerson</result>
+       
+        </action>
+        
         
         
         
          <action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
             <result name="success" type="tiles">ListEmailAddress
-            <param name="personDetail.personID">${usersDetail.relatedID}</param>
+           
             </result>
             <result name="error">/index.jsp</result>
         
         </action>
         
         
+        
+         <action name="ListPhoneNumber" class="com.company.itos.profile.phone.action.ListPhoneNumberAction">
+            <result name="success" type="tiles">ListPhoneNumber
+        
+            </result>
+            <result name="error">/index.jsp</result>
+        
+        </action>
+        
+        
+         <action name="ListPersonIdentity" class="com.company.itos.profile.personIdentity.action.ListPersonIdentityAction">
+            <result name="success" type="tiles">ListPersonIdentity
+        
+            </result>
+            <result name="error">/index.jsp</result>
+        
+        </action>
+        
+        
+         <action name="ListAddress" class="com.company.itos.profile.address.action.ListAddressAction">
+            <result name="success" type="tiles">ListAddress
+        
+            </result>
+            <result name="error">/index.jsp</result>
+        
+        </action>
         
         
         

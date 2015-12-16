@@ -18,6 +18,7 @@ public class ListPersonIdentityAction extends ActionSupport implements SessionAw
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonIdentityDetail personIdentityDetail;
+	private List<PersonIdentityDetail> personIdentityDetailList;
 	
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
@@ -52,12 +53,28 @@ public class ListPersonIdentityAction extends ActionSupport implements SessionAw
 		this.personIdentityDetail = personIdentityDetail;
 	}
 	
+/**
+	 * @return the personIdentityDetailList
+	 */
+	public List<PersonIdentityDetail> getPersonIdentityDetailList() {
+		return personIdentityDetailList;
+	}
+
+	/**
+	 * @param personIdentityDetailList the personIdentityDetailList to set
+	 */
+	public void setPersonIdentityDetailList(List<PersonIdentityDetail> personIdentityDetailList) {
+		this.personIdentityDetailList = personIdentityDetailList;
+	}
+
 public String execute() throws Exception {
 		
 		String pageForwardStr = "";
 		
 		ListPersonIdentityDAO listPersonIdentityDAO = new ListPersonIdentityDAO();
 		List<PersonIdentityDetail> personIdentityDetailList = listPersonIdentityDAO.personIdentityList(personIdentityDetail);
+		
+		setPersonIdentityDetailList(personIdentityDetailList);
 		
 		if (personIdentityDetailList != null) {
 			pageForwardStr = SUCCESS;

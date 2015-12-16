@@ -11,6 +11,7 @@
 <%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,7 +56,7 @@
 			%>
 
 
-			<form action="/ITOS/PersonHome" method="post">
+			<s:form action="/ITOS/PersonHome" method="post">
 
 
 				<font size="3" color="green"> <%
@@ -69,196 +70,193 @@
 
 				<table border=1>
 					<thead>
+                    <tr>
 
-						<tr>
-							<th align="left">Title :<%=personDetail.getTitle()%></th>
-
-							<th align="left">First Name: <%=personDetail.getFirstName()%></th>
-
-						</tr>
+							<th>Title :</th>
+							<th >First Name: </th>
+							<th >Middle Name: </th>
+							<th >Last Name: </th>
+    						<th >Gender: </th>
+    						<th >Date Of Birth: </th>
+    						<th >Status: </th>
+    						<th >Created By:</th>
+    						<th >Created On:</th>
+    						<th >Modified By:</th>
+    						<th >Modified On:</th>
+    						<th >Registration Date:</th>
+                      </tr>
 					</thead>
+                    
 					<tbody>
 
 						<tr>
-							<th align="left">Middle Name: <%=personDetail.getMiddleName()%></th>
-							<th align="left">Last Name: <%=personDetail.getLastName()%></th>
+                          <td> <s:property value="personDetail.title"/></td>
+                           <td><s:property value="personDetail.firstName"/></td>
+                           <td><s:property value="personDetail.middleName"/></td>
+                           <td><s:property value="personDetail.lastName"/></td>
+                           <td><s:property value="personDetail.gender"/></td>
+                           <td><s:property value="personDetail.dateOfBirth"/></td>
+                           <td><s:property value="personDetail.recordStatus"/></td>
+                           <td><s:property value="personDetail.createdBy"/></td>
+                           <td><s:property value="personDetail.createdOn"/></td>
+                           <td><s:property value="personDetail.modifiedBy"/></td>
+                           <td><s:property value="personDetail.modifiedOn"/></td>
+                           <td><s:property value="personDetail.registrationDate"/></td>
 
-							<td></td>
 						</tr>
-					</tbody>
+                        </tbody>
+                        </table>
+                        </s:form>
+                        </div>
+                        
 
-					<tbody>
-
-						<th align="left">Gender: <%=personDetail.getGender()%></th>
-						<th align="left">Date Of Birth: <%=personDetail.getDateOfBirth()%></th>
-
-
-					</tbody>
-					<tbody>
-						<th align="left">Status: <%=personDetail.getRecordStatus()%></th>
-						<th align="left">Created By:<%=personDetail.getCreatedBy()%></th>
-
-					</tbody>
-					<tbody>
-						<th align="left">Created On:<%=personDetail.getCreatedOn()%></th>
-						<th align="left">Modified By:<%=personDetail.getModifiedBy()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">Modified On:<%=personDetail.getModifiedOn()%></th>
-						<th align="left">Registration Date:<%=personDetail.getRegistrationDate()%></th>
-
-					</tbody>
-
-					<tbody>
-
-						<th><a
-							href="/ITOS/PersonHome?personID=<%=personDetail.getPersonID()%>&act=update">Update</a></th>
-						<th><a
-							href="/ITOS/PersonList?personID=<%=personDetail.getPersonID()%>">PersonList</a></th>
-					</tbody>
-
-				</table>
-
-			</form>
-		</div>
 
 		<h2>Email Address Detail</h2>
 		<div>
 
-			<form action="/ITOS/ReadEmailAddress" method="POST">
+			<s:form action="/ITOS/ReadEmailAddress" method="POST">
 				<table border=1>
+                <thead>
+                <tr>
+						<th>EmailAddress: </th>
+						<th>Type Code: </th>
+						<th>PrimaryInd: </th>
+						<th>Start Date: </th>
+						<th>End Date: </th>
+                 </tr>
+                </thead>
+                
 					<tbody>
-						<th align="left">EmailAddress: <%=emailAddressDetail.getEmailAddress()%></th>
-						<th align="left">Type Code: <%=emailAddressLinkDetail.getTypeCode()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">PrimaryInd: <%=emailAddressLinkDetail.getPrimaryInd()%></th>
-						<th align="left">Start Date: <%=emailAddressLinkDetail.getStartDate()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">End Date: <%=emailAddressLinkDetail.getEndDate()%></th>
-						<!--  <th><a href="/ITOS/ListEmailAddress?personID=<%=personDetail.getPersonID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>">
-			EmailAddress List</a></th>-->
-						<th><a
-							href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">
-								EmailAddress List</a></th>
-					</tbody>
-
-				</table>
-
-			</form>
-		</div>
+                    <tr>
+                       <td> <s:property value="emailAddressDetail.emailAddress"/></td>
+                       <td> <s:property value="emailAddressLinkDetail.typeCode"/></td>
+                         <td> <s:property value="emailAddressLinkDetail.primaryInd"/></td>
+                         <td> <s:property value="emailAddressLinkDetail.startDate"/></td>
+                        <td>  <s:property value="emailAddressLinkDetail.endDate"/></td>
+                        </tr>
+                        
+                        </tbody>
+                        </table>
+                        </s:form>
+                        </div>
 
 		<h2>Phone Number Detail</h2>
 		<div>
 
-			<form action="/ITOS/ReadPhoneNumber" method="POST">
+			<s:form action="/ITOS/ReadPhoneNumber" method="POST">
 				<table border=1>
-				<%
+                <thead>
+                <tr>
+                
+						<th>Country Code: </th>
+						<th>Area Code: </th>
+						<th>Phone Number: </th>
+						<th>Extension: </th>
+						<th>Type Code: </th>
+						<th>PrimaryInd: </th>
+						<th>start Date: </th>
+						<th>End Date: </th>
+                   </tr>
+                </thead>
 				
-				%>
 					<tbody>
-						<th align="left">Country Code: <%=phoneNumberDetail.getCountryCode()%></th>
-						<th align="left">Area Code: <%=phoneNumberDetail.getAreaCode()%></th>
+                    <tr>
+                    <td><s:property value="phoneNumberDetail.countryCode"/></td>
+                   <td> <s:property value="phoneNumberDetail.areaCode"/></td>
+                    <td><s:property value="phoneNumberDetail.phoneNumber"/></td>
+                    <td><s:property value="phoneNumberDetail.extension"/></td>
+                   <td> <s:property value="phoneNumberLinkDetail.typeCode"/></td>
+                    <td><s:property value="phoneNumberLinkDetail.primaryInd"/></td>
+                    <td><s:property value="phoneNumberLinkDetail.startDate"/></td>
+                    <td><s:property value="phoneNumberLinkDetail.endDate"/></td>
+                    </tr>
 					</tbody>
-					<tbody>
-						<th align="left">Phone Number: <%=phoneNumberDetail.getPhoneNumber()%></th>
-						<th align="left">Extension: <%=phoneNumberDetail.getExtension()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">Type Code: <%=phoneNumberLinkDetail.getTypeCode()%></th>
-						<th align="left">PrimaryInd: <%=phoneNumberLinkDetail.getPrimaryInd()%></th>
 
-
-					</tbody>
-					<tbody>
-						<th align="left">start Date: <%=phoneNumberLinkDetail.getStartDate()%></th>
-						<th align="left">End Date: <%=phoneNumberLinkDetail.getEndDate()%></th>
-					</tbody>
-					<tbody>
-
-						<th><a
-							href="/ITOS/ListPhoneNumber?relatedID=<%=phoneNumberLinkDetail.getRelatedID()%>">PhoneNumber List</a></th>
-
-					</tbody>
 
 				</table>
 
-			</form>
+			</s:form>
 		</div>
 		
 		<h2>Person Identity Detail</h2>
 		<div>
 
-			<form action="/ITOS/ReadPersonIdentity" method="POST">
+			<s:form action="/ITOS/ReadPersonIdentity" method="POST">
 				<table border=1>
+                <thead>
+                <tr>
+						<th >AlternateID: </th>
+						<th >PrimaryInd: </th>
+						<th >Type Code: </th>
+						<th >Start Date: </th>
+						<th >End Date: </th>
+                  </tr>
+                </thead>
 				
 					<tbody>
-						<th align="left">AlternateID: <%=personIdentityDetail.getAlternateID()%></th>
-						<th align="left">PrimaryInd: <%=personIdentityDetail.getPrimaryInd()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">Type Code: <%=personIdentityDetail.getTypeCode()%></th>
-						<th align="left">Start Date: <%=personIdentityDetail.getStartDate()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">End Date: <%=personIdentityDetail.getEndDate()%></th>
-						<th><a
-							href="/ITOS/ListPersonIdentity?personID=<%=personIdentityDetail.getPersonID()%>">Person Identity
-								List</a></th>
+                    <tr>
+                       <td> <s:property value="personIdentityDetail.alternateID"/></td>
+                       <td> <s:property value="personIdentityDetail.primaryInd"/></td>
+                        <td><s:property value="personIdentityDetail.typeCode"/></td>
+                       <td> <s:property value="personIdentityDetail.startDate"/></td>
+                       <td> <s:property value="personIdentityDetail.endDate"/></td>
+                     </tr>
 					</tbody>
 
 					</table>
 
-			</form>
+			</s:form>
 		</div>
 		<h2>Address Detail</h2>
 		<div>
-		<form action="/ITOS/ReadAddress" method="POST">
+		<s:form action="/ITOS/ReadAddress" method="POST">
 		<table border=1>
+        <thead>
+        <tr>
+        
+						<th>StreetOne: </th>
+						<th>StreetTwo: </th>
+						<th>AptUnit: </th>
+						<th>City: </th>
+						<th>County: </th>
+						<th>State: </th>
+						<th>Country: </th>
+						<th>ZipCode: </th>
+						<th>Type Code: </th>
+						<th>PrimaryInd: </th>
+						<th>Start Date: </th>
+						<th>End Date: </th>
+                        </tr>
+        </thead>
 		
 		<tbody>
-						<th align="left">StreetOne: <%=addressDetail.getStreetOne()%></th>
-						<th align="left">StreetTwo: <%=addressDetail.getStreetTwo()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">AptUnit: <%=addressDetail.getAptUnit()%></th>
-						<th align="left">City: <%=addressDetail.getCity()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">County: <%=addressDetail.getCounty()%></th>
-						<th align="left">State: <%=addressDetail.getState()%></th>
-
-					</tbody>
-					<tbody>
-						<th align="left">Country: <%=addressDetail.getCountry()%></th>
-						<th align="left">ZipCode: <%=addressDetail.getZipCode()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">Type Code: <%=addressLinkDetail.getTypeCode()%></th>
-						<th align="left">PrimaryInd: <%=addressLinkDetail.getPrimaryInd()%></th>
-					</tbody>
-					<tbody>
-						<th align="left">Start Date: <%=addressLinkDetail.getStartDate()%></th>
-						<th align="left">End Date: <%=addressLinkDetail.getEndDate()%></th>
-					</tbody>
-					<tbody>
-						<th><a
-							href="/ITOS/ListAddress?relatedID=<%=addressLinkDetail.getRelatedID()%>">Address
-								List</a></th>
-
+        <tr>
+       <td> <s:property value="addressDetail.streetOne"/></td>
+       <td> <s:property value="addressDetail.streetTwo"/></td>
+       <td> <s:property value="addressDetail.aptUnit"/></td>
+        <td><s:property value="addressDetail.city"/></td>
+        <td><s:property value="addressDetail.county"/></td>
+        <td><s:property value="addressDetail.state"/></td>
+        <td><s:property value="addressDetail.country"/></td>
+       <td> <s:property value="addressDetail.zipCode"/></td>
+        <td><s:property value="addressLinkDetail.typeCode"/></td>
+        <td><s:property value="addressLinkDetail.primaryInd"/></td>
+        <td><s:property value="addressLinkDetail.startDate"/></td>
+       <td> <s:property value="addressLinkDetail.endDate"/></td>
+        </tr>
+        
+						
 					</tbody>
 
 				</table>
+                </s:form>
 		
 		
-			<form action="/ITOS/PersonLogOut" method="POST">
+			<s:form action="/ITOS/PersonLogOut" method="POST">
 				<br> <input type="submit" value="LogOut">
-				<br><br> <a href="/ITOS/components/common/authentication/Login.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
 				<br>
-		</form>
 		</div>
-		</form>
+		</s:form>
 	</div>
 
 

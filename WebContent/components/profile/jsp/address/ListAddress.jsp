@@ -1,9 +1,7 @@
-<%@ page import="java.util.List"%>
-<%@ page
-	import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
 <%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,22 +23,16 @@
 </head>
 <body>
 
-	<%
-		List<AddressLinkDetail> addressLinkDetailList = (List<AddressLinkDetail>) request.getAttribute("addressLinkDetailList");
-
-		Integer relatedID = (Integer) request.getAttribute("relatedID");
-	%>
 	
 
 	<div id="myaccordion">
 		<h2>Address List Workspace</h2>
 		<div>
 
-			<a href="/ITOS/PersonHome?personID=<%=relatedID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	<a href="/ITOS/components/profile/jsp/address/CreateAddress.jsp?relatedID=<%= relatedID%>">Create Address</a><br><br>
+	<a href="/ITOS/CreateAddress">Create Address</a><br><br>
 			<br>
 
-			<form action="/ITOS/ListAddress" method="POST">
+			<s:form action="/ITOS/ListAddress" method="POST">
 				<table border=1>
 					<thead>
 
@@ -59,35 +51,52 @@
 						</tr>
 					</thead>
 
-					<%
-						for (int i = 0; i < addressLinkDetailList.size(); i++) {
-							AddressLinkDetail addressLinkDetail = addressLinkDetailList.get(i);
-							AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
-					%>
+					
+                    
+                           <s:iterator value="addressLinkDetailList" status="stat">
 
 					<tbody>
 						<tr>
-							<td><%=addressDetail.getStreetOne()%></td>
-							<td><%=addressDetail.getStreetTwo()%></td>
-							<td><%=addressDetail.getAptUnit()%></td>
-							<td><%=addressDetail.getCity()%></td>
-							<td><%=addressDetail.getCounty()%></td>
-							<td><%=addressDetail.getState()%></td>
-							<td><%=addressDetail.getCountry()%></td>
-							<td><%=addressDetail.getZipCode()%></td>
-							<td><%=addressLinkDetail.getStartDate()%></td>
-							<td><%=addressLinkDetail.getEndDate()%></td>
-							<td><a href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a>
-							</td>
-							<td><a href="/ITOS/ReadAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%= relatedID%>&act=update">Update</a>
-							</td>
-							<td><a href="/ITOS/DeleteAddress?addressID=<%=addressDetail.getAddressId()%>&addressLinkID=<%=addressLinkDetail.getAddressLinkID()%>&relatedID=<%=relatedID%>">Delete</a></td>
+							<td><s:property value="addressDetail.streetOne" /></td>
+							<td><s:property value="addressDetail.streetTwo" /></td>
+							<td><s:property value="addressDetail.aptUnit" /></td>
+							<td><s:property value="addressDetail.city" /></td>
+							<td><s:property value="addressDetail.county" /></td>
+							<td><s:property value="addressDetail.state" /></td>
+							<td><s:property value="addressDetail.country" /></td>
+							<td><s:property value="addressDetail.zipCode" /></td>
+							<td><s:property value="startDate" /></td>
+							<td><s:property value="endDate" /></td>
+							
+                            <td><s:url id="ReadAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
+                                <s:param name="addressDetail.addressID" value="%{addressID}"/>
+                                <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}"/>
+                            </s:url>
+                            <s:a href="%{ReadAddressURL}">View</s:a>
+                            
+                            
+                            <s:url var="UpdateAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
+                                <s:param name="addressDetail.addressID" value="%{addressID}"/>
+                                <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdateAddressURL}">Update</s:a>
+                            
+                            
+                            
+                            <s:url var="DeleteAddressURL" action="/ITOS/DeleteAddress" escapeAmp="false">
+                                <s:param name="addressDetail.addressID" value="%{addressID}"/>
+                                <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}"/>
+                            </s:url>
+                            <s:a href="%{DeleteAddressURL}">Delete</s:a>
+                        </td>
+                            
 						</tr>
 
 					</tbody>
-					<%} %>
+                    </s:iterator>
 				</table>
-			</form>
+			</s:form>
 		</div>
 	</div>
 </body>

@@ -75,12 +75,12 @@
 					
 					<td>
                     
-                    <s:url id="ReadPersonHomeURL" action="/ITOS/PersonHome" escapeAmp="false">
+                    <s:url id="ReadPersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
                                 <s:param name="personDetail.personID" value="%{personID}"/>
                             </s:url>
                             <s:a href="%{ReadPersonHomeURL}">View</s:a>
                             
-                            <s:url var="updatePersonHomeURL" action="/ITOS/PersonHome" escapeAmp="false">
+                            <s:url var="updatePersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
                                 <s:param name="personDetail.personID" value="%{personID}"/>
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>

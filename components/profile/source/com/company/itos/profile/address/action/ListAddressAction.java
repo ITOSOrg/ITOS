@@ -19,6 +19,7 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private AddressLinkDetail addressLinkDetail;
+	private List<AddressLinkDetail> addressLinkDetailList;
 	
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
@@ -55,6 +56,20 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 		this.addressLinkDetail = addressLinkDetail;
 	}
 
+	/**
+	 * @return the addressLinkDetailList
+	 */
+	public List<AddressLinkDetail> getAddressLinkDetailList() {
+		return addressLinkDetailList;
+	}
+
+	/**
+	 * @param addressLinkDetailList the addressLinkDetailList to set
+	 */
+	public void setAddressLinkDetailList(List<AddressLinkDetail> addressLinkDetailList) {
+		this.addressLinkDetailList = addressLinkDetailList;
+	}
+
 	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
@@ -62,7 +77,9 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 		ListAddressDAO listAddressDAO = new ListAddressDAO();
 		List<AddressLinkDetail> addressLinkDetailList =listAddressDAO.ListAllAddress(addressLinkDetail);
 		
-		session.put("addressLinkDetailList", addressLinkDetailList);
+		setAddressLinkDetailList(addressLinkDetailList);
+		
+		//session.put("addressLinkDetailList", addressLinkDetailList);
 		
 		 if (addressLinkDetailList != null) {
 				

@@ -12,16 +12,32 @@
 <s:a href="PersonList">Person List</s:a><br><br>
 
 <s:url id="ListEmailAddressURL" action="ITOS/ListEmailAddress" escapeAmp="false">
-
-<s:param name="emailAddressLinkDetail.relatedID" value="%{personDetail.personID}"/>
-
+    <s:param name="emailAddressLinkDetail.relatedID" value="%{personDetail.personID}"/>
 </s:url>
-<s:a href="%{ListEmailAddressURL}">new Email Addresses</s:a><br><br>
+<s:a href="%{ListEmailAddressURL}">Email Addresses</s:a><br><br>
 
-<s:a href="ListEmailAddress">Email Addresses</s:a><br><br>
-<s:a href="ListPhoneNumber">Phone Numbers</s:a><br><br>
-<s:a href="ListPersonIdentity">Person Identities</s:a><br><br>
-<s:a href="ListAddress">Addresses</s:a><br><br>
+
+<s:url id="ListPhoneNumberURL" action="ITOS/ListPhoneNumber" escapeAmp="false">
+    <s:param name="phoneNumberLinkDetail.relatedID" value="%{personDetail.personID}"/>
+</s:url>
+<s:a href="%{ListPhoneNumberURL}">Phone Numbers</s:a><br><br>
+
+
+<s:url id="ListPersonIdentityURL" action="ITOS/ListPersonIdentity" escapeAmp="false">
+    <s:param name="personIdentityDetail.personID" value="%{personDetail.personID}"/>
+</s:url>
+<s:a href="%{ListPersonIdentityURL}">Person Identities</s:a><br><br>
+
+
+<s:url id="ListAddressURL" action="ITOS/ListAddress" escapeAmp="false">
+    <s:param name="addressLinkDetail.relatedID" value="%{personDetail.personID}"/>
+</s:url>
+<s:a href="%{ListAddressURL}">Addresses</s:a><br><br>
+
+
+
+
+<!--<s:a href="ListAddress">Addresses</s:a><br><br>-->
 <s:a href="SearchPerson">Search Person</s:a><br><br>
 <s:a href="ListProperties">Properties</s:a><br><br>
 <s:a href="ListKeyServer">KeyServers</s:a><br><br>

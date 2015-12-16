@@ -1,8 +1,6 @@
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,24 +50,16 @@
 <body>
 
 
-<%
-List<EmailAddressLinkDetail> emailAddressLinkDetailList = (List<EmailAddressLinkDetail>) session.getAttribute("emailAddressLinkDetailList");
 
-
-Integer relatedID = (Integer) request.getAttribute("relatedID");
-
-
-%>
 <div id="myaccordion">
 		<h2>Email Address List Workspace</h2>
 		<div>
-			<a href="/ITOS/PersonHome?personID=<%= relatedID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-<a href="/ITOS/components/profile/jsp/email/CreateEmailAddress.jsp?relatedID=<%= relatedID%>">Create Email Address</a><br><br>
-
+<a href="/ITOS/CreateEmailAddress">Create Email Address</a><br><br>
 
 
-<form action="/ITOS/ListEmailAddress" method = "POST">
+
+<s:form action="/ITOS/ListEmailAddress" method = "POST">
 <table border=1>
 			<thead>
 
@@ -83,28 +73,46 @@ Integer relatedID = (Integer) request.getAttribute("relatedID");
 				</tr>
 			</thead>
 			
-			<%
-				for (int i = 0; i < emailAddressLinkDetailList.size(); i++) {
-					EmailAddressLinkDetail	 emailAddressLinkDetail = emailAddressLinkDetailList.get(i);
- 					EmailAddressDetail emailAddressDetail =  emailAddressLinkDetail.getEmailAddressDetail();
-			%>
+			
+                    <s:iterator value="emailAddressLinkDetailList" status="stat">
 			
 			<tbody>
 				<tr>
-					<td><%=emailAddressDetail.getEmailAddress() %></td>
-					<td><%=emailAddressLinkDetail.getTypeCode() %></td>
-					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
-					<td><%=emailAddressLinkDetail.getStartDate() %></td>
-					<td><%=emailAddressLinkDetail.getEndDate() %></td>
-					<td><a  href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Read</a></td>
-					<td><a href="/ITOS/ReadEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&act=update">Update</a> </td>
-					<td><a class="js-open-modal" href="/ITOS/DeleteEmailAddress?emailAddressID=<%=emailAddressDetail.getEmailAddressID()%>&emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID()%>&relatedID=<%= relatedID%>">Delete</a></td>
+					<td><s:property value="emailAddress" /></td>
+					<td><s:property value="typeCode" /></td>
+					<td><s:property value="primaryInd" /></td>
+					<td><s:property value="startDate" /></td>
+					<td><s:property value="endDate" /></td>
+					
+                    <td><s:url id="ReadEmailAddressURL" action="/ITOS/ReadEmailAddress" escapeAmp="false">
+                                <s:param name="emailAddressDetail.emailAddressID" value="%{emailAddressID}"/>
+                                <s:param name="emailAddressLinkDetail.emailAddressLinkID" value="%{emailAddressLinkID}"/>
+                            </s:url>
+                            <s:a href="%{ReadEmailAddressURL}">View</s:a>
+                            
+                            
+                            <s:url var="UpdateEmailAddressURL" action="/ITOS/ReadEmailAddress" escapeAmp="false">
+                                <s:param name="emailAddressDetail.emailAddressID" value="%{emailAddressID}"/>
+                                <s:param name="emailAddressLinkDetail.emailAddressLinkID" value="%{emailAddressLinkID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdateEmailAddressURL}">Update</s:a>
+                            
+                            
+                            
+                            <s:url var="DeleteEmailAddressURL" action="/ITOS/DeleteEmailAddress" escapeAmp="false">
+                                <s:param name="emailAddressDetail.emailAddressID" value="%{emailAddressID}"/>
+                                <s:param name="emailAddressLinkDetail.emailAddressLinkID" value="%{emailAddressLinkID}"/>
+                            </s:url>
+                            <s:a href="%{DeleteEmailAddressURL}">Delete</s:a>
+                        </td>
+                    
 				</tr>
 				
 			</tbody>
-			<%} %>
+            </s:iterator>
 		</table>
-		</form>
+		</s:form>
 		</div>
 		</div>
 </body>

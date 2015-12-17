@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
-<%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,12 +9,7 @@
 </head>
 <body>
 
-<% AddressLinkDetail addressLinkDetail = (AddressLinkDetail) request.getAttribute("addressLinkDetail"); 
-
-   AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
-
-%>
-<form action="/ITOS/ReadAddress" method="POST">
+<s:form action="/ITOS/ReadAddress" method="POST">
 
 <table border=1>
 					<thead>
@@ -38,23 +32,22 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><%=addressDetail.getStreetOne()%></td>
-							<td><%=addressDetail.getStreetTwo()%></td>
-							<td><%=addressDetail.getAptUnit()%></td>
-							<td><%=addressDetail.getCity()%></td>
-							<td><%=addressDetail.getCounty()%></td>
-							<td><%=addressDetail.getState()%></td>
-							<td><%=addressDetail.getCountry()%></td>
-							<td><%=addressDetail.getZipCode()%></td>
-							<td><%=addressLinkDetail.getTypeCode()%></td>
-							<td><%=addressLinkDetail.getPrimaryInd()%></td>
-							<td><%=addressLinkDetail.getStartDate()%></td>
-							<td><%=addressLinkDetail.getEndDate()%></td>
-							<td><%=addressLinkDetail.getRecordStatus()%></td>
+							<td><s:property value="addressDetail.streetOne" /></td>
+							<td><s:property value="addressDetail.streetTwo" /></td>
+							<td><s:property value="addressDetail.aptUnit" /></td>
+							<td><s:property value="addressDetail.city" /></td>
+							<td><s:property value="addressDetail.county" /></td>
+							<td><s:property value="addressDetail.state" /></td>
+							<td><s:property value="addressDetail.country" /></td>
+							<td><s:property value="addressDetail.zipCode" /></td>
+							<td><s:property value="addressLinkDetail.typeCode" /></td>
+							<td><s:property value="addressLinkDetail.primaryInd" /></td>
+							<td><s:property value="addressLinkDetail.startDate" /></td>
+							<td><s:property value="addressLinkDetail.endDate" /></td>
+							<td><s:property value="addressLinkDetail.recordStatus" /></td>
 						</tr>
 					</tbody>
 
-<br><a href="/ITOS/ListAddress?relatedID=<%= addressLinkDetail.getRelatedID() %>">AddressList Home</a></td><br><br>
-</form>
+</s:form>
 </body>
 </html>

@@ -1,6 +1,3 @@
-<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
-<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -24,17 +21,12 @@
 </script>
 </head>
 <body>
-<%
-List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = (List<PhoneNumberLinkDetail>) request.getAttribute("PhoneNumberLinkDetailList");
 
-Integer relatedID = (Integer) request.getAttribute("relatedID");
-%>
 
 <div id="myaccordion">
 		<h2>Phone Number List Workspace</h2>
 		<div>
 
-<a href="/ITOS/PersonHome?personID=<%= relatedID%>">Person Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 <a href="/ITOS/CreatePhoneNumber">Create Phone Number</a>
 <s:form action="/ITOS/ListPhoneNumber" method = "POST">

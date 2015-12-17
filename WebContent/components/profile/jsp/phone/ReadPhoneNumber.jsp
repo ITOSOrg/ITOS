@@ -1,7 +1,7 @@
 <%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail" %>
-<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,11 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/ITOS/ReadEmailAddress" method="POST">
-<% PhoneNumberLinkDetail phoneNumberLinkDetail = (PhoneNumberLinkDetail) request.getAttribute("phoneNumberLinkDetail"); 
- 	PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
-
-%>
+<s:form action="/ITOS/ReadEmailAddress" method="POST">
 
 <table border=1>
 			<thead>
@@ -32,19 +28,18 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%=phoneNumberDetail.getCountryCode() %></td>
-					<td><%=phoneNumberDetail.getAreaCode() %></td>
-					<td><%=phoneNumberDetail.getPhoneNumber() %></td>
-					<td><%=phoneNumberDetail.getExtension() %></td>
-					<td><%=phoneNumberLinkDetail.getTypeCode() %></td>
-					<td><%=phoneNumberLinkDetail.getPrimaryInd() %></td>
-					<td><%=phoneNumberLinkDetail.getStartDate() %></td>
-					<td><%=phoneNumberLinkDetail.getEndDate() %></td>
-					<td><%=phoneNumberDetail.getRecordStatus() %></td>
+					<td><s:property value="phoneNumberDetail.ountryCode" /></td>
+					<td><s:property value="phoneNumberDetail.areaCode" /></td>
+					<td><s:property value="phoneNumberDetail.phoneNumber" /></td>
+					<td><s:property value="phoneNumberDetail.extension" /></td>
+					<td><s:property value="phoneNumberLinkDetail.typeCode" /></td>
+					<td><s:property value="phoneNumberLinkDetail.primaryInd" /></td>
+					<td><s:property value="phoneNumberLinkDetail.startDate" /></td>
+					<td><s:property value="phoneNumberLinkDetail.endDate" /></td>
+					<td><s:property value="phoneNumberDetail.recordStatus" /></td>
 				</tr>
 			</tbody>
 		</table>
-		<br><a href="/ITOS/ListPhoneNumber?relatedID=<%= phoneNumberLinkDetail.getRelatedID() %>">PhoneNumberList Home</a></td>
-</form>
+</s:form>
 </body>
 </html>

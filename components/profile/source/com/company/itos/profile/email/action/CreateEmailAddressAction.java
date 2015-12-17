@@ -16,26 +16,10 @@ public class CreateEmailAddressAction extends ActionSupport implements SessionAw
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> session;
-	HttpServletRequest request;
 	private EmailAddressLinkDetail emailAddressLinkDetail;
 	
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
-	}
-	
-	/**
-	 * @return the request
-	 */
-	public HttpServletRequest getServletRequest() {
-		return request;
-	}
-
-	/**
-	 * @param request
-	 *            the request to set
-	 */
-	public void setServletRequest(HttpServletRequest request) {
-		this.request = request;
 	}
 	
 	/**

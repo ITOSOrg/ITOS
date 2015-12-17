@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,76 +8,72 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-String relatedID = (String) request.getParameter("relatedID");
-System.out.println("relatedID = " + relatedID);
 
-%>
 
-<form name="Create Address" action="/ITOS/CreateAddress?relatedID=<%= relatedID %>"
+<s:form name="Create Address" action="/ITOS/CreateAddressSubmit"
 		method="POST">
 		<table>
 		<tr>
 				<td>StreetOne:</td>
-				<td><input type="text" name="streetOne" maxlength="50"></td>
+				<td><s:textfield type="text" name="AddressDetail.streetOne" maxlength="50"/></td>
 			</tr>
 			
 			<tr>
 				<td>StreetTwo:</td>
-				<td><input type="text" name="streetTwo" maxlength="50"></td>
+				<td><s:textfield type="text" name="AddressDetail.streetTwo" maxlength="50"/></td>
 			</tr>
 			
 			<tr>
 				<td>AptUnit:</td>
-				<td><input type="text" name="aptUnit" maxlength="20"></td>
+				<td><s:textfield type="text" name="AddressDetail.aptUnit" maxlength="20"/></td>
 			</tr>
 			
 			<tr>
 				<td>City:</td>
-				<td><input type="text" name="city"></td>
+				<td><s:textfield type="text" name="AddressDetail.city"/></td>
 			</tr>
 			
 			<tr>
 				<td>County:</td>
-				<td><input type="text" name="county"></td>
+				<td><s:textfield type="text" name="AddressDetail.county"/></td>
 			</tr>
 			
 			<tr>
 				<td>State:</td>
-				<td><input type="text" name="state"></td>
+				<td><s:textfield type="text" name="AddressDetail.state"/></td>
 			</tr>
 			
 			<tr>
 				<td>Country</td>
-				<td><input type="text" name="country"></td>
+				<td><s:textfield type="text" name="AddressDetail.country"/></td>
 			</tr>
 			
 			<tr>
 				<td>ZipCode:</td>
-				<td><input type="text" name="zipCode"></td>
+				<td><s:textfield type="text" name="AddressDetail.zipCode"/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><s:textfield type="text" name="AddressLinkDetail.typeCode"/></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"></td>
+				<td><s:textfield type="text" name="AddressLinkDetail.primaryInd"/></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"></td>
+				<td><s:textfield type="text" name="AddressLinkDetail.startDate"/></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"></td>
+				<td><s:textfield type="text" name="AddressLinkDetail.endDate"/></td>
 			</tr> 
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListAddress?relatedID=<%= relatedID %>">AddressList Home</a></td>
+				<td><s:submit type="submit" value="Submit"/>
 
 			</tr>
 		</table>
+        </s:form>
 </body>
 </html>

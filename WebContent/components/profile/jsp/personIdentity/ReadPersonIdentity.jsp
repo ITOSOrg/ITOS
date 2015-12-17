@@ -2,6 +2,7 @@
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,11 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% PersonIdentityDetail personIdentityDetail = (PersonIdentityDetail) request.getAttribute("personIdentityDetail"); 
-		%>
 
-		<br><a href="/ITOS/ListPersonIdentity?personID=<%= personIdentityDetail.getPersonID() %>">PersonIdentityList Home</a></td><br><br>
-<form action="/ITOS/ReadPersonIdentity" method = "POST">
+
+<s:form action="/ITOS/ReadPersonIdentity" method = "POST">
 <table border=1>
 			<thead>
 
@@ -29,17 +28,17 @@
 			
 			<tbody>
 				<tr>
-					<td><%=personIdentityDetail.getAlternateID() %></td>
-					<td><%=personIdentityDetail.getTypeCode() %></td>
-					<td><%=personIdentityDetail.getPrimaryInd() %></td>
-					<td><%=personIdentityDetail.getStartDate() %></td>
-					<td><%=personIdentityDetail.getEndDate() %></td>
-					<td><%=personIdentityDetail.getRecordStatus() %></td>
+					<td><s:property value="personIdentityDetail.alternateID" /></td>
+					<td><s:property value="personIdentityDetail.typeCode" /></td>
+					<td><s:property value="personIdentityDetail.primaryInd" /></td>
+					<td><s:property value="personIdentityDetail.startDate" /></td>
+					<td><s:property value="personIdentityDetail.endDate" /></td>
+					<td><s:property value="personIdentityDetail.recordStatus" /></td>
 				</tr>
 				
 			</tbody>
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

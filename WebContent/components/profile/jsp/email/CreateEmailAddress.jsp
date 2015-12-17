@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,44 +8,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-String relatedID = (String) request.getParameter("relatedID");
-System.out.println("relatedID = " + relatedID);
 
-%>
-<form name="Create Email Address" action="/ITOS/CreateEmailAddress?relatedID=<%= relatedID %>"
+<s:form name="Create Email Address" action="/ITOS/CreateEmailAddressSubmit"
 		method="POST">
 		<table>
 		  <tr>
 				<td>Email Address :</td>
-				<td><input type="text" name="emailAddress"></td>
+				<td><s:textfield type="text" name="emailAddressLinkDetail.emailAddressDetail.emailAddress"/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><s:textfield type="text" name="emailAddressLinkDetail.typeCode"/></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"></td>
+				<td><s:textfield type="text" name="emailAddressLinkDetail.primaryInd"/></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"></td>
+				<td><s:textfield type="text" name="emailAddressLinkDetail.startDate"/></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"></td>
+				<td><s:textfield type="text" name="emailAddressLinkDetail.endDate"/></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListEmailAddress?relatedID=<%= relatedID %>">EmailAddressList Home</a></td>
-
+				<td><s:submit  type="submit" value="Submit"/>
+                </td>
 			</tr>
 			
 		
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

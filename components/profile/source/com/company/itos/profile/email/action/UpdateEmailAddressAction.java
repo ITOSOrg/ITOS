@@ -59,7 +59,7 @@ public class UpdateEmailAddressAction extends ActionSupport implements SessionAw
 		UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
 		String returnMassegeStr = updateEmailAddressDAO.updateEmailAddress(emailAddressLinkDetail);
 		
-		session.put("emailAddressLinkDetail", emailAddressLinkDetail);
+		//session.put("emailAddressLinkDetail", emailAddressLinkDetail);
 		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			

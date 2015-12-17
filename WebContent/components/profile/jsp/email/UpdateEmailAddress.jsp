@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail" %>
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,47 +8,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% EmailAddressLinkDetail emailAddressLinkDetail = (EmailAddressLinkDetail) request.getAttribute("emailAddressLinkDetail"); 
 
-EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
-
-%>
-
-<form action="/ITOS/UpdateEmailAddress?emailAddressLinkID=<%=emailAddressLinkDetail.getEmailAddressLinkID() %>&versionNo=<%=emailAddressLinkDetail.getVersionNo()%>&versionNo=<%=emailAddressDetail.getVersionNo()%>&emailAddressID=<%=emailAddressDetail.getEmailAddressID() %>" method = "POST">
+<s:form action="/ITOS/UpdateEmailAddressSubmit" method = "POST">
 <table>
 			<tr>
 				<td>EmailAddress :</td>
-				<td><input type="text" name="emailAddress"
-					value="<%=emailAddressDetail.getEmailAddress()%>"></td>
+				<td><s:textfield name="emailAddressDetail.emailAddress"
+					/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"
-				      value = "<%=emailAddressLinkDetail.getTypeCode()%>"></td>
+				<td><s:textfield name="typeCode"
+				      /></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"
-				      value = "<%=emailAddressLinkDetail.getPrimaryInd()%>"></td>
+				<td><s:textfield name="primaryInd"
+				     /></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"
-				      value = "<%=emailAddressLinkDetail.getStartDate()%>"></td>
+				<td><s:textfield name="startDate"
+				    /></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"
-				      value = "<%=emailAddressLinkDetail.getEndDate()%>"></td>
+				<td><s:textfield name="endDate"/></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit"><br><br>
-				<a href="/ITOS/ListEmailAddress?relatedID=<%=emailAddressLinkDetail.getRelatedID()%>">EmailAddressList Home</a>
+				<td><s:submit  type="submit" value="Submit"/><br><br>
 				</td>
 
 			</tr>
 </table>
-</form>
+        <s:hidden name="emailAddressLinkID"></s:hidden>
+        <s:hidden name="versionNo"></s:hidden>
+        <s:hidden name="emailAddressDetail.versionNo"></s:hidden>
+        
+</s:form>
 </body>
 </html>

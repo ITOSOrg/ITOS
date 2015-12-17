@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
-<%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,78 +8,76 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% AddressLinkDetail addressLinkDetail = (AddressLinkDetail) request.getAttribute("addressLinkDetail"); 
 
-   AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
 
-%>
-
-<form action="/ITOS/UpdateAddress?addressLinkID=<%=addressLinkDetail.getAddressLinkID() %>&versionNo=<%=addressLinkDetail.getVersionNo()%>&versionNo=<%=addressDetail.getVersionNo()%>&addressId=<%=addressDetail.getAddressId() %>" method = "POST">
+<s:form action="/ITOS/UpdateAddressSubmit" method = "POST">
 <table>
 			<tr>
 				<td>StreetOne :</td>
-				<td><input type="text" name="streetOne"
-					value="<%=addressDetail.getStreetOne()%>"></td>
+				<td><s:textfield name="addressDetail.streetOne"
+					/></td>
 			</tr>
 			<tr>
 				<td>StreetTwo :</td>
-				<td><input type="text" name="streetTwo"
-				      value = "<%=addressDetail.getStreetTwo()%>"></td>
+				<td><s:textfield name="addressDetail.streetTwo"
+				      /></td>
 			</tr>
 			<tr>
 				<td>Apartment Unit :</td>
-				<td><input type="text" name="aptUnit"
-				      value = "<%=addressDetail.getAptUnit()%>"></td>
+				<td><s:textfield name="addressDetail.aptUnit"
+				      /></td>
 			</tr>
 			<tr>
 				<td>City :</td>
-				<td><input type="text" name="city"
-				      value = "<%=addressDetail.getCity()%>"></td>
+				<td><s:textfield name="addressDetail.city"
+				      /></td>
 			</tr>
 			<tr>
 				<td>County :</td>
-				<td><input type="text" name="county"
-				      value = "<%=addressDetail.getCounty()%>"></td>
+				<td><s:textfield name="addressDetail.county"
+				      /></td>
 			</tr>
 			<tr>
 				<td>State :</td>
-				<td><input type="text" name="state"
-				      value = "<%=addressDetail.getState()%>"></td>
+				<td><s:textfield name="addressDetail.state"
+				    /></td>
 			</tr>
 			<tr>
 				<td>Country :</td>
-				<td><input type="text" name="country"
-				      value = "<%=addressDetail.getCountry()%>"></td>
+				<td><s:textfield name="addressDetail.country"
+				      /></td>
 			</tr>
 			<tr>
 				<td>ZipCode :</td>
-				<td><input type="text" name="zipCode"
-				      value = "<%=addressDetail.getZipCode()%>"></td>
+				<td><s:textfield name="addressDetail.zipCode"
+				     /></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"
-				      value = "<%=addressLinkDetail.getTypeCode()%>"></td>
+				<td><s:textfield name="addressLinkDetail.typeCode"
+				     /></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"
-				      value = "<%=addressLinkDetail.getStartDate()%>"></td>
+				<td><s:textfield name="addressLinkDetail.startDate"
+				    /></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"
-				      value = "<%=addressLinkDetail.getEndDate()%>"></td>
+				<td><s:textfield name="addressLinkDetail.endDate"
+				      /></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit"><br><br>
-				<a href="/ITOS/ListEmailAddress?relatedID=<%=addressLinkDetail.getRelatedID()%>">EmailAddressList Home</a>
+				<td><s:submit  type="submit" value="Submit"/><br><br>
 				</td>
 
 			</tr>
 </table>
-</form>
+             <s:hidden name="addressLinkID"></s:hidden>
+        <s:hidden name="versionNo"></s:hidden>
+        <s:hidden name="AddressDetail.versionNo"></s:hidden>
+</s:form>
 
 </body>
 </html>

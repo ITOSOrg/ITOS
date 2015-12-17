@@ -183,20 +183,92 @@
     </definition>
     
     
+    <definition name="ReadEmailAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read EmailAddress" />
+        <put-attribute name="body" value="/components/profile/jsp/email/ReadEmailAddress.jsp" />
+    </definition>
+    
+    
+    <definition name="UpdateEmailAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update EmailAddress" />
+        <put-attribute name="body" value="/components/profile/jsp/email/UpdateEmailAddress.jsp" />
+    </definition>
+    
+    <definition name="CreateEmailAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create EmailAddress" />
+        <put-attribute name="body" value="/components/profile/jsp/email/CreateEmailAddress.jsp" />
+    </definition>
+    
+    
+    
+    
+    <definition name="CreatePhoneNumber" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create PhoneNumber" />
+        <put-attribute name="body" value="/components/profile/jsp/phone/CreatePhoneNumber.jsp" />
+    </definition>
+    
+    <definition name="ReadPhoneNumber" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read PhoneNumber" />
+        <put-attribute name="body" value="/components/profile/jsp/phone/ReadPhoneNumber.jsp" />
+    </definition>
+    
     <definition name="ListPhoneNumber" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List PhoneNumber" />
         <put-attribute name="body" value="/components/profile/jsp/phone/ListPhoneNumber.jsp" />
     </definition>
+    
+    <definition name="UpdatePhoneNumber" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update PhoneNumber" />
+        <put-attribute name="body" value="/components/profile/jsp/phone/UpdatePhoneNumber.jsp" />
+    </definition>
+    
+    
+    
+    
    
+    <definition name="CreatePersonIdentity" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create PersonIdentity" />
+        <put-attribute name="body" value="/components/profile/jsp/personIdentity/CreatePersonIdentity.jsp" />
+    </definition>
+    
+    <definition name="ReadPersonIdentity" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read PersonIdentity" />
+        <put-attribute name="body" value="/components/profile/jsp/personIdentity/ReadPersonIdentity.jsp" />
+    </definition>
+    
     <definition name="ListPersonIdentity" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List PersonIdentity" />
         <put-attribute name="body" value="/components/profile/jsp/personIdentity/ListPersonIdentity.jsp" />
     </definition>
     
+    <definition name="UpdatePersonIdentity" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update PersonIdentity" />
+        <put-attribute name="body" value="/components/profile/jsp/personIdentity/UpdatePersonIdentity.jsp" />
+    </definition>
+    
+    
+    
+    
+    
+    
+    <definition name="CreateAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create Address" />
+        <put-attribute name="body" value="/components/profile/jsp/address/CreateAddress.jsp" />
+    </definition>
+    
+    <definition name="ReadAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read Address" />
+        <put-attribute name="body" value="/components/profile/jsp/address/ReadAddress.jsp" />
+    </definition>
     
     <definition name="ListAddress" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List Address" />
         <put-attribute name="body" value="/components/profile/jsp/address/ListAddress.jsp" />
+    </definition>
+    
+    <definition name="UpdateAddress" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update Address" />
+        <put-attribute name="body" value="/components/profile/jsp/address/UpdateAddress.jsp" />
     </definition>
     
     

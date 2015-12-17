@@ -78,7 +78,7 @@
 			
 			<tbody>
 				<tr>
-					<td><s:property value="emailAddress" /></td>
+					<td><s:property value="emailAddressDetail.emailAddress" /></td>
 					<td><s:property value="typeCode" /></td>
 					<td><s:property value="primaryInd" /></td>
 					<td><s:property value="startDate" /></td>

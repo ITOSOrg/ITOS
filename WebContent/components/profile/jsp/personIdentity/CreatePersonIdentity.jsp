@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,45 +9,40 @@
 </head>
 <body>
 
-<%
-String personID = (String) request.getParameter("personID");
-System.out.println("personID = " + personID);
 
-%>
-<form name="Create Person Identity" action="/ITOS/CreatePersonIdentity?personID=<%= personID %>"
+<s:form name="Create Person Identity" action="/ITOS/CreatePersonIdentitySubmit"
 		method="POST">
 		<table>
 		  
 			<tr>
 				<td>AlternateID :</td>
-				<td><input type="text" name="alternateID"></td>
+				<td><s:textfield type="text" name="PersonIdentityDetail.alternateID"/></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"></td>
+				<td><s:textfield type="text" name="PersonIdentityDetail.primaryInd"/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"></td>
+				<td><s:textfield type="text" name="PersonIdentityDetail.typeCode"/></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"></td>
+				<td><s:textfield type="text" name="PersonIdentityDetail.startDate"/></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"></td>
+				<td><s:textfield type="text" name="PersonIdentityDetail.endDate"/></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/ITOS/ListPersonIdentity?personID=<%= personID %>">PersonIdentityList Home</a></td>
+				<td><s:submit  type="submit" value="Submit"/>
 
 			</tr>
 			
 		
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

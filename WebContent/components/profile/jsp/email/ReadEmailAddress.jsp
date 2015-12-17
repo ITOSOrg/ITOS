@@ -1,7 +1,6 @@
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/ITOS/ReadEmailAddress" method="POST">
-		<% EmailAddressLinkDetail emailAddressLinkDetail = (EmailAddressLinkDetail) request.getAttribute("emailAddressLinkDetail"); 
-		EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
-		%>
+	<s:form action="/ITOS/ReadEmailAddress" method="POST">
+		
 		<table border=1>
 			<thead>
 
@@ -27,17 +24,16 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%=emailAddressDetail.getEmailAddress() %></td>
-					<td><%=emailAddressLinkDetail.getTypeCode() %></td>
-					<td><%=emailAddressLinkDetail.getPrimaryInd() %></td>
-					<td><%=emailAddressLinkDetail.getStartDate() %></td>
-					<td><%=emailAddressLinkDetail.getEndDate() %></td>
-					<td><%=emailAddressDetail.getRecordStatus() %></td>
+					<td><s:property value="emailAddressLinkDetail.emailAddressDetail.emailAddress" /></td>
+					<td><s:property value="emailAddressLinkDetail.typeCode" /></td>
+					<td><s:property value="emailAddressLinkDetail.primaryInd" /></td>
+					<td><s:property value="emailAddressLinkDetail.startDate" /></td>
+					<td><s:property value="emailAddressLinkDetail.endDate" /></td>
+					<td><s:property value="emailAddressLinkDetail.emailAddressDetail.recordStatus" /></td>
 				</tr>
 			</tbody>
 		</table>
-				<br><a href="/ITOS/ListEmailAddress?relatedID=<%= emailAddressLinkDetail.getRelatedID() %>">EmailAddressList Home</a></td>
 		
-	</form>
+	</s:form>
 </body>
 </html>

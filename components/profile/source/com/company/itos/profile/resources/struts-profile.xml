@@ -68,44 +68,198 @@
        
         </action>
         
+        <action name="PersonDelete" class="com.company.itos.profile.person.action.PersonDeleteAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/PersonList</param>
+            </result>
+            <result name="error" type="tiles">UpdatePerson</result>
+       
+        </action>
         
+        
+        
+        
+        
+        
+         <action name="CreateEmailAddress">        
+            <result type="tiles">CreateEmailAddress</result>
+        </action>
+        
+         <action name="CreateEmailAddressSubmit" class="com.company.itos.profile.email.action.CreateEmailAddressAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListEmailAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
         
         
          <action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
-            <result name="success" type="tiles">ListEmailAddress
-           
-            </result>
+            <result name="success" type="tiles">ListEmailAddress </result>
             <result name="error">/index.jsp</result>
+        </action>
         
+         <action name="ReadEmailAddress" class="com.company.itos.profile.email.action.ReadEmailAddressAction">
+            <result name="success" type="tiles">ReadEmailAddress </result>
+            <result name="SENTTOUPDATE" type="redirect">
+                 <param name="location">UpdateEmailAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="UpdateEmailAddress">        
+            
+          <result type="tiles">UpdateEmailAddress</result>
+       
+        </action>
+        
+         <action name="UpdateEmailAddressSubmit" class="com.company.itos.profile.email.action.UpdateEmailAddressAction">
+            <result name="success" type="redirect">
+                 <param name="location">/ListEmailAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="DeleteEmailAddress" class="com.company.itos.profile.email.action.DeleteEmailAddressAction">
+            <result name="success" type="redirect">
+                 <param name="location">/ListEmailAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
         </action>
         
         
+        
+        
+        
+        
+        
+        <action name="CreatePhoneNumber">        
+            <result type="tiles">CreatePhoneNumber</result>
+        </action>
+        
+         <action name="CreatePhoneNumberSubmit" class="com.company.itos.profile.phone.action.CreatePhoneNumberAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPhoneNumber</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+        <action name="ReadPhoneNumber" class="com.company.itos.profile.phone.action.ReadPhoneNumberAction">
+            <result name="success" type="tiles">ReadPhoneNumber </result>
+            <result name="SENTTOUPDATE" type="redirect">
+                 <param name="location">UpdatePhoneNumber</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
         
          <action name="ListPhoneNumber" class="com.company.itos.profile.phone.action.ListPhoneNumberAction">
             <result name="success" type="tiles">ListPhoneNumber
-        
             </result>
             <result name="error">/index.jsp</result>
-        
         </action>
         
+         <action name="UpdatePhoneNumberSubmit" class="com.company.itos.profile.phone.action.UpdatePhoneNumberAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPhoneNumber</param>
+            </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="DeletePhoneNumber" class="com.company.itos.profile.phone.action.DeletePhoneNumberAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPhoneNumber</param>
+            </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+        
+        
+        
+        
+        
+        <action name="CreatePersonIdentity">        
+            <result type="tiles">CreatePersonIdentity</result>
+        </action>
+        
+         <action name="CreatePersonIdentitySubmit" class="com.company.itos.profile.personIdentity.action.CreatePersonIdentityAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPersonIdentity</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="ReadPersonIdentity" class="com.company.itos.profile.personIdentity.action.ReadPersonIdentityAction">
+            <result name="success" type="tiles">ReadPersonIdentity </result>
+            <result name="SENTTOUPDATE" type="redirect">
+                 <param name="location">UpdatePersonIdentity</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
         
          <action name="ListPersonIdentity" class="com.company.itos.profile.personIdentity.action.ListPersonIdentityAction">
             <result name="success" type="tiles">ListPersonIdentity
-        
             </result>
             <result name="error">/index.jsp</result>
-        
         </action>
         
+         <action name="UpdatePersonIdentitySubmit" class="com.company.itos.profile.personIdentity.action.UpdatePersonIdentityAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPersonIdentity</param>
+            </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="DeletePersonIdentity" class="com.company.itos.profile.personIdentity.action.DeletePersonIdentityAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListPersonIdentity</param>
+            </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+        
+        
+        
+        
+        
+        <action name="CreateAddress">        
+            <result type="tiles">CreateAddress</result>
+        </action>
+        
+         <action name="CreateAddressSubmit" class="com.company.itos.profile.address.action.CreateAddressAction">
+            <result name="success" type="redirect">
+             <param name="location">/ListAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+         <action name="ReadAddress" class="com.company.itos.profile.address.action.ReadAddressAction">
+            <result name="success" type="tiles">ReadAddress </result>
+            <result name="SENTTOUPDATE" type="redirect">
+                 <param name="location">UpdateAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
         
          <action name="ListAddress" class="com.company.itos.profile.address.action.ListAddressAction">
             <result name="success" type="tiles">ListAddress
-        
             </result>
             <result name="error">/index.jsp</result>
-        
         </action>
+        
+        <action name="UpdateAddressSubmit" class="com.company.itos.profile.address.action.UpdateAddressAction">
+            <result name="success" type="redirect">
+                 <param name="location">/ListAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
+        <action name="DeleteAddress" class="com.company.itos.profile.address.action.DeleteAddressAction">
+            <result name="success" type="redirect">
+                 <param name="location">/ListAddress</param>
+             </result>
+            <result name="error">/index.jsp</result>
+        </action>
+        
         
         
         

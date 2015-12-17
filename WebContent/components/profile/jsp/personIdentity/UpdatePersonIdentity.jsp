@@ -1,6 +1,6 @@
-<%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,46 +8,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% PersonIdentityDetail personIdentityDetail = (PersonIdentityDetail) request.getAttribute("personIdentityDetail"); 
-		%>
 		
-	<br><a href="/ITOS/ListPersonIdentity?personID=<%=personIdentityDetail.getPersonID()%>">PersonIdentityList Home</a></td><br><br>
-<form action="/ITOS/UpdatePersonIdentity?personIdentityID=<%=personIdentityDetail.getPersonIdentityID()%>&versionNo=<%=personIdentityDetail.getVersionNo()%>" method = "POST">
+<s:form action="/ITOS/UpdatePersonIdentitySubmit" method = "POST">
 	
 	<table>
 			<tr>
 				<td>alternateID :</td>
-				<td><input type="text" name="alternateID"
-					value="<%=personIdentityDetail.getAlternateID()%>"></td>
+				<td><s:textfield name="personIdentityDetail.alternateID"
+					/></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><input type="text" name="primaryInd"
-				      value = "<%=personIdentityDetail.getPrimaryInd()%>"></td>
+				<td><s:textfield name="personIdentityDetail.primaryInd"
+				     /></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><input type="text" name="typeCode"
-				      value = "<%=personIdentityDetail.getTypeCode()%>"></td>
+				<td><s:textfield name="personIdentityDetail.typeCode"
+				      /></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><input type="text" name="startDate"
-				      value = "<%=personIdentityDetail.getStartDate()%>"></td>
+				<td><s:textfield name="personIdentityDetail.startDate"
+				     /></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><input type="text" name="endDate"
-				      value = "<%=personIdentityDetail.getEndDate()%>"></td>
+				<td><s:textfield name="personIdentityDetail.endDate"
+				   /></td>
 			</tr>
 			<tr>
 
-				<td><input  type="submit" value="Submit"><br><br>
+				<td><s:submit  type="submit" value="Submit"/><br><br>
 				</td>
 
 			</tr>
 </table>
-	
-</form>
+	        <s:hidden name="personIdentityID"></s:hidden>
+            <s:hidden name="versionNo"></s:hidden>
+</s:form>
 </body>
 </html>

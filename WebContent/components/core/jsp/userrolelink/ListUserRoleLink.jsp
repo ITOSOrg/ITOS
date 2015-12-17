@@ -1,8 +1,6 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.company.itos.core.role.pojo.RoleDetail"%>
-<%@ page import="com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,17 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
 
-List<UserRoleLinkDetail> userRoleLinklist = (List<UserRoleLinkDetail>) request.getAttribute("userRoleLinklist");
-%>
-
-<a href="LoginForm.jsp">Project Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-<a href="/ITOS/components/core/jsp/userrolelink/CreateUserRoleLink.jsp"> Create UserRoleLink</a><br><br>
+                        <s:url id="CreateUserRoleLinkURL" action="/ITOS/CreateUserRoleLink" escapeAmp="false">
+                        </s:url>
+                        <s:a href="%{CreateUserRoleLinkURL}">View</s:a>
 
 
-<form action="/ITOS/ListUserRoleLink" method = "POST">
+<s:form action="/ITOS/ListUserRoleLink" method = "POST">
 <table border=1>
 			<thead>
 
@@ -33,26 +27,40 @@ List<UserRoleLinkDetail> userRoleLinklist = (List<UserRoleLinkDetail>) request.g
 				</tr>
 			</thead>
 			
-			<%
-				for (int i = 0; i < userRoleLinklist.size(); i++) {
-					UserRoleLinkDetail userRoleLinkDetail = userRoleLinklist.get(i);
-			%>
+		            <s:iterator value="userRoleLinklist" status="stat">
 			
 			<tbody>
 				<tr>
-					<td><%=userRoleLinkDetail.getUsername() %></td>
-					<td><%=userRoleLinkDetail.getStartDate() %></td>
-					<td><%=userRoleLinkDetail.getEndDate() %></td>
-					<td><%=userRoleLinkDetail.getRecordStatus() %></td>
-					<td><a href="/ITOS/ReadUserRoleLink?userRoleLinkID=<%=userRoleLinkDetail.getUserRoleLinkID()%>">Read</a></td>
-					<td><a href="/ITOS/ReadUserRoleLink?userRoleLinkID=<%=userRoleLinkDetail.getUserRoleLinkID()%>&act=update">Update</a></td>
-					<td><a href="/ITOS/DeleteUserRoleLink?userRoleLinkID=<%=userRoleLinkDetail.getUserRoleLinkID()%>">Delete</a></td>
+					<td><s:property value="username"/></td>
+					<td><s:property value="startDate"/></td>
+					<td><s:property value="endDate"/></td>
+					<td><s:property value="recordStatus"/></td>
+					
+                    <td>    <s:url id="ReadUserRoleLinkURL" action="/ITOS/ReadUserRoleLink" escapeAmp="false">
+                                <s:param name="userRoleLinkDetail.userRoleLinkID" value="%{userRoleLinkID}"/>
+                            </s:url>
+                            <s:a href="%{ReadUserRoleLinkURL}">View</s:a>
+                            
+                            <s:url var="UpdateUserRoleLinkURL" action="/ITOS/ReadUserRoleLink" escapeAmp="false">
+                                <s:param name="userRoleLinkDetail.userRoleLinkID" value="%{userRoleLinkID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdateUserRoleLinkURL}">Update</s:a>
+                            
+                            <s:url id="DeleteUserRoleLinkURL" action="/ITOS/DeleteUserRoleLink" escapeAmp="false">
+                                <s:param name="userRoleLinkDetail.userRoleLinkID" value="%{userRoleLinkID}"/>
+                            </s:url>
+                            <s:a href="%{DeleteUserRoleLinkURL}">Delete</s:a>
+                            
+                        </td>
+                    
+                    
 				</tr>
 				
 			</tbody>
-			<%} %>
+            </s:iterator>
 		</table>
-		</form>
+		</s:form>
 
 </body>
 </html>

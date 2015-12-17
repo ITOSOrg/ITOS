@@ -2,6 +2,7 @@
 <%@ page import="com.company.itos.core.role.pojo.RoleDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,10 +35,10 @@
 List<RoleDetail> SinglePersonRolelist = (List<RoleDetail>) request.getAttribute("SinglePersonRolelist");
 Integer personID = new Integer (request.getParameter("personID"));
 %>
-<a href="/ITOS/PersonHome?personID=<%=personID%>">Person Home</a>
+<a href="/ITOS/PersonHome">Person Home</a>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/components/core/jsp/role/CreateRole.jsp"> Create Role</a><br><br>
 
-<form action="/ITOS/ListRole" method = "POST">
+<s:form action="/ITOS/ListRole" method = "POST">
 <table border=1>
 			<thead>
 
@@ -52,28 +53,36 @@ Integer personID = new Integer (request.getParameter("personID"));
 				</tr>
 			</thead>
 			
-			<%
-				for (int i = 0; i < SinglePersonRolelist.size(); i++) {
-					RoleDetail	 roleDetail = SinglePersonRolelist.get(i);
-			%>
+			
+             <s:iterator value="SinglePersonRolelist" status="stat">
 			
 			<tbody>
 				<tr>
-					<td><%=roleDetail.getRoleType() %></td>
-					<td><%=roleDetail.getWorkspace() %></td>
-					<td><%=roleDetail.getRecordStatus() %></td>
-					<td><%=roleDetail.getCreatedBy() %></td>
-					<td><%=roleDetail.getCreatedOn() %></td>
-					<td><%=roleDetail.getLastModifiedBy() %></td>
-					<td><%=roleDetail.getLastModifiedOn() %></td>
-					<td><a href="/ITOS/ReadRole?roleID=<%=roleDetail.getRoleID()%>">Read</a></td>
-					<td><a href="/ITOS/ReadRole?roleID=<%=roleDetail.getRoleID()%>&act=update">Update</a></td>
+					<td><s:property value="roleType" /></td>
+					<td><s:property value="workspace" /></td>
+					<td><s:property value="recordStatus" /></td>
+					<td><s:property value="createdBy" /></td>
+					<td><s:property value="createdOn" /></td>
+					<td><s:property value="lastModifiedBy" /></td>
+					<td><s:property value="lastModifiedOn" /></td>
+                    
+                    <s:url id="ReadRoleURL" action="/ITOS/ReadRole" escapeAmp="false">
+                                <s:param name="roleDetail.roleID" value="%{roleID}"/>
+                            </s:url>
+                            <s:a href="%{ReadRoleURL}">View</s:a>
+                            
+                            <s:url var="UpdateRoleURL" action="/ITOS/ReadRole" escapeAmp="false">
+                                <s:param name="roleDetail.roleID" value="%{roleID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{UpdateRoleURL}">Update</s:a>
+					
 				</tr>
 				
 			</tbody>
-			<%} %>
+            </s:iterator>
 		</table>
-		</form>
+		</s:form>
 
 </div>
 </div>

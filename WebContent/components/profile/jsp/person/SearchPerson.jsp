@@ -6,6 +6,7 @@
 <%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +24,7 @@
 		
 	%>
 
-	<form action="/ITOS/SearchPerson" method="POST">
+	<s:form action="/ITOS/SearchPerson" method="POST">
 		<table>
 		<font size="3" color="red"><%
 		
@@ -78,8 +79,8 @@
 			</tr>
 		</table>
 		<br>
-	</form>
-	<form action="/ITOS/SearchPerson" method="POST">
+	</s:form>
+	<s:form action="/ITOS/SearchPerson" method="POST">
 
 		<table border=1>
 			<thead>
@@ -125,6 +126,6 @@
 				}
 			%>
 		</table>
-	</form>
+	</s:form>
 </body>
 </html>

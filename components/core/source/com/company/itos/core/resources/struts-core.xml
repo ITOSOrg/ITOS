@@ -151,8 +151,19 @@
           <result name="success" type="redirect">
              <param name="location">/ListRoles</param>
           </result>
-       
         </action>
+        
+        <action name="ListRoleForSinglePerson" class="com.company.itos.core.role.action.ListRoleForSinglePerson">        
+            
+            <result name="success" type="tiles">ListRoleForSinglePerson</result>
+            <result name="error">/index.jsp</result>
+      
+        </action>
+        
+        
+        
+        
+        
         
         
         

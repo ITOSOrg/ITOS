@@ -116,6 +116,15 @@
         <put-attribute name="body" value="/components/core/jsp/role/UpdateRole.jsp" />
     </definition>
     
+    <definition name="ListRoleForSinglePerson" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="List Role For SinglePerson" />
+        <put-attribute name="body" value="/components/core/jsp/role/SinglePersonRolelist.jsp" />
+    </definition>
+    
+    
+    
+    
+    
     <definition name="ListCodeTable" extends="userWorkspaceLayout">
         <put-attribute name="title" value="List CodeTable" />
         <put-attribute name="body" value="/components/core/jsp/codetable/ListCodeTableHeader.jsp" />
@@ -171,6 +180,12 @@
         <put-attribute name="title" value="Update Person" />
         <put-attribute name="body" value="/components/profile/jsp/person/UpdatePerson.jsp" />
     </definition>
+    
+    <definition name="CreateUser" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create Person" />
+        <put-attribute name="body" value="/components/profile/jsp/person/CreatePerson.jsp" />
+    </definition>
+    
     
    
    

@@ -1,8 +1,3 @@
-<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
-<%@ page import="com.company.itos.profile.person.dao.PersonListDAO"%>
-<%@ page import="com.company.itos.profile.person.servlet.PersonList"%>
-<%@ page import="com.company.itos.profile.person.dao.PersonListDAO"%>
-<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -98,7 +93,9 @@
 			</s:iterator>
 			
 		</table><br>
-			<a href="RegistrationForm.jsp">Add User</a>
+                            <s:url id="CreateUserURL" action="/ITOS/CreateUser" escapeAmp="false">
+                            </s:url>
+                            <s:a href="%{CreateUserURL}">Add User</s:a>
 			
 </s:form>
 </div>

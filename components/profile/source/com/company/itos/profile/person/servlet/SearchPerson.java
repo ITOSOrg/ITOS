@@ -61,7 +61,6 @@ public class SearchPerson extends HttpServlet {
 		//
 		SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
 
-		//
 		List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
 
 		long numberOfPerson = personDetailList.size();

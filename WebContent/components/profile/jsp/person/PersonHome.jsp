@@ -1,14 +1,3 @@
-<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
-<%@ page
-	import="com.company.itos.profile.email.pojo.EmailAddressLinkDetail"%>
-<%@ page import="com.company.itos.profile.email.pojo.EmailAddressDetail"%>
-<%@ page import="com.company.itos.profile.phone.pojo.PhoneNumberDetail"%>
-<%@ page
-	import="com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail"%>
-<%@ page import="com.company.itos.profile.person.dao.PersonRegistrationDAO"%>
-<%@ page import="com.company.itos.profile.address.pojo.AddressLinkDetail"%>
-<%@ page import="com.company.itos.profile.address.pojo.AddressDetail"%>
-<%@ page import="com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -38,33 +27,26 @@
 		<h2>Person Detail</h2>
 		<div>
 
-			<%
-				PersonDetail personDetail = (PersonDetail) session.getAttribute("personDetail");
-
-				EmailAddressLinkDetail emailAddressLinkDetail = personDetail.getEmailAddressLinkDetail();
-				EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
-
-				PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
-				PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
-				
-				AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
-				AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
-				
-				PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
-
-				String name = request.getParameter("firstName");
-			%>
+			
 
 
 			<s:form action="/ITOS/PersonHome" method="post">
 
 
-				<font size="3" color="green"> <%
+				<font size="3" color="green"> 
  	out.println("Wellcome\t" + personDetail.getFirstName());
- %>
+
 &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <a href="/ITOS/ListRoleForSinglePerson?username=<%=personDetail.getUserName()%>&personID=<%=personDetail.getPersonID()%>">Person Role</a><br><br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+
+<s:url  id="RoleListURL" action="/ITOS/ListRoleForSinglePerson" escapeAmp="false">
+         <s:param name="userRoleLinkDetail.username" value="%{personDetail.username}"/>
+         <s:a href="%{RoleListURL}">Person Role</s:a>
+</s:url>
+
+
+
 				</font>
 
 

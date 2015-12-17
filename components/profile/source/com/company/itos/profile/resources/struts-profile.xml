@@ -74,8 +74,25 @@
                 <param name="location">/PersonList</param>
             </result>
             <result name="error" type="tiles">UpdatePerson</result>
+        </action>
+        
+        
+         <action name="CreateUser">        
+              <result type="tiles">CreateUser</result>
+        </action>
+        
+        <action name="CreateUserSubmit" class="com.company.itos.profile.person.action.CreatePersonAction">        
+            
+           <result name="success" type="redirect">
+                <param name="location">/PersonList</param>
+            </result>
+            <result name="error" type="tiles">CreateUser</result>
        
         </action>
+        
+        
+        
+        
         
         
         

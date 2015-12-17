@@ -15,7 +15,7 @@ public class ListRoleForSinglePersonDAO {
 	
 	public List<RoleDetail> listRoleForSinglePerson(UserRoleLinkDetail userRoleLinkDetail){
 		
-		List<RoleDetail> SinglePersonRolelist = new ArrayList<RoleDetail>();
+		List<RoleDetail> singlePersonRolelist = new ArrayList<RoleDetail>();
 		
 		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
@@ -52,7 +52,7 @@ public class ListRoleForSinglePersonDAO {
 				roleDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				roleDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));
 				
-				SinglePersonRolelist.add(roleDetail);
+				singlePersonRolelist.add(roleDetail);
 			}
 
 		} catch (SQLException e) {
@@ -61,7 +61,7 @@ public class ListRoleForSinglePersonDAO {
 		}
 		
 		
-		return SinglePersonRolelist;
+		return singlePersonRolelist;
 	}
 
 }

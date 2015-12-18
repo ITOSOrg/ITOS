@@ -18,14 +18,15 @@ public class DeleteEmailAddressDAO {
 
 			EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
 
-			String emailAddressSQLStr = "UPDATE	EmailAddress	SET	RECORDSTATUS='cancel'	WHERE emailAddressID = "
-					+ emailAddressDetail.getEmailAddressID();
 
 			String EmailAddressLinkSQLStr = "UPDATE EmailAddressLink SET	RECORDSTATUS='cancel'	WHERE emailAddressLinkID= "
 					+ emailAddressLinkDetail.getEmailAddressLinkID();
 			DBConnection dbConnection = new DBConnection();
 			connection = dbConnection.getDBConnection();
 
+			String emailAddressSQLStr = "UPDATE	EmailAddress	SET	RECORDSTATUS='cancel'	WHERE emailAddressID = "
+					+ emailAddressLinkDetail.getEmailAddressID();
+			
 			PreparedStatement PreparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
 			PreparedStatementEmailAddress.executeUpdate();
 

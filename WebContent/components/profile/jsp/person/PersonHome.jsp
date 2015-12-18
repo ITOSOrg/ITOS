@@ -66,6 +66,7 @@
     						<th >Modified By:</th>
     						<th >Modified On:</th>
     						<th >Registration Date:</th>
+                            <th >Action</th>
                       </tr>
 					</thead>
                     
@@ -84,6 +85,15 @@
                            <td><s:property value="personDetail.modifiedBy"/></td>
                            <td><s:property value="personDetail.modifiedOn"/></td>
                            <td><s:property value="personDetail.registrationDate"/></td>
+                           
+                           <td>
+                           <s:url var="updatePersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
+                                <s:param name="personDetail.personID" value="%{personID}"/>
+                                <s:param name="act" value="%{updateAction}"/>
+                            </s:url>
+                            <s:a href="%{updatePersonHomeURL}">Update</s:a>
+                            
+                           </td>
 
 						</tr>
                         </tbody>

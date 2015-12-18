@@ -54,9 +54,11 @@
 <div id="myaccordion">
 		<h2>Email Address List Workspace</h2>
 		<div>
-
-<a href="/ITOS/CreateEmailAddress">Create Email Address</a><br><br>
-
+        
+      <s:url var="CreateEmailAddressURL" action="/ITOS/CreateEmailAddress" escapeAmp="false">
+             <s:param name="emailAddressLinkDetail.relatedID" value="%{relatedID}"/>
+      </s:url>
+             <s:a href="%{CreateEmailAddressURL}">Create Email Address</s:a><br><br>
 
 
 <s:form action="/ITOS/ListEmailAddress" method = "POST">
@@ -101,8 +103,9 @@
                             
                             
                             <s:url var="DeleteEmailAddressURL" action="/ITOS/DeleteEmailAddress" escapeAmp="false">
-                                <s:param name="emailAddressDetail.emailAddressID" value="%{emailAddressID}"/>
+                                <s:param name="emailAddressLinkDetail.emailAddressID" value="%{emailAddressID}"/>
                                 <s:param name="emailAddressLinkDetail.emailAddressLinkID" value="%{emailAddressLinkID}"/>
+                                <s:param name="emailAddressLinkDetail.relatedID" value="%{relatedID}"/>
                             </s:url>
                             <s:a href="%{DeleteEmailAddressURL}">Delete</s:a>
                         </td>

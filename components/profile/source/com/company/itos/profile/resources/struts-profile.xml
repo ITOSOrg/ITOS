@@ -103,7 +103,7 @@
             <result type="tiles">CreateEmailAddress</result>
         </action>
         
-         <action name="CreateEmailAddressSubmit" class="com.company.itos.profile.email.action.CreateEmailAddressAction">
+         <action name="CreateEmailAddressSubmit" class="com.company.itos.profile.email.CreateEmailAddressAction">
             <result name="success" type="redirect">
              <param name="location">/ListEmailAddress</param>
              </result>
@@ -140,6 +140,7 @@
          <action name="DeleteEmailAddress" class="com.company.itos.profile.email.action.DeleteEmailAddressAction">
             <result name="success" type="redirect">
                  <param name="location">/ListEmailAddress</param>
+                   <param name="emailAddressLinkDetail.relatedID">${emailAddressLinkDetail.relatedID}</param>
              </result>
             <result name="error">/index.jsp</result>
         </action>

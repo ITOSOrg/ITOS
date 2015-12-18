@@ -50,6 +50,7 @@
     						<th >Modified By:</th>
     						<th >Modified On:</th>
     						<th >Registration Date:</th>
+    						
                       </tr>
 					</thead>
                     
@@ -68,6 +69,7 @@
                            <td><s:property value="personDetail.modifiedBy"/></td>
                            <td><s:property value="personDetail.modifiedOn"/></td>
                            <td><s:property value="personDetail.registrationDate"/></td>
+                           
 
 						</tr>
                         </tbody>

@@ -62,6 +62,7 @@ public class ListEmailAddressDAO {
 				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
 				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
 				emailAddressDetailFromDB.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
 				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));

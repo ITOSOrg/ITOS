@@ -77,6 +77,7 @@ public class ReadEmailAddressAction extends ActionSupport implements SessionAwar
 		ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 
 		String returnMassegeStr = readEmailAddressDAO.readEmailAddress(emailAddressLinkDetail);
+		setEmailAddressLinkDetail(emailAddressLinkDetail);
 		
 		//setEmailAddressLinkDetail(emailAddressLinkDetail);
 		

@@ -13,27 +13,27 @@
 <table>
 			<tr>
 				<td>EmailAddress :</td>
-				<td><s:textfield name="emailAddressDetail.emailAddress"
+				<td><s:textfield name="emailAddressLinkDetail.emailAddressDetail.emailAddress"
 					/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><s:textfield name="typeCode"
+				<td><s:textfield name="emailAddressLinkDetail.typeCode"
 				      /></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><s:textfield name="primaryInd"
+				<td><s:textfield name="emailAddressLinkDetail.primaryInd"
 				     /></td>
 			</tr>
 			<tr>
 				<td>Start Date :</td>
-				<td><s:textfield name="startDate"
+				<td><s:textfield name="emailAddressLinkDetail.startDate"
 				    /></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><s:textfield name="endDate"/></td>
+				<td><s:textfield name="emailAddressLinkDetail.endDate"/></td>
 			</tr>
 			<tr>
 
@@ -42,9 +42,9 @@
 
 			</tr>
 </table>
-        <s:hidden name="emailAddressLinkID"></s:hidden>
-        <s:hidden name="versionNo"></s:hidden>
-        <s:hidden name="emailAddressDetail.versionNo"></s:hidden>
+        <s:hidden name="emailAddressLinkDetail.emailAddressLinkID"></s:hidden>
+        <s:hidden name="emailAddressLinkDetail.versionNo"></s:hidden>
+        <s:hidden name="emailAddressLinkDetail.emailAddressDetail.versionNo"></s:hidden>
         
 </s:form>
 </body>

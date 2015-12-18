@@ -12,8 +12,6 @@
                 class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
      
-        
-     
         <action name="CreateProperties">        
             <result type="tiles">CreateProperties</result>
         </action>
@@ -56,7 +54,6 @@
             <result name="error" type="tiles">UpdateProperties</result>
        
         </action>
-        
         
         
         
@@ -153,19 +150,12 @@
           </result>
         </action>
         
-        <action name="ListRoleForSinglePerson" class="com.company.itos.core.role.action.ListRoleForSinglePerson">        
+        <action name="ListRoleForSinglePerson" class="com.company.itos.core.role.action.ListRoleForSinglePersonAction">        
             
             <result name="success" type="tiles">ListRoleForSinglePerson</result>
             <result name="error">/index.jsp</result>
       
         </action>
-        
-        
-        
-        
-        
-        
-        
         
         
         <action name="ListCodeTable" class="com.company.itos.core.codetable.action.ListCodeTableHeaderAction">

@@ -12,6 +12,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ListRoleForSinglePersonAction extends ActionSupport implements SessionAware {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Map<String,Object> session;
 	private UserRoleLinkDetail userRoleLinkDetail;
 	private List<RoleDetail> singlePersonRolelist;

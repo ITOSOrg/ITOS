@@ -6,7 +6,7 @@ public class PhoneNumberLinkDetail {
 
 	private int phoneNumberLinkID;
 
-	private int relatedID;
+	private int relatedID = 0;
 
 	private String typeCode;
 

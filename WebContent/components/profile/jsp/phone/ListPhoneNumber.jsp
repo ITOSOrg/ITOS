@@ -28,7 +28,15 @@
 		<div>
 
 
+<s:url id="CreatePhoneNumberURL" action="/ITOS/CreatePhoneNumber" escapeAmp="false">
+                                <s:param name="phoneNumberLinkDetail.relatedID" value="%{relatedID}"/>
+                            </s:url>
+                            <s:a href="%{CreatePhoneNumberURL}">Create Phone Number</s:a>
+
 <a href="/ITOS/CreatePhoneNumber">Create Phone Number</a>
+
+
+
 <s:form action="/ITOS/ListPhoneNumber" method = "POST">
 <table border=1>
 			<thead>
@@ -73,6 +81,8 @@
                             
                             <s:url var="DeletePhoneNumberURL" action="/ITOS/DeletePhoneNumber" escapeAmp="false">
                                 <s:param name="phoneNumberLinkDetail.phoneNumberLinkID" value="%{phoneNumberLinkID}"/>
+                                <s:param name="phoneNumberLinkDetail.phoneNumberID" value="%{phoneNumberID}"/>
+                                <s:param name="phoneNumberLinkDetail.relatedID" value="%{relatedID}"/>
                             </s:url>
                             <s:a href="%{DeletePhoneNumberURL}">Delete</s:a>
                             

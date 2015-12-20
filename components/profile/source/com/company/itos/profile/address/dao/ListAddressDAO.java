@@ -39,6 +39,7 @@ public class ListAddressDAO {
 				addressLinkDetail.setAddressLinkID(resultSetAddressLink.getInt("addressLinkID"));
 				addressLinkDetail.setRelatedID(resultSetAddressLink.getInt("relatedID"));
 				addressDetail.setAddressId(resultSetAddressLink.getInt("addressID"));
+				addressLinkDetail.setAddressID(resultSetAddressLink.getInt("addressID"));
 				addressLinkDetail.setTypeCode(resultSetAddressLink.getString("typeCode"));
 				addressLinkDetail.setPrimaryInd(resultSetAddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetAddressLink.getDate("startDate"));

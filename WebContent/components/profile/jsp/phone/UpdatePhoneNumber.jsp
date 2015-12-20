@@ -15,22 +15,22 @@
 		
 		<tr>
 		<td> Country Code:</td>
-		<td><s:textfield name="phoneNumberDetail.countryCode"
+		<td><s:textfield name="phoneNumberLinkDetail.phoneNumberDetail.countryCode"
 		      /></td>
 		</tr>
 		<tr>
 		<td> Area Code:</td>
-		<td><s:textfield name="phoneNumberDetail.areaCode"
+		<td><s:textfield name="phoneNumberLinkDetail.phoneNumberDetail.areaCode"
 		      /></td>
 		</tr>
 		<tr>
 		<td>Phone Number:</td>
-		<td><s:textfield name="phoneNumberDetail.phoneNumber"
+		<td><s:textfield name="phoneNumberLinkDetail.phoneNumberDetail.phoneNumber"
 		    /></td>
 		</tr>
 		<tr>
 		<td> Extension:</td>
-		<td><s:textfield name="phoneNumberDetail.extension"
+		<td><s:textfield name="phoneNumberLinkDetail.phoneNumberDetail.extension"
 		    /></td>
 		</tr>
 		<tr>

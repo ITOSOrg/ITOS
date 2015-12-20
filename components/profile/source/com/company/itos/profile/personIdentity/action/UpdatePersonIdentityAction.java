@@ -15,7 +15,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UpdatePersonIdentityAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonIdentityDetail personIdentityDetail;

@@ -20,7 +20,7 @@ public class DeletePhoneNumberDAO {
 			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
 			String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET	RECORDSTATUS='cancel'	WHERE phoneNumberID = "
-					+ phoneNumberDetail.getPhoneNumberID();
+					+ phoneNumberLinkDetail.getPhoneNumberID();
 
 			String phoneNumberLinkSQLStr = "UPDATE PhoneNumberLink SET	RECORDSTATUS='cancel'	WHERE phoneNumberLinkID= "
 					+ phoneNumberLinkDetail.getPhoneNumberLinkID();

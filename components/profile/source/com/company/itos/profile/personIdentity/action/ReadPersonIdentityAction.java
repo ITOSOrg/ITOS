@@ -75,6 +75,8 @@ public class ReadPersonIdentityAction extends ActionSupport implements SessionAw
 		ReadPersonIdentityDAO readPersonIdentityDAO = new ReadPersonIdentityDAO();
 		String returnMassegeStr = readPersonIdentityDAO.readPersonIdentity(personIdentityDetail);
 		
+		setPersonIdentityDetail(personIdentityDetail);
+		
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 

@@ -53,6 +53,7 @@ public class ListPhoneNumberDAO {
 
 				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
 				phoneNumberDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
 				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
 				phoneNumberLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				phoneNumberLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));

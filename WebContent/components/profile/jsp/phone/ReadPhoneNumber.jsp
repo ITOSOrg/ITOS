@@ -28,15 +28,15 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><s:property value="phoneNumberDetail.ountryCode" /></td>
-					<td><s:property value="phoneNumberDetail.areaCode" /></td>
-					<td><s:property value="phoneNumberDetail.phoneNumber" /></td>
-					<td><s:property value="phoneNumberDetail.extension" /></td>
+					<td><s:property value="phoneNumberLinkDetail.phoneNumberDetail.countryCode" /></td>
+					<td><s:property value="phoneNumberLinkDetail.phoneNumberDetail.areaCode" /></td>
+					<td><s:property value="phoneNumberLinkDetail.phoneNumberDetail.phoneNumber" /></td>
+					<td><s:property value="phoneNumberLinkDetail.phoneNumberDetail.extension" /></td>
 					<td><s:property value="phoneNumberLinkDetail.typeCode" /></td>
 					<td><s:property value="phoneNumberLinkDetail.primaryInd" /></td>
 					<td><s:property value="phoneNumberLinkDetail.startDate" /></td>
 					<td><s:property value="phoneNumberLinkDetail.endDate" /></td>
-					<td><s:property value="phoneNumberDetail.recordStatus" /></td>
+					<td><s:property value="phoneNumberLinkDetail.phoneNumberDetail.recordStatus" /></td>
 				</tr>
 			</tbody>
 		</table>

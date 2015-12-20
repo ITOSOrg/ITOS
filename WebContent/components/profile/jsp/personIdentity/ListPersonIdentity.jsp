@@ -9,9 +9,12 @@
 </head>
 <body>
 
+                    <s:url id="CreatePersonIdentityURL" action="/ITOS/CreatePersonIdentity" escapeAmp="false">
+                           <!--   <s:param name="personIdentityDetail.personID" value="%{personID}"/> -->
+                    </s:url>
+                            <s:a href="%{CreatePersonIdentityURL}">Create PersonIdentity</s:a>
 
-<a href="/ITOS/CreatePersonIdentity">Create PersonIdentity</a><br><br>
-
+<br><br>
 
 
 <form action="/ITOS/ListPersonIdentity" method = "POST">

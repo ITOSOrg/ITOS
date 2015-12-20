@@ -23,6 +23,23 @@ public class PhoneNumberLinkDetail {
 	private int phoneNumberID;
 
 	private PhoneNumberDetail phoneNumberDetail = null;
+	
+	private String updateAction = "update";
+	
+	/**
+	 * @return the updateAction
+	 */
+	public String getUpdateAction() {
+		return updateAction;
+	}
+
+	/**
+	 * @param updateAction the updateAction to set
+	 */
+	public void setUpdateAction(String updateAction) {
+		this.updateAction = "update";
+	}
+	
 
 	public int getPhoneNumberLinkID() {
 		return phoneNumberLinkID;

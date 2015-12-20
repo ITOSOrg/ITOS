@@ -44,8 +44,8 @@
 
 			</tr>
 </table>
-	        <s:hidden name="personIdentityID"></s:hidden>
-            <s:hidden name="versionNo"></s:hidden>
+	        <s:hidden name="personIdentityDetail.personIdentityID"></s:hidden>
+            <s:hidden name="personIdentityDetail.versionNo"></s:hidden>
 </s:form>
 </body>
 </html>

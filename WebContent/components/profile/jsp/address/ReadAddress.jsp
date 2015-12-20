@@ -32,14 +32,14 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><s:property value="addressDetail.streetOne" /></td>
-							<td><s:property value="addressDetail.streetTwo" /></td>
-							<td><s:property value="addressDetail.aptUnit" /></td>
-							<td><s:property value="addressDetail.city" /></td>
-							<td><s:property value="addressDetail.county" /></td>
-							<td><s:property value="addressDetail.state" /></td>
-							<td><s:property value="addressDetail.country" /></td>
-							<td><s:property value="addressDetail.zipCode" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.streetOne" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.streetTwo" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.aptUnit" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.city" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.county" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.state" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.country" /></td>
+							<td><s:property value="addressLinkDetail.addressDetail.zipCode" /></td>
 							<td><s:property value="addressLinkDetail.typeCode" /></td>
 							<td><s:property value="addressLinkDetail.primaryInd" /></td>
 							<td><s:property value="addressLinkDetail.startDate" /></td>

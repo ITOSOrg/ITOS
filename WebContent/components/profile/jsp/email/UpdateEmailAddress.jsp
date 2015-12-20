@@ -45,6 +45,7 @@
         <s:hidden name="emailAddressLinkDetail.emailAddressLinkID"></s:hidden>
         <s:hidden name="emailAddressLinkDetail.versionNo"></s:hidden>
         <s:hidden name="emailAddressLinkDetail.emailAddressDetail.versionNo"></s:hidden>
+        <s:hidden name="emailAddressLinkDetail.relatedID"></s:hidden>
         
 </s:form>
 </body>

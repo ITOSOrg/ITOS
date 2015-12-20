@@ -15,19 +15,19 @@
 		
 		<tr>
 		<td> Country Code:</td>
-		<td><s:textfield type="text" name="PhoneNumberDetail.countryCode"/></td>
+		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.countryCode"/></td>
 		</tr>
 		<tr>
 		<td> Area Code:</td>
-		<td><s:textfield type="text" name="PhoneNumberDetail.areaCode"/></td>
+		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.areaCode"/></td>
 		</tr>
 		<tr>
 		<td>Phone Number:</td>
-		<td><s:textfield type="text" name="PhoneNumberDetail.phoneNumber"/></td>
+		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.phoneNumber"/></td>
 		</tr>
 		<tr>
 		<td> Extension:</td>
-		<td><s:textfield type="text" name="PhoneNumberDetail.extension"/></td>
+		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.extension"/></td>
 		</tr>
 		<tr>
 		<td> Type Code:</td>
@@ -50,6 +50,7 @@
 		<td><s:submit  type="submit" value="Submit"/>
 		</tr>
 		</table>
+        <s:hidden name="phoneNumberLinkDetail.relatedID"></s:hidden>
 		</s:form>
 </body>
 </html>

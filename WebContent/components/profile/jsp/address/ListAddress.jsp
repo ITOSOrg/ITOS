@@ -24,13 +24,12 @@
 
 <div id="myaccordion">
 <h2>Address List Workspace</h2>
-<div><a href="/ITOS/CreateAddress">Create Address</a><br>
-<br>
+<div>
 <s:url id="CreateAddressURL" action="/ITOS/CreateAddress" escapeAmp="false">
 
     <s:param name="addressLinkDetail.relatedID" value="%{addressLinkDetail.relatedID}" />
 
-</s:url> <s:a href="%{CreateAddressURL}">Create Address New</s:a> <br>
+</s:url> <s:a href="%{CreateAddressURL}">Create Address</s:a> <br><br>
 
 <s:form action="/ITOS/ListAddress" method="POST">
     <table border=1>

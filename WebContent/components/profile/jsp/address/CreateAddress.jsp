@@ -62,9 +62,8 @@
             
             <tr>
 
-                <td><s:submit type="submit" value="Submit" />
-                <s:hidden name="addressLinkDetail.relatedID" value="%{#addressLinkDetail.relatedID}"/>
-                
+                <td><s:submit type="submit" value="Submit" /></td>
+                <s:hidden name="addressLinkDetail.relatedID" value="%{#parameters['addressLinkDetail.relatedID']}"/>
             </tr>
             
         </table>

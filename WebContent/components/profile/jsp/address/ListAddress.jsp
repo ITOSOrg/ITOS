@@ -22,70 +22,72 @@
 
 
 
-    <div id="myaccordion">
-        <h2>Address List Workspace</h2>
-        <div>
+<div id="myaccordion">
+<h2>Address List Workspace</h2>
+<div><a href="/ITOS/CreateAddress">Create Address</a><br>
+<br>
+<s:url id="CreateAddressURL" action="/ITOS/CreateAddress" escapeAmp="false">
 
-            <a href="/ITOS/CreateAddress">Create Address</a><br>
-            <br> <br>
+    <s:param name="addressLinkDetail.relatedID" value="%{addressLinkDetail.relatedID}" />
 
-            <s:form action="/ITOS/ListAddress" method="POST">
-                <table border=1>
-                    <thead>
+</s:url> <s:a href="%{CreateAddressURL}">Create Address New</s:a> <br>
 
-                        <tr>
-                            <th align="left">StreetOne:</th>
-                            <th>StreetTwo:</th>
-                            <th>AptUnit:</th>
-                            <th>City:</th>
-                            <th>County:</th>
-                            <th>State:</th>
-                            <th>Country:</th>
-                            <th>ZipCode:</th>
-                            <th>StartDate:</th>
-                            <th>End Date:</th>
-                            <th colspan=3>Action</th>
-                        </tr>
-                    </thead>
+<s:form action="/ITOS/ListAddress" method="POST">
+    <table border=1>
+        <thead>
+
+            <tr>
+                <th align="left">StreetOne:</th>
+                <th>StreetTwo:</th>
+                <th>AptUnit:</th>
+                <th>City:</th>
+                <th>County:</th>
+                <th>State:</th>
+                <th>Country:</th>
+                <th>ZipCode:</th>
+                <th>StartDate:</th>
+                <th>End Date:</th>
+                <th colspan=3>Action</th>
+            </tr>
+        </thead>
 
 
 
-                    <s:iterator value="addressLinkDetailList" status="stat">
+        <s:iterator value="addressLinkDetailList" status="stat">
 
-                        <tbody>
-                            <tr>
-                                <td><s:property value="addressDetail.streetOne" /></td>
-                                <td><s:property value="addressDetail.streetTwo" /></td>
-                                <td><s:property value="addressDetail.aptUnit" /></td>
-                                <td><s:property value="addressDetail.city" /></td>
-                                <td><s:property value="addressDetail.county" /></td>
-                                <td><s:property value="addressDetail.state" /></td>
-                                <td><s:property value="addressDetail.country" /></td>
-                                <td><s:property value="addressDetail.zipCode" /></td>
-                                <td><s:property value="startDate" /></td>
-                                <td><s:property value="endDate" /></td>
+            <tbody>
+                <tr>
+                    <td><s:property value="addressDetail.streetOne" /></td>
+                    <td><s:property value="addressDetail.streetTwo" /></td>
+                    <td><s:property value="addressDetail.aptUnit" /></td>
+                    <td><s:property value="addressDetail.city" /></td>
+                    <td><s:property value="addressDetail.county" /></td>
+                    <td><s:property value="addressDetail.state" /></td>
+                    <td><s:property value="addressDetail.country" /></td>
+                    <td><s:property value="addressDetail.zipCode" /></td>
+                    <td><s:property value="startDate" /></td>
+                    <td><s:property value="endDate" /></td>
 
-                                <td><s:url id="ReadAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
-                                        <s:param name="addressDetail.addressID" value="%{addressID}" />
-                                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
-                                    </s:url> <s:a href="%{ReadAddressURL}">View</s:a> <s:url var="UpdateAddressURL"
-                                        action="/ITOS/ReadAddress" escapeAmp="false">
-                                        <s:param name="addressLinkDetail.addressID" value="%{addressID}" />
-                                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
-                                        <s:param name="act" value="%{updateAction}" />
-                                    </s:url> <s:a href="%{UpdateAddressURL}">Update</s:a> <s:url var="DeleteAddressURL"
-                                        action="/ITOS/DeleteAddress" escapeAmp="false">
-                                        <s:param name="addressDetail.addressID" value="%{addressID}" />
-                                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
-                                    </s:url> <s:a href="%{DeleteAddressURL}">Delete</s:a></td>
+                    <td><s:url id="ReadAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
+                        <s:param name="addressDetail.addressID" value="%{addressID}" />
+                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
+                    </s:url> <s:a href="%{ReadAddressURL}">View</s:a> <s:url var="UpdateAddressURL" action="/ITOS/ReadAddress"
+                        escapeAmp="false">
+                        <s:param name="addressLinkDetail.addressID" value="%{addressID}" />
+                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
+                        <s:param name="act" value="%{updateAction}" />
+                    </s:url> <s:a href="%{UpdateAddressURL}">Update</s:a> <s:url var="DeleteAddressURL"
+                        action="/ITOS/DeleteAddress" escapeAmp="false">
+                        <s:param name="addressDetail.addressID" value="%{addressID}" />
+                        <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
+                    </s:url> <s:a href="%{DeleteAddressURL}">Delete</s:a></td>
 
-                            </tr>
+                </tr>
 
-                        </tbody>
-                    </s:iterator>
-                </table>
-            </s:form>
-        </div>
-    </div>
+            </tbody>
+        </s:iterator>
+    </table>
+</s:form></div>
+</div>
 </body>
 </html>

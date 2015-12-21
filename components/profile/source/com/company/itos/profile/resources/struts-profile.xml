@@ -253,8 +253,10 @@
         <action name="CreateAddressSubmit" class="com.company.itos.profile.address.action.CreateAddressAction">
             <result name="success" type="redirect">
                 <param name="location">/ListAddress</param>
+                <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
             </result>
             <result name="error">/index.jsp</result>
+            <result name="input">/index.jsp</result>
         </action>
 
         <action name="ReadAddress" class="com.company.itos.profile.address.action.ReadAddressAction">

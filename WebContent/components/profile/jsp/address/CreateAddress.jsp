@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <s:form name="Create Address" action="/ITOS/CreateAddressSubmit" method="POST">
+    <s:form name="Create Address" action="/Profile/CreateAddressSubmit" method="POST">
         
         <table>
             
@@ -59,18 +59,11 @@
                 <td>PrimaryInd :</td>
                 <td><s:textfield type="text" name="addressLinkDetail.primaryInd" /></td>
             </tr>
-            <tr>
-                <td>Start Date :</td>
-                <td><s:textfield type="text" name="addressLinkDetail.startDate" /></td>
-            </tr>
-            <tr>
-                <td>End Date :</td>
-                <td><s:textfield type="text" name="addressLinkDetail.endDate" /></td>
-            </tr>
+            
             <tr>
 
                 <td><s:submit type="submit" value="Submit" />
-                <s:hidden name="addressLinkDetail.relatedID" value="1002"/>
+                <s:hidden name="addressLinkDetail.relatedID" value="%{#addressLinkDetail.relatedID}"/>
                 
             </tr>
             

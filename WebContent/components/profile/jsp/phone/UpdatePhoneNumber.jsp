@@ -56,9 +56,10 @@
 		</tr>
 		<td><s:submit  type="submit" value="Submit"/></td>
 		</table>
-                <s:hidden name="phoneNumberLinkID"></s:hidden>
-        <s:hidden name="versionNo"></s:hidden>
-        <s:hidden name="phoneNumberDetail.phoneNumberID"></s:hidden>
+        <s:hidden name="phoneNumberLinkDetail.phoneNumberLinkID"></s:hidden>
+        <s:hidden name="phoneNumberLinkDetail.versionNo"></s:hidden>
+        <s:hidden name="phoneNumberLinkDetail.phoneNumberDetail.phoneNumberID"></s:hidden>
+        <s:hidden name="phoneNumberLinkDetail.phoneNumberDetail.versionNo"></s:hidden>
 		</s:form>
 </body>
 </html>

@@ -180,6 +180,7 @@
         <action name="UpdatePhoneNumberSubmit" class="com.company.itos.profile.phone.action.UpdatePhoneNumberAction">
             <result name="success" type="redirect">
                 <param name="location">/ListPhoneNumber</param>
+                <param name="phoneNumberLinkDetail.relatedID">${phoneNumberLinkDetail.relatedID}</param>
             </result>
             <result name="error">/index.jsp</result>
         </action>
@@ -277,6 +278,7 @@
         <action name="UpdateAddressSubmit" class="com.company.itos.profile.address.action.UpdateAddressAction">
             <result name="success" type="redirect">
                 <param name="location">/ListAddress</param>
+                <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
             </result>
             <result name="error">/index.jsp</result>
         </action>

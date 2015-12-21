@@ -70,13 +70,15 @@
                     <td><s:url id="ReadAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
                         <s:param name="addressDetail.addressID" value="%{addressID}" />
                         <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
-                    </s:url> <s:a href="%{ReadAddressURL}">View</s:a> <s:url var="UpdateAddressURL" action="/ITOS/ReadAddress"
-                        escapeAmp="false">
+                    </s:url> <s:a href="%{ReadAddressURL}">View</s:a> 
+                    
+                    <s:url var="UpdateAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
                         <s:param name="addressLinkDetail.addressID" value="%{addressID}" />
                         <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
                         <s:param name="act" value="%{updateAction}" />
-                    </s:url> <s:a href="%{UpdateAddressURL}">Update</s:a> <s:url var="DeleteAddressURL"
-                        action="/ITOS/DeleteAddress" escapeAmp="false">
+                    </s:url> <s:a href="%{UpdateAddressURL}">Update</s:a> 
+                    
+                    <s:url var="DeleteAddressURL" action="/ITOS/DeleteAddress" escapeAmp="false">
                         <s:param name="addressDetail.addressID" value="%{addressID}" />
                         <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
                     </s:url> <s:a href="%{DeleteAddressURL}">Delete</s:a></td>

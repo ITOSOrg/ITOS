@@ -14,42 +14,42 @@
 <table>
 			<tr>
 				<td>StreetOne :</td>
-				<td><s:textfield name="addressDetail.streetOne"
+				<td><s:textfield name="addressLinkDetail.addressDetail.streetOne"
 					/></td>
 			</tr>
 			<tr>
 				<td>StreetTwo :</td>
-				<td><s:textfield name="addressDetail.streetTwo"
+				<td><s:textfield name="addressLinkDetail.addressDetail.streetTwo"
 				      /></td>
 			</tr>
 			<tr>
 				<td>Apartment Unit :</td>
-				<td><s:textfield name="addressDetail.aptUnit"
+				<td><s:textfield name="addressLinkDetail.addressDetail.aptUnit"
 				      /></td>
 			</tr>
 			<tr>
 				<td>City :</td>
-				<td><s:textfield name="addressDetail.city"
+				<td><s:textfield name="addressLinkDetail.addressDetail.city"
 				      /></td>
 			</tr>
 			<tr>
 				<td>County :</td>
-				<td><s:textfield name="addressDetail.county"
+				<td><s:textfield name="addressLinkDetail.addressDetail.county"
 				      /></td>
 			</tr>
 			<tr>
 				<td>State :</td>
-				<td><s:textfield name="addressDetail.state"
+				<td><s:textfield name="addressLinkDetail.addressDetail.state"
 				    /></td>
 			</tr>
 			<tr>
 				<td>Country :</td>
-				<td><s:textfield name="addressDetail.country"
+				<td><s:textfield name="addressLinkDetail.addressDetail.country"
 				      /></td>
 			</tr>
 			<tr>
 				<td>ZipCode :</td>
-				<td><s:textfield name="addressDetail.zipCode"
+				<td><s:textfield name="addressLinkDetail.addressDetail.zipCode"
 				     /></td>
 			</tr>
 			<tr>
@@ -74,9 +74,9 @@
 
 			</tr>
 </table>
-             <s:hidden name="addressLinkID"></s:hidden>
-        <s:hidden name="versionNo"></s:hidden>
-        <s:hidden name="AddressDetail.versionNo"></s:hidden>
+             <s:hidden name="addressLinkDetail.addressLinkID"></s:hidden>
+        <s:hidden name="addressLinkDetail.versionNo"></s:hidden>
+        <s:hidden name="addressLinkDetail.addressDetail.versionNo"></s:hidden>
 </s:form>
 
 </body>

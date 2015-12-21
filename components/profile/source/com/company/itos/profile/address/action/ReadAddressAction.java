@@ -78,7 +78,7 @@ public class ReadAddressAction extends ActionSupport implements SessionAware {
 
 		String returnMassegeStr = readAddressDAO.readAddress(addressLinkDetail);
 		
-		session.put("addressLinkDetail", addressLinkDetail);
+		//session.put("addressLinkDetail", addressLinkDetail);
 		
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";

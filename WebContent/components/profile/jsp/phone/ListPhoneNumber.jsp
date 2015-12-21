@@ -34,8 +34,6 @@
                             <s:a href="%{CreatePhoneNumberURL}">Create Phone Number</s:a>
 
 
-
-
 <s:form action="/ITOS/ListPhoneNumber" method = "POST">
 <table border=1>
 			<thead>

@@ -25,6 +25,23 @@ public class AddressLinkDetail {
 	private int versionNo;
 	
 	private AddressDetail addressDetail = null;
+	
+	private String updateAction = "update";
+	
+	/**
+	 * @return the updateAction
+	 */
+	public String getUpdateAction() {
+		return updateAction;
+	}
+
+	/**
+	 * @param updateAction the updateAction to set
+	 */
+	public void setUpdateAction(String updateAction) {
+		this.updateAction = "update";
+	}
+	
 
 	public int getAddressLinkID() {
 		return addressLinkID;

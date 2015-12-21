@@ -15,42 +15,42 @@
 		
 		<tr>
 		<td> Country Code:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.countryCode"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.phoneNumberDetail.countryCode"/></td>
 		</tr>
 		<tr>
 		<td> Area Code:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.areaCode"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.phoneNumberDetail.areaCode"/></td>
 		</tr>
 		<tr>
 		<td>Phone Number:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.phoneNumber"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.phoneNumberDetail.phoneNumber"/></td>
 		</tr>
 		<tr>
 		<td> Extension:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.PhoneNumberDetail.extension"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.phoneNumberDetail.extension"/></td>
 		</tr>
 		<tr>
 		<td> Type Code:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.typeCode"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.typeCode"/></td>
 		</tr>
 		<tr>
 		<td> PrimaryInd:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.primaryInd"/></td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.primaryInd"/></td>
 		</tr>
 		<tr>
-		<td> Start Date:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.startDate"/></td>
+		<!--  <td> Start Date:</td>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.startDate"/></td>
 		</tr>
 		
 		<tr>
 		<td> End Date:</td>
-		<td><s:textfield type="text" name="PhoneNumberLinkDetail.endDate"/></td>
-		</tr>
+		<td><s:textfield type="text" name="phoneNumberLinkDetail.endDate"/></td>
+		</tr>-->
 		<tr>
 		<td><s:submit  type="submit" value="Submit"/>
+        <s:hidden name="phoneNumberLinkDetail.relatedID" value="%{#parameters['phoneNumberLinkDetail.relatedID']}"/>
 		</tr>
 		</table>
-        <s:hidden name="phoneNumberLinkDetail.relatedID"></s:hidden>
 		</s:form>
 </body>
 </html>

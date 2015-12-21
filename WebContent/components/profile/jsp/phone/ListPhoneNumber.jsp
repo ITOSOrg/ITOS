@@ -29,11 +29,10 @@
 
 
 <s:url id="CreatePhoneNumberURL" action="/ITOS/CreatePhoneNumber" escapeAmp="false">
-                                <s:param name="phoneNumberLinkDetail.relatedID" value="%{relatedID}"/>
+                                <s:param name="phoneNumberLinkDetail.relatedID" value="%{phoneNumberLinkDetail.relatedID}"/>
                             </s:url>
                             <s:a href="%{CreatePhoneNumberURL}">Create Phone Number</s:a>
 
-<a href="/ITOS/CreatePhoneNumber">Create Phone Number</a>
 
 
 

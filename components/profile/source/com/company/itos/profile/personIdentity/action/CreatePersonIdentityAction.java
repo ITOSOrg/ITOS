@@ -53,7 +53,7 @@ public class CreatePersonIdentityAction extends ActionSupport implements Session
 		this.personIdentityDetail = personIdentityDetail;
 	}
 	
-public String execute() throws Exception {
+	public String execute() throws Exception {
 		
 		String pageForwardStr = "";
 		

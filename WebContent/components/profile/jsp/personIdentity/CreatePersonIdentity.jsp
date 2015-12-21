@@ -16,27 +16,28 @@
 		  
 			<tr>
 				<td>AlternateID :</td>
-				<td><s:textfield type="text" name="PersonIdentityDetail.alternateID"/></td>
+				<td><s:textfield type="text" name="personIdentityDetail.alternateID"/></td>
 			</tr>
 			<tr>
 				<td>PrimaryInd :</td>
-				<td><s:textfield type="text" name="PersonIdentityDetail.primaryInd"/></td>
+				<td><s:textfield type="text" name="personIdentityDetail.primaryInd"/></td>
 			</tr>
 			<tr>
 				<td>Type Code :</td>
-				<td><s:textfield type="text" name="PersonIdentityDetail.typeCode"/></td>
+				<td><s:textfield type="text" name="personIdentityDetail.typeCode"/></td>
 			</tr>
-			<tr>
+			<!--  <tr>
 				<td>Start Date :</td>
-				<td><s:textfield type="text" name="PersonIdentityDetail.startDate"/></td>
+				<td><s:textfield type="text" name="personIdentityDetail.startDate"/></td>
 			</tr>
 			<tr>
 				<td>End Date :</td>
-				<td><s:textfield type="text" name="PersonIdentityDetail.endDate"/></td>
-			</tr>
+				<td><s:textfield type="text" name="personIdentityDetail.endDate"/></td>
+			</tr>-->
 			<tr>
 
 				<td><s:submit  type="submit" value="Submit"/>
+                <s:hidden name="personIdentityDetail.personID" value="%{#parameters['personIdentityDetail.personID']}"/>
 
 			</tr>
 			

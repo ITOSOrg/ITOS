@@ -3,6 +3,8 @@ package com.company.itos.core.codetable.pojo;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.company.itos.core.util.resources.StringUtil;
+
 public class CodeTableHeaderDetail {
 			
 			private	String tableName;
@@ -57,7 +59,7 @@ public class CodeTableHeaderDetail {
 			}
 
 			public void setTableName(String tableName) {
-				this.tableName = tableName;
+				this.tableName = StringUtil.rtrim(tableName);
 			}
 
 			public String getDefaultCode() {

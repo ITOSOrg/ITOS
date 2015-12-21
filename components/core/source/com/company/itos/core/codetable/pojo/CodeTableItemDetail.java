@@ -2,6 +2,8 @@ package com.company.itos.core.codetable.pojo;
 
 import java.sql.Timestamp;
 
+import com.company.itos.core.util.resources.StringUtil;
+
 public class CodeTableItemDetail {
 	
  	private String tableName;
@@ -53,7 +55,7 @@ public class CodeTableItemDetail {
 	}
 
 	public void setTableName(String tableName) {
-		this.tableName = tableName;
+		this.tableName = StringUtil.rtrim(tableName);
 	}
 
 	public String getCode() {

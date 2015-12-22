@@ -111,9 +111,19 @@
         <put-attribute name="body" value="/components/core/jsp/role/ReadRole.jsp" />
     </definition>
     
+    <definition name="ReadPersonRole" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read PersonRole" />
+        <put-attribute name="body" value="/components/core/jsp/role/ReadRole.jsp" />
+    </definition>
+    
     <definition name="UpdateRole" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Update Role" />
         <put-attribute name="body" value="/components/core/jsp/role/UpdateRole.jsp" />
+    </definition>
+    
+    <definition name="UpdatePersonRoleAction" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update Role" />
+        <put-attribute name="body" value="/components/core/jsp/role/ UpdatePersonRole.jsp" />
     </definition>
     
     <definition name="ListRoleForSinglePerson" extends="userWorkspaceLayout">
@@ -179,6 +189,11 @@
     <definition name="UpdatePerson" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Update Person" />
         <put-attribute name="body" value="/components/profile/jsp/person/UpdatePerson.jsp" />
+    </definition>
+    
+    <definition name="UpdateSinglePerson" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update SinglePerson" />
+        <put-attribute name="body" value="/components/profile/jsp/person/ UpdateSinglePerson.jsp" />
     </definition>
     
     <definition name="CreateUser" extends="userWorkspaceLayout">

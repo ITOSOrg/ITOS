@@ -58,20 +58,35 @@
             <result name="error">/index</result>
 
         </action>
-
-        <action name="UpdatePerson">
-
-            <result type="tiles">UpdatePerson</result>
+        
+        <action name="ReadSinglePerson" class="com.company.itos.profile.person.action.ReadSinglePersonAction">
+            <result name="success" type="tiles">ReadPerson</result>
+            <result name="SENTTOUPDATE" type="tiles"> UpdateSinglePerson</result>
+            <result name="error">/index</result>
 
         </action>
 
-        <action name="UpdatePersonSubmit" class="com.company.itos.profile.person.action.PersonUpdateAction">
+        <action name="UpdatePerson">
+            <result type="tiles">UpdatePerson</result>
+        </action>
+        
+        <action name="UpdateSinglePerson">
+            <result type="tiles">UpdateSinglePerson</result>
+        </action>
 
+        <action name="UpdatePersonSubmit" class="com.company.itos.profile.person.action.PersonUpdateAction">
             <result name="success" type="redirect">
                 <param name="location">/PersonList</param>
             </result>
             <result name="error" type="tiles">UpdatePerson</result>
-
+        </action>
+        
+        <action name="UpdateSinglePersonSubmit" class="com.company.itos.profile.person.action.PersonUpdateAction">
+            <result name="success" type="redirect">
+                <param name="location">/PersonHome</param>
+                 <param name="personDetail.personID">${personDetail.personID}</param>
+            </result>
+            <result name="error" type="tiles">UpdatePerson</result>
         </action>
 
         <action name="PersonDelete" class="com.company.itos.profile.person.action.PersonDeleteAction">

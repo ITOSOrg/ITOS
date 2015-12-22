@@ -1,5 +1,3 @@
-<%@ page import="java.util.List"%>
-<%@ page import="com.company.itos.core.role.pojo.RoleDetail"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -30,13 +28,11 @@
 		<h2> Role List</h2>
 		<div>
 
-<%
-
-List<RoleDetail> SinglePersonRolelist = (List<RoleDetail>) request.getAttribute("SinglePersonRolelist");
-Integer personID = new Integer (request.getParameter("personID"));
-%>
-<a href="/ITOS/PersonHome">Person Home</a>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/ITOS/components/core/jsp/role/CreateRole.jsp"> Create Role</a><br><br>
+ <s:url id="CreateRoleeURL" action="/ITOS/CreateRole" escapeAmp="false">
+                                <s:param name="roleDetail.roleID" value="%{roleID}"/>
+                            </s:url>
+                            <s:a href="%{CreateRoleeURL}">Create Role</s:a>
+<br><br>
 
 <s:form action="/ITOS/ListRole" method = "POST">
 <table border=1>
@@ -50,11 +46,12 @@ Integer personID = new Integer (request.getParameter("personID"));
 					<th>CreatedOn:</th>
 					<th>LastModifiedBy:</th>
 					<th>LastModifiedOn:</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			
 			
-             <s:iterator value="SinglePersonRolelist" status="stat">
+             <s:iterator value="singlePersonRolelist" status="stat">
 			
 			<tbody>
 				<tr>
@@ -65,18 +62,19 @@ Integer personID = new Integer (request.getParameter("personID"));
 					<td><s:property value="createdOn" /></td>
 					<td><s:property value="lastModifiedBy" /></td>
 					<td><s:property value="lastModifiedOn" /></td>
-                    
-                    <s:url id="ReadRoleURL" action="/ITOS/ReadRole" escapeAmp="false">
+                    <td>
+                    <s:url id="ReadRoleURL" action="/ITOS/ReadPersonRole" escapeAmp="false">
                                 <s:param name="roleDetail.roleID" value="%{roleID}"/>
                             </s:url>
                             <s:a href="%{ReadRoleURL}">View</s:a>
                             
-                            <s:url var="UpdateRoleURL" action="/ITOS/ReadRole" escapeAmp="false">
+                            <s:url var="UpdateRoleURL" action="/ITOS/ReadPersonRole" escapeAmp="false">
                                 <s:param name="roleDetail.roleID" value="%{roleID}"/>
+                                <s:param name="userRoleLinkDetail.username" value="%{userRoleLinkDetail.username}"/>
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>
                             <s:a href="%{UpdateRoleURL}">Update</s:a>
-					
+					</td>
 				</tr>
 				
 			</tbody>

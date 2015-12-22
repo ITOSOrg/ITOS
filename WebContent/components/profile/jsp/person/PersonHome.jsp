@@ -27,10 +27,12 @@
 
 
                 <s:url id="RoleListURL" action="/ITOS/ListRoleForSinglePerson" escapeAmp="false">
-                    <s:param name="userRoleLinkDetail.username" value="%{personDetail.username}" />
+                    <s:param name="userRoleLinkDetail.username" value="%{personDetail.userName}" />
                 </s:url>
                     <s:a href="%{RoleListURL}">Person Role</s:a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     
+               
+               
                 <s:url id="LogOutURL" action="/ITOS/PersonLogOut" escapeAmp="false">
                 </s:url>
                     <s:a href="%{LogOutURL}">LogOut</s:a>
@@ -73,7 +75,7 @@
                             <td><s:property value="personDetail.modifiedOn" /></td>
                             <td><s:property value="personDetail.registrationDate" /></td>
 
-                            <td><s:url var="updatePersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
+                            <td><s:url var="updatePersonHomeURL" action="/ITOS/ReadSinglePerson" escapeAmp="false">
                                     <s:param name="personDetail.personID" value="%{personDetail.personID}" />
                                     <s:param name="act" value="%{personDetail.updateAction}" />
                                 </s:url> <s:a href="%{updatePersonHomeURL}"> Update</s:a></td>

@@ -29,7 +29,13 @@
                 <s:url id="RoleListURL" action="/ITOS/ListRoleForSinglePerson" escapeAmp="false">
                     <s:param name="userRoleLinkDetail.username" value="%{personDetail.username}" />
                 </s:url>
-                    <s:a href="%{RoleListURL}">Person Role</s:a>
+                    <s:a href="%{RoleListURL}">Person Role</s:a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    
+                <s:url id="LogOutURL" action="/ITOS/PersonLogOut" escapeAmp="false">
+                </s:url>
+                    <s:a href="%{LogOutURL}">LogOut</s:a>
+                    
+                    <br><br>
 
                 <table border=1>
                     <thead>

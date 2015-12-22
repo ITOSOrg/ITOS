@@ -28,27 +28,34 @@
                 <param name="location">/PersonHome</param>
                 <param name="personDetail.personID">${usersDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
-
+            <result name="error">/index</result>
         </action>
+        
+        
+        <action name="PersonLogOut" class="com.company.itos.profile.person.action.PersonLogOutAction">
+            <result name="success" type="redirect">
+                <param name="location">/index</param>
+            </result>
+         </action>
+        
 
         <action name="PersonHome" class="com.company.itos.profile.person.action.PersonHomeAction">
             <result name="success" type="tiles">PersonHome</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
 
         </action>
 
 
         <action name="PersonList" class="com.company.itos.profile.person.action.PersonListAction">
             <result name="success" type="tiles">PersonList</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
 
         </action>
 
         <action name="ReadPerson" class="com.company.itos.profile.person.action.ReadPersonAction">
             <result name="success" type="tiles">ReadPerson</result>
             <result name="SENTTOUPDATE" type="tiles">UpdatePerson</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
 
         </action>
 
@@ -107,20 +114,20 @@
                 <param name="location">/ListEmailAddress</param>
                 <param name="emailAddressLinkDetail.relatedID">${emailAddressLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 
         <action name="ListEmailAddress" class="com.company.itos.profile.email.action.ListEmailAddressAction">
             <result name="success" type="tiles">ListEmailAddress</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="ReadEmailAddress" class="com.company.itos.profile.email.action.ReadEmailAddressAction">
             <result name="success" type="tiles">ReadEmailAddress</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateEmailAddress
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdateEmailAddress">
@@ -134,7 +141,7 @@
                 <param name="location">/ListEmailAddress</param>
                 <param name="emailAddressLinkDetail.relatedID">${emailAddressLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="DeleteEmailAddress" class="com.company.itos.profile.email.action.DeleteEmailAddressAction">
@@ -142,7 +149,7 @@
                 <param name="location">/ListEmailAddress</param>
                 <param name="emailAddressLinkDetail.relatedID">${emailAddressLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 
@@ -160,13 +167,13 @@
                 <param name="phoneNumberLinkDetail.relatedID">${phoneNumberLinkDetail.relatedID}</param>
                 <param name="location">/ListPhoneNumber</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="ReadPhoneNumber" class="com.company.itos.profile.phone.action.ReadPhoneNumberAction">
             <result name="success" type="tiles">ReadPhoneNumber</result>
             <result name="SENTTOUPDATE" type="tiles">UpdatePhoneNumber</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdatePhoneNumber">
@@ -175,7 +182,7 @@
 
         <action name="ListPhoneNumber" class="com.company.itos.profile.phone.action.ListPhoneNumberAction">
             <result name="success" type="tiles">ListPhoneNumber</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdatePhoneNumberSubmit" class="com.company.itos.profile.phone.action.UpdatePhoneNumberAction">
@@ -183,7 +190,7 @@
                 <param name="location">/ListPhoneNumber</param>
                 <param name="phoneNumberLinkDetail.relatedID">${phoneNumberLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="DeletePhoneNumber" class="com.company.itos.profile.phone.action.DeletePhoneNumberAction">
@@ -191,7 +198,7 @@
                 <param name="location">/ListPhoneNumber</param>
                 <param name="phoneNumberLinkDetail.relatedID">${phoneNumberLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 
@@ -208,19 +215,19 @@
                 <param name="location">/ListPersonIdentity</param>
                 <param name="personIdentityDetail.personID">${personIdentityDetail.personID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="ReadPersonIdentity" class="com.company.itos.profile.personIdentity.action.ReadPersonIdentityAction">
             <result name="success" type="tiles">ReadPersonIdentity</result>
             <result name="SENTTOUPDATE" type="tiles">UpdatePersonIdentity</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="ListPersonIdentity" class="com.company.itos.profile.personIdentity.action.ListPersonIdentityAction">
             <result name="success" type="tiles">ListPersonIdentity
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdatePersonIdentity">
@@ -232,7 +239,7 @@
                 <param name="location">/ListPersonIdentity</param>
                 <param name="personIdentityDetail.personID">${personIdentityDetail.personID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="DeletePersonIdentity" class="com.company.itos.profile.personIdentity.action.DeletePersonIdentityAction">
@@ -240,7 +247,7 @@
                 <param name="location">/ListPersonIdentity</param>
                 <param name="personIdentityDetail.personID">${personIdentityDetail.personID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 
@@ -257,14 +264,14 @@
                 <param name="location">/ListAddress</param>
                 <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
-            <result name="input">/index.jsp</result>
+            <result name="error">/index</result>
+            <result name="input">/index</result>
         </action>
 
         <action name="ReadAddress" class="com.company.itos.profile.address.action.ReadAddressAction">
             <result name="success" type="tiles">ReadAddress</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateAddress</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdateAddress">
@@ -273,7 +280,7 @@
 
         <action name="ListAddress" class="com.company.itos.profile.address.action.ListAddressAction">
             <result name="success" type="tiles">ListAddress</result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
         <action name="UpdateAddressSubmit" class="com.company.itos.profile.address.action.UpdateAddressAction">
@@ -281,7 +288,7 @@
                 <param name="location">/ListAddress</param>
                 <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 
@@ -290,7 +297,7 @@
                 <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
                 <param name="location">/ListAddress</param>
             </result>
-            <result name="error">/index.jsp</result>
+            <result name="error">/index</result>
         </action>
 
 

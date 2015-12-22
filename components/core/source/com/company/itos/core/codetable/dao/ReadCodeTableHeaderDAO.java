@@ -5,22 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableHeaderDetail;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class ReadCodeTableHeaderDAO {
 
 	public String ReadCodeTableHeader(CodeTableHeaderDetail codeTableHeaderDetail) {
 
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String codeTableItemSQLStr = "SELECT * FROM CodeTableHeader WHERE tableName = \'" + codeTableHeaderDetail.getTableName()
 					+ "\' AND recordStatus='Active'";

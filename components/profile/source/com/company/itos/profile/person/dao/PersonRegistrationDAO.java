@@ -11,13 +11,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.dao.CreateRoleDAO;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.dao.CreateUserRoleLinkDAO;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.address.dao.CreateAddressDAO;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
@@ -59,13 +58,12 @@ public class PersonRegistrationDAO {
 			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
 					+ "','" + usersDetail.getPassword() + "','active', ?)";
 
-			DBConnection dbConnection = new DBConnection();
 
 			Connection connection = null;
 
 			Statement statement = null;
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 				statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT PersonSEQ.nextval FROM DUAL");
 
@@ -167,7 +165,6 @@ public class PersonRegistrationDAO {
 	 */
 	public boolean personExist(PersonDetail personDetail) {
 
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 		try {
 
@@ -202,11 +199,11 @@ public class PersonRegistrationDAO {
 
 	public boolean checkingUserName(PersonDetail personDetail) {
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
+
 			String usersSQLStr = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(usersSQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();

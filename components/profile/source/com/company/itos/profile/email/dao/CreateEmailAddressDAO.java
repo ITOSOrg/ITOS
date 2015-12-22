@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
@@ -18,14 +17,13 @@ public class CreateEmailAddressDAO {
 
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 		try {
 
 			EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement("SELECT EmailAddressSEQ.nextval FROM DUAL");
 			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT EmailAddressLinkSEQ.nextval FROM DUAL");

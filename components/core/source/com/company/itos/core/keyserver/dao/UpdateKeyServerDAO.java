@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.keyserver.pojo.KeyServerDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdateKeyServerDAO {
@@ -15,7 +14,6 @@ public class UpdateKeyServerDAO {
 			
 			Connection connection = null;
 			String returnMassegeStr = "";
-			DBConnection dbConnection = new DBConnection();
 			
 			int KeyServerVersionNoFromUpdate = keyServerDetail.getVersionNo();
 			
@@ -25,7 +23,7 @@ public class UpdateKeyServerDAO {
 				
 				KeyServerVersionNoFromDatabase++;
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 				
 				String KeyServerSQLStr = "UPDATE	KeyServer	SET keysetCode = ?, nextUniqueIdBlock = ?, humanReadable = ?, annotation = ?, strategy = ?, recordStatus = ?, createdBy = ?, lastModifiedBy = ?" + " WHERE keysetCode = '" + keyServerDetail.getKeysetCode() + "'";
 				
@@ -59,9 +57,8 @@ public class UpdateKeyServerDAO {
 			
 			int versionNo = 0;
 			try {
-				DBConnection dbConnection = new DBConnection();
 
-				Connection connection = dbConnection.getDBConnection();
+				Connection connection = DBConnection.getDBConnection();
 				
 				String keyServerSQLStr = "SELECT	versionNo	FROM	KeyServer	WHERE	 keysetCode = '"
 						+ keyServerDetail.getKeysetCode() + "'";

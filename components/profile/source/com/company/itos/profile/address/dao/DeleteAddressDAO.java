@@ -3,9 +3,8 @@ package com.company.itos.profile.address.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
 public class DeleteAddressDAO {
@@ -17,8 +16,7 @@ public class DeleteAddressDAO {
 		
 		try {
 			
-			DBConnection dbConnection = new DBConnection();
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String addressLinkSQLStr = "UPDATE	AddressLink	SET	recordStatus='cancel'	WHERE addressLinkID = '"
 					+ addressLinkDetail.getAddressLinkID()+"'";

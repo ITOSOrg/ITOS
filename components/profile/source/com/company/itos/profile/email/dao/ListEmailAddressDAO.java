@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
@@ -30,7 +29,6 @@ public class ListEmailAddressDAO {
 
 		EmailAddressDetail emailAddressDetailFromDB = null;
 		EmailAddressLinkDetail emailAddressLinkDetail = null;
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		Statement statement = null;
@@ -40,7 +38,7 @@ public class ListEmailAddressDAO {
 
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String emailAddressLinkSQLStr = "SELECT * FROM EmailAddressLink	WHERE	RECORDSTATUS='Active' AND relatedID = ?";
 

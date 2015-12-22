@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -17,11 +16,10 @@ public class ListAddressDAO {
 		
 		List<AddressLinkDetail> addressLinkDetailList = new ArrayList<AddressLinkDetail>();
 		
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String addressLinkSQLStr = "SELECT * FROM AddressLink	WHERE	recordStatus='Active' AND relatedID = ?";
 			

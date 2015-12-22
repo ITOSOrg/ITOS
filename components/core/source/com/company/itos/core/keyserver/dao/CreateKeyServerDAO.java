@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.keyserver.pojo.KeyServerDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 
 public class CreateKeyServerDAO {
@@ -16,12 +15,11 @@ public class CreateKeyServerDAO {
 		
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 		try {
 			
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String KeyServerSQLStr = "Insert into KeyServer (keysetCode, nextUniqueIdBlock, humanReadable, annotation, strategy, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo )" + "VALUES(?, ?, ?, ?, ?, 'Active', 'Rahul', ?, 'Rahul', ?, 1)";
 			

@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class ReadUserRoleLinkDAO {
 
@@ -15,8 +14,7 @@ public class ReadUserRoleLinkDAO {
 
 		String returnMassegeStr = "";
 		try {
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String userRoleLinkrSQLstr = "SELECT * FROM UserRoleLink WHERE userRoleLinkID = '" + userRoleLinkDetail.getUserRoleLinkID()
 					+ "'";

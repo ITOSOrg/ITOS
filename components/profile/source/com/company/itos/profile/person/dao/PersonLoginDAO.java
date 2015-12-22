@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.UsersDetail;
 
@@ -41,12 +40,11 @@ public class PersonLoginDAO {
 				+ usersDetail.getUserName() + "'";
 
 		// create object of class DBConnection class
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
 			// get database connection
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementUsers = connection.prepareStatement(usersSQLStr);
 

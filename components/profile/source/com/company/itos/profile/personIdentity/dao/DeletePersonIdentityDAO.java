@@ -3,9 +3,8 @@ package com.company.itos.profile.personIdentity.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class DeletePersonIdentityDAO {
@@ -16,8 +15,7 @@ public class DeletePersonIdentityDAO {
 		String returnMassegeStr = "";
 		try {
 			
-			DBConnection dbConnection = new DBConnection();
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String PersonIdentitySQLStr = "UPDATE PersonIdentity SET	recordStatus='cancel'	WHERE personIdentityID= "
 					+ personIdentityDetail.getPersonIdentityID();

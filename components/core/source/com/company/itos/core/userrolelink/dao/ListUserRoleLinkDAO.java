@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
-import com.company.itos.core.util.DBConnection;
 
 public class ListUserRoleLinkDAO {
 
@@ -16,12 +15,11 @@ public class ListUserRoleLinkDAO {
 
 		List<UserRoleLinkDetail> userRoleLinklist = new ArrayList<UserRoleLinkDetail>();
 
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String userRoleLinkSQLStr = "SELECT * FROM UserRoleLink";
 

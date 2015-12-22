@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class ReadRoleDAO {
 
@@ -18,14 +17,13 @@ public class ReadRoleDAO {
 
 		String RoleSQLStr = "SELECT * FROM Role WHERE roleID = '" + roleDetail.getRoleID() + "' ";
 		try {
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementRole = connection.prepareStatement(RoleSQLStr);
 			ResultSet resultSetRole = preparedStatementRole.executeQuery();
 
 			while (resultSetRole.next()) {
-				roleDetail.setRoleID(resultSetRole.getInt("roleID"));
+				roleDetail.setRoleID(resultSetRole.getLong("roleID"));
 				roleDetail.setRoleType(resultSetRole.getString("roleType"));
 				roleDetail.setWorkspace(resultSetRole.getString("workspace"));
 				roleDetail.setRecordStatus(resultSetRole.getString("recordStatus"));

@@ -5,11 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.dao.ReadAddressDAO;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
@@ -28,7 +27,6 @@ public class PersonHomeDAO {
 	PreparedStatement preparedStatement = null;
 	ResultSet resultSet = null;
 	Statement statement = null;
-	DBConnection dbConnection = new DBConnection();
 	String returnMassegeStr = "";
 
 	/**
@@ -46,7 +44,7 @@ public class PersonHomeDAO {
 
 		try {
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
 

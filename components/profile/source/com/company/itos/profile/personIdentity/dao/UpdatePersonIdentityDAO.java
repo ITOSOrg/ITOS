@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdatePersonIdentityDAO {
@@ -15,7 +14,6 @@ public class UpdatePersonIdentityDAO {
 		
 		Connection connection = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		
 		int personIdentityVersionNoFromUpdate = personIdentityDetail.getVersionNo();
 		
@@ -26,7 +24,7 @@ public class UpdatePersonIdentityDAO {
 			personIdentityVersionNoFromDatabase++;
 		
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			String personIdentitySQLStr = "UPDATE	PersonIdentity	SET alternateID = ?, primaryInd = ?, typeCode = ?, startDate = ?, endDate = ?" + " WHERE personIdentityID = '" + personIdentityDetail.getPersonIdentityID() + "'";
 			
 			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
@@ -54,9 +52,8 @@ public class UpdatePersonIdentityDAO {
 		
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			
 			String emailAddressSQLStr = "SELECT	versionNo, personID	FROM	PersonIdentity	WHERE	 personIdentityID = '"
 					+ personIdentityDetail.getPersonIdentityID() + "'";

@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -16,7 +15,6 @@ public class CreatePhoneNumberDAO {
 	public String createPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 
@@ -28,7 +26,7 @@ public class CreatePhoneNumberDAO {
 
 			PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement("SELECT PhoneNumberSEQ.nextval FROM DUAL");
 			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT PhoneNumberLinkSEQ.nextval FROM DUAL");

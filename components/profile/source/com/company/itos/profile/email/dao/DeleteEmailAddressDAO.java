@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
@@ -21,8 +20,8 @@ public class DeleteEmailAddressDAO {
 
 			String EmailAddressLinkSQLStr = "UPDATE EmailAddressLink SET	RECORDSTATUS='cancel'	WHERE emailAddressLinkID= "
 					+ emailAddressLinkDetail.getEmailAddressLinkID();
-			DBConnection dbConnection = new DBConnection();
-			connection = dbConnection.getDBConnection();
+
+			connection = DBConnection.getDBConnection();
 
 			String emailAddressSQLStr = "UPDATE	EmailAddress	SET	RECORDSTATUS='cancel'	WHERE emailAddressID = "
 					+ emailAddressLinkDetail.getEmailAddressID();

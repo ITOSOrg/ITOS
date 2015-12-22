@@ -5,10 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 
 public class UpdateUserRoleLinkDAO {
@@ -17,7 +16,6 @@ public class UpdateUserRoleLinkDAO {
 
 		Connection connection = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 
 		int userRoleLinkVersionNoFromUpdate = userRoleLinkDetail.getVersionNo();
 
@@ -27,7 +25,7 @@ public class UpdateUserRoleLinkDAO {
 			userRoleLinkVersionNoFromDatabase++;
 
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 
 				String userRoleLinkSQLStr = "UPDATE	UserRoleLink SET username = ?, startDate = ?, endDate = ? WHERE userRoleLinkID = '"
 						+ userRoleLinkDetail.getUserRoleLinkID() + "'";
@@ -61,9 +59,8 @@ public class UpdateUserRoleLinkDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String userRoleLinkSQLStr = "SELECT	versionNo 	FROM	UserRoleLink	WHERE	 userRoleLinkID = '"
 					+ userRoleLinkDetail.getUserRoleLinkID() + "'";

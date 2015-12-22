@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import com.company.itos.core.util.dataaccess.DBConnection;
 
 import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.core.util.type.UniqueID;
 
@@ -17,12 +17,10 @@ public class CreatePropertiesDAO {
 		
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
-
 		Connection connection = null;
 		try {
 			
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String propertiesSQLStr = "INSERT INTO Properties ( propertyID, category, name, value, type, defaultValue, dynamic, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo) "
 					//+ "VALUES(PropertiesSEQ.nextval, ?, ?, ?, ?, ?, ?, 'Rahul', ?, 'Rahul', ?, 1)";

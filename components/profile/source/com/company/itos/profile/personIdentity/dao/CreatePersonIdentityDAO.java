@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class CreatePersonIdentityDAO {
@@ -15,12 +14,11 @@ public class CreatePersonIdentityDAO {
 		
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 		try {
 			
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			PreparedStatement preparedStatement = connection.prepareStatement("SELECT PersonIdentitySEQ.nextval FROM DUAL");
 			ResultSet resultSet = preparedStatement.executeQuery();

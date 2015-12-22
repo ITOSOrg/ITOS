@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -16,7 +15,6 @@ public class UpdateAddressDAO {
 
 		String returnMassegeStr = "";
 		Connection connection = null;
-		DBConnection dbConnection = new DBConnection();
 
 		AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
 
@@ -37,7 +35,7 @@ public class UpdateAddressDAO {
 
 				try {
 
-					connection = dbConnection.getDBConnection();
+					connection = DBConnection.getDBConnection();
 
 					String AddressSQLStr = "UPDATE Address SET streetOne = ?, streetTwo = ?, aptUnit = ?, city = ?, county = ?, state = ?, country = ?, zipCode = ? WHERE addressId = '"
 							+ addressLinkDetail.getAddressID() + "'";
@@ -81,9 +79,8 @@ public class UpdateAddressDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String addressLinkSQLStr = "SELECT	versionNo, relatedID, addressID	FROM	AddressLink	WHERE	 addressLinkID = '"
 					+ addressLinkDetail.getAddressLinkID() + "'";
@@ -110,9 +107,8 @@ public class UpdateAddressDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String addressSQLStr = "SELECT	versionNo	FROM	Address	WHERE	 addressID = '" + addressLinkDetail.getAddressID() + "'";
 

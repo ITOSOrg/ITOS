@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -17,7 +16,6 @@ public class ListPhoneNumberDAO {
 	public List<PhoneNumberLinkDetail> listAllPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetailkey) {
 		List<PhoneNumberLinkDetail> PhoneNumberLinkDetailList = new ArrayList<PhoneNumberLinkDetail>();
 
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		PhoneNumberLinkDetail phoneNumberLinkDetail = null;
@@ -32,7 +30,7 @@ public class ListPhoneNumberDAO {
 		PreparedStatement preparedStatementPhoneNumber = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String phoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE	RECORDSTATUS='Active' AND relatedID = ?";
 

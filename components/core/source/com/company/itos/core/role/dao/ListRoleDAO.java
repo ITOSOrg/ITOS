@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
-import com.company.itos.core.util.DBConnection;
 
 public class ListRoleDAO {
 
@@ -17,12 +16,11 @@ public class ListRoleDAO {
 
 		List<RoleDetail> roleDetailList = new ArrayList<RoleDetail>();
 
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String roleSQLStr = "SELECT * FROM Role";
 
@@ -36,7 +34,7 @@ public class ListRoleDAO {
 				roleDetail.setRecordStatus(resultSet.getString("recordStatus"));
 				roleDetail.setCreatedBy(resultSet.getString("createdBy"));
 				roleDetail.setLastModifiedBy(resultSet.getString("lastModifiedBy"));
-				roleDetail.setRoleID(resultSet.getInt("roleID"));
+				roleDetail.setRoleID(resultSet.getLong("roleID"));
 				roleDetail.setVersionNo(resultSet.getInt("versionNo"));
 				roleDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				roleDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));

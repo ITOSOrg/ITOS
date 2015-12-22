@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
@@ -18,7 +17,6 @@ public class UpdateEmailAddressDAO {
 		Connection connection = null;
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		// returnVersionNumber(emailAddressDetail);
 
 		EmailAddressDetail emailAddressDetail = emailAddressLinkDetail.getEmailAddressDetail();
@@ -41,7 +39,7 @@ public class UpdateEmailAddressDAO {
 
 				try {
 
-					connection = dbConnection.getDBConnection();
+					connection = DBConnection.getDBConnection();
 
 					String updateEmailAddressSqlStr = "UPDATE	EmailAddress	SET emailAddress = '" + emailAddressDetail.getEmailAddress()
 							+ "'" + " WHERE emailAddressID = '" + emailAddressLinkDetail.getEmailAddressID() + "'";
@@ -74,9 +72,8 @@ public class UpdateEmailAddressDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String emailAddressSQLStr = "SELECT	versionNo, relatedID, emailAddressID	FROM	EmailAddressLink	WHERE	 emailAddressLinkID = '"
 					+ emailAddressLinkDetail.getEmailAddressLinkID() + "'";
@@ -100,9 +97,8 @@ public class UpdateEmailAddressDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String emailAddressSQLStr = "SELECT	versionNo	FROM	EmailAddress	WHERE	 emailAddressID = '"
 					+ emailAddressLinkDetail.getEmailAddressID() + "'";

@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class UpdateRoleDAO {
 
@@ -16,7 +15,6 @@ public class UpdateRoleDAO {
 
 		Connection connection = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 
 		int roleVersionNoFromUpdate = roleDetail.getVersionNo();
 
@@ -27,7 +25,7 @@ public class UpdateRoleDAO {
 			roleVersionNoFromDatabase++;
 
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 
 				String roleSQLStr = "UPDATE	Role SET roleType = ?, workspace = ?, createdBy = ?, lastModifiedBy = ? WHERE roleID = '"
 						+ roleDetail.getRoleID() + "'";
@@ -56,9 +54,8 @@ public class UpdateRoleDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String roleSQLStr = "SELECT	versionNo	FROM	Role	WHERE	 roleID = '" + roleDetail.getRoleID() + "'";
 

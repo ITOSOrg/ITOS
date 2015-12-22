@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
-import com.company.itos.core.util.DBConnection;
 
 public class ListRoleForSinglePersonDAO {
 	
@@ -17,12 +16,11 @@ public class ListRoleForSinglePersonDAO {
 		
 		List<RoleDetail> singlePersonRolelist = new ArrayList<RoleDetail>();
 		
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String userRoleLinkSQLStr = "SELECT roleID FROM UserRoleLink WHERE username='"+userRoleLinkDetail.getUsername()+"'";
 			
@@ -31,7 +29,7 @@ public class ListRoleForSinglePersonDAO {
 			
 			RoleDetail roleDetailkey = new RoleDetail();
 			while(resultSetuserRoleLink.next()){
-				roleDetailkey.setRoleID(resultSetuserRoleLink.getInt("roleID"));
+				roleDetailkey.setRoleID(resultSetuserRoleLink.getLong("roleID"));
 			}
 
 			String roleSQLStr = "SELECT * FROM Role WHERE roleID = '"+roleDetailkey.getRoleID()+"'";
@@ -47,10 +45,11 @@ public class ListRoleForSinglePersonDAO {
 				roleDetail.setRecordStatus(resultSet.getString("recordStatus"));
 				roleDetail.setCreatedBy(resultSet.getString("createdBy"));
 				roleDetail.setLastModifiedBy(resultSet.getString("lastModifiedBy"));
-				roleDetail.setRoleID(resultSet.getInt("roleID"));
+				roleDetail.setRoleID(resultSet.getLong("roleID"));
 				roleDetail.setVersionNo(resultSet.getInt("versionNo"));
 				roleDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				roleDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));
+				roleDetail.setUserRoleLinkDetail(userRoleLinkDetail);
 				
 				singlePersonRolelist.add(roleDetail);
 			}

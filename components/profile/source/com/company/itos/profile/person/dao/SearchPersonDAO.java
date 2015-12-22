@@ -6,15 +6,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.PersonSearchCriteria;
 import com.company.itos.profile.person.pojo.PersonSearchDetails;
 
 public class SearchPersonDAO {
 
-	DBConnection dbConnection = new DBConnection();
 
 	Connection connection = null;
 
@@ -44,7 +42,7 @@ public class SearchPersonDAO {
 		if (!whereStr.equals(emptyStr)) {
 
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 				String personSQLStr = "SELECT * " + " FROM Person " + whereStr;
 
 				PreparedStatement preparedstatement = connection.prepareStatement(personSQLStr);

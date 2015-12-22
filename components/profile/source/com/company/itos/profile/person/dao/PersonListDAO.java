@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.sql.*;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
@@ -19,10 +18,9 @@ public class PersonListDAO {
 
 	public List<PersonDetail> listAllStudent() {
 		List<PersonDetail> personDetailList = new ArrayList<PersonDetail>();
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String personSQLStr = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='Active'";
 

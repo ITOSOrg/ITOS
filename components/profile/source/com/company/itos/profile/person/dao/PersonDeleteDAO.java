@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
@@ -22,7 +21,6 @@ public class PersonDeleteDAO {
 		/**
 		 * creating object of DBConnection class
 		 */
-		DBConnection dbConnection = new DBConnection();
 		String returnMassegeStr = "";
 
 		try {
@@ -30,7 +28,7 @@ public class PersonDeleteDAO {
 			 * get connected with database by calling getDBConnection() method
 			 * of DBConnection class
 			 */
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			String personSQLStr = "UPDATE	PERSON	SET	RECORDSTATUS='cancel'	WHERE	personID=" + personDetail.getPersonID();
 			/**
 			 * sending sql statement to the database

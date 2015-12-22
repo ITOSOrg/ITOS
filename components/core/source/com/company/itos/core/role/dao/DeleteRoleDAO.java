@@ -3,10 +3,9 @@ package com.company.itos.core.role.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class DeleteRoleDAO {
 	
@@ -18,8 +17,7 @@ public class DeleteRoleDAO {
 		Connection connection = null;
 		try {
 			
-			DBConnection dbConnection = new DBConnection();
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 	
 			String RoleSQLStr = "UPDATE Role SET recordStatus='cancel' WHERE roleID= '"+ roleDetail.getRoleID()+"'";
 			PreparedStatement preparedStatement = connection.prepareStatement(RoleSQLStr);

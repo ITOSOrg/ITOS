@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.company.itos.core.util.dataaccess.DBConnection;
 
 import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class ReadPropertiesDAO {
 	
@@ -16,8 +16,7 @@ public class ReadPropertiesDAO {
 		String returnMassegeStr = "";
 		try {
 
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			
 			String PropertiesSQLStr = "SELECT * FROM Properties WHERE propertyID = \'" + propertiesDetail.getPropertyID()
 					+ "\'";

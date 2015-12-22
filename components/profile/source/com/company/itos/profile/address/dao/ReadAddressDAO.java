@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -19,8 +18,7 @@ public class ReadAddressDAO {
 		
 		try {
 
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			
 			String addressLinkSQLStr = "SELECT * FROM AddressLink WHERE relatedID = \'" + addressLinkDetail.getRelatedID()
 				+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
@@ -87,8 +85,7 @@ public class ReadAddressDAO {
 		
 		try {
 
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			
 			String addressLinkSQLStr = "SELECT * FROM AddressLink WHERE addressLinkID = \'" + addressLinkDetail.getAddressLinkID()
 				+ "\' AND RECORDSTATUS='Active'";

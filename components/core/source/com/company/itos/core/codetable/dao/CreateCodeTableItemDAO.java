@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 
 public class CreateCodeTableItemDAO {
@@ -16,12 +15,11 @@ public class CreateCodeTableItemDAO {
 		
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 		try {
 			
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String CreateCodeTableItemSQLStr = "INSERT INTO CodeTableItem ( tableName, code, description, annotation, isEnabled, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo) "
 					+ "VALUES(?, ?, ?, ?, 1,  'Active', 'Rahul', ?, 'Rahul', ?, 1)";

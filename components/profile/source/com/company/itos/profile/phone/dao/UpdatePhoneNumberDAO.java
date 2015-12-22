@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
@@ -19,7 +18,6 @@ public class UpdatePhoneNumberDAO {
 		Connection connection = null;
 		ResultSet resultSet = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 
 		PhoneNumberDetail phoneNumberDetail = phoneNumberLinkDetail.getPhoneNumberDetail();
 
@@ -41,7 +39,7 @@ public class UpdatePhoneNumberDAO {
 				phoneNumberVersionNoFromDatabase++;
 
 				try {
-					connection = dbConnection.getDBConnection();
+					connection = DBConnection.getDBConnection();
 
 					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ? WHERE phoneNumberID = '"+phoneNumberLinkDetail.getPhoneNumberID()+"'";
 
@@ -79,9 +77,8 @@ public class UpdatePhoneNumberDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID,phoneNumberID	FROM	PhoneNumberLink	WHERE	 phoneNumberLinkID = '"
 					+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "'";
@@ -105,9 +102,8 @@ public class UpdatePhoneNumberDAO {
 
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String phoneNumberLinkSQLStr = "SELECT	versionNo, relatedID	FROM	PhoneNumberLink	WHERE	 phoneNumberID = '"
 					+ phoneNumberDetail.getPhoneNumberID() + "'";

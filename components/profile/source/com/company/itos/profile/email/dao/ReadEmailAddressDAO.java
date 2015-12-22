@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
@@ -23,8 +22,7 @@ public class ReadEmailAddressDAO {
 
 		try {
 
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementemailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 			resultSet = preparedStatementemailAddressLink.executeQuery();
@@ -75,8 +73,7 @@ public class ReadEmailAddressDAO {
 
 		try {
 
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementemailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 			resultSet = preparedStatementemailAddressLink.executeQuery();

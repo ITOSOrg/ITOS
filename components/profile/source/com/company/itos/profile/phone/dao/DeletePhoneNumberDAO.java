@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -25,8 +24,7 @@ public class DeletePhoneNumberDAO {
 			String phoneNumberLinkSQLStr = "UPDATE PhoneNumberLink SET	RECORDSTATUS='cancel'	WHERE phoneNumberLinkID= "
 					+ phoneNumberLinkDetail.getPhoneNumberLinkID();
 
-			DBConnection dbConnection = new DBConnection();
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
 			preparedStatementPhoneNumber.executeUpdate();

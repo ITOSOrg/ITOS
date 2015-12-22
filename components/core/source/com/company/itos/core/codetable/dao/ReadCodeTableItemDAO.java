@@ -4,22 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class ReadCodeTableItemDAO {
 
 	public String readCodeTableItem(CodeTableItemDetail codeTableItemDetail) {
 
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String codeTableItemSQLStr = "SELECT * FROM CodeTableItem WHERE code = \'" + codeTableItemDetail.getCode()
 					+ "\' AND recordStatus='Active'";
@@ -53,11 +51,10 @@ public class ReadCodeTableItemDAO {
 
 	public void readCodeTableItemDescription(CodeTableItemKey codeTableItemKey) {
 
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			String codeTableItemSQLStr = "SELECT description FROM CodeTableItem WHERE tableName = '"+codeTableItemKey.getTableName()+"' AND code = '"+codeTableItemKey.getCode()+"' ";
 

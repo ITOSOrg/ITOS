@@ -5,11 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.core.util.JavaUtildates;
 
 public class CreateUserRoleLinkDAO {
@@ -18,13 +17,11 @@ public class CreateUserRoleLinkDAO {
 
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
-
 		Connection connection = null;
 
 		try {
 
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT UsersRoleLinkSEQ.nextval FROM DUAL");
 			ResultSet resultSet2 = preparedStatement2.executeQuery();

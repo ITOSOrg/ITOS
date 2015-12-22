@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
@@ -29,10 +28,9 @@ public class PersonUpdateDAO {
 
 			versionNoFromDatabase++;
 
-			DBConnection dbConnection = new DBConnection();
 
 			try {
-				connection = dbConnection.getDBConnection();
+				connection = DBConnection.getDBConnection();
 				String personSQLStr = "UPDATE	PERSON	SET title='" + personDetail.getTitle() + "',	firstName='"
 						+ personDetail.getFirstName() + "', middleName='" + personDetail.getMiddleName() + "', lastName='"
 						+ personDetail.getLastName() + "', gender='" + personDetail.getGender() + "', dateOfBirth = ? , versionNo ='"
@@ -63,9 +61,7 @@ public class PersonUpdateDAO {
 
 		int versionNumber = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
-
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			String personSQLStr = "SELECT	versionNo	FROM	PERSON	WHERE	 personID='" + personDetail.getPersonID() + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
@@ -84,9 +80,8 @@ public class PersonUpdateDAO {
 	public void versionNumberIncreament(PersonDetail personDetail) {
 
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			// PersonDetail personDetail = new PersonDetail();
 			String PersonSQLStr = "UPDATE	PERSON	SET	versionNo	=	versionNo+1	WHERE	personID='" + personDetail.getPersonID() + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(PersonSQLStr);

@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdateCodeTableItemDAO {
@@ -16,7 +15,6 @@ public class UpdateCodeTableItemDAO {
 		
 		Connection connection = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		
 		int codeTableItemVersionNoFromUpdate = codeTableItemDetail.getVersionNo();
 		
@@ -28,7 +26,7 @@ public class UpdateCodeTableItemDAO {
 			
 			
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String codeTableItemSQLStr = "UPDATE	CodeTableItem	SET tableName = ?, code = ?, description = ?, annotation = ?, isEnabled = ?, recordStatus = ?" + " WHERE code = '" + codeTableItemDetail.getCode() + "'";
 			
@@ -61,9 +59,8 @@ public int returnVersionNumberFromCodeTableItem(CodeTableItemDetail codeTableIte
 		
 		int versionNo = 0;
 		try {
-			DBConnection dbConnection = new DBConnection();
 
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 			
 			String codeTableItemSQLStr = "SELECT	versionNo	FROM	CodeTableItem	WHERE	 code = '"
 					+ codeTableItemDetail.getCode() + "'";

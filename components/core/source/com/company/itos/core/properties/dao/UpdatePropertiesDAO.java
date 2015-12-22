@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdatePropertiesDAO {
@@ -16,7 +15,6 @@ public class UpdatePropertiesDAO {
 		
 		Connection connection = null;
 		String returnMassegeStr = "";
-		DBConnection dbConnection = new DBConnection();
 		
 		int propertiesVersionNoFromUpdate = propertiesDetail.getVersionNo();
 		
@@ -27,7 +25,7 @@ public class UpdatePropertiesDAO {
 			propertiesVersionNoFromDatabase++;
 		
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String personIdentitySQLStr = "UPDATE	Properties	SET category = ?, name = ?, value = ?, type = ?, defaultValue = ?, dynamic = ?, createdBy = ?, 	lastModifiedBy = ?" + " WHERE propertyID = '" + propertiesDetail.getPropertyID() + "'";
 			

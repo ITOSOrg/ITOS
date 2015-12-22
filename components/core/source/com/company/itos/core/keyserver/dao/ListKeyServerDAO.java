@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.keyserver.pojo.KeyServerDetail;
-import com.company.itos.core.util.DBConnection;
 
 public class ListKeyServerDAO {
 	
@@ -16,11 +15,10 @@ public class ListKeyServerDAO {
 			
 		List<KeyServerDetail> KeyServerList = new ArrayList<KeyServerDetail>();
 		
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String KeyServerSQLStr = "SELECT * FROM KeyServer WHERE RECORDSTATUS='Active'";
 			

@@ -4,237 +4,251 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    
+
     <package name="Core" namespace="/" extends="struts-default">
-    
+
         <result-types>
-            <result-type name="tiles"
-                class="org.apache.struts2.views.tiles.TilesResult" />
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
-     
-        <action name="CreateProperties">        
+
+        <action name="CreateProperties">
             <result type="tiles">CreateProperties</result>
         </action>
-        
-        <action name="CreatePropertiesSubmit" class="com.company.itos.core.properties.actions.CreatePropertiesAction">        
+
+        <action name="CreatePropertiesSubmit" class="com.company.itos.core.properties.actions.CreatePropertiesAction">
             <result name="success" type="redirect">
                 <param name="location">/ListProperties</param>
             </result>
             <result name="error">/components/core/jsp/properties/CreateProperties.jsp</result>
         </action>
-        
-        <action name="ListProperties" class="com.company.itos.core.properties.actions.ListPropertiesAction">        
-            
+
+        <action name="ListProperties" class="com.company.itos.core.properties.actions.ListPropertiesAction">
+
             <result name="success" type="tiles">ListProperties</result>
             <result name="error">/index.jsp</result>
-      
+
         </action>
-        
-        <action name="ReadProperties" class="com.company.itos.core.properties.actions.ReadPropertiesAction">        
-            
+
+        <action name="ReadProperties" class="com.company.itos.core.properties.actions.ReadPropertiesAction">
+
             <result name="success" type="tiles">ReadProperties</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateProperties</result>
             <result name="error" type="redirect">
                 <param name="location">/ListProperties</param>
             </result>
-       
+
         </action>
-        
-        <action name="UpdateProperties">        
-            
-          <result type="tiles">UpdateProperties</result>
-       
+
+        <action name="UpdateProperties">
+
+            <result type="tiles">UpdateProperties</result>
+
         </action>
-        
-        <action name="UpdatePropertiesSubmit" class="com.company.itos.core.properties.actions.UpdatePropertiesAction">        
-            
-           <result name="success" type="redirect">
+
+        <action name="UpdatePropertiesSubmit" class="com.company.itos.core.properties.actions.UpdatePropertiesAction">
+
+            <result name="success" type="redirect">
                 <param name="location">/ListProperties</param>
             </result>
             <result name="error" type="tiles">UpdateProperties</result>
-       
+
         </action>
-        
-        
-        
-        <action name="CreateKeyServer">        
+
+
+
+        <action name="CreateKeyServer">
             <result type="tiles">CreateKeyServer</result>
         </action>
-        
-        <action name="CreateKeyServerSubmit" class="com.company.itos.core.keyserver.actions.CreateKeyServerAction">        
+
+        <action name="CreateKeyServerSubmit" class="com.company.itos.core.keyserver.actions.CreateKeyServerAction">
             <result name="success" type="redirect">
                 <param name="location">/ListKeyServer</param>
             </result>
             <result name="error" type="tiles">CreateKeyServer</result>
         </action>
-        
-        <action name="ListKeyServer" class="com.company.itos.core.keyserver.actions.ListKeyServerAction">        
-            
+
+        <action name="ListKeyServer" class="com.company.itos.core.keyserver.actions.ListKeyServerAction">
+
             <result name="success" type="tiles">ListKeyServer</result>
             <result name="error">/index.jsp</result>
-      
+
         </action>
-        
-         <action name="ReadKeyServer" class="com.company.itos.core.keyserver.actions.ReadKeyServerAction">        
-            
+
+        <action name="ReadKeyServer" class="com.company.itos.core.keyserver.actions.ReadKeyServerAction">
+
             <result name="success" type="tiles">ReadKeyServer</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateKeyServer</result>
             <result name="error" type="redirect">
                 <param name="location">/ListKeyServer</param>
             </result>
-       
+
         </action>
-        
-        <action name="UpdateKeyServer" class="com.company.itos.core.keyserver.actions.UpdateKeyServerAction">        
-            
-           <result name="success" type="redirect">
+
+        <action name="UpdateKeyServer" class="com.company.itos.core.keyserver.actions.UpdateKeyServerAction">
+
+            <result name="success" type="redirect">
                 <param name="location">/ListKeyServer</param>
             </result>
             <result name="error" type="tiles">UpdateKeyServer</result>
-       
+
         </action>
-        
-        
-        
-        
-        
-         <action name="CreateRole">        
+
+
+
+
+
+        <action name="CreateRole">
             <result type="tiles">CreateRole</result>
         </action>
-        
-        <action name="UpdateRole">        
-            
-          <result type="tiles">UpdateRole</result>
-       
+
+        <action name="UpdateRole">
+
+            <result type="tiles">UpdateRole</result>
+
         </action>
-        
-        <action name="UpdateRoleSubmit" class="com.company.itos.core.role.action.UpdateRoleAction">        
-            
-           <result name="success" type="redirect">
+
+        <action name="UpdateRoleSubmit" class="com.company.itos.core.role.action.UpdateRoleAction">
+            <result name="success" type="redirect">
                 <param name="location">/ListRoles</param>
             </result>
             <result name="error" type="tiles">UpdateRole</result>
-       
         </action>
-        
-        
-        
-        <action name="ListRoles" class="com.company.itos.core.role.action.ListRoleAction">        
-            
+
+        <action name="UpdatePersonRoleSubmit" class="com.company.itos.core.role.action.UpdateRoleAction">
+            <result name="success" type="redirect">
+                <param name="location">/ListRoleForSinglePerson</param>
+                <param name="userRoleLinkDetail.username">%{#parameters['roleDetail.userRoleLinkDetail.username']}</param>
+            </result>
+            <result name="error" type="tiles">UpdateRole</result>
+        </action>
+
+
+
+        <action name="ListRoles" class="com.company.itos.core.role.action.ListRoleAction">
+
             <result name="success" type="tiles">ListRoles</result>
             <result name="error">/index.jsp</result>
-      
+
         </action>
-        
-        <action name="CreateRoleSubmit" class="com.company.itos.core.role.action.CreateRoleAction">        
+
+        <action name="CreateRoleSubmit" class="com.company.itos.core.role.action.CreateRoleAction">
             <result name="success" type="redirect">
                 <param name="location">/ListRoles</param>
             </result>
             <result name="error" type="tiles">CreateRole</result>
         </action>
-        
-        <action name="ReadRole" class="com.company.itos.core.role.action.ReadRoleAction">        
-            
+
+        <action name="ReadRole" class="com.company.itos.core.role.action.ReadRoleAction">
+
             <result name="success" type="tiles">ReadRole</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateRole</result>
             <result name="error" type="redirect">
                 <param name="location">/ListRoles</param>
             </result>
-       
         </action>
-        
-         <action name="DeleteRole" class="com.company.itos.core.role.action.DeleteRoleAction">        
-            
-          <result name="success" type="redirect">
-             <param name="location">/ListRoles</param>
-          </result>
+
+        <action name="ReadPersonRole" class="com.company.itos.core.role.action.ReadPersonRoleAction">
+
+            <result name="success" type="tiles">ReadPersonRole</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdatePersonRoleAction</result>
+            <result name="error" type="redirect">
+                <param name="location">/ListRoleForSinglePerson</param>
+            </result>
+
         </action>
-        
-        <action name="ListRoleForSinglePerson" class="com.company.itos.core.role.action.ListRoleForSinglePersonAction">        
-            
+
+        <action name="DeleteRole" class="com.company.itos.core.role.action.DeleteRoleAction">
+
+            <result name="success" type="redirect">
+                <param name="location">/ListRoles</param>
+            </result>
+        </action>
+
+        <action name="ListRoleForSinglePerson" class="com.company.itos.core.role.action.ListRoleForSinglePersonAction">
+
             <result name="success" type="tiles">ListRoleForSinglePerson</result>
             <result name="error">/index.jsp</result>
-      
+
         </action>
-        
-        
+
+
         <action name="ListCodeTable" class="com.company.itos.core.codetable.action.ListCodeTableHeaderAction">
-        
-        <result name="success" type="tiles">ListCodeTable</result>
-        <result name="error">/index.jsp</result>
-        
+
+            <result name="success" type="tiles">ListCodeTable</result>
+            <result name="error">/index.jsp</result>
+
         </action>
-        
-        <action name="CreateCodeTableHeader">        
+
+        <action name="CreateCodeTableHeader">
             <result type="tiles">CreateCodeTableHeader</result>
         </action>
-        
-        <action name="CreateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableHeaderAction">        
+
+        <action name="CreateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableHeaderAction">
             <result name="success" type="redirect">
                 <param name="location">/ListCodeTable</param>
             </result>
             <result name="error">CreateCodeTableHeader</result>
         </action>
-        
-        <action name="ReadCodeTableHeader" class="com.company.itos.core.codetable.action.ReadCodeTableHeaderAction">        
-            
+
+        <action name="ReadCodeTableHeader" class="com.company.itos.core.codetable.action.ReadCodeTableHeaderAction">
+
             <result name="success" type="tiles">ReadCodeTableHeader</result>
             <result name="SENTTOUPDATE" type="tiles">UpdateCodeTableHeader</result>
             <result name="error" type="redirect">
                 <param name="location">/ListCodeTable</param>
             </result>
-       
+
         </action>
-        
-        <action name="UpdateCodeTableHeader">        
-            
-          <result type="tiles">UpdateCodeTableHeader</result>
-       
+
+        <action name="UpdateCodeTableHeader">
+
+            <result type="tiles">UpdateCodeTableHeader</result>
+
         </action>
-        
-        <action name="UpdateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableHeaderAction">        
-            
-           <result name="success" type="redirect">
+
+        <action name="UpdateCodeTableHeaderSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableHeaderAction">
+
+            <result name="success" type="redirect">
                 <param name="location">/ListCodeTable</param>
             </result>
             <result name="error" type="tiles">UpdateCodeTableHeader</result>
-       
+
         </action>
-        
-        
-        <action name="CreatecodeTableItem">        
-            
-          <result type="tiles">CreatecodeTableItem</result>
-       
+
+
+        <action name="CreatecodeTableItem">
+
+            <result type="tiles">CreatecodeTableItem</result>
+
         </action>
-        
+
         <action name="CreateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.CreateCodeTableItemAction">
-           <result name="success" type="redirect">
-               <param name="location">/ReadCodeTableHeader</param>
+            <result name="success" type="redirect">
+                <param name="location">/ReadCodeTableHeader</param>
                 <param name="codeTableHeaderDetail.tableName">${codeTableItemDetail.tableName}</param>
             </result>
-        <result name="error">/index.jsp</result>
-        
+            <result name="error">/index.jsp</result>
+
         </action>
-        
-          <action name="ReadCodeTableItem" class="com.company.itos.core.codetable.action.ReadCodeTableItemAction">
-        <result name="success" type="tiles">ReadCodeTableItem</result>
-        <result name="SENTTOUPDATE" type="tiles">UpdateCodeTableItem</result>
-        <result name="error">/index.jsp</result>
-        
+
+        <action name="ReadCodeTableItem" class="com.company.itos.core.codetable.action.ReadCodeTableItemAction">
+            <result name="success" type="tiles">ReadCodeTableItem</result>
+            <result name="SENTTOUPDATE" type="tiles">UpdateCodeTableItem</result>
+            <result name="error">/index.jsp</result>
+
         </action>
-        
-        <action name="UpdateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableItemAction">        
-            
-           <result name="success" type="redirect">
-           
+
+        <action name="UpdateCodeTableItemSubmit" class="com.company.itos.core.codetable.action.UpdateCodeTableItemAction">
+
+            <result name="success" type="redirect">
+
                 <param name="location">/ReadCodeTableHeader</param>
-                 <param name="codeTableHeaderDetail.tableName">${codeTableItemDetail.tableName}</param>
+                <param name="codeTableHeaderDetail.tableName">${codeTableItemDetail.tableName}</param>
             </result>
             <result name="error" type="tiles">UpdateCodeTableItem</result>
         </action>
-       
-         
-        
+
+
+
     </package>
 </struts>

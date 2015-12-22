@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.company.itos.core.util.DBConnection;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class ListPersonIdentityDAO {
@@ -16,11 +15,10 @@ public class ListPersonIdentityDAO {
 		
 		List<PersonIdentityDetail> personIdentityDetailList = new ArrayList<PersonIdentityDetail>();
 		
-		DBConnection dbConnection = new DBConnection();
 		Connection connection = null;
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 			
 			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personID = '"+personIdentityDetailkey.getPersonID()+"' AND RECORDSTATUS='Active'";
 			

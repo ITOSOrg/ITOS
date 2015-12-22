@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -16,14 +15,13 @@ public class CreateAddressDAO {
 
 		String returnMassegeStr = "";
 
-		DBConnection dbConnection = new DBConnection();
 
 		Connection connection = null;
 
 		AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
 
 		try {
-			connection = dbConnection.getDBConnection();
+			connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementAddress = connection.prepareStatement("SELECT AddressSEQ.nextval FROM DUAL");
 			PreparedStatement preparedStatementAddressLink = connection.prepareStatement("SELECT AddressLinkSEQ.nextval FROM DUAL");

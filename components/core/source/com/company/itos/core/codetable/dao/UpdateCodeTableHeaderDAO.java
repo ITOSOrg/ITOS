@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableHeaderDetail;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 
 public class UpdateCodeTableHeaderDAO {
 			
@@ -26,8 +25,7 @@ public class UpdateCodeTableHeaderDAO {
 					CodeTableHeaderVersionNoFromDatabase++;
 					
 				try {
-					DBConnection dbConnection = new DBConnection();
-					connection = dbConnection.getDBConnection();
+					connection = DBConnection.getDBConnection();
 					
 					String codeTableHeaderSQLStr = "UPDATE	CodeTableHeader	SET tableName = ?, defaultCode = ?, recordStatus = ?, versionNo = ?, createdBy = ?, lastModifiedBy = ? "+ "WHERE tableName = '" + codeTableHeaderDetail.getTableName() + "'";
 					
@@ -58,9 +56,8 @@ public class UpdateCodeTableHeaderDAO {
 				
 				int versionNo = 0;
 				try {
-					DBConnection dbConnection = new DBConnection();
 
-					Connection connection = dbConnection.getDBConnection();
+					Connection connection = DBConnection.getDBConnection();
 					
 					String codeTableHeaderSQLStr = "SELECT	versionNo	FROM	CodeTableHeader	WHERE	 tableName = '"
 							+ codeTableHeaderDetail.getTableName() + "'";

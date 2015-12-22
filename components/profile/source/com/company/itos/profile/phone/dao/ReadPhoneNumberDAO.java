@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
-import com.company.itos.core.util.DBConnection;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -22,8 +21,7 @@ public class ReadPhoneNumberDAO {
 			// PhoneNumberDetail phoneNumberDetail =
 			// phoneNumberLinkDetail.getPhoneNumberDetail();
 			PhoneNumberDetail phoneNumberDetail = null;
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(PhoneNumberLinkSQLStr);
 			ResultSet resultSetPhoneNumberLink = preparedStatementPhoneNumberLink.executeQuery();
@@ -76,8 +74,7 @@ public class ReadPhoneNumberDAO {
 			// PhoneNumberDetail phoneNumberDetail =
 			// phoneNumberLinkDetail.getPhoneNumberDetail();
 			PhoneNumberDetail phoneNumberDetail = null;
-			DBConnection dbConnection = new DBConnection();
-			Connection connection = dbConnection.getDBConnection();
+			Connection connection = DBConnection.getDBConnection();
 
 			Statement statementPhoneNumberLink = connection.createStatement();
 			ResultSet resultSetPhoneNumberLink = statementPhoneNumberLink.executeQuery(PhoneNumberLinkSQLStr);

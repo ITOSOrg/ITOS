@@ -24,16 +24,7 @@
 				<td>PrimaryInd :</td>
 				<td><s:textfield type="text" name="emailAddressLinkDetail.primaryInd"/></td>
 			</tr>
-			<!--  <tr>
-				<td>Start Date :</td>
-				<td><s:date name="emailAddressLinkDetail.startDate" var="startDate"/>
-                    <s:date name="emailAddressLinkDetail.startDate" value="%{#startDate}"/>                
-                </td>
-			</tr>
-			<tr>
-				<td>End Date :</td>
-				<td><s:date type="text" name="emailAddressLinkDetail.endDate"  /></td>
-			</tr>-->
+			
 			<tr>
 
 				<td><s:submit  type="submit" value="Submit"/>

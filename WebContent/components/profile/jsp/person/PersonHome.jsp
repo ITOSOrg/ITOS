@@ -87,11 +87,12 @@
                            <td><s:property value="personDetail.registrationDate"/></td>
                            
                            <td>
-                           <s:url var="updatePersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
-                                <s:param name="personDetail.personID" value="%{personID}"/>
+                            
+                            <s:url var="updatePersonHomeURL" action="/ITOS/ReadPerson" escapeAmp="false">
+                                <s:param name="personDetail.personID" value="%{personDetail.personID}"/>
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>
-                            <s:a href="%{updatePersonHomeURL}">Update</s:a>
+                            <s:a href="%{updatePersonHomeURL}"> Update</s:a>
                             
                            </td>
 

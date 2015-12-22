@@ -105,6 +105,7 @@
         <action name="CreateEmailAddressSubmit" class="com.company.itos.profile.email.action.CreateEmailAddressAction">
             <result name="success" type="redirect">
                 <param name="location">/ListEmailAddress</param>
+                <param name="emailAddressLinkDetail.relatedID">${emailAddressLinkDetail.relatedID}</param>
             </result>
             <result name="error">/index.jsp</result>
         </action>
@@ -286,8 +287,8 @@
 
         <action name="DeleteAddress" class="com.company.itos.profile.address.action.DeleteAddressAction">
             <result name="success" type="redirect">
-                <param name="location">/ListAddress</param>
                 <param name="addressLinkDetail.relatedID">${addressLinkDetail.relatedID}</param>
+                <param name="location">/ListAddress</param>
             </result>
             <result name="error">/index.jsp</result>
         </action>

@@ -10,46 +10,48 @@
 <body>
 	
 	<s:form
-		action="/ITOS/PersonUpdate"
+		action="/ITOS/UpdatePersonSubmit"
 		method="POST">
 
 		
 		<table>
 			<tr>
 				<td>Title :</td>
-				<td><input type="text" name="personDetail.title"
-					></td>
+				<td><s:textfield name="personDetail.title"
+					/></td>
 			</tr>
 
 			<tr>
 				<td>First Name :</td>
-				<td><input type="text" name="personDetail.firstName"
-					></td>
+				<td><s:textfield name="personDetail.firstName"
+					/></td>
 			</tr>
 			<tr>
 				<td>Middle Name:</td>
-				<td><input type="text" name="personDetail.middleName"
-					></td>
+				<td><s:textfield name="personDetail.middleName"
+					/></td>
 			</tr>
 			<tr>
 				<td>Last Name:</td>
-				<td><input type="text" name="personDetail.lastName"
-					></td>
+				<td><s:textfield name="personDetail.lastName"
+					/></td>
 			</tr>
 			<tr>
 				<td>Gender:</td>
-				<td><input type="text" name="personDetail.gender"
-					></td>
+				<td><s:textfield name="personDetail.gender"
+					/></td>
 			</tr>
 			<tr>
 				<td>Date Of Birth:</td>
-				<td><input type="text" name="personDetail.dateOfBirth"
-					></td>
+				<td><s:textfield name="personDetail.dateOfBirth"
+					/></td>
 			</tr>
 
 			<tr>
 
-				<td><input type="submit" value="submit">
+				<td><s:submit type="submit" value="submit"/>
+                <s:hidden name="personDetail.personID"></s:hidden>
+                <s:hidden name="personDetail.versionNo"></s:hidden>
 
 			</tr>
 

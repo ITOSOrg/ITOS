@@ -24,7 +24,7 @@ public class PersonListDAO {
 		try {
 			connection = dbConnection.getDBConnection();
 
-			String personSQLStr = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='active'";
+			String personSQLStr = "SELECT * FROM PERSON	WHERE	RECORDSTATUS='Active'";
 
 			// statement = connection.createStatement();
 

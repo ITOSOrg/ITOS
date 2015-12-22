@@ -30,6 +30,7 @@ $(document).ready(function()
 
 	<s:form name="Registration" action="/ITOS/CreateUserSubmit"
 		method="POST">
+        <table>
           
 			
 			<!-- update Person table parameter -->
@@ -322,8 +323,7 @@ $(document).ready(function()
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<s:textfield type="radio" name="personDetail.emailAddressLinkDetail.primaryInd" value="True" checked/> True
-        			<s:textfield type="radio" name="personDetail.emailAddressLinkDetail.primaryInd" value="False"/> False
+                <s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }" value="1"></s:radio>
 					<!--  <s:textfield type="text" name="primaryInd">-->
 				</td>
 			</tr>
@@ -368,9 +368,7 @@ $(document).ready(function()
 		<tr>
 		<td> PrimaryInd:</td>
 		<td>
-			<s:textfield type="radio" name="personDetail.phoneNumberLinkDetail.primaryIndP" value="True" checked/> True
-        	<s:textfield type="radio" name="personDetail.phoneNumberLinkDetail.primaryIndP" value="False"/> False
-		<!-- <s:textfield type="text" name="primaryInd"> -->
+			<s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }" value="1"></s:radio>
 		</td>
 		</tr>
 		<tr>
@@ -444,9 +442,7 @@ $(document).ready(function()
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<s:textfield type="radio" name="personDetail.addressLinkDetail.primaryIndA" value="True" checked/> True
-        			<s:textfield type="radio" name="personDetail.addressLinkDetail.primaryIndA" value="False"/> False
-					<!--  <s:textfield type="text" name="primaryInd">-->
+					<s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }" value="1"></s:radio>
 				</td>
 			</tr>
 			<tr>
@@ -467,9 +463,7 @@ $(document).ready(function()
 			<tr>
 				<td>PrimaryInd :</td>
 				<td>
-					<s:textfield type="radio" name="personDetail.personIdentityDetail.primaryIndI" value="True" checked/> True
-        			<s:textfield type="radio" name="personDetail.personIdentityDetail.primaryIndI" value="False"/> False
-					<!--  <s:textfield type="text" name="primaryInd">-->
+					<s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }" value="1"></s:radio>
 				</td>
 			</tr>
 			<tr>
@@ -509,13 +503,13 @@ $(document).ready(function()
 
 		
 		</table>
-
-	</s:form>
-	<form action="/ITOS/PersonLogOut" method="POST">
+        
+        </s:form>
+        
+	<s:form action="/ITOS/PersonLogOut" method="POST">
 		<br> <s:submit type="submit" value="Cancel"/>
-	</form>
+	</s:form>
 
-		</fieldset>
 
 </body>
 </html>

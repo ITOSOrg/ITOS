@@ -6,5 +6,9 @@
 --------------------------------------------------------
 
 INSERT INTO UserRoleLink(userRoleLinkID,    username,   roleID ,    startDate,						    endDate,    comments ,		recordStatus ,  versionNo)
-                  VALUES(		8001,		'rk',		9001,	    to_date('01-jan-15', 'DD-MON-RR'),	NULL,		'Comment',	    'True',			1);
+                  VALUES(		8001,		'rk',		9001,	    to_date('01-jan-15', 'DD-MON-RR'),	NULL,		'Comment',	    'Active',			1);
+
+
+INSERT INTO UserRoleLink(userRoleLinkID,    username,   roleID ,    startDate,						    endDate,    comments ,		recordStatus ,  versionNo)
+                  VALUES(		8002,		'amarb',		9002,	 to_date('01-jan-15', 'DD-MON-RR'),	NULL,		'Comment',	    'Active',			1);
 

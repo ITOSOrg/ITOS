@@ -51,7 +51,7 @@ public class UpdateRoleAction extends ActionSupport implements SessionAware, Ser
 		UpdateRoleDAO updateRoleDAO = new UpdateRoleDAO();
 		String returnMassegeStr = updateRoleDAO.UpdateRole(roleDetail);
 		
-		session.put("roleDetail", roleDetail);
+		//session.put("roleDetail", roleDetail);
 		
 		return SUCCESS;
 	}

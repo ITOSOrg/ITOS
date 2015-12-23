@@ -117,9 +117,9 @@
         <action name="UpdatePersonRoleSubmit" class="com.company.itos.core.role.action.UpdateRoleAction">
             <result name="success" type="redirect">
                 <param name="location">/ListRoleForSinglePerson</param>
-                <param name="userRoleLinkDetail.username">%{#parameters['roleDetail.userRoleLinkDetail.username']}</param>
+                <param name="userRoleLinkDetail.username">%{roleDetail.userRoleLinkDetail.username}</param>
             </result>
-            <result name="error" type="tiles">UpdateRole</result>
+            <result name="error" type="tiles">/index</result>
         </action>
 
 

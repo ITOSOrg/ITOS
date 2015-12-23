@@ -62,7 +62,7 @@
                             
                             <s:url var="UpdateRoleURL" action="/ITOS/ReadPersonRole" escapeAmp="false">
                                 <s:param name="roleDetail.roleID" value="%{roleID}"/>
-                                <s:param name="userRoleLinkDetail.username" value="%{userRoleLinkDetail.username}"/>
+                                <s:param name="roleDetail.userRoleLinkDetail.username" value="%{userRoleLinkDetail.username}"/>
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>
                             <s:a href="%{UpdateRoleURL}">Update</s:a>

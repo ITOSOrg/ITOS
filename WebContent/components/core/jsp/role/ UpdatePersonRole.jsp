@@ -48,8 +48,8 @@
 				<td><s:textfield  type="submit" value="Submit"/>
 				<s:hidden name="roleDetail.roleID"></s:hidden> 
 				<s:hidden name="roleDetail.versionNo"></s:hidden>
-				<!--<s:hidden name="roleDetail.userRoleLinkDetail.username"></s:hidden>-->
-                <s:hidden name="userRoleLinkDetail.username" value="%{#parameters['roleDetail.userRoleLinkDetail.username']}"/>
+				<s:hidden name="roleDetail.userRoleLinkDetail.username"></s:hidden>
+                <!--<s:hidden name="userRoleLinkDetail.username" value="%{#parameters['roleDetail.userRoleLinkDetail.username']}"/>-->
 				</td>
 
 			</tr>

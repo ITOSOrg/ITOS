@@ -80,7 +80,7 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 		String returnMassegeStr =	personHomeDAO.readPersonDetail(personDetail);
 		
 	
-		session.put("personDetail", personDetail);
+		//session.put("personDetail", personDetail);
 		//session.put("personID", personID);
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";

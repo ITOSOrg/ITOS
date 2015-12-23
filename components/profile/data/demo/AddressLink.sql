@@ -11,3 +11,7 @@ INSERT INTO AddressLink (addressLinkID ,	relatedID ,	addressID ,		typeCode ,		pr
 				
 INSERT INTO AddressLink (addressLinkID ,	relatedID ,	addressID ,		typeCode ,		primaryInd ,	startDate ,							endDate ,	recordStatus ,	comments )
 				VALUES ( 302,     			102,			202,		'Primary',	  		'True',		to_date('01-jan-15', 'DD-MON-RR'),	null,		'Active',		'comment');
+
+				
+INSERT INTO AddressLink (addressLinkID ,	relatedID ,	addressID ,		typeCode ,		primaryInd ,	startDate ,							endDate ,	recordStatus ,	comments )
+				VALUES ( 303,     			103,			203,		'Primary',	  		'True',		to_date('01-jan-15', 'DD-MON-RR'),	null,		'Active',		'comment');

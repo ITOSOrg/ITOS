@@ -12,3 +12,8 @@ INSERT INTO EmailAddress(emailAddressID ,	emailAddress , 		recordStatus,  versio
 INSERT INTO EmailAddress(emailAddressID ,	emailAddress , 		recordStatus,  versionNo)
               VALUES( 702,				'amar@gmail.com',	'Active',		1);
 				
+
+              
+INSERT INTO EmailAddress(emailAddressID ,	emailAddress , 		recordStatus,  versionNo)
+              VALUES( 703,				'James@gmail.com',	'Active',		1);
+				

@@ -6,8 +6,12 @@
 --------------------------------------------------------
 
 INSERT INTO PhoneNumberLink(phoneNumberLinkID,	relatedID ,	phoneNumberID ,	typeCode ,		primaryInd ,	startDate ,								endDate ,	comments ,			recordStatus ,		versionNo)
-             VALUES(			601,			101,		501,			'primary',		'True',			to_date('01-aug-11', 'DD-MON-RR'),		NULL,		'Comments',			'Active',				1);			   
+             VALUES(			601,			101,		501,			'Primary',		'True',			to_date('01-aug-11', 'DD-MON-RR'),		NULL,		'Comments',			'Active',				1);			   
 
              
 INSERT INTO PhoneNumberLink(phoneNumberLinkID,	relatedID ,	phoneNumberID ,	typeCode ,		primaryInd ,	startDate ,								endDate ,	comments ,			recordStatus ,		versionNo)
-             VALUES(			602,			102,		502,			'primary',		'True',			to_date('01-aug-11', 'DD-MON-RR'),		NULL,		'Comments',			'Active',				1);			   
+             VALUES(			602,			102,		502,			'Primary',		'True',			to_date('01-aug-11', 'DD-MON-RR'),		NULL,		'Comments',			'Active',				1);			   
+
+             
+INSERT INTO PhoneNumberLink(phoneNumberLinkID,	relatedID ,	phoneNumberID ,	typeCode ,		primaryInd ,	startDate ,								endDate ,	comments ,			recordStatus ,		versionNo)
+             VALUES(			603,			103,		503,			'Primary',		'True',			to_date('01-aug-11', 'DD-MON-RR'),		NULL,		'Comments',			'Active',				1);			   

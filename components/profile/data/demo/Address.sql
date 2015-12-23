@@ -11,3 +11,7 @@ INSERT INTO Address(	addressId , 	streetOne , 		streetTwo , 		aptUnit , 		city ,
 
 INSERT INTO Address(addressId , 	streetOne , 		streetTwo , 		aptUnit , 		city , 			county , 	    state , 		country ,   zipCode ,  versionNo )
 			VALUES (202,			'84th Street',		 'Rockledge Rd',	  406,			'Lincoln',		'Horward',		'Nebraska',	    'USA',		4268,		1);
+
+			
+INSERT INTO Address(addressId , 	streetOne , 		streetTwo , 		aptUnit , 		city , 			county , 	    state , 		country ,   zipCode ,  versionNo )
+			VALUES (203,			'84th Street',		 'Chartson place',	  910,			'Lincoln',		'Horward',		'Nebraska',	    'USA',		4268,		1);

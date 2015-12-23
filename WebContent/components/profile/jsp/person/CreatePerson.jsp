@@ -17,7 +17,7 @@
 	});
 </script>
 </head>
-<body bgcolor="	#F4A460">
+<body >
     <h> Registration Form</h>
     <br>
     <br>
@@ -29,12 +29,7 @@
             <!-- Registration Form -->
 
             <tr>
-                <td>Title :</td>
-                <td><s:select list="" name="personDetail.title">
-                        <option value="Mr.">Mr.</option>
-                        <option value="Mrs.">Mrs.</option>
-                        <option value="Miss.">Miss.</option>
-                        <option value="Kumar">Kumar</option>
+                <td><s:select list="#{'Mr.':'Mr.', 'Mrs.':'Mrs.','Miss.':'Miss.', 'Kumar':'Kumar'}" name="personDetail.title" label="Title">
                     </s:select></td>
             </tr>
 
@@ -54,10 +49,8 @@
 
 
             <tr>
-                <td>Gender</td>
-                <td><s:select list="" name="personDetail.gender">
-                        <option value="GEN0001">Male</option>
-                        <option value="GEN0002">Female</option>
+                <td><s:select list="#{'GEN0001':'Male', 'GEN0002':'Female'}" name="personDetail.gender" label="Gender">
+                
                     </s:select></td>
 
             </tr>
@@ -85,13 +78,10 @@
                         name="personDetail.emailAddressLinkDetail.emailAddressDetail.emailAddress" /></td>
             </tr>
             <tr>
-                <td>Type Code :</td>
-                <td><s:select list="" name="personDetail.emailAddressLinkDetailtypeCode">
-                        <option value="Primary">Primary</option>
-                        <option value="Secondary">Secondary.</option>
-                        <option value="Persnal">Persnal</option>
-                        <option value="Business">Business</option>
-                    </s:select></td>
+                <td>
+                <s:select list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}" name="personDetail.emailAddressLinkDetail.typeCode" label="Type Code">
+                
+                </s:select></td>
             </tr>
             <tr>
                 <td>PrimaryInd :</td>
@@ -130,17 +120,14 @@
                 <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.extension" /></td>
             </tr>
             <tr>
-                <td>Type Code :</td>
-                <td><s:select list="" name="personDetail.phoneNumberLinkDetail.typeCode">
-                        <option value="Primary">Primary</option>
-                        <option value="Secondary">Secondary.</option>
-                        <option value="Persnal">Persnal</option>
-                        <option value="Business">Business</option>
+                <td>
+                <s:select list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}" name="personDetail.phoneNumberLinkDetail.typeCode" label="Type Code">
+               
                     </s:select></td>
             </tr>
             <tr>
                 <td>PrimaryInd:</td>
-                <td><s:radio name="personDetail.emailAddressLinkDetail.primaryInd"
+                <td><s:radio name="personDetail.phoneNumberLinkDetail.primaryInd"
                         list="#{'1':'True','0':'false' }" value="1"></s:radio></td>
             </tr>
             <tr>
@@ -184,13 +171,13 @@
             </tr>
 
             <tr>
-                <td>State:</td>
-                <td><s:select list="" name="personDetail.addressLinkDetail.addressDetail.state">
-                        <option value="ST0001">New York</option>
+                <td>
+                <s:select list="#{'ST0001':'New York', 'ST0002':'New Jersy', 'ST0003':'Washington', 'ST0004':'Chicago', 'ST0005':'Maryland'}" name="personDetail.addressLinkDetail.addressDetail.state" label="State">
+                        <!--  <option value="ST0001">New York</option>
                         <option value="ST0002">New Jersy</option>
                         <option value="ST0003">Washington DC</option>
                         <option value="ST0004">Chicago</option>
-                        <option value="ST0005">Maryland</option>
+                        <option value="ST0005">Maryland</option>-->
                     </s:select></td>
             </tr>
 
@@ -204,17 +191,13 @@
                 <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.zipCode" /></td>
             </tr>
             <tr>
-                <td>Type Code :</td>
-                <td><s:select list="" name="personDetail.addressLinkDetail.typeCode">
-                        <option value="Primary">Primary</option>
-                        <option value="Secondary">Secondary.</option>
-                        <option value="Persnal">Persnal</option>
-                        <option value="Business">Business</option>
+                <td>
+                 <s:select list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}" name="personDetail.addressLinkDetail.typeCode" label="Type Code">
                     </s:select></td>
             </tr>
             <tr>
                 <td>PrimaryInd :</td>
-                <td><s:radio name="personDetail.emailAddressLinkDetail.primaryInd"
+                <td><s:radio name="personDetail.addressLinkDetail.primaryInd"
                         list="#{'1':'True','0':'false' }" value="1"></s:radio></td>
             </tr>
             <tr>
@@ -234,16 +217,12 @@
             </tr>
             <tr>
                 <td>PrimaryInd :</td>
-                <td><s:radio name="personDetail.emailAddressLinkDetail.primaryInd"
+                <td><s:radio name="personDetail.personIdentityDetail.primaryInd"
                         list="#{'1':'True','0':'false' }" value="1"></s:radio></td>
             </tr>
             <tr>
-                <td>Type Code :</td>
-                <td><s:select list="" name="personDetail.personIdentityDetail.typeCode">
-                        <option value="Primary">Primary</option>
-                        <option value="Secondary">Secondary</option>
-                        <option value="Persnal">Persnal</option>
-                        <option value="Business">Business</option>
+                <td>
+                <s:select list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}" name="personDetail.personIdentityDetail.typeCode" label="Type Code">
                     </s:select></td>
             </tr>
             <tr>
@@ -255,11 +234,11 @@
                 <td><s:textfield type="text" name="personDetail.personIdentityDetail.endDate" /></td>
             </tr>
             <tr>
-                <td>Role :</td>
-                <td><s:select list="" name="personDetail.personIdentityDetail.roleID">
-                        <option value="9001">Administrator</option>
+                <td>
+                <s:select list="#{'9001':'Administrator', '9002':'Employee', '9003':'Devloper'}" name="personDetail.personIdentityDetail.roleID" label="Role">
+                       <!--  <option value="9001">Administrator</option>
                         <option value="9002">Employee</option>
-                        <option value="9003">Devloper</option>
+                        <option value="9003">Devloper</option> -->
                     </s:select></td>
             </tr>
 

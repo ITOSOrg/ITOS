@@ -136,17 +136,7 @@ CREATE TABLE UserRoleLink
   
   
     
-CREATE TABLE Role
- ( roleID NUMBER(10) NOT NULL,
-   roleType VARCHAR2(18),
-   workspace VARCHAR2(30),
-   recordStatus VARCHAR2(30),
-   createdBy VARCHAR2(35),
-   createdOn timestamp(6),
-   lastModifiedBy VARCHAR2(35),
-   lastModifiedOn timestamp(6),	
-   versionNo NUMBER(20)
-   );
+
    
 CREATE TABLE AuthenticationLog
    (
@@ -177,17 +167,5 @@ CREATE TABLE UserSecurityQuestion
    versionNo NUMBER(10)
    );
    
-CREATE TABLE KeyServer(
-keysetCode VARCHAR2(40) not null, 
-nextUniqueIdBlock NUMBER(30), 
-humanReadable VARCHAR2(1) not null, 
-annotation VARCHAR(1016), 
-strategy VARCHAR2(24), 
-recordStatus VARCHAR2(30),
-createdBy VARCHAR2(35),
-createdOn timestamp(6),
-lastModifiedBy VARCHAR2(35),
-lastModifiedOn timestamp(6),	
-versionNo NUMBER(20)
-);
+
    

@@ -24,7 +24,7 @@ public class ListAddressDAO {
 			String addressLinkSQLStr = "SELECT * FROM AddressLink	WHERE	recordStatus='Active' AND relatedID = ?";
 			
 			PreparedStatement preparedStatementaddressLink = connection.prepareStatement(addressLinkSQLStr);
-			preparedStatementaddressLink.setInt(1, addressLinkDetailkey.getRelatedID());
+			preparedStatementaddressLink.setLong(1, addressLinkDetailkey.getRelatedID());
 			ResultSet  resultSetAddressLink = preparedStatementaddressLink.executeQuery();
 			
 			String addressSQLStr = "SELECT * FROM Address WHERE addressId = ?";
@@ -44,7 +44,7 @@ public class ListAddressDAO {
 				addressLinkDetail.setEndDate(resultSetAddressLink.getDate("endDate"));
 				
 				
-				preparedStatementaddress.setInt(1, addressDetail.getAddressId());
+				preparedStatementaddress.setLong(1, addressDetail.getAddressId());
 				ResultSet resultSetAddress = preparedStatementaddress.executeQuery();
 				
 				while(resultSetAddress.next()){

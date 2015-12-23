@@ -6,20 +6,23 @@ public class EmailAddressDetail {
 
 	private String emailAddress;
 	
-	private int emailAddressID;
+	private long emailAddressID;
 	
 	private int versionNo;
 	
 	private String recordStatus;
 	
-
-	
-
-	public int getEmailAddressID() {
+	/**
+	 * @return the emailAddressID
+	 */
+	public long getEmailAddressID() {
 		return emailAddressID;
 	}
 
-	public void setEmailAddressID(int emailAddressID) {
+	/**
+	 * @param emailAddressID the emailAddressID to set
+	 */
+	public void setEmailAddressID(long emailAddressID) {
 		this.emailAddressID = emailAddressID;
 	}
 

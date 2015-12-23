@@ -14,7 +14,7 @@ public class UsersDetail {
 
 	private int versionNo;
 	
-	private int relatedID;
+	private long relatedID;
 	
 	private int accountEnabled;
 	
@@ -100,16 +100,18 @@ public class UsersDetail {
 	/**
 	 * @return the relatedID
 	 */
-	public int getRelatedID() {
+	public long getRelatedID() {
 		return relatedID;
 	}
 
 	/**
 	 * @param relatedID the relatedID to set
 	 */
-	public void setRelatedID(int relatedID) {
+	public void setRelatedID(long relatedID) {
 		this.relatedID = relatedID;
 	}
+
+
 
 	List<String> errorMessageList = new ArrayList<String>();
 

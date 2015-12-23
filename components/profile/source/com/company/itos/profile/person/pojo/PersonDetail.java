@@ -14,7 +14,7 @@ import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class PersonDetail {
 
-	private int personID;
+	private long personID;
 
 	private int refrenceNumber;
 
@@ -92,19 +92,25 @@ public class PersonDetail {
 		this.emailAddress = emailAddress;
 	}*/
 
-	public int getPersonID() {
-
-		return personID;
-	}
-
-	public void setPersonID(int personID) {
-
-		this.personID = personID;
-	}
+	
 
 	public int getRefrenceNumber() {
 
 		return refrenceNumber;
+	}
+
+	/**
+	 * @return the personID
+	 */
+	public long getPersonID() {
+		return personID;
+	}
+
+	/**
+	 * @param personID the personID to set
+	 */
+	public void setPersonID(long personID) {
+		this.personID = personID;
 	}
 
 	public void setRefrenceNumber(int refrenceNumber) {

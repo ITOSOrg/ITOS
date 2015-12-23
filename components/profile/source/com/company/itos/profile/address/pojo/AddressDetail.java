@@ -2,7 +2,7 @@ package com.company.itos.profile.address.pojo;
 
 public class AddressDetail {
 	
-	private int addressId;
+	private long addressId;
 	
 	private String streetOne;
 	
@@ -22,11 +22,19 @@ public class AddressDetail {
 	
 	private int versionNo;
 
-	public int getAddressId() {
+	
+
+	/**
+	 * @return the addressId
+	 */
+	public long getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(int addressId) {
+	/**
+	 * @param addressId the addressId to set
+	 */
+	public void setAddressId(long addressId) {
 		this.addressId = addressId;
 	}
 

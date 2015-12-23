@@ -35,7 +35,7 @@ public class ListPhoneNumberDAO {
 			String phoneNumberLinkSQLStr = "SELECT * FROM PhoneNumberLink WHERE	RECORDSTATUS='Active' AND relatedID = ?";
 
 			preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
-			preparedStatementPhoneNumberLink.setInt(1, phoneNumberLinkDetailkey.getRelatedID());
+			preparedStatementPhoneNumberLink.setLong(1, phoneNumberLinkDetailkey.getRelatedID());
 
 			resultSet = preparedStatementPhoneNumberLink.executeQuery();
 
@@ -58,7 +58,7 @@ public class ListPhoneNumberDAO {
 				phoneNumberLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSet.getDate("endDate"));
 
-				preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getPhoneNumberID());
+				preparedStatementPhoneNumber.setLong(1, phoneNumberDetail.getPhoneNumberID());
 
 				ResultSet resultSet1 = preparedStatementPhoneNumber.executeQuery();
 

@@ -2,8 +2,8 @@ package com.company.itos.profile.person.pojo;
 
 public class PersonIDDetail {
 	
-	private int personID;
+	private long personID;
 
-	private int relatedID;
+	private long relatedID;
 
 }

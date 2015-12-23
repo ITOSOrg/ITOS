@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class PersonIdentityDetail {
 	
-	private int personIdentityID;
+	private long personIdentityID;
 	
-	private int personID;
+	private long personID;
 	
 	private int alternateID;
 	
@@ -38,19 +38,31 @@ public class PersonIdentityDetail {
 		this.updateAction = "update";
 	}
 
-	public int getPersonIdentityID() {
+	/**
+	 * @return the personIdentityID
+	 */
+	public long getPersonIdentityID() {
 		return personIdentityID;
 	}
 
-	public void setPersonIdentityID(int personIdentityID) {
+	/**
+	 * @param personIdentityID the personIdentityID to set
+	 */
+	public void setPersonIdentityID(long personIdentityID) {
 		this.personIdentityID = personIdentityID;
 	}
 
-	public int getPersonID() {
+	/**
+	 * @return the personID
+	 */
+	public long getPersonID() {
 		return personID;
 	}
 
-	public void setPersonID(int personID) {
+	/**
+	 * @param personID the personID to set
+	 */
+	public void setPersonID(long personID) {
 		this.personID = personID;
 	}
 

@@ -44,7 +44,7 @@ public class ListEmailAddressDAO {
 
 			preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
-			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetailkey.getRelatedID());
+			preparedStatementEmailAddressLink.setLong(1, emailAddressLinkDetailkey.getRelatedID());
 
 			resultSet = preparedStatementEmailAddressLink.executeQuery();
 
@@ -66,7 +66,7 @@ public class ListEmailAddressDAO {
 				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
 
-				preparedStatementEmailAddress.setInt(1, emailAddressDetailFromDB.getEmailAddressID());
+				preparedStatementEmailAddress.setLong(1, emailAddressDetailFromDB.getEmailAddressID());
 
 				ResultSet resultSetEA = preparedStatementEmailAddress.executeQuery();
 

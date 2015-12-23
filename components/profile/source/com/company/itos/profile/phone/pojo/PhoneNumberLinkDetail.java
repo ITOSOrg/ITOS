@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class PhoneNumberLinkDetail {
 
-	private int phoneNumberLinkID;
+	private long phoneNumberLinkID;
 
-	private int relatedID = 0;
+	private long relatedID = 0;
 
 	private String typeCode;
 
@@ -20,7 +20,7 @@ public class PhoneNumberLinkDetail {
 
 	private int versionNo;
 
-	private int phoneNumberID;
+	private long phoneNumberID;
 
 	private PhoneNumberDetail phoneNumberDetail = null;
 	
@@ -41,19 +41,21 @@ public class PhoneNumberLinkDetail {
 	}
 	
 
-	public int getPhoneNumberLinkID() {
-		return phoneNumberLinkID;
-	}
+	
 
-	public void setPhoneNumberLinkID(int phoneNumberLinkID) {
-		this.phoneNumberLinkID = phoneNumberLinkID;
-	}
+	
 
-	public int getRelatedID() {
+	/**
+	 * @return the relatedID
+	 */
+	public long getRelatedID() {
 		return relatedID;
 	}
 
-	public void setRelatedID(int relatedID) {
+	/**
+	 * @param relatedID the relatedID to set
+	 */
+	public void setRelatedID(long relatedID) {
 		this.relatedID = relatedID;
 	}
 
@@ -105,11 +107,31 @@ public class PhoneNumberLinkDetail {
 		this.versionNo = versionNo;
 	}
 
-	public int getPhoneNumberID() {
+	/**
+	 * @return the phoneNumberLinkID
+	 */
+	public long getPhoneNumberLinkID() {
+		return phoneNumberLinkID;
+	}
+
+	/**
+	 * @param phoneNumberLinkID the phoneNumberLinkID to set
+	 */
+	public void setPhoneNumberLinkID(long phoneNumberLinkID) {
+		this.phoneNumberLinkID = phoneNumberLinkID;
+	}
+
+	/**
+	 * @return the phoneNumberID
+	 */
+	public long getPhoneNumberID() {
 		return phoneNumberID;
 	}
 
-	public void setPhoneNumberID(int phoneNumberID) {
+	/**
+	 * @param phoneNumberID the phoneNumberID to set
+	 */
+	public void setPhoneNumberID(long phoneNumberID) {
 		this.phoneNumberID = phoneNumberID;
 	}
 

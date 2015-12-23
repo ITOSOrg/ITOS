@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PhoneNumberDetail {
 	
-	private int phoneNumberID;
+	private long phoneNumberID;
 	
 	private int countryCode;
 	
@@ -18,11 +18,17 @@ public class PhoneNumberDetail {
 	
 	private int versionNo;
 
-	public int getPhoneNumberID() {
+	/**
+	 * @return the phoneNumberID
+	 */
+	public long getPhoneNumberID() {
 		return phoneNumberID;
 	}
 
-	public void setPhoneNumberID(int phoneNumberID) {
+	/**
+	 * @param phoneNumberID the phoneNumberID to set
+	 */
+	public void setPhoneNumberID(long phoneNumberID) {
 		this.phoneNumberID = phoneNumberID;
 	}
 

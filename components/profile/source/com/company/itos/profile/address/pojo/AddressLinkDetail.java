@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class AddressLinkDetail {
 	
-	private int addressLinkID;
+	private long addressLinkID;
 	
-	private int relatedID;
+	private long relatedID;
 	
-	private int addressID;
+	private long addressID;
 	
 	private String typeCode;
 	
@@ -42,28 +42,45 @@ public class AddressLinkDetail {
 		this.updateAction = "update";
 	}
 	
-
-	public int getAddressLinkID() {
-		return addressLinkID;
-	}
-
-	public void setAddressLinkID(int addressLinkID) {
-		this.addressLinkID = addressLinkID;
-	}
-
-	public int getRelatedID() {
+	/**
+	 * @return the relatedID
+	 */
+	public long getRelatedID() {
 		return relatedID;
 	}
 
-	public void setRelatedID(int relatedID) {
+	/**
+	 * @param relatedID the relatedID to set
+	 */
+	public void setRelatedID(long relatedID) {
 		this.relatedID = relatedID;
 	}
 
-	public int getAddressID() {
+	/**
+	 * @return the addressLinkID
+	 */
+	public long getAddressLinkID() {
+		return addressLinkID;
+	}
+
+	/**
+	 * @param addressLinkID the addressLinkID to set
+	 */
+	public void setAddressLinkID(long addressLinkID) {
+		this.addressLinkID = addressLinkID;
+	}
+
+	/**
+	 * @return the addressID
+	 */
+	public long getAddressID() {
 		return addressID;
 	}
 
-	public void setAddressID(int addressID) {
+	/**
+	 * @param addressID the addressID to set
+	 */
+	public void setAddressID(long addressID) {
 		this.addressID = addressID;
 	}
 

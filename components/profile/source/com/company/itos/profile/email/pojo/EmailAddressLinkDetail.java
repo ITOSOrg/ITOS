@@ -5,14 +5,23 @@ import java.sql.Date;
 public class EmailAddressLinkDetail {
 
 	private String typeCode;
+	
 	private String primaryInd;
+	
 	private Date startDate;
+	
 	private Date endDate;
+	
 	private String comments;
-	private int emailAddressLinkID;
-	private int relatedID;
-	private int emailAddressID;
+	
+	private long emailAddressLinkID;
+	
+	private long relatedID;
+	
+	private long emailAddressID;
+	
 	private int versionNo;
+	
 	private EmailAddressDetail emailAddressDetail = null;
 	
 	private String updateAction = "update";
@@ -62,24 +71,49 @@ public class EmailAddressLinkDetail {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-	public int getEmailAddressLinkID() {
-		return emailAddressLinkID;
-	}
-	public void setEmailAddressLinkID(int emailAddressLinkID) {
-		this.emailAddressLinkID = emailAddressLinkID;
-	}
-	public int getRelatedID() {
+	
+	/**
+	 * @return the relatedID
+	 */
+	public long getRelatedID() {
 		return relatedID;
 	}
-	public void setRelatedID(int relatedID) {
+
+	/**
+	 * @param relatedID the relatedID to set
+	 */
+	public void setRelatedID(long relatedID) {
 		this.relatedID = relatedID;
 	}
-	public int getEmailAddressID() {
+
+	/**
+	 * @return the emailAddressLinkID
+	 */
+	public long getEmailAddressLinkID() {
+		return emailAddressLinkID;
+	}
+
+	/**
+	 * @param emailAddressLinkID the emailAddressLinkID to set
+	 */
+	public void setEmailAddressLinkID(long emailAddressLinkID) {
+		this.emailAddressLinkID = emailAddressLinkID;
+	}
+
+	/**
+	 * @return the emailAddressID
+	 */
+	public long getEmailAddressID() {
 		return emailAddressID;
 	}
-	public void setEmailAddressID(int emailAddressID) {
+
+	/**
+	 * @param emailAddressID the emailAddressID to set
+	 */
+	public void setEmailAddressID(long emailAddressID) {
 		this.emailAddressID = emailAddressID;
 	}
+
 	public int getVersionNo() {
 		return versionNo;
 	}

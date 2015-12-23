@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -25,7 +27,7 @@ public class CreateEmailAddressDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT EmailAddressSEQ.nextval FROM DUAL");
+			/*PreparedStatement preparedStatement = connection.prepareStatement("SELECT EmailAddressSEQ.nextval FROM DUAL");
 			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT EmailAddressLinkSEQ.nextval FROM DUAL");
 
 			ResultSet resultSetEASeq = preparedStatement.executeQuery();
@@ -38,7 +40,7 @@ public class CreateEmailAddressDAO {
 
 			if (resultSetEALSeq.next()) {
 				emailAddressLinkDetail.setEmailAddressLinkID(resultSetEALSeq.getInt(1));
-			}
+			}*/
 
 			String emailAddressSQLStr = "INSERT INTO EmailAddress ( emailAddressID, emailAddress, recordStatus, versionNo) "
 					+ "VALUES(?,  ?, 'Active', 1)";
@@ -52,16 +54,16 @@ public class CreateEmailAddressDAO {
 
 			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
 
-			preparedStatementEmailAddress.setInt(1, emailAddressDetail.getEmailAddressID());
+			preparedStatementEmailAddress.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementEmailAddress.setString(2, emailAddressDetail.getEmailAddress());
 
 			preparedStatementEmailAddress.execute();
 
 			PreparedStatement preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
-			preparedStatementEmailAddressLink.setInt(1, emailAddressLinkDetail.getEmailAddressLinkID());
-			preparedStatementEmailAddressLink.setInt(2, emailAddressLinkDetail.getRelatedID());
-			preparedStatementEmailAddressLink.setInt(3, emailAddressDetail.getEmailAddressID());
+			preparedStatementEmailAddressLink.setLong(1, UniqueID.nextUniqueID());
+			preparedStatementEmailAddressLink.setLong(2, emailAddressLinkDetail.getRelatedID());
+			preparedStatementEmailAddressLink.setLong(3, emailAddressDetail.getEmailAddressID());
 			preparedStatementEmailAddressLink.setDate(4, emailAddressLinkDetail.getStartDate());
 			preparedStatementEmailAddressLink.setDate(5, emailAddressLinkDetail.getEndDate());
 

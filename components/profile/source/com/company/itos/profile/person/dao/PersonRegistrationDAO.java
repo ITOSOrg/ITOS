@@ -11,7 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.role.dao.CreateRoleDAO;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.dao.CreateUserRoleLinkDAO;
@@ -54,18 +56,23 @@ public class PersonRegistrationDAO {
 			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
 			PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
-
-			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
-					+ "','" + usersDetail.getPassword() + "','active', ?)";
-
-
 			Connection connection = null;
-
 			Statement statement = null;
 			try {
 				connection = DBConnection.getDBConnection();
+
+			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
+					+ "','" + usersDetail.getPassword() + "','active', ?)";
+			preparedStatement = connection.prepareStatement(usersSQLStr);
+			preparedStatement.setLong(1, UniqueID.nextUniqueID());
+
+			preparedStatement.execute();
+
+
+
+			
 				statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT PersonSEQ.nextval FROM DUAL");
+				ResultSet resultSet = statement.executeQuery("SELECT relatedID FROM USERS WHERE userName='" + usersDetail.getPassword() + "'");
 
 				if (resultSet.next()) {
 					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
@@ -105,14 +112,11 @@ public class PersonRegistrationDAO {
 			try {
 				// connection = dbConnection.getDBConnection();
 
-				preparedStatement = connection.prepareStatement(usersSQLStr);
-				preparedStatement.setInt(1, personDetail.getPersonID());
-
-				preparedStatement.execute();
+				
 
 				PreparedStatement preparedStatement1 = connection.prepareStatement(personSQLStr);
 
-				preparedStatement1.setInt(1, personDetail.getPersonID());
+				preparedStatement1.setLong(1, personDetail.getPersonID());
 				preparedStatement1.setDate(2, personDetail.getDateOfBirth());
 
 				String crrentDateTime = JavaUtildates.getCurrentDateTime();

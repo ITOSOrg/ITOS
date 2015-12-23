@@ -4,21 +4,21 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class UserRoleLinkDetail {
-	
+
 	private String username;
-	
+
 	private Timestamp startDate;
-	
+
 	private Date endDate;
-	
-	private int userRoleLinkID;
-	
-	private int roleID;
-	
+
+	private long userRoleLinkID;
+
+	private long roleID;
+
 	private String comments;
-	
+
 	private String recordStatus;
-	
+
 	private int versionNo;
 
 	public String getUsername() {
@@ -45,19 +45,33 @@ public class UserRoleLinkDetail {
 		this.endDate = endDate;
 	}
 
-	public int getUserRoleLinkID() {
+	/**
+	 * @return the userRoleLinkID
+	 */
+	public long getUserRoleLinkID() {
 		return userRoleLinkID;
 	}
 
-	public void setUserRoleLinkID(int userRoleLinkID) {
+	/**
+	 * @param userRoleLinkID
+	 *            the userRoleLinkID to set
+	 */
+	public void setUserRoleLinkID(long userRoleLinkID) {
 		this.userRoleLinkID = userRoleLinkID;
 	}
 
-	public int getRoleID() {
+	/**
+	 * @return the roleID
+	 */
+	public long getRoleID() {
 		return roleID;
 	}
 
-	public void setRoleID(int roleID) {
+	/**
+	 * @param roleID
+	 *            the roleID to set
+	 */
+	public void setRoleID(long roleID) {
 		this.roleID = roleID;
 	}
 

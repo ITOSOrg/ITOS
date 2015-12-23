@@ -44,7 +44,7 @@ public class ReadRole extends HttpServlet {
 		
 		UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
 		
-		int roleID = (new Integer(request.getParameter("roleID")));
+		long roleID = (new Long(request.getParameter("roleID")));
 		roleDetail.setRoleID(roleID);
 		
 		ReadRoleDAO readRoleDAO = new ReadRoleDAO();

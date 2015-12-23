@@ -42,7 +42,7 @@ public class DeleteRole extends HttpServlet {
 		RoleDetail roleDetail = new RoleDetail();
 		
 		
-		int roleID = (new Integer(request.getParameter("roleID")));
+		long roleID = (new Long (request.getParameter("roleID")));
 		roleDetail.setRoleID(roleID);
 		
 		DeleteRoleDAO deleteRoleDAO = new DeleteRoleDAO();

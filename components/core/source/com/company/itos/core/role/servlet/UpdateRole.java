@@ -42,7 +42,7 @@ public class UpdateRole extends HttpServlet {
 		String pageForwardStr = "";
 		RoleDetail roleDeatail = new RoleDetail();
 
-		int roleID = (new Integer(request.getParameter("roleID")));
+		long roleID = (new Long(request.getParameter("roleID")));
 		roleDeatail.setRoleID(roleID);
 
 		int versionNo = (new Integer(request.getParameter("versionNo")));

@@ -35,9 +35,9 @@ public class CreateUserRoleLinkDAO {
 
 			PreparedStatement preparedStatementuserRoleLink = connection.prepareStatement(userRoleLinkSQLStr);
 
-			preparedStatementuserRoleLink.setInt(1, userRoleLinkDetail.getUserRoleLinkID());
+			preparedStatementuserRoleLink.setLong(1, userRoleLinkDetail.getUserRoleLinkID());
 			preparedStatementuserRoleLink.setString(2, userRoleLinkDetail.getUsername());
-			preparedStatementuserRoleLink.setInt(3, userRoleLinkDetail.getRoleID());
+			preparedStatementuserRoleLink.setLong(3, userRoleLinkDetail.getRoleID());
 
 			String crrentDateTime = JavaUtildates.getCurrentDateTime();
 
@@ -85,9 +85,9 @@ public class CreateUserRoleLinkDAO {
 
 			PreparedStatement preparedStatementuserRoleLink = connection.prepareStatement(userRoleLinkSQLStr);
 
-			preparedStatementuserRoleLink.setInt(1, userRoleLinkDetail.getUserRoleLinkID());
+			preparedStatementuserRoleLink.setLong(1, userRoleLinkDetail.getUserRoleLinkID());
 			preparedStatementuserRoleLink.setString(2, userRoleLinkDetail.getUsername());
-			preparedStatementuserRoleLink.setInt(3, userRoleLinkDetail.getRoleID());
+			preparedStatementuserRoleLink.setLong(3, userRoleLinkDetail.getRoleID());
 
 			String crrentDateTime = JavaUtildates.getCurrentDateTime();
 

@@ -1,5 +1,5 @@
 CREATE TABLE Person ( 
-	personID NUMBER(10) NOT NULL,
+	personID NUMBER(19,0) NOT NULL,
 	title VARCHAR2(30),
 	firstName VARCHAR2(15),
 	middleName VARCHAR2(30),
@@ -24,7 +24,7 @@ CREATE TABLE Person (
    ); 
    
 CREATE TABLE Address
- ( addressId NUMBER(10) NOT NULL,
+ ( addressId NUMBER(19,0) NOT NULL,
    streetOne VARCHAR2(30),
    streetTwo VARCHAR2(30),
    aptUnit VARCHAR2(30),
@@ -38,7 +38,7 @@ CREATE TABLE Address
    
    
 CREATE TABLE AddressLink
-  ( addressLinkID NUMBER(10) NOT NULL,  
+  ( addressLinkID NUMBER(19,0) NOT NULL,  
 	relatedID NUMBER(10),
 	addressID NUMBER(10),
 	typeCode VARCHAR2(30),
@@ -52,7 +52,7 @@ CREATE TABLE AddressLink
    
    
 CREATE TABLE EmailAddress
- ( emailAddressID NUMBER(10) NOT NULL,
+ ( emailAddressID NUMBER(19,0) NOT NULL,
    emailAddress VARCHAR2(300),
    recordStatus VARCHAR2(30),
    versionNo NUMBER(10)
@@ -60,7 +60,7 @@ CREATE TABLE EmailAddress
 
    
 CREATE TABLE EmailAddressLink
-( emailAddressLinkID NUMBER(10) NOT NULL,
+( emailAddressLinkID NUMBER(19,0) NOT NULL,
   relatedID NUMBER(10),
   emailAddressID NUMBER(10),
   typeCode VARCHAR2(30),
@@ -74,7 +74,7 @@ CREATE TABLE EmailAddressLink
   
   
 CREATE TABLE PhoneNumber
-( phoneNumberID NUMBER(10) NOT NULL,
+( phoneNumberID NUMBER(19,0) NOT NULL,
   countryCode VARCHAR2(30),
   areaCode VARCHAR2(30),
   phoneNumber VARCHAR2(30),
@@ -85,7 +85,7 @@ CREATE TABLE PhoneNumber
   
   
 CREATE TABLE PhoneNumberLink
-( phoneNumberLinkID NUMBER(10),
+( phoneNumberLinkID NUMBER(19,0),
   relatedID NUMBER(10),
   phoneNumberID NUMBER(10),
   typeCode VARCHAR2(30),
@@ -98,7 +98,7 @@ CREATE TABLE PhoneNumberLink
   );
   
 CREATE TABLE PersonIdentity
-( personIdentityID NUMBER(10) NOT NULL,
+( personIdentityID NUMBER(19,0) NOT NULL,
   personID Number(10),
   alternateID VARCHAR2(30),
   primaryInd VARCHAR2(30),
@@ -124,7 +124,7 @@ CREATE TABLE Users
   );
 
 CREATE TABLE UserRoleLink
-( userRoleLinkID NUMBER(10) NOT NULL,
+( userRoleLinkID NUMBER(19,0) NOT NULL,
   username VARCHAR2(30),
   roleID NUMBER(10),
   startDate timestamp(6),
@@ -140,7 +140,7 @@ CREATE TABLE UserRoleLink
    
 CREATE TABLE AuthenticationLog
    (
-   authenticationLogID NUMBER(10) NOT NULL,
+   authenticationLogID NUMBER(19,0) NOT NULL,
    username VARCHAR2(30),
    timeEntered DATE,
    loginStatus VARCHAR2(30),
@@ -149,7 +149,7 @@ CREATE TABLE AuthenticationLog
    
 CREATE TABLE SecurityQuestion
    (
-   securityQuestionID NUMBER(10) NOT NULL,
+   securityQuestionID NUMBER(19,0) NOT NULL,
    question VARCHAR2(300),
    type VARCHAR2(30),
    recordStatus VARCHAR2(30),
@@ -158,7 +158,7 @@ CREATE TABLE SecurityQuestion
    
 CREATE TABLE UserSecurityQuestion
    (
-   userSecurityQuestionID NUMBER(10) NOT NULL,
+   userSecurityQuestionID NUMBER(19,0) NOT NULL,
    securityQuestionID NUMBER(10),
    userName VARCHAR2(30),
    startDate DATE,

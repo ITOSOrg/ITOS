@@ -20,11 +20,11 @@ public class CreatePhoneNumberAction extends ActionSupport implements SessionAwa
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PhoneNumberLinkDetail phoneNumberLinkDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -40,7 +40,7 @@ public class CreatePhoneNumberAction extends ActionSupport implements SessionAwa
 		this.request = request;
 	}
 
-/**
+	/**
 	 * @return the phoneNumberLinkDetail
 	 */
 	public PhoneNumberLinkDetail getPhoneNumberLinkDetail() {
@@ -48,30 +48,30 @@ public class CreatePhoneNumberAction extends ActionSupport implements SessionAwa
 	}
 
 	/**
-	 * @param phoneNumberLinkDetail the phoneNumberLinkDetail to set
+	 * @param phoneNumberLinkDetail
+	 *            the phoneNumberLinkDetail to set
 	 */
 	public void setPhoneNumberLinkDetail(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		this.phoneNumberLinkDetail = phoneNumberLinkDetail;
 	}
 
-public String execute() throws Exception {
-		
+	public String execute() throws Exception {
+
 		String pageForwardStr = "";
-		
+
 		CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
 		String returnMassegeStr = createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
-		 if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-				
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-				pageForwardStr = SUCCESS;
+			pageForwardStr = SUCCESS;
 
-			} else {
-				
-				pageForwardStr = ERROR;
+		} else {
 
-			}
-			return pageForwardStr;
+			pageForwardStr = ERROR;
 
-}
+		}
+		return pageForwardStr;
+
+	}
 
 }

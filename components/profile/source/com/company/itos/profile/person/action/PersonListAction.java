@@ -13,17 +13,17 @@ import com.company.itos.profile.person.pojo.PersonDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class PersonListAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private List<PersonDetail> personDetailList;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -38,8 +38,7 @@ public class PersonListAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
+
 	/**
 	 * @return the personDetailList
 	 */
@@ -48,30 +47,30 @@ public class PersonListAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personDetailList the personDetailList to set
+	 * @param personDetailList
+	 *            the personDetailList to set
 	 */
 	public void setPersonDetailList(List<PersonDetail> personDetailList) {
 		this.personDetailList = personDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		PersonListDAO personListDAO = new PersonListDAO();
 
 		List<PersonDetail> personDetailList = personListDAO.listAllStudent();
-		
+
 		setPersonDetailList(personDetailList);
-		//session.put("personDetailList", personDetailList);
-		
-		
+		// session.put("personDetailList", personDetailList);
+
 		if (personDetailList != null) {
 
 			pageForwardStr = SUCCESS;
 
 		} else {
-			
+
 			pageForwardStr = ERROR;
 
 		}

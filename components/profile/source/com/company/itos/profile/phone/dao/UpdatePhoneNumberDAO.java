@@ -41,7 +41,8 @@ public class UpdatePhoneNumberDAO {
 				try {
 					connection = DBConnection.getDBConnection();
 
-					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ? WHERE phoneNumberID = '"+phoneNumberLinkDetail.getPhoneNumberID()+"'";
+					String phoneNumberSQLStr = "UPDATE	PhoneNumber	SET countryCode = ?, areaCode = ?, phoneNumber = ?, extension = ? WHERE phoneNumberID = '"
+							+ phoneNumberLinkDetail.getPhoneNumberID() + "'";
 
 					PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(phoneNumberSQLStr);
 					preparedStatementPhoneNumber.setInt(1, phoneNumberDetail.getCountryCode());
@@ -51,7 +52,8 @@ public class UpdatePhoneNumberDAO {
 
 					preparedStatementPhoneNumber.executeUpdate();
 
-					String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ? WHERE phoneNumberLinkID = '"+phoneNumberLinkDetail.getPhoneNumberLinkID()+"' ";
+					String phoneNumberLinkSQLStr = "UPDATE	PhoneNumberLink	SET typeCode = ?, primaryInd = ?, startDate = ?, endDate = ? WHERE phoneNumberLinkID = '"
+							+ phoneNumberLinkDetail.getPhoneNumberLinkID() + "' ";
 
 					PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
 					preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());

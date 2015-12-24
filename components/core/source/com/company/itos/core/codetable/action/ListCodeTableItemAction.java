@@ -11,31 +11,31 @@ import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ListCodeTableItemAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	private Map<String,Object> session;
-	
+
+	private Map<String, Object> session;
+
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
 
 	}
-	
+
 	public String execute() throws Exception {
-		
-		//CodeTableHeaderDetail codeTableHeaderDetail = new CodeTableHeaderDetail();
+
+		// CodeTableHeaderDetail codeTableHeaderDetail = new
+		// CodeTableHeaderDetail();
 		CodeTableItemDetail codeTableItemDetail = new CodeTableItemDetail();
-	
-	ListCodeTableItemDAO listCodeTableItemDAO = new ListCodeTableItemDAO();
-	List<CodeTableItemDetail> codeTableItemDetailList = listCodeTableItemDAO.listCodeTableItem(codeTableItemDetail);
-	
-	//codeTableHeaderDetail.setCodeTableItemDetailList(codeTableItemDetailList);
-	
-	session.put("codeTableItemDetailList", codeTableItemDetailList);
 
+		ListCodeTableItemDAO listCodeTableItemDAO = new ListCodeTableItemDAO();
+		List<CodeTableItemDetail> codeTableItemDetailList = listCodeTableItemDAO.listCodeTableItem(codeTableItemDetail);
 
-	return SUCCESS;
-}
+		// codeTableHeaderDetail.setCodeTableItemDetailList(codeTableItemDetailList);
+
+		session.put("codeTableItemDetailList", codeTableItemDetailList);
+
+		return SUCCESS;
+	}
 
 }

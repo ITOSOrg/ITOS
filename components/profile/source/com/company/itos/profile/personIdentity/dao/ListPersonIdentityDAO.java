@@ -10,24 +10,25 @@ import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class ListPersonIdentityDAO {
-	
-	public List<PersonIdentityDetail> personIdentityList(PersonIdentityDetail personIdentityDetailkey){
-		
+
+	public List<PersonIdentityDetail> personIdentityList(PersonIdentityDetail personIdentityDetailkey) {
+
 		List<PersonIdentityDetail> personIdentityDetailList = new ArrayList<PersonIdentityDetail>();
-		
+
 		Connection connection = null;
 
 		try {
 			connection = DBConnection.getDBConnection();
-			
-			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personID = '"+personIdentityDetailkey.getPersonID()+"' AND RECORDSTATUS='Active'";
-			
+
+			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personID = '" + personIdentityDetailkey.getPersonID()
+					+ "' AND RECORDSTATUS='Active'";
+
 			PreparedStatement preparedStatement = connection.prepareStatement(personIdentitySQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()){
+
+			while (resultSet.next()) {
 				PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
-				
+
 				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
 				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
 				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
@@ -37,7 +38,7 @@ public class ListPersonIdentityDAO {
 				personIdentityDetail.setEndDate(resultSet.getDate("endDate"));
 				personIdentityDetail.setRecordStatus(resultSet.getString("recordStatus"));
 				personIdentityDetail.setVersionNo(resultSet.getInt("versionNo"));
-				
+
 				personIdentityDetailList.add(personIdentityDetail);
 			}
 		} catch (SQLException e) {
@@ -45,7 +46,7 @@ public class ListPersonIdentityDAO {
 			e.printStackTrace();
 		}
 		return personIdentityDetailList;
-		
+
 	}
 
 }

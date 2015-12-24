@@ -48,13 +48,12 @@ public class PersonHomeDAO {
 
 			PreparedStatement preparedStatement = connection.prepareStatement(personSQLStr);
 
-			//System.out.println(preparedStatement.);
+			// System.out.println(preparedStatement.);
 			resultSet = preparedStatement.executeQuery();
 			/**
 			 * if resultSet contains values then set it to the respected
 			 * attribute
 			 */
-			
 
 			if (resultSet.next()) {
 
@@ -74,28 +73,27 @@ public class PersonHomeDAO {
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
-			
+
 			// For User
-			
+
 			String usersSQLStr = "SELECT * FROM Users WHERE relatedID=\'" + personDetail.getPersonID() + "\'";
 			PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
 
 			ResultSet resultSetUsers = preparedStatementusers.executeQuery();
-			
-			while(resultSetUsers.next()){
+
+			while (resultSetUsers.next()) {
 				personDetail.setUserName(resultSetUsers.getString("userName"));
 			}
-			
-			
-			//For Gender
+
+			// For Gender
 			CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
 			codeTableItemKey.setCode(personDetail.getGender());
-			
+
 			codeTableItemKey.setTableName("Gender");
-			
+
 			ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
 			readCodeTableItemDAO.readCodeTableItemDescription(codeTableItemKey);
-			
+
 			personDetail.setGender(codeTableItemKey.getDescription());
 
 			// Read emailAddress information
@@ -105,8 +103,6 @@ public class PersonHomeDAO {
 			ReadEmailAddressDAO readEmailAddressDAO = new ReadEmailAddressDAO();
 			readEmailAddressDAO.readPrimaryEmailAddress(emailAddressLinkDetail);
 			personDetail.setEmailAddressLinkDetail(emailAddressLinkDetail);
-			
-			
 
 			// Read phoneNumber information
 
@@ -116,19 +112,19 @@ public class PersonHomeDAO {
 			ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
 			readPhoneNumberDAO.readPrimaryPhoneNumber(phoneNumberLinkDetail);
 			personDetail.setPhoneNumberLinkDetail(phoneNumberLinkDetail);
-			
-			//Read Address information
+
+			// Read Address information
 			AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
 			addressLinkDetail.setRelatedID(personDetail.getPersonID());
-			
+
 			ReadAddressDAO readAddressDAO = new ReadAddressDAO();
 			readAddressDAO.readPrimaryAddress(addressLinkDetail);
 			personDetail.setAddressLinkDetail(addressLinkDetail);
-			
-			//Read PersonIdentity Information
+
+			// Read PersonIdentity Information
 			PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
 			personIdentityDetail.setPersonID(personDetail.getPersonID());
-			
+
 			ReadPersonIdentityDAO readPersonIdentityDAO = new ReadPersonIdentityDAO();
 			readPersonIdentityDAO.readPrimaryPersonIdentity(personIdentityDetail);
 			personDetail.setPersonIdentityDetail(personIdentityDetail);

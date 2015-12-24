@@ -17,11 +17,11 @@ public class CreateEmailAddressAction extends ActionSupport implements SessionAw
 
 	private Map<String, Object> session;
 	private EmailAddressLinkDetail emailAddressLinkDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the emailAddressLinkDetail
 	 */
@@ -30,30 +30,30 @@ public class CreateEmailAddressAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param emailAddressLinkDetail the emailAddressLinkDetail to set
+	 * @param emailAddressLinkDetail
+	 *            the emailAddressLinkDetail to set
 	 */
 	public void setEmailAddressLinkDetail(EmailAddressLinkDetail emailAddressLinkDetail) {
 		this.emailAddressLinkDetail = emailAddressLinkDetail;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 		String returnMassegeStr = createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
 
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-				
 
-				pageForwardStr = SUCCESS;
+			pageForwardStr = SUCCESS;
 
-			} else {
-				
-				pageForwardStr = ERROR;
+		} else {
 
-			}
-			return pageForwardStr;
+			pageForwardStr = ERROR;
+
 		}
+		return pageForwardStr;
+	}
 
 }

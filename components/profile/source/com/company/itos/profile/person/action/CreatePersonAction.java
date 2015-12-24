@@ -18,11 +18,11 @@ public class CreatePersonAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonDetail personDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -37,7 +37,7 @@ public class CreatePersonAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	/**
 	 * @return the personDetail
 	 */
@@ -46,25 +46,25 @@ public class CreatePersonAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personDetail the personDetail to set
+	 * @param personDetail
+	 *            the personDetail to set
 	 */
 	public void setPersonDetail(PersonDetail personDetail) {
 		this.personDetail = personDetail;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		PersonRegistrationDAO personRegistrationDAO = new PersonRegistrationDAO();
 		String returnMassegeStr = personRegistrationDAO.registerPerson(personDetail);
 
-		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
+
 			pageForwardStr = SUCCESS;
-			
-		}else{
+
+		} else {
 			pageForwardStr = ERROR;
 		}
 		return pageForwardStr;

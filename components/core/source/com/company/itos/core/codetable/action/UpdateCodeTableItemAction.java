@@ -13,15 +13,15 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateCodeTableItemAction extends ActionSupport implements SessionAware {
-	
-	private Map<String,Object> session;
+
+	private Map<String, Object> session;
 	private CodeTableItemDetail codeTableItemDetail;
 	HttpServletRequest request;
-	
+
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
-		
+
 	}
 
 	/**
@@ -32,7 +32,8 @@ public class UpdateCodeTableItemAction extends ActionSupport implements SessionA
 	}
 
 	/**
-	 * @param codeTableItemDetail the codeTableItemDetail to set
+	 * @param codeTableItemDetail
+	 *            the codeTableItemDetail to set
 	 */
 	public void setCodeTableItemDetail(CodeTableItemDetail codeTableItemDetail) {
 		this.codeTableItemDetail = codeTableItemDetail;
@@ -52,24 +53,24 @@ public class UpdateCodeTableItemAction extends ActionSupport implements SessionA
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		UpdateCodeTableItemDAO updateCodeTableItemDAO = new UpdateCodeTableItemDAO();
 		String returnMassegeStr = updateCodeTableItemDAO.UpdateCodeTableItem(codeTableItemDetail);
-		
+
 		setCodeTableItemDetail(codeTableItemDetail);
-		//setCodeTableItemDetail(codeTableItemDetail);
-		
-		//session.put("codeTableItemDetail", codeTableItemDetail);
-		if(returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS){
-			
+		// setCodeTableItemDetail(codeTableItemDetail);
+
+		// session.put("codeTableItemDetail", codeTableItemDetail);
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+
 			return SUCCESS;
-			
-		}else{
-			
+
+		} else {
+
 			return ERROR;
-			
+
 		}
 	}
 

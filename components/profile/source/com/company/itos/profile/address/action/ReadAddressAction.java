@@ -34,11 +34,11 @@ public class ReadAddressAction extends ActionSupport implements SessionAware {
 	public void setAct(String act) {
 		this.act = act;
 	}
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -53,8 +53,6 @@ public class ReadAddressAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
 
 	/**
 	 * @return the addressLinkDetail
@@ -64,22 +62,23 @@ public class ReadAddressAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param addressLinkDetail the addressLinkDetail to set
+	 * @param addressLinkDetail
+	 *            the addressLinkDetail to set
 	 */
 	public void setAddressLinkDetail(AddressLinkDetail addressLinkDetail) {
 		this.addressLinkDetail = addressLinkDetail;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		ReadAddressDAO readAddressDAO = new ReadAddressDAO();
 
 		String returnMassegeStr = readAddressDAO.readAddress(addressLinkDetail);
-		
-		//session.put("addressLinkDetail", addressLinkDetail);
-		
+
+		// session.put("addressLinkDetail", addressLinkDetail);
+
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 
@@ -88,7 +87,7 @@ public class ReadAddressAction extends ActionSupport implements SessionAware {
 		}
 
 		return pageForwardStr;
-		
+
 	}
 
 }

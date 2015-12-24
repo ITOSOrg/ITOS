@@ -20,11 +20,11 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 	HttpServletRequest request;
 	private AddressLinkDetail addressLinkDetail;
 	private List<AddressLinkDetail> addressLinkDetailList;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -39,8 +39,6 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
 
 	/**
 	 * @return the addressLinkDetail
@@ -50,7 +48,8 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param addressLinkDetail the addressLinkDetail to set
+	 * @param addressLinkDetail
+	 *            the addressLinkDetail to set
 	 */
 	public void setAddressLinkDetail(AddressLinkDetail addressLinkDetail) {
 		this.addressLinkDetail = addressLinkDetail;
@@ -64,35 +63,35 @@ public class ListAddressAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param addressLinkDetailList the addressLinkDetailList to set
+	 * @param addressLinkDetailList
+	 *            the addressLinkDetailList to set
 	 */
 	public void setAddressLinkDetailList(List<AddressLinkDetail> addressLinkDetailList) {
 		this.addressLinkDetailList = addressLinkDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		ListAddressDAO listAddressDAO = new ListAddressDAO();
-		List<AddressLinkDetail> addressLinkDetailList =listAddressDAO.ListAllAddress(addressLinkDetail);
-		
+		List<AddressLinkDetail> addressLinkDetailList = listAddressDAO.ListAllAddress(addressLinkDetail);
+
 		setAddressLinkDetailList(addressLinkDetailList);
-		
-		//session.put("addressLinkDetailList", addressLinkDetailList);
-		
-		 if (addressLinkDetailList != null) {
-				
 
-				pageForwardStr = SUCCESS;
+		// session.put("addressLinkDetailList", addressLinkDetailList);
 
-			} else {
-				
-				pageForwardStr = ERROR;
+		if (addressLinkDetailList != null) {
 
-			}
-			return pageForwardStr;
-		
+			pageForwardStr = SUCCESS;
+
+		} else {
+
+			pageForwardStr = ERROR;
+
+		}
+		return pageForwardStr;
+
 	}
 
 }

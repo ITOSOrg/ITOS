@@ -17,7 +17,6 @@ public class CreatePhoneNumberDAO {
 	public String createPhoneNumber(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		String returnMassegeStr = "";
 
-
 		Connection connection = null;
 
 		// UpdatePhoneNumberDAO updatePhoneNumberDAO = new
@@ -30,15 +29,17 @@ public class CreatePhoneNumberDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatement = connection.prepareStatement("SELECT PhoneNumberSEQ.nextval FROM DUAL");
-
-			ResultSet resultSetPNSeq = preparedStatement.executeQuery();
-
-
-			if (resultSetPNSeq.next()) {
-				phoneNumberDetail.setPhoneNumberID((resultSetPNSeq.getInt(1)));
-			}
-*/
+			/*
+			 * PreparedStatement preparedStatement =
+			 * connection.prepareStatement(
+			 * "SELECT PhoneNumberSEQ.nextval FROM DUAL");
+			 * 
+			 * ResultSet resultSetPNSeq = preparedStatement.executeQuery();
+			 * 
+			 * 
+			 * if (resultSetPNSeq.next()) {
+			 * phoneNumberDetail.setPhoneNumberID((resultSetPNSeq.getInt(1))); }
+			 */
 			String PhoneNumberSQLStr = "INSERT INTO PhoneNumber (phoneNumberID, countryCode, areaCode, phoneNumber, extension, recordStatus, versionNo)"
 					+ "VALUES(?, ?, ?, ?, ?, 'Active', 1)";
 
@@ -51,15 +52,17 @@ public class CreatePhoneNumberDAO {
 			preparedStatementPhoneNumber.setInt(5, phoneNumberDetail.getExtension());
 			preparedStatementPhoneNumber.execute();
 
-			
-			/*PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT PhoneNumberLinkSEQ.nextval FROM DUAL");
-			ResultSet resultSetPNLSeq = preparedStatement2.executeQuery();
-			
-			if (resultSetPNLSeq.next()) {
-				phoneNumberLinkDetail.setPhoneNumberLinkID((resultSetPNLSeq.getInt(1)));
-			}*/
-			
-			
+			/*
+			 * PreparedStatement preparedStatement2 =
+			 * connection.prepareStatement
+			 * ("SELECT PhoneNumberLinkSEQ.nextval FROM DUAL"); ResultSet
+			 * resultSetPNLSeq = preparedStatement2.executeQuery();
+			 * 
+			 * if (resultSetPNLSeq.next()) {
+			 * phoneNumberLinkDetail.setPhoneNumberLinkID
+			 * ((resultSetPNLSeq.getInt(1))); }
+			 */
+
 			String PhoneNumberLinkSQLStr = "INSERT INTO PhoneNumberLink(phoneNumberLinkID, relatedID, phoneNumberID, typeCode, primaryInd, startDate, endDate, recordStatus, versionNo )"
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
 

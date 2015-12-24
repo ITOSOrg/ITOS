@@ -8,15 +8,15 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class DeletePersonIdentityDAO {
-	
-	public String DeletePersonIdentity(PersonIdentityDetail personIdentityDetail){
-		
+
+	public String DeletePersonIdentity(PersonIdentityDetail personIdentityDetail) {
+
 		Connection connection = null;
 		String returnMassegeStr = "";
 		try {
-			
+
 			connection = DBConnection.getDBConnection();
-			
+
 			String PersonIdentitySQLStr = "UPDATE PersonIdentity SET	recordStatus='cancel'	WHERE personIdentityID= "
 					+ personIdentityDetail.getPersonIdentityID();
 			PreparedStatement preparedStatement = connection.prepareStatement(PersonIdentitySQLStr);
@@ -28,7 +28,7 @@ public class DeletePersonIdentityDAO {
 		}
 
 		return returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
-		
+
 	}
 
 }

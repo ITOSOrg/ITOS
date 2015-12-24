@@ -25,12 +25,15 @@ public class CreateUserRoleLinkDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT UsersRoleLinkSEQ.nextval FROM DUAL");
-			ResultSet resultSet2 = preparedStatement2.executeQuery();
-
-			while (resultSet2.next()) {
-				userRoleLinkDetail.setUserRoleLinkID(resultSet2.getInt(1));
-			}*/
+			/*
+			 * PreparedStatement preparedStatement2 =
+			 * connection.prepareStatement
+			 * ("SELECT UsersRoleLinkSEQ.nextval FROM DUAL"); ResultSet
+			 * resultSet2 = preparedStatement2.executeQuery();
+			 * 
+			 * while (resultSet2.next()) {
+			 * userRoleLinkDetail.setUserRoleLinkID(resultSet2.getInt(1)); }
+			 */
 
 			String userRoleLinkSQLStr = "INSERT INTO UserRoleLink(userRoleLinkID, username, roleID, startDate, endDate, recordStatus, versionNo)"
 					+ "VALUES(?, ?, ?, ?, ?, 'Active', 1)";
@@ -56,12 +59,6 @@ public class CreateUserRoleLinkDAO {
 		}
 		return returnMassegeStr;
 	}
-	
-	
-	
-	
-	
-	
 
 	public String createUserRoleLinkUsingRegistrationform(UserRoleLinkDetail userRoleLinkDetail) {
 

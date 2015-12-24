@@ -105,7 +105,7 @@ public class ReadPropertiesAction extends ActionSupport implements SessionAware,
 
 		setPropertiesDetail(propertiesDetail);
 
-		//session.put("propertiesDetail", propertiesDetail);
+		// session.put("propertiesDetail", propertiesDetail);
 
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";

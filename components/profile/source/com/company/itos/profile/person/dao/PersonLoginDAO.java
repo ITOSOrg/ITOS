@@ -29,7 +29,7 @@ public class PersonLoginDAO {
 	 */
 	// public String login(UsersDetail usersDetail) {
 	public String login(UsersDetail usersDetail) {
-		//UsersDetail usersDetail = personDetail.getUsersDetail();
+		// UsersDetail usersDetail = personDetail.getUsersDetail();
 		// List<String> errorMessageList = new ArrayList<String>();
 
 		// string to return success or failure

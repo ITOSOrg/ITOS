@@ -17,13 +17,13 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 	private static final long serialVersionUID = 1L;
 
 	private PropertiesDetail propertiesDetail;
-	
-	private Map<String,Object> session;
 
-    public void setSession(Map<String,Object> session){ 
-        this.session = session;
-    }
-    
+	private Map<String, Object> session;
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 	/**
 	 * @return the propertiesDetail
 	 */
@@ -32,7 +32,8 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 	}
 
 	/**
-	 * @param propertiesDetail the propertiesDetail to set
+	 * @param propertiesDetail
+	 *            the propertiesDetail to set
 	 */
 	public void setPropertiesDetail(PropertiesDetail propertiesDetail) {
 		this.propertiesDetail = propertiesDetail;
@@ -42,12 +43,12 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 	 * 
 	 */
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		CreatePropertiesDAO createPropertiesDAO = new CreatePropertiesDAO();
 		String returnMassegeStr = createPropertiesDAO.createProperties(propertiesDetail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = SUCCESS;
@@ -57,5 +58,5 @@ public class CreatePropertiesAction extends ActionSupport implements SessionAwar
 		}
 
 		return pageForwardStr;
-    }
+	}
 }

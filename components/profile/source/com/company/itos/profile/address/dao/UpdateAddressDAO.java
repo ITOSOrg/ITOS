@@ -39,9 +39,9 @@ public class UpdateAddressDAO {
 
 					String AddressSQLStr = "UPDATE Address SET streetOne = ?, streetTwo = ?, aptUnit = ?, city = ?, county = ?, state = ?, country = ?, zipCode = ? WHERE addressId = '"
 							+ addressLinkDetail.getAddressID() + "'";
-					
+
 					PreparedStatement preparedStatementAddressSQLStr = connection.prepareStatement(AddressSQLStr);
-					
+
 					preparedStatementAddressSQLStr.setString(1, addressDetail.getStreetOne());
 					preparedStatementAddressSQLStr.setString(2, addressDetail.getStreetTwo());
 					preparedStatementAddressSQLStr.setString(3, addressDetail.getAptUnit());
@@ -50,17 +50,18 @@ public class UpdateAddressDAO {
 					preparedStatementAddressSQLStr.setString(6, addressDetail.getState());
 					preparedStatementAddressSQLStr.setString(7, addressDetail.getCountry());
 					preparedStatementAddressSQLStr.setInt(8, addressDetail.getZipCode());
-					
+
 					preparedStatementAddressSQLStr.execute();
-					
-					String addressLinkSQLStr = "UPDATE AddressLink SET typeCode = ?, startDate = ?, endDate = ? WHERE addressLinkID = '"+addressLinkDetail.getAddressLinkID()+"'";
-					
+
+					String addressLinkSQLStr = "UPDATE AddressLink SET typeCode = ?, startDate = ?, endDate = ? WHERE addressLinkID = '"
+							+ addressLinkDetail.getAddressLinkID() + "'";
+
 					PreparedStatement preparedStatementaddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
-					
+
 					preparedStatementaddressLinkSQLStr.setString(1, addressLinkDetail.getTypeCode());
 					preparedStatementaddressLinkSQLStr.setDate(2, addressLinkDetail.getStartDate());
 					preparedStatementaddressLinkSQLStr.setDate(3, addressLinkDetail.getEndDate());
-					
+
 					preparedStatementaddressLinkSQLStr.execute();
 					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

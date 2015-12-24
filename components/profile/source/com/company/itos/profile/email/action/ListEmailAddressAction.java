@@ -12,18 +12,18 @@ import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ListEmailAddressAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private EmailAddressLinkDetail emailAddressLinkDetail;
-		private List<EmailAddressLinkDetail> emailAddressLinkDetailList;
+	private List<EmailAddressLinkDetail> emailAddressLinkDetailList;
 
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -38,7 +38,7 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	/**
 	 * @return the emailAddressLinkDetail
 	 */
@@ -47,7 +47,8 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 	}
 
 	/**
-	 * @param emailAddressLinkDetail the emailAddressLinkDetail to set
+	 * @param emailAddressLinkDetail
+	 *            the emailAddressLinkDetail to set
 	 */
 	public void setEmailAddressLinkDetail(EmailAddressLinkDetail emailAddressLinkDetail) {
 		this.emailAddressLinkDetail = emailAddressLinkDetail;
@@ -61,33 +62,34 @@ public class ListEmailAddressAction extends ActionSupport implements SessionAwar
 	}
 
 	/**
-	 * @param emailAddressLinkDetailList the emailAddressLinkDetailList to set
+	 * @param emailAddressLinkDetailList
+	 *            the emailAddressLinkDetailList to set
 	 */
 	public void setEmailAddressLinkDetailList(List<EmailAddressLinkDetail> emailAddressLinkDetailList) {
 		this.emailAddressLinkDetailList = emailAddressLinkDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
-	
-	ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
-	List<EmailAddressLinkDetail> emailAddressLinkDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressLinkDetail);
-	setEmailAddressLinkDetailList(emailAddressLinkDetailList);
 
-//	request.setAttribute("emailAddressLinkDetailList", emailAddressLinkDetailList);
-	
-	if (emailAddressLinkDetailList != null) {
+		ListEmailAddressDAO listEmailAddressDAO = new ListEmailAddressDAO();
+		List<EmailAddressLinkDetail> emailAddressLinkDetailList = listEmailAddressDAO.listAllEmailAddress(emailAddressLinkDetail);
+		setEmailAddressLinkDetailList(emailAddressLinkDetailList);
 
-		pageForwardStr = SUCCESS;
+		// request.setAttribute("emailAddressLinkDetailList",
+		// emailAddressLinkDetailList);
 
-	} else {
-		
-		pageForwardStr = ERROR;
+		if (emailAddressLinkDetailList != null) {
 
-	}
-	return pageForwardStr;
+			pageForwardStr = SUCCESS;
+
+		} else {
+
+			pageForwardStr = ERROR;
+
+		}
+		return pageForwardStr;
 	}
 
 }

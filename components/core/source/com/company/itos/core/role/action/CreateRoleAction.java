@@ -10,10 +10,10 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateRoleAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	private Map<String,Object> session;
+
+	private Map<String, Object> session;
 	private RoleDetail roleDeatail;
 
 	/**
@@ -24,26 +24,26 @@ public class CreateRoleAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param roleDeatail the roleDeatail to set
+	 * @param roleDeatail
+	 *            the roleDeatail to set
 	 */
 	public void setRoleDeatail(RoleDetail roleDeatail) {
 		this.roleDeatail = roleDeatail;
 	}
 
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
-		
+
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
 
 		CreateRoleDAO createRoleDAO = new CreateRoleDAO();
 		String returnMassegeStr = createRoleDAO.CreateRole(roleDeatail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = SUCCESS;
@@ -53,6 +53,6 @@ public class CreateRoleAction extends ActionSupport implements SessionAware {
 		}
 
 		return pageForwardStr;
-}
+	}
 
 }

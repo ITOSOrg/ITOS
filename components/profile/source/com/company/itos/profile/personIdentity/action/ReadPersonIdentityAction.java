@@ -34,11 +34,11 @@ public class ReadPersonIdentityAction extends ActionSupport implements SessionAw
 	public void setAct(String act) {
 		this.act = act;
 	}
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -62,21 +62,22 @@ public class ReadPersonIdentityAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param personIdentityDetail the personIdentityDetail to set
+	 * @param personIdentityDetail
+	 *            the personIdentityDetail to set
 	 */
 	public void setPersonIdentityDetail(PersonIdentityDetail personIdentityDetail) {
 		this.personIdentityDetail = personIdentityDetail;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		ReadPersonIdentityDAO readPersonIdentityDAO = new ReadPersonIdentityDAO();
 		String returnMassegeStr = readPersonIdentityDAO.readPersonIdentity(personIdentityDetail);
-		
+
 		setPersonIdentityDetail(personIdentityDetail);
-		
+
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 
@@ -85,5 +86,5 @@ public class ReadPersonIdentityAction extends ActionSupport implements SessionAw
 		}
 
 		return pageForwardStr;
-}
+	}
 }

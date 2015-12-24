@@ -56,12 +56,13 @@ public class ReadCodeTableItemDAO {
 		try {
 			connection = DBConnection.getDBConnection();
 
-			String codeTableItemSQLStr = "SELECT description FROM CodeTableItem WHERE tableName = '"+codeTableItemKey.getTableName()+"' AND code = '"+codeTableItemKey.getCode()+"' ";
+			String codeTableItemSQLStr = "SELECT description FROM CodeTableItem WHERE tableName = '" + codeTableItemKey.getTableName()
+					+ "' AND code = '" + codeTableItemKey.getCode() + "' ";
 
 			PreparedStatement preparedStatement = connection.prepareStatement(codeTableItemSQLStr);
-			
-			//preparedStatement.setString(1, codeTableItemKey.getTableName());
-		//	preparedStatement.setString(2, codeTableItemKey.getCode());
+
+			// preparedStatement.setString(1, codeTableItemKey.getTableName());
+			// preparedStatement.setString(2, codeTableItemKey.getCode());
 
 			ResultSet resultSet = preparedStatement.executeQuery();
 

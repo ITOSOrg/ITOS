@@ -13,11 +13,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ReadUserRoleLinkAction extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
-	
-	private UserRoleLinkDetail userRoleLinkDetail;
-	private Map<String,Object> session;
 
-	
+	private UserRoleLinkDetail userRoleLinkDetail;
+	private Map<String, Object> session;
 
 	/**
 	 * @return the userRoleLinkDetail
@@ -27,25 +25,26 @@ public class ReadUserRoleLinkAction extends ActionSupport implements SessionAwar
 	}
 
 	/**
-	 * @param userRoleLinkDetail the userRoleLinkDetail to set
+	 * @param userRoleLinkDetail
+	 *            the userRoleLinkDetail to set
 	 */
 	public void setUserRoleLinkDetail(UserRoleLinkDetail userRoleLinkDetail) {
 		this.userRoleLinkDetail = userRoleLinkDetail;
 	}
 
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
-		
+
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		ReadUserRoleLinkDAO readUserRoleLinkDAO = new ReadUserRoleLinkDAO();
-		String returnMassegeStr =  readUserRoleLinkDAO.readUserRoleLink(userRoleLinkDetail);
-		
+		String returnMassegeStr = readUserRoleLinkDAO.readUserRoleLink(userRoleLinkDetail);
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = SUCCESS;
@@ -55,5 +54,5 @@ public class ReadUserRoleLinkAction extends ActionSupport implements SessionAwar
 		}
 
 		return pageForwardStr;
-}
+	}
 }

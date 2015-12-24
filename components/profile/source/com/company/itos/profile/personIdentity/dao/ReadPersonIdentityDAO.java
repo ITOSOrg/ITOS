@@ -9,20 +9,20 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class ReadPersonIdentityDAO {
-	
-	public String readPrimaryPersonIdentity(PersonIdentityDetail personIdentityDetail){
+
+	public String readPrimaryPersonIdentity(PersonIdentityDetail personIdentityDetail) {
 		String returnMassegeStr = "";
 		try {
 
 			Connection connection = DBConnection.getDBConnection();
-			
+
 			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personID = \'" + personIdentityDetail.getPersonID()
 					+ "\' AND RECORDSTATUS='Active' AND typeCode = 'Primary'";
-			
-			PreparedStatement preparedStatementpersonIdentity =  connection.prepareStatement(personIdentitySQLStr);
+
+			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
 			ResultSet resultSet = preparedStatementpersonIdentity.executeQuery();
-			
-			while(resultSet.next()){
+
+			while (resultSet.next()) {
 				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
 				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
 				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
@@ -33,7 +33,7 @@ public class ReadPersonIdentityDAO {
 				personIdentityDetail.setRecordStatus(resultSet.getString("recordStatus"));
 				personIdentityDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -43,19 +43,19 @@ public class ReadPersonIdentityDAO {
 		return returnMassegeStr;
 	}
 
-	public String readPersonIdentity(PersonIdentityDetail personIdentityDetail){
+	public String readPersonIdentity(PersonIdentityDetail personIdentityDetail) {
 		String returnMassegeStr = "";
 		try {
 
 			Connection connection = DBConnection.getDBConnection();
-			
-			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personIdentityID = \'" + personIdentityDetail.getPersonIdentityID()
-					+ "\' AND RECORDSTATUS='Active'";
-			
-			PreparedStatement preparedStatementpersonIdentity =  connection.prepareStatement(personIdentitySQLStr);
+
+			String personIdentitySQLStr = "SELECT * FROM PersonIdentity WHERE personIdentityID = \'"
+					+ personIdentityDetail.getPersonIdentityID() + "\' AND RECORDSTATUS='Active'";
+
+			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
 			ResultSet resultSet = preparedStatementpersonIdentity.executeQuery();
-			
-			while(resultSet.next()){
+
+			while (resultSet.next()) {
 				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
 				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
 				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
@@ -66,7 +66,7 @@ public class ReadPersonIdentityDAO {
 				personIdentityDetail.setRecordStatus(resultSet.getString("recordStatus"));
 				personIdentityDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

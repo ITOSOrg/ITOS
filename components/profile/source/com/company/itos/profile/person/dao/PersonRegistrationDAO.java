@@ -61,18 +61,16 @@ public class PersonRegistrationDAO {
 			try {
 				connection = DBConnection.getDBConnection();
 
-			String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
-					+ "','" + usersDetail.getPassword() + "','active', ?)";
-			preparedStatement = connection.prepareStatement(usersSQLStr);
-			preparedStatement.setLong(1, UniqueID.nextUniqueID());
+				String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
+						+ "','" + usersDetail.getPassword() + "','active', ?)";
+				preparedStatement = connection.prepareStatement(usersSQLStr);
+				preparedStatement.setLong(1, UniqueID.nextUniqueID());
 
-			preparedStatement.execute();
+				preparedStatement.execute();
 
-
-
-			
 				statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT relatedID FROM USERS WHERE userName='" + usersDetail.getPassword() + "'");
+				ResultSet resultSet = statement.executeQuery("SELECT relatedID FROM USERS WHERE userName='" + usersDetail.getPassword()
+						+ "'");
 
 				if (resultSet.next()) {
 					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
@@ -112,8 +110,6 @@ public class PersonRegistrationDAO {
 			try {
 				// connection = dbConnection.getDBConnection();
 
-				
-
 				PreparedStatement preparedStatement1 = connection.prepareStatement(personSQLStr);
 
 				preparedStatement1.setLong(1, personDetail.getPersonID());
@@ -136,22 +132,21 @@ public class PersonRegistrationDAO {
 
 				CreateAddressDAO createAddressDAO = new CreateAddressDAO();
 				createAddressDAO.createAddress(addressLinkDetail);
-				
+
 				CreatePersonIdentityDAO createPersonIdentityDAO = new CreatePersonIdentityDAO();
 				createPersonIdentityDAO.CreatePersonIdentity(personIdentityDetail);
 
-				//For Role table
-				
+				// For Role table
+
 				RoleDetail roleDetail = personDetail.getRoleDetail();
-				
-				
-				//For UserRoleLink
+
+				// For UserRoleLink
 				UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
 				userRoleLinkDetail.setUsername(usersDetail.getUserName());
 				userRoleLinkDetail.setRoleID(roleDetail.getRoleID());
 				CreateUserRoleLinkDAO createUserRoleLinkDAO = new CreateUserRoleLinkDAO();
 				createUserRoleLinkDAO.createUserRoleLinkUsingRegistrationform(userRoleLinkDetail);
-				
+
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 			} catch (SQLException e) {
 				personDetail.getErrorMessageList().add("Username already exist");
@@ -202,7 +197,6 @@ public class PersonRegistrationDAO {
 	}
 
 	public boolean checkingUserName(PersonDetail personDetail) {
-
 
 		Connection connection = null;
 		try {

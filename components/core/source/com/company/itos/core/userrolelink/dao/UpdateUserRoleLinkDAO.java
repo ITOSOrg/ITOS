@@ -38,7 +38,7 @@ public class UpdateUserRoleLinkDAO {
 
 				Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
 				preparedStatementuserRoleLink.setTimestamp(2, timestamp);
-				
+
 				preparedStatementuserRoleLink.setDate(3, userRoleLinkDetail.getEndDate());
 				preparedStatementuserRoleLink.execute();
 

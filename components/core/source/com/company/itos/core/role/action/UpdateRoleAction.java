@@ -12,16 +12,17 @@ import com.company.itos.core.role.pojo.RoleDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateRoleAction extends ActionSupport implements SessionAware, ServletRequestAware {
-	
+
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private RoleDetail roleDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
-		
+
 		this.session = sessionInput;
 
 	}
+
 	public HttpServletRequest getServletRequest() {
 		return request;
 	}
@@ -31,28 +32,29 @@ public class UpdateRoleAction extends ActionSupport implements SessionAware, Ser
 		this.request = request;
 
 	}
-	
-	
-	
+
 	/**
 	 * @return the roleDetail
 	 */
 	public RoleDetail getRoleDetail() {
 		return roleDetail;
 	}
+
 	/**
-	 * @param roleDetail the roleDetail to set
+	 * @param roleDetail
+	 *            the roleDetail to set
 	 */
 	public void setRoleDetail(RoleDetail roleDetail) {
 		this.roleDetail = roleDetail;
 	}
+
 	public String execute() throws Exception {
-		
+
 		UpdateRoleDAO updateRoleDAO = new UpdateRoleDAO();
 		String returnMassegeStr = updateRoleDAO.UpdateRole(roleDetail);
-		
-		//session.put("roleDetail", roleDetail);
-		
+
+		// session.put("roleDetail", roleDetail);
+
 		return SUCCESS;
 	}
 

@@ -11,29 +11,31 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class CreatePersonIdentityDAO {
-	
-	public String CreatePersonIdentity(PersonIdentityDetail personIdentityDetail){
-		
-		String returnMassegeStr = "";
 
+	public String CreatePersonIdentity(PersonIdentityDetail personIdentityDetail) {
+
+		String returnMassegeStr = "";
 
 		Connection connection = null;
 		try {
-			
+
 			connection = DBConnection.getDBConnection();
-			
-			/*PreparedStatement preparedStatement = connection.prepareStatement("SELECT PersonIdentitySEQ.nextval FROM DUAL");
-			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()){
-				personIdentityDetail.setPersonIdentityID(resultSet.getInt(1));
-			}*/
-			
+
+			/*
+			 * PreparedStatement preparedStatement =
+			 * connection.prepareStatement(
+			 * "SELECT PersonIdentitySEQ.nextval FROM DUAL"); ResultSet
+			 * resultSet = preparedStatement.executeQuery();
+			 * 
+			 * while(resultSet.next()){
+			 * personIdentityDetail.setPersonIdentityID(resultSet.getInt(1)); }
+			 */
+
 			String personIdentitySQLStr = "INSERT INTO PersonIdentity ( personIdentityID, personID, alternateID, primaryInd, typeCode, startDate, endDate, recordStatus, versionNo) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
-			
+
 			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
-			
+
 			preparedStatementpersonIdentity.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementpersonIdentity.setLong(2, personIdentityDetail.getPersonID());
 			preparedStatementpersonIdentity.setInt(3, personIdentityDetail.getAlternateID());
@@ -41,9 +43,9 @@ public class CreatePersonIdentityDAO {
 			preparedStatementpersonIdentity.setString(5, personIdentityDetail.getTypeCode());
 			preparedStatementpersonIdentity.setDate(6, personIdentityDetail.getStartDate());
 			preparedStatementpersonIdentity.setDate(7, personIdentityDetail.getEndDate());
-			
+
 			preparedStatementpersonIdentity.executeQuery();
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,7 +53,7 @@ public class CreatePersonIdentityDAO {
 		}
 
 		return returnMassegeStr;
-		
+
 	}
 
 }

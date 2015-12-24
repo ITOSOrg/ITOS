@@ -1,4 +1,4 @@
-			package com.company.itos.core.codetable.action;
+package com.company.itos.core.codetable.action;
 
 import java.util.Map;
 
@@ -13,14 +13,14 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReadCodeTableHeaderAction extends ActionSupport implements SessionAware, ServletRequestAware {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	private Map<String,Object> session;
+
+	private Map<String, Object> session;
 	private CodeTableHeaderDetail codeTableHeaderDetail;
 	HttpServletRequest request;
 	String act = "";
-	
+
 	/**
 	 * @return the act
 	 */
@@ -29,7 +29,8 @@ public class ReadCodeTableHeaderAction extends ActionSupport implements SessionA
 	}
 
 	/**
-	 * @param act the act to set
+	 * @param act
+	 *            the act to set
 	 */
 	public void setAct(String act) {
 		this.act = act;
@@ -38,7 +39,7 @@ public class ReadCodeTableHeaderAction extends ActionSupport implements SessionA
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	
+
 	/**
 	 * @return the codeTableHeaderDetail
 	 */
@@ -47,11 +48,13 @@ public class ReadCodeTableHeaderAction extends ActionSupport implements SessionA
 	}
 
 	/**
-	 * @param codeTableHeaderDetail the codeTableHeaderDetail to set
+	 * @param codeTableHeaderDetail
+	 *            the codeTableHeaderDetail to set
 	 */
 	public void setCodeTableHeaderDetail(CodeTableHeaderDetail codeTableHeaderDetail) {
 		this.codeTableHeaderDetail = codeTableHeaderDetail;
 	}
+
 	/**
 	 * @return the request
 	 */
@@ -68,21 +71,23 @@ public class ReadCodeTableHeaderAction extends ActionSupport implements SessionA
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		//String action = (String) getServletRequest().getParameter("act");
-		
-		//CodeTableHeaderDetail codeTableHeaderDetail = new CodeTableHeaderDetail();
-		
-		//String tableName = (String) getServletRequest().getParameter("tableName");
-		//codeTableHeaderDetail.setTableName(tableName);
-		
+		// String action = (String) getServletRequest().getParameter("act");
+
+		// CodeTableHeaderDetail codeTableHeaderDetail = new
+		// CodeTableHeaderDetail();
+
+		// String tableName = (String)
+		// getServletRequest().getParameter("tableName");
+		// codeTableHeaderDetail.setTableName(tableName);
+
 		ReadCodeTableHeaderDAO readCodeTableHeaderDAO = new ReadCodeTableHeaderDAO();
-		String returnMassegeStr =  readCodeTableHeaderDAO.ReadCodeTableHeader(codeTableHeaderDetail);
-		
+		String returnMassegeStr = readCodeTableHeaderDAO.ReadCodeTableHeader(codeTableHeaderDetail);
+
 		setCodeTableHeaderDetail(codeTableHeaderDetail);
-		//session.put("codeTableHeaderDetail", codeTableHeaderDetail);
-		
+		// session.put("codeTableHeaderDetail", codeTableHeaderDetail);
+
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 

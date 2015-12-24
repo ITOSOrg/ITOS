@@ -28,7 +28,6 @@ public class PersonUpdateDAO {
 
 			versionNoFromDatabase++;
 
-
 			try {
 				connection = DBConnection.getDBConnection();
 				String personSQLStr = "UPDATE	PERSON	SET title='" + personDetail.getTitle() + "',	firstName='"

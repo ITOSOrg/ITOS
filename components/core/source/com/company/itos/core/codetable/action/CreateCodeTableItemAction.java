@@ -10,10 +10,10 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateCodeTableItemAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
 	private CodeTableItemDetail codeTableItemDetail;
-	
+
 	/**
 	 * @return the codeTableItemDetail
 	 */
@@ -22,37 +22,36 @@ public class CreateCodeTableItemAction extends ActionSupport implements SessionA
 	}
 
 	/**
-	 * @param codeTableItemDetail the codeTableItemDetail to set
+	 * @param codeTableItemDetail
+	 *            the codeTableItemDetail to set
 	 */
 	public void setCodeTableItemDetail(CodeTableItemDetail codeTableItemDetail) {
 		this.codeTableItemDetail = codeTableItemDetail;
 	}
 
-	private Map<String,Object> session;
+	private Map<String, Object> session;
 
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
 
 	}
-	
+
 	public String execute() throws Exception {
-		
-	
-	CreateCodeTableItemDAO createCodeTableItemDAO = new CreateCodeTableItemDAO();
-	String returnMassegeStr = createCodeTableItemDAO.createCreateCodeTableItem(codeTableItemDetail);
-	
-	if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-		return SUCCESS;
+		CreateCodeTableItemDAO createCodeTableItemDAO = new CreateCodeTableItemDAO();
+		String returnMassegeStr = createCodeTableItemDAO.createCreateCodeTableItem(codeTableItemDetail);
 
-	} else {
-		
-		return ERROR;
-	
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
+
+			return SUCCESS;
+
+		} else {
+
+			return ERROR;
+
+		}
+
 	}
-
-}
-	
 
 }

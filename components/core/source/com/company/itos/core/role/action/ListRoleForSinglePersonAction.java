@@ -16,19 +16,17 @@ public class ListRoleForSinglePersonAction extends ActionSupport implements Sess
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private Map<String,Object> session;
+
+	private Map<String, Object> session;
 	private UserRoleLinkDetail userRoleLinkDetail;
 	private List<RoleDetail> singlePersonRolelist;
-	
-	public void setSession(Map<String, Object> session) {
-		
 
-		 this.session = session;
-		
+	public void setSession(Map<String, Object> session) {
+
+		this.session = session;
+
 	}
-	
-	
+
 	/**
 	 * @return the userRoleLinkDetail
 	 */
@@ -36,17 +34,13 @@ public class ListRoleForSinglePersonAction extends ActionSupport implements Sess
 		return userRoleLinkDetail;
 	}
 
-
 	/**
-	 * @param userRoleLinkDetail the userRoleLinkDetail to set
+	 * @param userRoleLinkDetail
+	 *            the userRoleLinkDetail to set
 	 */
 	public void setUserRoleLinkDetail(UserRoleLinkDetail userRoleLinkDetail) {
 		this.userRoleLinkDetail = userRoleLinkDetail;
 	}
-
-
-	
-
 
 	/**
 	 * @return the singlePersonRolelist
@@ -55,30 +49,29 @@ public class ListRoleForSinglePersonAction extends ActionSupport implements Sess
 		return singlePersonRolelist;
 	}
 
-
 	/**
-	 * @param singlePersonRolelist the singlePersonRolelist to set
+	 * @param singlePersonRolelist
+	 *            the singlePersonRolelist to set
 	 */
 	public void setSinglePersonRolelist(List<RoleDetail> singlePersonRolelist) {
 		this.singlePersonRolelist = singlePersonRolelist;
 	}
 
-
 	public String execute() throws Exception {
-		
+
 		ListRoleForSinglePersonDAO listRoleForSinglePersonDAO = new ListRoleForSinglePersonDAO();
 		List<RoleDetail> singlePersonRolelist = listRoleForSinglePersonDAO.listRoleForSinglePerson(userRoleLinkDetail);
 		setSinglePersonRolelist(singlePersonRolelist);
-		
+
 		if (singlePersonRolelist != null) {
-			
-		return SUCCESS;
-		
-		}else{
-			
+
+			return SUCCESS;
+
+		} else {
+
 			return ERROR;
 		}
-	
+
 	}
 
 }

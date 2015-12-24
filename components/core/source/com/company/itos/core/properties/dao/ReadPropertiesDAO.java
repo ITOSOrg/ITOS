@@ -10,23 +10,22 @@ import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.CRUDConstants;
 
 public class ReadPropertiesDAO {
-	
-	public String ReadProperties(PropertiesDetail propertiesDetail){
-		
+
+	public String ReadProperties(PropertiesDetail propertiesDetail) {
+
 		String returnMassegeStr = "";
 		try {
 
 			Connection connection = DBConnection.getDBConnection();
-			
-			String PropertiesSQLStr = "SELECT * FROM Properties WHERE propertyID = \'" + propertiesDetail.getPropertyID()
-					+ "\'";
-			
-			PreparedStatement preparedStatementpersonIdentity =  connection.prepareStatement(PropertiesSQLStr);
+
+			String PropertiesSQLStr = "SELECT * FROM Properties WHERE propertyID = \'" + propertiesDetail.getPropertyID() + "\'";
+
+			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(PropertiesSQLStr);
 			ResultSet resultSet = preparedStatementpersonIdentity.executeQuery();
-			
-			while(resultSet.next()){
-				//PropertiesDetail propertiesDetail = new PropertiesDetail();
-				
+
+			while (resultSet.next()) {
+				// PropertiesDetail propertiesDetail = new PropertiesDetail();
+
 				propertiesDetail.setPropertyID(resultSet.getLong("propertyID"));
 				propertiesDetail.setCategory(resultSet.getString("category"));
 				propertiesDetail.setName(resultSet.getString("name"));
@@ -40,9 +39,9 @@ public class ReadPropertiesDAO {
 				propertiesDetail.setLastModifiedBy(resultSet.getString("lastModifiedBy"));
 				propertiesDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));
 				propertiesDetail.setVersionNo(resultSet.getInt("versionNo"));
-				
+
 			}
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,6 +49,6 @@ public class ReadPropertiesDAO {
 		}
 
 		return returnMassegeStr;
-		}
+	}
 
 }

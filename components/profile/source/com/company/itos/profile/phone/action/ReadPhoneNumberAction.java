@@ -77,7 +77,7 @@ public class ReadPhoneNumberAction extends ActionSupport implements SessionAware
 
 		ReadPhoneNumberDAO readPhoneNumberDAO = new ReadPhoneNumberDAO();
 		String returnMassegeStr = readPhoneNumberDAO.readPhoneNumber(phoneNumberLinkDetail);
-		
+
 		setPhoneNumberLinkDetail(phoneNumberLinkDetail);
 
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {

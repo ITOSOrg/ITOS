@@ -10,17 +10,16 @@ import com.company.itos.core.role.pojo.RoleDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ListRoleAction extends ActionSupport implements SessionAware {
-	
-	private Map<String,Object> session;
-	private List<RoleDetail> roleDetailList;
-	
-	public void setSession(Map<String, Object> session) {
-		
 
-		 this.session = session;
-		
+	private Map<String, Object> session;
+	private List<RoleDetail> roleDetailList;
+
+	public void setSession(Map<String, Object> session) {
+
+		this.session = session;
+
 	}
-	
+
 	/**
 	 * @return the roleDetailList
 	 */
@@ -29,23 +28,24 @@ public class ListRoleAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param roleDetailList the roleDetailList to set
+	 * @param roleDetailList
+	 *            the roleDetailList to set
 	 */
 	public void setRoleDetailList(List<RoleDetail> roleDetailList) {
 		this.roleDetailList = roleDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		RoleDetail roleDetail = new RoleDetail();
-		
+
 		ListRoleDAO listRoleDAO = new ListRoleDAO();
 		List<RoleDetail> roleDetailList = listRoleDAO.ListRole(roleDetail);
-		
+
 		setRoleDetailList(roleDetailList);
-		
-		//session.put("roleDetailList", roleDetailList);
-		
+
+		// session.put("roleDetailList", roleDetailList);
+
 		return SUCCESS;
 	}
 

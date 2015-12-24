@@ -25,12 +25,14 @@ public class CreateRoleDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
-			ResultSet resultSet1 = preparedStatement1.executeQuery();
-
-			while (resultSet1.next()) {
-				roleDeatail.setRoleID(resultSet1.getInt(1));
-			}*/
+			/*
+			 * PreparedStatement preparedStatement1 =
+			 * connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
+			 * ResultSet resultSet1 = preparedStatement1.executeQuery();
+			 * 
+			 * while (resultSet1.next()) {
+			 * roleDeatail.setRoleID(resultSet1.getInt(1)); }
+			 */
 
 			String roleSQLStr = "INSERT INTO Role(roleID, roleType, workspace, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo)"
 					+ "VALUES(?, ?, ?, 'Active', 'Rahul', ?, 'Rahul', ?, 1)";
@@ -57,9 +59,9 @@ public class CreateRoleDAO {
 		return returnMassegeStr;
 
 	}
-	
-	public String createRoleUsingRegistrationForm(RoleDetail roleDetail){
-		
+
+	public String createRoleUsingRegistrationForm(RoleDetail roleDetail) {
+
 		String returnMassegeStr = "";
 
 		DBConnection dbConnection = new DBConnection();
@@ -70,13 +72,14 @@ public class CreateRoleDAO {
 
 			connection = dbConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatement = connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			while (resultSet.next()) {
-				roleDetail.setRoleID(resultSet.getLong(1));
-			}
-*/
+			/*
+			 * PreparedStatement preparedStatement =
+			 * connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
+			 * ResultSet resultSet = preparedStatement.executeQuery();
+			 * 
+			 * while (resultSet.next()) {
+			 * roleDetail.setRoleID(resultSet.getLong(1)); }
+			 */
 			String roleSQLStr = "INSERT INTO Role(roleID, roleType, workspace, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo)"
 					+ "VALUES(?, ?, 'Emp', 'Active', 'Rahul', ?, 'Rahul', ?, 1)";
 
@@ -99,7 +102,7 @@ public class CreateRoleDAO {
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
 		return returnMassegeStr;
-		
+
 	}
 
 }

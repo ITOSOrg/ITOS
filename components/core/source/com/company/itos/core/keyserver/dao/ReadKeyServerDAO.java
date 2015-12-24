@@ -9,21 +9,21 @@ import com.company.itos.core.keyserver.pojo.KeyServerDetail;
 import com.company.itos.core.util.CRUDConstants;
 
 public class ReadKeyServerDAO {
-	
-	public String ReadKeyServer(KeyServerDetail keyServerDetail){
-		
+
+	public String ReadKeyServer(KeyServerDetail keyServerDetail) {
+
 		String returnMassegeStr = "";
 		try {
 
 			Connection connection = DBConnection.getDBConnection();
-			
+
 			String KeyServerSQLStr = "SELECT * FROM KeyServer WHERE keysetCode = \'" + keyServerDetail.getKeysetCode()
 					+ "\' AND RECORDSTATUS='Active'";
-			
-			PreparedStatement preparedStatement =  connection.prepareStatement(KeyServerSQLStr);
+
+			PreparedStatement preparedStatement = connection.prepareStatement(KeyServerSQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()){
+
+			while (resultSet.next()) {
 				keyServerDetail.setKeysetCode(resultSet.getString("keysetCode"));
 				keyServerDetail.setNextUniqueIdBlock(resultSet.getLong("nextUniqueIdBlock"));
 				keyServerDetail.setHumanReadable(resultSet.getString("humanReadable"));
@@ -36,7 +36,7 @@ public class ReadKeyServerDAO {
 				keyServerDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));
 				keyServerDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
-			
+
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -44,6 +44,6 @@ public class ReadKeyServerDAO {
 		}
 
 		return returnMassegeStr;
-		}
+	}
 
 }

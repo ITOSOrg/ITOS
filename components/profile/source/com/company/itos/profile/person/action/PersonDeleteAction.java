@@ -19,7 +19,6 @@ public class PersonDeleteAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	HttpServletRequest request;
 
-	
 	/**
 	 * @return the personDetail
 	 */
@@ -28,7 +27,8 @@ public class PersonDeleteAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personDetail the personDetail to set
+	 * @param personDetail
+	 *            the personDetail to set
 	 */
 	public void setPersonDetail(PersonDetail personDetail) {
 		this.personDetail = personDetail;
@@ -37,7 +37,7 @@ public class PersonDeleteAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -52,25 +52,24 @@ public class PersonDeleteAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		PersonDeleteDAO personDeleteDAO = new PersonDeleteDAO();
 		String returnMassegeStr = personDeleteDAO.deleteStudent(personDetail);
 
-		
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
+
 			pageForwardStr = SUCCESS;
-			
-		}else{
-			
+
+		} else {
+
 			pageForwardStr = ERROR;
-			
+
 		}
-		
+
 		return pageForwardStr;
 	}
 }

@@ -11,17 +11,17 @@ import com.company.itos.core.role.pojo.RoleDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class DeleteRoleAction extends ActionSupport implements SessionAware {
-	
-	private Map<String,Object> session;
+
+	private Map<String, Object> session;
 	private RoleDetail roleDetail;
 	HttpServletRequest request;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
-		
+
 		this.session = sessionInput;
-		
+
 	}
-	
+
 	/**
 	 * @return the roleDetail
 	 */
@@ -30,7 +30,8 @@ public class DeleteRoleAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param roleDetail the roleDetail to set
+	 * @param roleDetail
+	 *            the roleDetail to set
 	 */
 	public void setRoleDetail(RoleDetail roleDetail) {
 		this.roleDetail = roleDetail;
@@ -43,28 +44,28 @@ public class DeleteRoleAction extends ActionSupport implements SessionAware {
 		return request;
 	}
 
-
 	/**
-	 * @param request the request to set
+	 * @param request
+	 *            the request to set
 	 */
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
-		public String execute() throws Exception {
-		
-			//RoleDetail roleDetail = new RoleDetail();
-			
-			//int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
-			
-			//roleDetail.setRoleID(roleID);
-			
+
+	public String execute() throws Exception {
+
+		// RoleDetail roleDetail = new RoleDetail();
+
+		// int roleID = new Integer((String)
+		// getServletRequest().getParameter("roleID")).intValue();
+
+		// roleDetail.setRoleID(roleID);
+
 		DeleteRoleDAO deleteRoleDAO = new DeleteRoleDAO();
 		String returnMassegeStr = deleteRoleDAO.deleteRole(roleDetail);
-		
+
 		return SUCCESS;
-		
-		}
+
+	}
 
 }

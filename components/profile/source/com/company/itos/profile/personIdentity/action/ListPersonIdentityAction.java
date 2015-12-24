@@ -19,11 +19,11 @@ public class ListPersonIdentityAction extends ActionSupport implements SessionAw
 	HttpServletRequest request;
 	private PersonIdentityDetail personIdentityDetail;
 	private List<PersonIdentityDetail> personIdentityDetailList;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -47,13 +47,14 @@ public class ListPersonIdentityAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param personIdentityDetail the personIdentityDetail to set
+	 * @param personIdentityDetail
+	 *            the personIdentityDetail to set
 	 */
 	public void setPersonIdentityDetail(PersonIdentityDetail personIdentityDetail) {
 		this.personIdentityDetail = personIdentityDetail;
 	}
-	
-/**
+
+	/**
 	 * @return the personIdentityDetailList
 	 */
 	public List<PersonIdentityDetail> getPersonIdentityDetailList() {
@@ -61,29 +62,30 @@ public class ListPersonIdentityAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param personIdentityDetailList the personIdentityDetailList to set
+	 * @param personIdentityDetailList
+	 *            the personIdentityDetailList to set
 	 */
 	public void setPersonIdentityDetailList(List<PersonIdentityDetail> personIdentityDetailList) {
 		this.personIdentityDetailList = personIdentityDetailList;
 	}
 
-public String execute() throws Exception {
-		
+	public String execute() throws Exception {
+
 		String pageForwardStr = "";
-		
+
 		ListPersonIdentityDAO listPersonIdentityDAO = new ListPersonIdentityDAO();
 		List<PersonIdentityDetail> personIdentityDetailList = listPersonIdentityDAO.personIdentityList(personIdentityDetail);
-		
+
 		setPersonIdentityDetailList(personIdentityDetailList);
-		
+
 		if (personIdentityDetailList != null) {
 			pageForwardStr = SUCCESS;
 
 		} else {
-			
+
 			pageForwardStr = ERROR;
 
 		}
 		return pageForwardStr;
-}
+	}
 }

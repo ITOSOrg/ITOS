@@ -14,11 +14,11 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReadRoleAction extends ActionSupport implements SessionAware, ServletRequestAware {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	String act = "";
-	private Map<String,Object> session;
+	private Map<String, Object> session;
 	private RoleDetail roleDetail;
 	HttpServletRequest request;
 
@@ -36,7 +36,7 @@ public class ReadRoleAction extends ActionSupport implements SessionAware, Servl
 	public void setAct(String act) {
 		this.act = act;
 	}
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 
 		this.session = sessionInput;
@@ -51,7 +51,8 @@ public class ReadRoleAction extends ActionSupport implements SessionAware, Servl
 	}
 
 	/**
-	 * @param roleDetail the roleDetail to set
+	 * @param roleDetail
+	 *            the roleDetail to set
 	 */
 	public void setRoleDetail(RoleDetail roleDetail) {
 		this.roleDetail = roleDetail;
@@ -64,43 +65,43 @@ public class ReadRoleAction extends ActionSupport implements SessionAware, Servl
 		return request;
 	}
 
-
 	/**
-	 * @param request the request to set
+	 * @param request
+	 *            the request to set
 	 */
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
-		public String execute() throws Exception {
-		
+
+	public String execute() throws Exception {
+
 		String pageForwardStr = "";
-		//RoleDetail roleDetail = new RoleDetail();
-		
-		//String action = (String) getServletRequest().getParameter("act");
-		//int roleID = new Integer((String) getServletRequest().getParameter("roleID")).intValue();
-		
-		//roleDetail.setRoleID(roleID);
-		
+		// RoleDetail roleDetail = new RoleDetail();
+
+		// String action = (String) getServletRequest().getParameter("act");
+		// int roleID = new Integer((String)
+		// getServletRequest().getParameter("roleID")).intValue();
+
+		// roleDetail.setRoleID(roleID);
+
 		ReadRoleDAO readRoleDAO = new ReadRoleDAO();
 		String returnMassegeStr = readRoleDAO.readRole(roleDetail);
-		
+
 		setRoleDetail(roleDetail);
-		
-		//session.put("roleDetail", roleDetail);
-		
+
+		// session.put("roleDetail", roleDetail);
+
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
+
 			pageForwardStr = "SENTTOUPDATE";
-			
+
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
+
 			pageForwardStr = SUCCESS;
-			
+
 		}
 
 		return pageForwardStr;
-}
+	}
 
 }

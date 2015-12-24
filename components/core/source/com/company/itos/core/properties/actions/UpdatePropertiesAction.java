@@ -24,7 +24,8 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 	}
 
 	/**
-	 * @param propertiesDetail the propertiesDetail to set
+	 * @param propertiesDetail
+	 *            the propertiesDetail to set
 	 */
 	public void setPropertiesDetail(PropertiesDetail propertiesDetail) {
 		this.propertiesDetail = propertiesDetail;
@@ -52,16 +53,20 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 	public String execute() throws Exception {
 		String pageForwardStr = "";
 
-		/*int propertyID = new Integer((String) getServletRequest().getParameter("propertyID")).intValue();
-		propertiesDetail.setPropertyID(propertyID);
-
-		int versionNo = new Integer((String) getServletRequest().getParameter("versionNo")).intValue();
-		propertiesDetail.setVersionNo(versionNo);*/
+		/*
+		 * int propertyID = new Integer((String)
+		 * getServletRequest().getParameter("propertyID")).intValue();
+		 * propertiesDetail.setPropertyID(propertyID);
+		 * 
+		 * int versionNo = new Integer((String)
+		 * getServletRequest().getParameter("versionNo")).intValue();
+		 * propertiesDetail.setVersionNo(versionNo);
+		 */
 
 		UpdatePropertiesDAO updatePropertiesDAO = new UpdatePropertiesDAO();
 		String returnMassegeStr = updatePropertiesDAO.updateProperties(propertiesDetail);
 		session.put("propertiesDetail", propertiesDetail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
 			pageForwardStr = SUCCESS;
@@ -69,7 +74,6 @@ public class UpdatePropertiesAction extends ActionSupport implements SessionAwar
 		} else {
 			pageForwardStr = ERROR;
 		}
-
 
 		return pageForwardStr;
 	}

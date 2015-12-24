@@ -21,11 +21,11 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 	HttpServletRequest request;
 	private PhoneNumberLinkDetail phoneNumberLinkDetail;
 	private List<PhoneNumberLinkDetail> phoneNumberLinkDetailList;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -41,7 +41,7 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 		this.request = request;
 	}
 
-/**
+	/**
 	 * @return the phoneNumberLinkDetail
 	 */
 	public PhoneNumberLinkDetail getPhoneNumberLinkDetail() {
@@ -49,7 +49,8 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 	}
 
 	/**
-	 * @param phoneNumberLinkDetail the phoneNumberLinkDetail to set
+	 * @param phoneNumberLinkDetail
+	 *            the phoneNumberLinkDetail to set
 	 */
 	public void setPhoneNumberLinkDetail(PhoneNumberLinkDetail phoneNumberLinkDetail) {
 		this.phoneNumberLinkDetail = phoneNumberLinkDetail;
@@ -63,34 +64,33 @@ public class ListPhoneNumberAction extends ActionSupport implements SessionAware
 	}
 
 	/**
-	 * @param phoneNumberLinkDetailList the phoneNumberLinkDetailList to set
+	 * @param phoneNumberLinkDetailList
+	 *            the phoneNumberLinkDetailList to set
 	 */
 	public void setPhoneNumberLinkDetailList(List<PhoneNumberLinkDetail> phoneNumberLinkDetailList) {
 		this.phoneNumberLinkDetailList = phoneNumberLinkDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		ListPhoneNumberDAO listPhoneNumberDAO = new ListPhoneNumberDAO();
 		List<PhoneNumberLinkDetail> phoneNumberLinkDetailList = listPhoneNumberDAO.listAllPhoneNumber(phoneNumberLinkDetail);
-		
+
 		setPhoneNumberLinkDetailList(phoneNumberLinkDetailList);
-		
-		 if (phoneNumberLinkDetailList != null) {
-				
 
-				pageForwardStr = SUCCESS;
+		if (phoneNumberLinkDetailList != null) {
 
-			} else {
-				
-				pageForwardStr = ERROR;
+			pageForwardStr = SUCCESS;
 
-			}
-			return pageForwardStr;
+		} else {
 
-}
+			pageForwardStr = ERROR;
 
+		}
+		return pageForwardStr;
+
+	}
 
 }

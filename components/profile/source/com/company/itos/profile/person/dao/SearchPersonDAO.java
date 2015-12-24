@@ -13,7 +13,6 @@ import com.company.itos.profile.person.pojo.PersonSearchDetails;
 
 public class SearchPersonDAO {
 
-
 	Connection connection = null;
 
 	public List<PersonDetail> searchPersonInfo(PersonSearchDetails personSearchDetails) {

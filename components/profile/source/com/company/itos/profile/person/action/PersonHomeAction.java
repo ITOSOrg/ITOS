@@ -12,7 +12,7 @@ import com.company.itos.profile.person.pojo.PersonDetail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class PersonHomeAction extends ActionSupport implements SessionAware {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	String act = "";
@@ -35,7 +35,6 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 		this.act = act;
 	}
 
-	
 	/**
 	 * @return the personDetail
 	 */
@@ -44,7 +43,8 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personDetail the personDetail to set
+	 * @param personDetail
+	 *            the personDetail to set
 	 */
 	public void setPersonDetail(PersonDetail personDetail) {
 		this.personDetail = personDetail;
@@ -53,7 +53,7 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -68,20 +68,20 @@ public class PersonHomeAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
-		//int personID = new Integer((String) getServletRequest().getParameter("personID")).intValue();
-		//personDetail.setPersonID(personID);
-		
+
+		// int personID = new Integer((String)
+		// getServletRequest().getParameter("personID")).intValue();
+		// personDetail.setPersonID(personID);
+
 		PersonHomeDAO personHomeDAO = new PersonHomeDAO();
-		String returnMassegeStr =	personHomeDAO.readPersonDetail(personDetail);
-		
-	
-		//session.put("personDetail", personDetail);
-		//session.put("personID", personID);
+		String returnMassegeStr = personHomeDAO.readPersonDetail(personDetail);
+
+		// session.put("personDetail", personDetail);
+		// session.put("personID", personID);
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 			pageForwardStr = "SENTTOUPDATE";
 

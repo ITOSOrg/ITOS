@@ -13,12 +13,12 @@ import com.company.itos.core.util.CRUDConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ReadKeyServerAction extends ActionSupport implements SessionAware, ServletRequestAware {
-	
+
 	HttpServletRequest request;
 	private KeyServerDetail keyServerDetail;
-	private Map<String,Object> session;
+	private Map<String, Object> session;
 	String act = "";
-	
+
 	/**
 	 * @return the act
 	 */
@@ -27,12 +27,13 @@ public class ReadKeyServerAction extends ActionSupport implements SessionAware, 
 	}
 
 	/**
-	 * @param act the act to set
+	 * @param act
+	 *            the act to set
 	 */
 	public void setAct(String act) {
 		this.act = act;
 	}
-	
+
 	/**
 	 * @return the keyServerDetail
 	 */
@@ -41,54 +42,56 @@ public class ReadKeyServerAction extends ActionSupport implements SessionAware, 
 	}
 
 	/**
-	 * @param keyServerDetail the keyServerDetail to set
+	 * @param keyServerDetail
+	 *            the keyServerDetail to set
 	 */
 	public void setKeyServerDetail(KeyServerDetail keyServerDetail) {
 		this.keyServerDetail = keyServerDetail;
 	}
 
 	public void setSession(Map<String, Object> session) {
-		
+
 		this.session = session;
 
 	}
-	
+
 	public HttpServletRequest getServletRequest() {
 		return request;
 	}
 
-
 	/**
-	 * @param request the request to set
+	 * @param request
+	 *            the request to set
 	 */
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		//String action = (String) getServletRequest().getParameter("act");
-		//KeyServerDetail keyServerDetail = new KeyServerDetail();
-		
-		//String keysetCode = (String) getServletRequest().getParameter("keysetCode");
-		//keyServerDetail.setKeysetCode(keysetCode);
-		
+		// String action = (String) getServletRequest().getParameter("act");
+		// KeyServerDetail keyServerDetail = new KeyServerDetail();
+
+		// String keysetCode = (String)
+		// getServletRequest().getParameter("keysetCode");
+		// keyServerDetail.setKeysetCode(keysetCode);
+
 		ReadKeyServerDAO readKeyServerDAO = new ReadKeyServerDAO();
 		String returnMassegeStr = readKeyServerDAO.ReadKeyServer(keyServerDetail);
 		setKeyServerDetail(keyServerDetail);
-		
-		//request.setAttribute("keysetCode", keysetCode);
-		//session.put("keyServerDetail", keyServerDetail);
-		
+
+		// request.setAttribute("keysetCode", keysetCode);
+		// session.put("keyServerDetail", keyServerDetail);
+
 		if (act != null && act.equals("update") && returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-				
+
 			pageForwardStr = "SENTTOUPDATE";
-			
+
 		} else if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
+
 			pageForwardStr = SUCCESS;
-			
+
 		}
 
 		return pageForwardStr;

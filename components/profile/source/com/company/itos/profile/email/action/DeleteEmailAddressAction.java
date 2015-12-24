@@ -18,11 +18,11 @@ public class DeleteEmailAddressAction extends ActionSupport implements SessionAw
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private EmailAddressLinkDetail emailAddressLinkDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -37,7 +37,7 @@ public class DeleteEmailAddressAction extends ActionSupport implements SessionAw
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
 	/**
 	 * @return the emailAddressLinkDetail
 	 */
@@ -46,32 +46,30 @@ public class DeleteEmailAddressAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param emailAddressLinkDetail the emailAddressLinkDetail to set
+	 * @param emailAddressLinkDetail
+	 *            the emailAddressLinkDetail to set
 	 */
 	public void setEmailAddressLinkDetail(EmailAddressLinkDetail emailAddressLinkDetail) {
 		this.emailAddressLinkDetail = emailAddressLinkDetail;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		DeleteEmailAddressDAO deleteEmailAddressDAO = new DeleteEmailAddressDAO();
 		String returnMassegeStr = deleteEmailAddressDAO.deleteEmailAddress(emailAddressLinkDetail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
 
 			pageForwardStr = SUCCESS;
 
 		} else {
-			
+
 			pageForwardStr = ERROR;
 
 		}
 		return pageForwardStr;
 	}
-		
-	}
 
-
+}

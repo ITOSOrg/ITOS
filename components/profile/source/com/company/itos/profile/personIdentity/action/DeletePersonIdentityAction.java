@@ -19,11 +19,11 @@ public class DeletePersonIdentityAction extends ActionSupport implements Session
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonIdentityDetail personIdentityDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -47,32 +47,31 @@ public class DeletePersonIdentityAction extends ActionSupport implements Session
 	}
 
 	/**
-	 * @param personIdentityDetail the personIdentityDetail to set
+	 * @param personIdentityDetail
+	 *            the personIdentityDetail to set
 	 */
 	public void setPersonIdentityDetail(PersonIdentityDetail personIdentityDetail) {
 		this.personIdentityDetail = personIdentityDetail;
 	}
-	
+
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		DeletePersonIdentityDAO deletePersonIdentityDAO = new DeletePersonIdentityDAO();
 		String returnMassegeStr = deletePersonIdentityDAO.DeletePersonIdentity(personIdentityDetail);
-		
-		 if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-				
 
-				pageForwardStr = SUCCESS;
+		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
 
-			} else {
-				
-				pageForwardStr = ERROR;
+			pageForwardStr = SUCCESS;
 
-			}
-			return pageForwardStr;
+		} else {
 
-}
+			pageForwardStr = ERROR;
 
+		}
+		return pageForwardStr;
+
+	}
 
 }

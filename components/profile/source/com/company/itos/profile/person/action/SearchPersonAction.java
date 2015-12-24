@@ -21,11 +21,11 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 	HttpServletRequest request;
 	private PersonSearchDetails personSearchDetails;
 	private List<PersonDetail> personDetailList;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -40,8 +40,8 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-/**
+
+	/**
 	 * @return the personSearchDetails
 	 */
 	public PersonSearchDetails getPersonSearchDetails() {
@@ -49,7 +49,8 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personSearchDetails the personSearchDetails to set
+	 * @param personSearchDetails
+	 *            the personSearchDetails to set
 	 */
 	public void setPersonSearchDetails(PersonSearchDetails personSearchDetails) {
 		this.personSearchDetails = personSearchDetails;
@@ -63,26 +64,27 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param personDetailList the personDetailList to set
+	 * @param personDetailList
+	 *            the personDetailList to set
 	 */
 	public void setPersonDetailList(List<PersonDetail> personDetailList) {
 		this.personDetailList = personDetailList;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
 
 		List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
 		setPersonDetailList(personDetailList);
-		
+
 		if (personDetailList != null) {
-			
+
 			pageForwardStr = SUCCESS;
-			
-		}else{
+
+		} else {
 			pageForwardStr = ERROR;
 		}
 		return pageForwardStr;

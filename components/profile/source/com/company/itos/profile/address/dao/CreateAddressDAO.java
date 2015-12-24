@@ -17,7 +17,6 @@ public class CreateAddressDAO {
 
 		String returnMassegeStr = "";
 
-
 		Connection connection = null;
 
 		AddressDetail addressDetail = addressLinkDetail.getAddressDetail();
@@ -25,22 +24,29 @@ public class CreateAddressDAO {
 		try {
 			connection = DBConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatementAddress = connection.prepareStatement("SELECT AddressSEQ.nextval FROM DUAL");
-			PreparedStatement preparedStatementAddressLink = connection.prepareStatement("SELECT AddressLinkSEQ.nextval FROM DUAL");
-
-			ResultSet resultSetAddress = preparedStatementAddress.executeQuery();
-			ResultSet resultSetAddressLink = preparedStatementAddressLink.executeQuery();
-
-			while (resultSetAddress.next()) {
-				addressDetail.setAddressId(resultSetAddress.getInt(1));
-			}
-			while (resultSetAddressLink.next()) {
-				addressLinkDetail.setAddressLinkID(resultSetAddressLink.getInt(1));
-			}*/
+			/*
+			 * PreparedStatement preparedStatementAddress =
+			 * connection.prepareStatement
+			 * ("SELECT AddressSEQ.nextval FROM DUAL"); PreparedStatement
+			 * preparedStatementAddressLink =
+			 * connection.prepareStatement("SELECT AddressLinkSEQ.nextval FROM DUAL"
+			 * );
+			 * 
+			 * ResultSet resultSetAddress =
+			 * preparedStatementAddress.executeQuery(); ResultSet
+			 * resultSetAddressLink =
+			 * preparedStatementAddressLink.executeQuery();
+			 * 
+			 * while (resultSetAddress.next()) {
+			 * addressDetail.setAddressId(resultSetAddress.getInt(1)); } while
+			 * (resultSetAddressLink.next()) {
+			 * addressLinkDetail.setAddressLinkID
+			 * (resultSetAddressLink.getInt(1)); }
+			 */
 
 			String addressSQLStr = "INSERT INTO Address (addressLinkID ,addressId, streetOne, streetTwo, aptUnit, city, county, state, country, zipCode, versionNo)"
-					                                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
-				
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+
 			PreparedStatement preparedStatementaddressSQLStr = connection.prepareStatement(addressSQLStr);
 			preparedStatementaddressSQLStr.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementaddressSQLStr.setLong(2, UniqueID.nextUniqueID());
@@ -53,10 +59,10 @@ public class CreateAddressDAO {
 			preparedStatementaddressSQLStr.setString(8, addressDetail.getCountry());
 			preparedStatementaddressSQLStr.setInt(9, addressDetail.getZipCode());
 			preparedStatementaddressSQLStr.execute();
-			
+
 			String addressLinkSQLStr = "INSERT INTO AddressLink (addressLinkID, relatedID, addressID, typeCode, primaryInd, startDate, endDate, recordStatus, versionNo)"
-					                                    +"VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
-			
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
+
 			PreparedStatement preparedStatementaddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
 			preparedStatementaddressLinkSQLStr.setLong(1, addressLinkDetail.getAddressLinkID());
 			preparedStatementaddressLinkSQLStr.setLong(2, addressLinkDetail.getRelatedID());

@@ -18,11 +18,11 @@ public class UpdateAddressAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private AddressLinkDetail addressLinkDetail;
-	
+
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
 	}
-	
+
 	/**
 	 * @return the request
 	 */
@@ -37,8 +37,6 @@ public class UpdateAddressAction extends ActionSupport implements SessionAware {
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
-	
-	
 
 	/**
 	 * @return the addressLinkDetail
@@ -48,31 +46,31 @@ public class UpdateAddressAction extends ActionSupport implements SessionAware {
 	}
 
 	/**
-	 * @param addressLinkDetail the addressLinkDetail to set
+	 * @param addressLinkDetail
+	 *            the addressLinkDetail to set
 	 */
 	public void setAddressLinkDetail(AddressLinkDetail addressLinkDetail) {
 		this.addressLinkDetail = addressLinkDetail;
 	}
 
 	public String execute() throws Exception {
-		
+
 		String pageForwardStr = "";
-		
+
 		UpdateAddressDAO updateAddressDAO = new UpdateAddressDAO();
 		String returnMassegeStr = updateAddressDAO.updateAddress(addressLinkDetail);
-		
+
 		if (returnMassegeStr == CRUDConstants.RETURN_MESSAGE_SUCCESS) {
-			
 
 			pageForwardStr = SUCCESS;
 
 		} else {
-			
+
 			pageForwardStr = ERROR;
 
 		}
 		return pageForwardStr;
-		
+
 	}
 
 }

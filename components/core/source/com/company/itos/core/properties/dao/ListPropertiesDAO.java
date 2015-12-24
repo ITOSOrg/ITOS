@@ -11,21 +11,21 @@ import com.company.itos.core.properties.pojo.PropertiesDetail;
 import com.company.itos.core.util.dataaccess.DBConnection;
 
 public class ListPropertiesDAO {
-	
-	public List<PropertiesDetail> ListProperties(PropertiesDetail propertiesDetailkey){
-		
+
+	public List<PropertiesDetail> ListProperties(PropertiesDetail propertiesDetailkey) {
+
 		List<PropertiesDetail> propertiesList = new ArrayList<PropertiesDetail>();
 		Connection connection = null;
 
 		try {
 			connection = DBConnection.getDBConnection();
-			
+
 			String propertiesSQLStr = "SELECT * FROM Properties";
-			
+
 			PreparedStatement preparedStatement = connection.prepareStatement(propertiesSQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()){
+
+			while (resultSet.next()) {
 				PropertiesDetail propertiesDetail = new PropertiesDetail();
 				propertiesDetail.setPropertyID(resultSet.getLong("propertyID"));
 				propertiesDetail.setCategory(resultSet.getString("category"));
@@ -40,10 +40,10 @@ public class ListPropertiesDAO {
 				propertiesDetail.setLastModifiedBy(resultSet.getString("lastModifiedBy"));
 				propertiesDetail.setLastModifiedOn(resultSet.getTimestamp("lastModifiedOn"));
 				propertiesDetail.setVersionNo(resultSet.getInt("versionNo"));
-				
+
 				propertiesList.add(propertiesDetail);
 			}
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();

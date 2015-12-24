@@ -4,7 +4,7 @@
 
 CREATE TABLE Properties (	
    	propertyID NUMBER(19,0) NOT NULL, 
-	category VARCHAR2(10 BYTE), 
+	category VARCHAR2(20 BYTE), 
 	name VARCHAR2(254 BYTE), 
 	value VARCHAR2(100 BYTE), 
 	type VARCHAR2(10 BYTE), 

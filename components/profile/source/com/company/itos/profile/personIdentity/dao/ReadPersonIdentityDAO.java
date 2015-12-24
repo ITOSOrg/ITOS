@@ -23,9 +23,9 @@ public class ReadPersonIdentityDAO {
 			ResultSet resultSet = preparedStatementpersonIdentity.executeQuery();
 
 			while (resultSet.next()) {
-				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
-				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
-				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
+				personIdentityDetail.setPersonIdentityID(resultSet.getLong("personIdentityID"));
+				personIdentityDetail.setPersonID(resultSet.getLong("personID"));
+				personIdentityDetail.setAlternateID(resultSet.getString("alternateID"));
 				personIdentityDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				personIdentityDetail.setTypeCode(resultSet.getString("typeCode"));
 				personIdentityDetail.setStartDate(resultSet.getDate("startDate"));
@@ -58,7 +58,7 @@ public class ReadPersonIdentityDAO {
 			while (resultSet.next()) {
 				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
 				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
-				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
+				personIdentityDetail.setAlternateID(resultSet.getString("alternateID"));
 				personIdentityDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				personIdentityDetail.setTypeCode(resultSet.getString("typeCode"));
 				personIdentityDetail.setStartDate(resultSet.getDate("startDate"));

@@ -7,8 +7,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script>
+    $(function() {
+        $("#myaccordion").accordion();
+    });
+</script>
 </head>
 <body>
+<div id="myaccordion">
+        <h2>View Phone Number</h2>
+        <div>
 <s:form action="/ITOS/ReadEmailAddress" method="POST">
 
 <table border=1>
@@ -41,5 +49,7 @@
 			</tbody>
 		</table>
 </s:form>
+</div>
+</div>
 </body>
 </html>

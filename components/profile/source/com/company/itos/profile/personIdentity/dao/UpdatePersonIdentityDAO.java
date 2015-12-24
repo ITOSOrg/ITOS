@@ -30,7 +30,7 @@ public class UpdatePersonIdentityDAO {
 
 				PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
 
-				preparedStatementpersonIdentity.setInt(1, personIdentityDetail.getAlternateID());
+				preparedStatementpersonIdentity.setString(1, personIdentityDetail.getAlternateID());
 				preparedStatementpersonIdentity.setString(2, personIdentityDetail.getPrimaryInd());
 				preparedStatementpersonIdentity.setString(3, personIdentityDetail.getTypeCode());
 				preparedStatementpersonIdentity.setDate(4, personIdentityDetail.getStartDate());

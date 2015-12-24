@@ -39,8 +39,8 @@ CREATE TABLE Address
    
 CREATE TABLE AddressLink
   ( addressLinkID NUMBER(19,0) NOT NULL,  
-	relatedID NUMBER(10),
-	addressID NUMBER(10),
+	relatedID NUMBER(19,0),
+	addressID NUMBER(19,0),
 	typeCode VARCHAR2(30),
 	primaryInd VARCHAR2(5),
 	startDate DATE,
@@ -61,8 +61,8 @@ CREATE TABLE EmailAddress
    
 CREATE TABLE EmailAddressLink
 ( emailAddressLinkID NUMBER(19,0) NOT NULL,
-  relatedID NUMBER(10),
-  emailAddressID NUMBER(10),
+  relatedID NUMBER(19,0),
+  emailAddressID NUMBER(19,0),
   typeCode VARCHAR2(30),
   primaryInd VARCHAR2(20),
   startDate DATE,
@@ -86,8 +86,8 @@ CREATE TABLE PhoneNumber
   
 CREATE TABLE PhoneNumberLink
 ( phoneNumberLinkID NUMBER(19,0),
-  relatedID NUMBER(10),
-  phoneNumberID NUMBER(10),
+  relatedID NUMBER(19,0),
+  phoneNumberID NUMBER(19,0),
   typeCode VARCHAR2(30),
   primaryInd VARCHAR2(20),
   startDate DATE,
@@ -99,7 +99,7 @@ CREATE TABLE PhoneNumberLink
   
 CREATE TABLE PersonIdentity
 ( personIdentityID NUMBER(19,0) NOT NULL,
-  personID Number(10),
+  personID Number(19,0),
   alternateID VARCHAR2(30),
   primaryInd VARCHAR2(30),
   typeCode VARCHAR2(30),
@@ -112,7 +112,7 @@ CREATE TABLE PersonIdentity
   
 CREATE TABLE Users
 ( userName VARCHAR2(15) NOT NULL,
-  relatedID NUMBER(10),
+  relatedID NUMBER(19,0),
   password VARCHAR2(80),
   accountEnabled VARCHAR2(30),
   loginFailureCount NUMBER(20),

@@ -38,7 +38,7 @@ public class CreatePersonIdentityDAO {
 
 			preparedStatementpersonIdentity.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementpersonIdentity.setLong(2, personIdentityDetail.getPersonID());
-			preparedStatementpersonIdentity.setInt(3, personIdentityDetail.getAlternateID());
+			preparedStatementpersonIdentity.setString(3, personIdentityDetail.getAlternateID());
 			preparedStatementpersonIdentity.setString(4, personIdentityDetail.getPrimaryInd());
 			preparedStatementpersonIdentity.setString(5, personIdentityDetail.getTypeCode());
 			preparedStatementpersonIdentity.setDate(6, personIdentityDetail.getStartDate());

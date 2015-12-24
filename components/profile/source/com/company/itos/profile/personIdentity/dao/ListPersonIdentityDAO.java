@@ -31,7 +31,7 @@ public class ListPersonIdentityDAO {
 
 				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
 				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
-				personIdentityDetail.setAlternateID(resultSet.getInt("alternateID"));
+				personIdentityDetail.setAlternateID(resultSet.getString("alternateID"));
 				personIdentityDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				personIdentityDetail.setTypeCode(resultSet.getString("typeCode"));
 				personIdentityDetail.setStartDate(resultSet.getDate("startDate"));

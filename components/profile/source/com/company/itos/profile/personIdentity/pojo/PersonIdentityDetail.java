@@ -8,7 +8,7 @@ public class PersonIdentityDetail {
 	
 	private long personID;
 	
-	private int alternateID;
+	private String alternateID;
 	
 	private String primaryInd;
 	
@@ -66,11 +66,19 @@ public class PersonIdentityDetail {
 		this.personID = personID;
 	}
 
-	public int getAlternateID() {
+	
+
+	/**
+	 * @return the alternateID
+	 */
+	public String getAlternateID() {
 		return alternateID;
 	}
 
-	public void setAlternateID(int alternateID) {
+	/**
+	 * @param alternateID the alternateID to set
+	 */
+	public void setAlternateID(String alternateID) {
 		this.alternateID = alternateID;
 	}
 

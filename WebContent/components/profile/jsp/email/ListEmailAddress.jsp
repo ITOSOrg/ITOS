@@ -43,11 +43,11 @@
 
 
 <div id="myaccordion">
-		<h2>Email Address List Workspace</h2>
+		<h2>Email Address List </h2>
 		<div>
         
       <s:url var="CreateEmailAddressURL" action="/ITOS/CreateEmailAddress" escapeAmp="false">
-             <s:param name="emailAddressLinkDetail.relatedID" value="%{relatedID}"/>
+             <s:param name="emailAddressLinkDetail.relatedID" value="%{emailAddressLinkDetail.relatedID}"/>
       </s:url>
              <s:a href="%{CreateEmailAddressURL}">Create Email Address</s:a><br><br>
 

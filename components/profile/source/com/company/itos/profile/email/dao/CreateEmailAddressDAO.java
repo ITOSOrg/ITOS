@@ -2,23 +2,19 @@ package com.company.itos.profile.email.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
+import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
-import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
-import com.company.itos.profile.person.pojo.PersonDetail;
 
 public class CreateEmailAddressDAO {
 
 	public String createEmailAddress(EmailAddressLinkDetail emailAddressLinkDetail) {
 
 		String returnMassegeStr = "";
-
 
 		Connection connection = null;
 		try {
@@ -27,23 +23,19 @@ public class CreateEmailAddressDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*PreparedStatement preparedStatement = connection.prepareStatement("SELECT EmailAddressSEQ.nextval FROM DUAL");
-			PreparedStatement preparedStatement2 = connection.prepareStatement("SELECT EmailAddressLinkSEQ.nextval FROM DUAL");
-
-			ResultSet resultSetEASeq = preparedStatement.executeQuery();
-
-			ResultSet resultSetEALSeq = preparedStatement2.executeQuery();
-
-			if (resultSetEASeq.next()) {
-				emailAddressDetail.setEmailAddressID(resultSetEASeq.getInt(1));
-			}
-
-			if (resultSetEALSeq.next()) {
-				emailAddressLinkDetail.setEmailAddressLinkID(resultSetEALSeq.getInt(1));
-			}*/
-
 			String emailAddressSQLStr = "INSERT INTO EmailAddress ( emailAddressID, emailAddress, recordStatus, versionNo) "
 					+ "VALUES(?,  ?, 'Active', 1)";
+
+			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
+
+			long emailAddressID = UniqueID.nextUniqueID();
+
+			preparedStatementEmailAddress.setLong(1, emailAddressID);
+			preparedStatementEmailAddress.setString(2, emailAddressDetail.getEmailAddress());
+
+			preparedStatementEmailAddress.execute();
+
+			// EmailaddressLink table code
 
 			String emailAddressLinkSQLStr = "INSERT INTO EmailAddressLink ( emailAddressLinkID, relatedID, emailAddressID, typeCode, primaryInd, startDate, endDate, recordStatus, versionNo) "
 					+ "VALUES(?, ? , ?, '"
@@ -52,18 +44,11 @@ public class CreateEmailAddressDAO {
 					+ emailAddressLinkDetail.getPrimaryInd()
 					+ "', ?, ?, 'Active', 1)";
 
-			PreparedStatement preparedStatementEmailAddress = connection.prepareStatement(emailAddressSQLStr);
-
-			preparedStatementEmailAddress.setLong(1, UniqueID.nextUniqueID());
-			preparedStatementEmailAddress.setString(2, emailAddressDetail.getEmailAddress());
-
-			preparedStatementEmailAddress.execute();
-
 			PreparedStatement preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
 
 			preparedStatementEmailAddressLink.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementEmailAddressLink.setLong(2, emailAddressLinkDetail.getRelatedID());
-			preparedStatementEmailAddressLink.setLong(3, emailAddressDetail.getEmailAddressID());
+			preparedStatementEmailAddressLink.setLong(3, emailAddressID);
 			preparedStatementEmailAddressLink.setDate(4, emailAddressLinkDetail.getStartDate());
 			preparedStatementEmailAddressLink.setDate(5, emailAddressLinkDetail.getEndDate());
 

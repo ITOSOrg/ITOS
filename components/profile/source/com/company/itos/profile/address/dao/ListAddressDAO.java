@@ -34,10 +34,10 @@ public class ListAddressDAO {
 				AddressLinkDetail addressLinkDetail = new AddressLinkDetail();
 				AddressDetail addressDetail = new AddressDetail();
 
-				addressLinkDetail.setAddressLinkID(resultSetAddressLink.getInt("addressLinkID"));
-				addressLinkDetail.setRelatedID(resultSetAddressLink.getInt("relatedID"));
-				addressDetail.setAddressId(resultSetAddressLink.getInt("addressID"));
-				addressLinkDetail.setAddressID(resultSetAddressLink.getInt("addressID"));
+				addressLinkDetail.setAddressLinkID(resultSetAddressLink.getLong("addressLinkID"));
+				addressLinkDetail.setRelatedID(resultSetAddressLink.getLong("relatedID"));
+				addressDetail.setAddressId(resultSetAddressLink.getLong("addressID"));
+				addressLinkDetail.setAddressID(resultSetAddressLink.getLong("addressID"));
 				addressLinkDetail.setTypeCode(resultSetAddressLink.getString("typeCode"));
 				addressLinkDetail.setPrimaryInd(resultSetAddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetAddressLink.getDate("startDate"));

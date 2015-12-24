@@ -44,8 +44,10 @@ public class CreatePhoneNumberDAO {
 					+ "VALUES(?, ?, ?, ?, ?, 'Active', 1)";
 
 			PreparedStatement preparedStatementPhoneNumber = connection.prepareStatement(PhoneNumberSQLStr);
+			
+			long phoneNumberID = UniqueID.nextUniqueID();
 
-			preparedStatementPhoneNumber.setLong(1, UniqueID.nextUniqueID());
+			preparedStatementPhoneNumber.setLong(1, phoneNumberID);
 			preparedStatementPhoneNumber.setInt(2, phoneNumberDetail.getCountryCode());
 			preparedStatementPhoneNumber.setInt(3, phoneNumberDetail.getAreaCode());
 			preparedStatementPhoneNumber.setLong(4, phoneNumberDetail.getPhoneNumber());
@@ -70,7 +72,7 @@ public class CreatePhoneNumberDAO {
 
 			preparedStatementPhoneNumberLink.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementPhoneNumberLink.setLong(2, phoneNumberLinkDetail.getRelatedID());
-			preparedStatementPhoneNumberLink.setLong(3, phoneNumberDetail.getPhoneNumberID());
+			preparedStatementPhoneNumberLink.setLong(3, phoneNumberID);
 			preparedStatementPhoneNumberLink.setString(4, phoneNumberLinkDetail.getTypeCode());
 			preparedStatementPhoneNumberLink.setString(5, phoneNumberLinkDetail.getPrimaryInd());
 			preparedStatementPhoneNumberLink.setDate(6, phoneNumberLinkDetail.getStartDate());

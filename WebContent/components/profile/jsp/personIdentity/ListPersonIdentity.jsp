@@ -6,8 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script>
+    $(function() {
+        $("#myaccordion").accordion();
+    });
+</script>
 </head>
 <body>
+<div id="myaccordion">
+        <h2>PersonIdentity Detail</h2>
+        <div>
 
                     <s:url id="CreatePersonIdentityURL" action="/ITOS/CreatePersonIdentity" escapeAmp="false">
                            <!--   <s:param name="personIdentityDetail.personID" value="%{personIdentityDetail.personID}"/> -->
@@ -17,7 +25,7 @@
 <br><br>
 
 
-<form action="/ITOS/ListPersonIdentity" method = "POST">
+<s:form action="/ITOS/ListPersonIdentity" method = "POST">
 <table border=1>
 			<thead>
 
@@ -69,7 +77,9 @@
 			</tbody>
             </s:iterator>
 		</table>
-		</form>
+		</s:form>
+        </div>
+        </div>
 
 </body>
 </html>

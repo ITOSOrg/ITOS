@@ -29,8 +29,8 @@ public class ListPersonIdentityDAO {
 			while (resultSet.next()) {
 				PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
 
-				personIdentityDetail.setPersonIdentityID(resultSet.getInt("personIdentityID"));
-				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
+				personIdentityDetail.setPersonIdentityID(resultSet.getLong("personIdentityID"));
+				personIdentityDetail.setPersonID(resultSet.getLong("personID"));
 				personIdentityDetail.setAlternateID(resultSet.getString("alternateID"));
 				personIdentityDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				personIdentityDetail.setTypeCode(resultSet.getString("typeCode"));

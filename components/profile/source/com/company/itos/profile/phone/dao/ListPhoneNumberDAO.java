@@ -49,10 +49,10 @@ public class ListPhoneNumberDAO {
 				phoneNumberLinkDetail = new PhoneNumberLinkDetail();
 				phoneNumberDetail = new PhoneNumberDetail();
 
-				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getInt("phoneNumberLinkID"));
-				phoneNumberDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
-				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
-				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSet.getLong("phoneNumberLinkID"));
+				phoneNumberDetail.setPhoneNumberID(resultSet.getLong("phoneNumberID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getLong("phoneNumberID"));
+				phoneNumberLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
 				phoneNumberLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				phoneNumberLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSet.getDate("startDate"));

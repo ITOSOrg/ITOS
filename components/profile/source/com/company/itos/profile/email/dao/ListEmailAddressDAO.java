@@ -57,21 +57,21 @@ public class ListEmailAddressDAO {
 				emailAddressDetailFromDB = new EmailAddressDetail();
 				emailAddressLinkDetail = new EmailAddressLinkDetail();
 
-				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
-				emailAddressDetailFromDB.setEmailAddressID(resultSet.getInt("emailAddressID"));
-				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getLong("emailAddressLinkID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getLong("emailAddressID"));
 				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
 
-				preparedStatementEmailAddress.setLong(1, emailAddressDetailFromDB.getEmailAddressID());
+				preparedStatementEmailAddress.setLong(1, emailAddressLinkDetail.getEmailAddressID());
 
 				ResultSet resultSetEA = preparedStatementEmailAddress.executeQuery();
 
 				while (resultSetEA.next()) {
 
+					emailAddressDetailFromDB.setEmailAddressID(resultSetEA.getLong("emailAddressID"));
 					emailAddressDetailFromDB.setEmailAddress(resultSetEA.getString("emailAddress"));
 
 				}

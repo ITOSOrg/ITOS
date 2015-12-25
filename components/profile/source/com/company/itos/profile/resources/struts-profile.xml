@@ -21,6 +21,14 @@
 
 
 
+        <action name="SearchPerson">
+            <result type="tiles">SearchPerson</result>
+        </action>
+
+        <action name="SearchPersonSubmit" class="com.company.itos.profile.person.action.SearchPersonAction">
+            <result name="success" type="tiles">SearchPerson</result>
+            <result name="error">/index</result>
+        </action>
 
 
         <action name="PersonLogin" class="com.company.itos.profile.person.action.PersonLoginAction">
@@ -30,14 +38,14 @@
             </result>
             <result name="error">/index</result>
         </action>
-        
-        
+
+
         <action name="PersonLogOut" class="com.company.itos.profile.person.action.PersonLogOutAction">
             <result name="success" type="redirect">
                 <param name="location">/index</param>
             </result>
-         </action>
-        
+        </action>
+
 
         <action name="PersonHome" class="com.company.itos.profile.person.action.PersonHomeAction">
             <result name="success" type="tiles">PersonHome</result>
@@ -58,7 +66,7 @@
             <result name="error">/index</result>
 
         </action>
-        
+
         <action name="ReadSinglePerson" class="com.company.itos.profile.person.action.ReadSinglePersonAction">
             <result name="success" type="tiles">ReadPerson</result>
             <result name="SENTTOUPDATE" type="tiles"> UpdateSinglePerson</result>
@@ -69,7 +77,8 @@
         <action name="UpdatePerson">
             <result type="tiles">UpdatePerson</result>
         </action>
-        
+
+
         <action name="UpdateSinglePerson">
             <result type="tiles">UpdateSinglePerson</result>
         </action>
@@ -80,11 +89,11 @@
             </result>
             <result name="error" type="tiles">UpdatePerson</result>
         </action>
-        
+
         <action name="UpdateSinglePersonSubmit" class="com.company.itos.profile.person.action.PersonUpdateAction">
             <result name="success" type="redirect">
                 <param name="location">/PersonHome</param>
-                 <param name="personDetail.personID">${personDetail.personID}</param>
+                <param name="personDetail.personID">${personDetail.personID}</param>
             </result>
             <result name="error" type="tiles">UpdatePerson</result>
         </action>
@@ -107,7 +116,7 @@
             <result name="success" type="redirect">
                 <param name="location">/PersonList</param>
             </result>
-             <result name="input">/index</result>
+            <result name="input">/index</result>
             <result name="error" type="tiles">CreateUser</result>
 
         </action>

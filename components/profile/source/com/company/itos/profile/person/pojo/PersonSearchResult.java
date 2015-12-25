@@ -7,18 +7,18 @@ import com.company.itos.profile.person.pojo.PersonDetail;
 
 public class PersonSearchResult {
 
-	List<PersonDetail>	PersonDetailList	= new ArrayList<PersonDetail>();
+	List<PersonDetail>	personDetailList	= new ArrayList<PersonDetail>();
 
 	Long				numberOfPerson;
 
 	public List<PersonDetail> getPersonDetailList() {
 
-		return PersonDetailList;
+		return personDetailList;
 	}
 
 	public void setPersonDetailList(List<PersonDetail> personDetailList) {
 
-		PersonDetailList = personDetailList;
+		this.personDetailList = personDetailList;
 	}
 
 	public Long getNumberOfPerson() {

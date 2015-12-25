@@ -49,7 +49,7 @@
             
 			<tbody>
 				<tr>
-					<td><s:property value="title" /></td>
+					<td><s:property value="title"/></td>
 					<td><s:property value="firstName" /></td>
 					<td><s:property value="middleName" /></td>
 					<td><s:property value="lastName" /></td>

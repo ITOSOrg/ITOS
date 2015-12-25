@@ -17,7 +17,7 @@ public class SearchPersonDAO {
 
 	public List<PersonDetail> searchPersonInfo(PersonSearchDetails personSearchDetails) {
 
-		List<PersonDetail> PersonDetailList = new ArrayList<PersonDetail>();
+		List<PersonDetail> personDetailList = new ArrayList<PersonDetail>();
 		PersonSearchCriteria personSearchCriteria = personSearchDetails.getPersonSearchCriteria();
 		PersonDetail personDetail = null;
 
@@ -59,7 +59,7 @@ public class SearchPersonDAO {
 					personDetail.setLastName(resultSet.getString("lastName"));
 					personDetail.setGender(resultSet.getString("gender"));
 					personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
-					PersonDetailList.add(personDetail);
+					personDetailList.add(personDetail);
 				}
 
 			} catch (Exception exception) {
@@ -75,7 +75,7 @@ public class SearchPersonDAO {
 
 		}
 
-		return PersonDetailList;
+		return personDetailList;
 
 	}
 }

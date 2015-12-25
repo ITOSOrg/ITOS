@@ -58,7 +58,7 @@
 
             <tr>
                 <td>Date Of Birth:</td>
-                <td><s:textfield type="text" name="personDetail.dateOfBirth" /></td>
+                <td><s:date name="personDetail.dateOfBirth" format="dd/MM/yyyy" /></td>
             </tr>
 
             <tr>
@@ -91,11 +91,11 @@
             </tr>
             <tr>
                 <td>Start Date :</td>
-                <td><s:textfield type="text" name="personDetail.emailAddressLinkDetail.startDate" /></td>
+                <td><s:date name="personDetail.emailAddressLinkDetail.startDate" format="dd/MM/yyyy" /></td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:textfield type="text" name="personDetail.emailAddressLinkDetail.endDate" /></td>
+                <td><s:date name="personDetail.emailAddressLinkDetail.endDate" format="dd/MM/yyyy"/></td>
             </tr>
 
             <!-- Enter Phone Number Parameter -->
@@ -132,12 +132,12 @@
             </tr>
             <tr>
                 <td>Start Date:</td>
-                <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.startDate" /></td>
+                <td><s:date name="personDetail.phoneNumberLinkDetail.startDate" format="dd/MM/yyyy"/></td>
             </tr>
 
             <tr>
                 <td>End Date:</td>
-                <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.endDate" /></td>
+                <td><s:date name="personDetail.phoneNumberLinkDetail.endDate" format="dd/MM/yyyy"/></td>
             </tr>
 
             <!-- Enter Address table parameter -->
@@ -202,11 +202,11 @@
             </tr>
             <tr>
                 <td>Start Date :</td>
-                <td><s:textfield type="text" name="personDetail.addressLinkDetail..startDate" /></td>
+                <td><s:date name="personDetail.addressLinkDetail..startDate" format="dd/MM/yyyy"/></td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:textfield type="text" name="personDetail.addressLinkDetail.endDate" /></td>
+                <td><s:date name="personDetail.addressLinkDetail.endDate" format="dd/MM/yyyy"/></td>
             </tr>
 
             <!-- Insert Person Identity Parameters -->
@@ -227,11 +227,11 @@
             </tr>
             <tr>
                 <td>Start Date :</td>
-                <td><s:textfield type="text" name="personDetail.personIdentityDetail.startDate" /></td>
+                <td><s:date name="personDetail.personIdentityDetail.startDate" format="dd/MM/yyyy"/></td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:textfield type="text" name="personDetail.personIdentityDetail.endDate" /></td>
+                <td><s:date name="personDetail.personIdentityDetail.endDate" format="dd/MM/yyyy"/></td>
             </tr>
             <tr>
                 <td>

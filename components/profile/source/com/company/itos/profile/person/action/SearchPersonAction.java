@@ -11,6 +11,7 @@ import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.person.dao.SearchPersonDAO;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.PersonSearchDetails;
+import com.company.itos.profile.person.pojo.PersonSearchResult;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchPersonAction extends ActionSupport implements SessionAware {
@@ -20,7 +21,7 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonSearchDetails personSearchDetails;
-	private List<PersonDetail> personDetailList;
+	private PersonSearchResult personSearchResult;
 
 	public void setSession(Map<String, Object> sessionInput) {
 		this.session = sessionInput;
@@ -56,19 +57,19 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 		this.personSearchDetails = personSearchDetails;
 	}
 
+
 	/**
-	 * @return the personDetailList
+	 * @return the personSearchResult
 	 */
-	public List<PersonDetail> getPersonDetailList() {
-		return personDetailList;
+	public PersonSearchResult getPersonSearchResult() {
+		return personSearchResult;
 	}
 
 	/**
-	 * @param personDetailList
-	 *            the personDetailList to set
+	 * @param personSearchResult the personSearchResult to set
 	 */
-	public void setPersonDetailList(List<PersonDetail> personDetailList) {
-		this.personDetailList = personDetailList;
+	public void setPersonSearchResult(PersonSearchResult personSearchResult) {
+		this.personSearchResult = personSearchResult;
 	}
 
 	public String execute() throws Exception {
@@ -76,9 +77,17 @@ public class SearchPersonAction extends ActionSupport implements SessionAware {
 		String pageForwardStr = "";
 
 		SearchPersonDAO searchPersonDAO = new SearchPersonDAO();
-
 		List<PersonDetail> personDetailList = searchPersonDAO.searchPersonInfo(personSearchDetails);
-		setPersonDetailList(personDetailList);
+
+		long numberOfPerson = personDetailList.size();
+	
+
+		this.personSearchResult = new PersonSearchResult();
+
+		personSearchResult.setNumberOfPerson(numberOfPerson);
+		personSearchResult.setPersonDetailList(personDetailList);
+
+		//personSearchDetails.setPersonSearchResult(personSearchResult);
 
 		if (personDetailList != null) {
 

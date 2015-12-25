@@ -1,11 +1,4 @@
-<%@ page import="com.company.itos.profile.person.pojo.PersonSearchCriteria"%>
-<%@ page import="com.company.itos.profile.person.pojo.PersonSearchResult"%>
-<%@	page import="java.util.List"%>
-<%@ page
-	import="com.company.itos.profile.person.pojo.PersonSearchDetails"%>
-<%@ page import="com.company.itos.profile.person.pojo.PersonDetail"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,117 +8,67 @@
 </head>
 <body>
 
-	<%
-		PersonSearchDetails personSearchDetails = (PersonSearchDetails) request
-				.getAttribute("personSearchDetails");
-	
-		PersonSearchCriteria  personSearchCriteria = personSearchDetails.getPersonSearchCriteria();
-		
-		
-	%>
 
-	<s:form action="/ITOS/SearchPerson" method="POST">
-		<table>
-		<font size="3" color="red"><%
-		
-		if(personSearchCriteria!=null){
-			if(personSearchDetails.getErrorMessage()!=null && !personSearchDetails.getErrorMessage().equals("")){
-				out.println(personSearchDetails.getErrorMessage());
-			}
-			
-		
-		%></font>
-			<tr>
-				<td>First Name:</td>
-				<td><input type="text" name="firstName" value="<%=personSearchCriteria.getFirstName()%>"></td>
-			</tr>
-			<tr>
-				<td>Middle Name:</td>
-				<td><input type="text" name="middleName" value="<%=personSearchCriteria.getMiddleName()%>"></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><input type="text" name="lastName" value="<%=personSearchCriteria.getLastName()%>"></td>
-			</tr>
-			<!--  <tr>
+
+    <s:form action="/ITOS/SearchPersonSubmit" method="POST">
+        <table>
+
+            <tr>
+                <td>First Name:</td>
+                <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.firstName" /></td>
+            </tr>
+            <tr>
+                <td>Middle Name:</td>
+                <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.middleName" /></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.lastName" /></td>
+            </tr>
+            <!--  <tr>
 				<td>Date of Birth:</td>
 				<td><input type="text" name="dateOfBirth"></td>
 			</tr>-->
-			
-			<%
-			} else{
-				
-				
-		%>
-		<tr>
-				<td>First Name:</td>
-				<td><input type="text" name="firstName"></td>
-			</tr>
-			<tr>
-				<td>Middle Name:</td>
-				<td><input type="text" name="middleName" ></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><input type="text" name="lastName" ></td>
-			</tr>
-			
-			<%
-			}
-			%>
-			
-			<tr>
-				<td><input type="submit" value="Submit"></td>
-			</tr>
-		</table>
-		<br>
-	</s:form>
-	<s:form action="/ITOS/SearchPerson" method="POST">
 
-		<table border=1>
-			<thead>
 
-				<tr>
-					<th>Title:</th>
-					<th>First Name:</th>
-					<th>Middle Name:</th>
-					<th>Last Name:</th>
-					<th>Gender:</th>
-					<th>Date Of Birth:</th>
-				</tr>
-			</thead>
-			<%
-				if (personSearchDetails != null) {
-					PersonSearchResult personSearchResult = personSearchDetails
-							.getPersonSearchResult();
 
-					List<PersonDetail> personDetailList = personSearchResult
-							.getPersonDetailList();
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+        <br>
+        <!--</s:form>-->
+        <!--<s:form action="/ITOS/SearchPerson" method="POST">-->
 
-					long numberOfPerson = personSearchResult.getNumberOfPerson();
+        <table border=1>
+            <thead>
 
-					if (numberOfPerson > 0) {
-						for (int i = 0; i < personDetailList.size(); i++) {
-							PersonDetail personDetail = personDetailList.get(i);
-			%>
+                <tr>
+                    <th>Title:</th>
+                    <th>First Name:</th>
+                    <th>Middle Name:</th>
+                    <th>Last Name:</th>
+                    <th>Gender:</th>
+                    <th>Date Of Birth:</th>
+                </tr>
+            </thead>
 
-			<tbody>
-				<tr>
-					<td><%=personDetail.getTitle()%></td>
-					<td><%=personDetail.getFirstName()%></td>
-					<td><%=personDetail.getMiddleName()%></td>
-					<td><%=personDetail.getLastName()%></td>
-					<td><%=personDetail.getGender()%></td>
-					<td><%=personDetail.getDateOfBirth()%></td>
-				</tr>
-			</tbody>
+            <s:iterator value="personSearchResult.personDetailList" status="stat">
 
-			<%
-				}
-					}
-				}
-			%>
-		</table>
-	</s:form>
+                <tbody>
+                    <tr>
+                        <td><s:property value="title" /></td>
+                        <td><s:property value="firstName" /></td>
+                        <td><s:property value="middleName" /></td>
+                        <td><s:property value="lastName" /></td>
+                        <td><s:property value="gender" /></td>
+                        <td><s:property value="dateOfBirth" /></td>
+                    </tr>
+                </tbody>
+            </s:iterator>
+
+
+        </table>
+    </s:form>
 </body>
 </html>

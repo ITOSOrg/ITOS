@@ -6,7 +6,7 @@ import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 
 public class RoleDetail {
 		
-	private Long roleID;
+	private long roleID;
 	
 	private String roleType;
 	
@@ -47,14 +47,14 @@ public class RoleDetail {
 	/**
 	 * @return the roleID
 	 */
-	public Long getRoleID() {
+	public long getRoleID() {
 		return roleID;
 	}
 
 	/**
 	 * @param roleID the roleID to set
 	 */
-	public void setRoleID(Long roleID) {
+	public void setRoleID(long roleID) {
 		this.roleID = roleID;
 	}
 

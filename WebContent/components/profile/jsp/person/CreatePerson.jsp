@@ -56,14 +56,17 @@
             </tr>
 
 
-            <tr>
+           <!--   <tr>
                 <td>Date Of Birth:</td>
-                <td><s:date name="personDetail.dateOfBirth" format="dd/MM/yyyy" /></td>
-            </tr>
+                <td>
+                <s:date id="datepicker" name="personDetail.dateOfBirth" format="MM/dd/yyyy" />
+                <s:textfield name="personDetail.dateOfBirth"></s:textfield>
+                </td>
+            </tr>-->
 
             <tr>
                 <td>UserName:</td>
-                <td><s:textfield type="text" name="personDetail.userName" /></td>
+                <td><s:textfield type="text" name="personDetail.usersDetail.userName" /></td>
             </tr>
             <tr>
                 <td>Password:</td>
@@ -89,14 +92,18 @@
                         list="#{'1':'True','0':'false' }" value="1"></s:radio> 
                 </td>
             </tr>
-            <tr>
+           <!--   <tr>
                 <td>Start Date :</td>
-                <td><s:date name="personDetail.emailAddressLinkDetail.startDate" format="dd/MM/yyyy" /></td>
+                <td><s:date name="personDetail.emailAddressLinkDetail.startDate" format="MM/dd/yyyy" />
+                    <s:textfield name="personDetail.emailAddressLinkDetail.startDate"></s:textfield>
+                </td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:date name="personDetail.emailAddressLinkDetail.endDate" format="dd/MM/yyyy"/></td>
-            </tr>
+                <td><s:date name="personDetail.emailAddressLinkDetail.endDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.emailAddressLinkDetail.endDate"></s:textfield>
+                </td>
+            </tr>-->
 
             <!-- Enter Phone Number Parameter -->
 
@@ -113,7 +120,7 @@
             <tr>
                 <td>Phone Number:</td>
                 <td><s:textfield type="text"
-                        name="personDetail.phoneNumberLinkDetail.phoneNumberDetail..phoneNumber" /></td>
+                        name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.phoneNumber" /></td>
             </tr>
             <tr>
                 <td>Extension:</td>
@@ -130,15 +137,19 @@
                 <td><s:radio name="personDetail.phoneNumberLinkDetail.primaryInd"
                         list="#{'1':'True','0':'false' }" value="1"></s:radio></td>
             </tr>
-            <tr>
+            <!--  <tr>
                 <td>Start Date:</td>
-                <td><s:date name="personDetail.phoneNumberLinkDetail.startDate" format="dd/MM/yyyy"/></td>
+                <td><s:date name="personDetail.phoneNumberLinkDetail.startDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.phoneNumberLinkDetail.startDate"></s:textfield>
+                </td>
             </tr>
 
             <tr>
                 <td>End Date:</td>
-                <td><s:date name="personDetail.phoneNumberLinkDetail.endDate" format="dd/MM/yyyy"/></td>
-            </tr>
+                <td><s:date name="personDetail.phoneNumberLinkDetail.endDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.phoneNumberLinkDetail.endDate"></s:textfield>
+                </td>
+            </tr>-->
 
             <!-- Enter Address table parameter -->
 
@@ -200,14 +211,18 @@
                 <td><s:radio name="personDetail.addressLinkDetail.primaryInd"
                         list="#{'1':'True','0':'false' }" value="1"></s:radio></td>
             </tr>
-            <tr>
+         <!--     <tr>
                 <td>Start Date :</td>
-                <td><s:date name="personDetail.addressLinkDetail..startDate" format="dd/MM/yyyy"/></td>
+                <td><s:date name="personDetail.addressLinkDetail.startDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.addressLinkDetail.startDate"></s:textfield>
+                </td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:date name="personDetail.addressLinkDetail.endDate" format="dd/MM/yyyy"/></td>
-            </tr>
+                <td><s:date name="personDetail.addressLinkDetail.endDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.addressLinkDetail.endDate"></s:textfield>
+                </td>
+            </tr>-->
 
             <!-- Insert Person Identity Parameters -->
 
@@ -225,17 +240,21 @@
                 <s:select list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}" name="personDetail.personIdentityDetail.typeCode" label="Type Code">
                     </s:select></td>
             </tr>
-            <tr>
+            <!--  <tr>
                 <td>Start Date :</td>
-                <td><s:date name="personDetail.personIdentityDetail.startDate" format="dd/MM/yyyy"/></td>
+                <td><s:date name="personDetail.personIdentityDetail.startDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.personIdentityDetail.startDate"></s:textfield>
+                </td>
             </tr>
             <tr>
                 <td>End Date :</td>
-                <td><s:date name="personDetail.personIdentityDetail.endDate" format="dd/MM/yyyy"/></td>
-            </tr>
+                <td><s:date name="personDetail.personIdentityDetail.endDate" format="MM/dd/yyyy"/>
+                <s:textfield name="personDetail.personIdentityDetail.endDate"></s:textfield>
+                </td>
+            </tr>-->
             <tr>
                 <td>
-                <s:select list="#{'9001':'Administrator', '9002':'Employee', '9003':'Devloper'}" name="personDetail.personIdentityDetail.roleID" label="Role">
+                <s:select list="#{'9001':'Administrator', '9002':'Employee', '9003':'Devloper'}" name="personDetail.roleDetail.roleID" label="Role">
                        <!--  <option value="9001">Administrator</option>
                         <option value="9002">Employee</option>
                         <option value="9003">Devloper</option> -->

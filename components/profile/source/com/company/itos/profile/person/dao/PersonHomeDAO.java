@@ -57,7 +57,7 @@ public class PersonHomeDAO {
 
 			if (resultSet.next()) {
 
-				personDetail.setPersonID(resultSet.getInt("personID"));
+				personDetail.setPersonID(resultSet.getLong("personID"));
 				personDetail.setRefrenceNumber(resultSet.getInt("refrenceNumber"));
 				personDetail.setTitle(resultSet.getString("title"));
 				personDetail.setFirstName(resultSet.getString("firstName"));

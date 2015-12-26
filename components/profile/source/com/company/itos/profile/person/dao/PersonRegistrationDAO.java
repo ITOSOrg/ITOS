@@ -1,29 +1,22 @@
 package com.company.itos.profile.person.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.company.itos.core.util.dataaccess.DBConnection;
-import com.company.itos.core.util.type.UniqueID;
-import com.company.itos.core.role.dao.CreateRoleDAO;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.dao.CreateUserRoleLinkDAO;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.profile.address.dao.CreateAddressDAO;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.CreateEmailAddressDAO;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.PersonSearchCriteria;
@@ -32,7 +25,6 @@ import com.company.itos.profile.person.pojo.UsersDetail;
 import com.company.itos.profile.personIdentity.dao.CreatePersonIdentityDAO;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.dao.CreatePhoneNumberDAO;
-import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 /**
@@ -40,14 +32,17 @@ import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
  */
 public class PersonRegistrationDAO {
 
-	ResultSet resultSet;
-
+	/**
+	 * 
+	 * @param personDetail
+	 * @return
+	 */
 	public String registerPerson(PersonDetail personDetail) {
 
 		PreparedStatement preparedStatement = null;
 		String returnMassegeStr = "";
 		boolean personExistInd = personExist(personDetail);
-		boolean userNameExistInd = checkingUserName(personDetail);
+		boolean userNameExistInd = checkUserNameExist(personDetail);
 
 		if (!personExistInd && !userNameExistInd) {
 
@@ -56,59 +51,37 @@ public class PersonRegistrationDAO {
 			PhoneNumberLinkDetail phoneNumberLinkDetail = personDetail.getPhoneNumberLinkDetail();
 			AddressLinkDetail addressLinkDetail = personDetail.getAddressLinkDetail();
 			PersonIdentityDetail personIdentityDetail = personDetail.getPersonIdentityDetail();
+
 			Connection connection = null;
-			Statement statement = null;
 			try {
 				connection = DBConnection.getDBConnection();
 
 				String usersSQLStr = "INSERT	INTO	USERS(userName, password, recordStatus, relatedID)	VALUES('" + usersDetail.getUserName()
 						+ "','" + usersDetail.getPassword() + "','active', ?)";
 				preparedStatement = connection.prepareStatement(usersSQLStr);
-				preparedStatement.setLong(1, UniqueID.nextUniqueID());
+				long relatedID = UniqueID.nextUniqueID();
+				preparedStatement.setLong(1, relatedID);
 
 				preparedStatement.execute();
 
-				statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT relatedID FROM USERS WHERE userName='" + usersDetail.getPassword()
-						+ "'");
+				emailAddressLinkDetail.setRelatedID(relatedID);
+				phoneNumberLinkDetail.setRelatedID(relatedID);
+				personDetail.setPersonID(relatedID);
+				addressLinkDetail.setRelatedID(relatedID);
+				personIdentityDetail.setPersonID(relatedID);
 
-				if (resultSet.next()) {
-					emailAddressLinkDetail.setRelatedID(resultSet.getInt(1));
-					phoneNumberLinkDetail.setRelatedID(resultSet.getInt(1));
-					personDetail.setPersonID(resultSet.getInt(1));
-					addressLinkDetail.setRelatedID(resultSet.getInt(1));
-					personIdentityDetail.setPersonID(resultSet.getInt(1));
-				}
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-
-			String personSQLStr = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, createdBy, createdOn, modifiedBy, modifiedOn, REGISTRATIONDATE, versionNo) "
-					+ "VALUES (?, PersonRefrenceNumberSEQ.nextval, '"
-					+ personDetail.getTitle()
-					+ "', '"
-					+ personDetail.getFirstName()
-					+ "','"
-					+ personDetail.getMiddleName()
-					+ "','"
-					+ personDetail.getLastName()
-					+ "','"
-					+ personDetail.getGender()
-					+ "' ,'"
-					+ usersDetail.getUserName() + "',?, 'active','Rahul',?,'Rahul',?,?," + " 1 )";
-
-			// String sql1 =
-			// "INSERT INTO EmailAddress(emailAddressID, emailAddress, recordStatus, versionNo)"
-			// +
-			// "VALUES(EmailAddressSEQ.nextval, '"+personDetail.getEmailAddress()+"','active',1)";
-
-			// String sql2 =
-			// "INSERT INTO Address(addressId, streetOne, streetTwo, aptUnit, city, county, state, country, zipCode, versionNo)"
-			// +
-			// "VALUES(AddressSEQ.naxtval, '"+personDetail.getStreetOne()+"', '"+personDetail.getStreetTwo()+"', '"+personDetail.getAptUnit()+"', '"+personDetail.getCity()+"', '"+personDetail.getCounty()+"', '"+personDetail.getState()+"', '"+personDetail.getCountry()+"', '"+personDetail.getZipCode()+"', 1)";
-
-			try {
-				// connection = dbConnection.getDBConnection();
+				String personSQLStr = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, createdBy, createdOn, modifiedBy, modifiedOn, REGISTRATIONDATE, versionNo) "
+						+ "VALUES (?, PersonRefrenceNumberSEQ.nextval, '"
+						+ personDetail.getTitle()
+						+ "', '"
+						+ personDetail.getFirstName()
+						+ "','"
+						+ personDetail.getMiddleName()
+						+ "','"
+						+ personDetail.getLastName()
+						+ "','"
+						+ personDetail.getGender()
+						+ "' ,'" + usersDetail.getUserName() + "',?, 'Active','Rahul',?,'Rahul',?,?," + " 1 )";
 
 				PreparedStatement preparedStatement1 = connection.prepareStatement(personSQLStr);
 
@@ -144,12 +117,19 @@ public class PersonRegistrationDAO {
 				UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
 				userRoleLinkDetail.setUsername(usersDetail.getUserName());
 				userRoleLinkDetail.setRoleID(roleDetail.getRoleID());
+
 				CreateUserRoleLinkDAO createUserRoleLinkDAO = new CreateUserRoleLinkDAO();
 				createUserRoleLinkDAO.createUserRoleLinkUsingRegistrationform(userRoleLinkDetail);
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
+
 			} catch (SQLException e) {
 				personDetail.getErrorMessageList().add("Username already exist");
+				e.printStackTrace();
+				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
+
+			} catch (Exception e) {
+				personDetail.getErrorMessageList().add("Main exception");
 				e.printStackTrace();
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 			}
@@ -164,7 +144,8 @@ public class PersonRegistrationDAO {
 	 */
 	public boolean personExist(PersonDetail personDetail) {
 
-		Connection connection = null;
+		boolean personExistInd = false;
+
 		try {
 
 			PersonSearchCriteria personSearchCriteria = new PersonSearchCriteria();
@@ -186,29 +167,29 @@ public class PersonRegistrationDAO {
 
 				personDetail.getErrorMessageList().add("Person already exist");
 
-				return true;
+				personExistInd = true;
 			}
+
 		} catch (Exception e) {
 
+			e.printStackTrace();
 		}
 
-		return false;
+		return personExistInd;
 
 	}
 
-	public boolean checkingUserName(PersonDetail personDetail) {
+	public boolean checkUserNameExist(PersonDetail personDetail) {
 
 		Connection connection = null;
 		try {
 			connection = DBConnection.getDBConnection();
 
-			String usersSQLStr = "select userName from USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
+			String usersSQLStr = "SELECT userName FROM USERS where userName='" + personDetail.getUsersDetail().getUserName() + "'";
 			PreparedStatement preparedStatement = connection.prepareStatement(usersSQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				List<String> errorMessageList = new ArrayList<String>();
-				errorMessageList.add("UserName already exist");
-				// personDetail.setErrorMessageList(errorMessageList);
+
 				personDetail.getErrorMessageList().add("UserName already exist");
 				return true;
 

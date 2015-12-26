@@ -91,8 +91,8 @@ public class UpdatePhoneNumberDAO {
 			if (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
-				phoneNumberLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
-				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSet.getLong("phoneNumberID"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

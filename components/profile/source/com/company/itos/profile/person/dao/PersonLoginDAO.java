@@ -56,7 +56,7 @@ public class PersonLoginDAO {
 			ResultSet resultSetPerson = preparedStatementPerson.executeQuery();
 
 			if (resultSetPerson.next()) {
-				usersDetail.setRelatedID(resultSetPerson.getInt("relatedID"));
+				usersDetail.setRelatedID(resultSetPerson.getLong("relatedID"));
 			}
 
 			// if resultSet contain values then return success

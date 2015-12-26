@@ -64,7 +64,7 @@ public class UpdatePersonIdentityDAO {
 
 			while (resultSet.next()) {
 				versionNo = resultSet.getInt("versionNo");
-				personIdentityDetail.setPersonID(resultSet.getInt("personID"));
+				personIdentityDetail.setPersonID(resultSet.getLong("personID"));
 			}
 		} catch (SQLException e) {
 

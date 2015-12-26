@@ -141,26 +141,5 @@ public class PersonHomeDAO {
 		return returnMassegeStr;
 	}
 
-	/*
-	 * public EmailAddressDetail getEmailAddressLinkID(EmailAddressDetail
-	 * emailAddressDetail) {
-	 * 
-	 * Connection connection; try { connection = dbConnection.getDBConnection();
-	 * statement = connection.createStatement();
-	 * 
-	 * String EmailAddressLinkSQLStr =
-	 * "SELECT emailAddressLinkID FROM EmailAddressLink where relatedID = \'"
-	 * +emailAddressDetail.getRelatedID()+"\'"; ResultSet resultSet =
-	 * statement.executeQuery("EmailAddressLinkSQLStr"); if(resultSet.next()) {
-	 * 
-	 * emailAddressDetail.setEmailAddressLinkID(resultSet.getInt(
-	 * "emailAddressLinkID")); }
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace(); }
-	 * 
-	 * return emailAddressDetail;
-	 * 
-	 * }
-	 */
 
 }

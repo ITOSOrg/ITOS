@@ -24,8 +24,8 @@ public class ReadUserRoleLinkDAO {
 
 			while (resultSetUserRoleLink.next()) {
 
-				userRoleLinkDetail.setUserRoleLinkID(resultSetUserRoleLink.getInt("userRoleLinkID"));
-				userRoleLinkDetail.setRoleID(resultSetUserRoleLink.getInt("roleID"));
+				userRoleLinkDetail.setUserRoleLinkID(resultSetUserRoleLink.getLong("userRoleLinkID"));
+				userRoleLinkDetail.setRoleID(resultSetUserRoleLink.getLong("roleID"));
 				userRoleLinkDetail.setUsername(resultSetUserRoleLink.getString("username"));
 				userRoleLinkDetail.setStartDate(resultSetUserRoleLink.getTimestamp("startDate"));
 				userRoleLinkDetail.setEndDate(resultSetUserRoleLink.getDate("endDate"));

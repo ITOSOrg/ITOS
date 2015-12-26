@@ -21,16 +21,6 @@ public class CreatePersonIdentityDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*
-			 * PreparedStatement preparedStatement =
-			 * connection.prepareStatement(
-			 * "SELECT PersonIdentitySEQ.nextval FROM DUAL"); ResultSet
-			 * resultSet = preparedStatement.executeQuery();
-			 * 
-			 * while(resultSet.next()){
-			 * personIdentityDetail.setPersonIdentityID(resultSet.getInt(1)); }
-			 */
-
 			String personIdentitySQLStr = "INSERT INTO PersonIdentity ( personIdentityID, personID, alternateID, primaryInd, typeCode, startDate, endDate, recordStatus, versionNo) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
 

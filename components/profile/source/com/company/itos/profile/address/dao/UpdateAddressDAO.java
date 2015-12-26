@@ -92,8 +92,8 @@ public class UpdateAddressDAO {
 			while (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
-				addressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
-				addressLinkDetail.setAddressID(resultSet.getInt("addressID"));
+				addressLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
+				addressLinkDetail.setAddressID(resultSet.getLong("addressID"));
 
 			}
 

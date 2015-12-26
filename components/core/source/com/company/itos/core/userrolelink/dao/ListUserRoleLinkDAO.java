@@ -30,8 +30,8 @@ public class ListUserRoleLinkDAO {
 
 				UserRoleLinkDetail userRoleLinkDetail = new UserRoleLinkDetail();
 
-				userRoleLinkDetail.setUserRoleLinkID(resultSetuserRoleLink.getInt("userRoleLinkID"));
-				userRoleLinkDetail.setRoleID(resultSetuserRoleLink.getInt("roleID"));
+				userRoleLinkDetail.setUserRoleLinkID(resultSetuserRoleLink.getLong("userRoleLinkID"));
+				userRoleLinkDetail.setRoleID(resultSetuserRoleLink.getLong("roleID"));
 				userRoleLinkDetail.setUsername(resultSetuserRoleLink.getString("username"));
 				userRoleLinkDetail.setStartDate(resultSetuserRoleLink.getTimestamp("startDate"));
 				userRoleLinkDetail.setEndDate(resultSetuserRoleLink.getDate("endDate"));

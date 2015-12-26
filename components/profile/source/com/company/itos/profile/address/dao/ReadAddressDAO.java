@@ -27,9 +27,9 @@ public class ReadAddressDAO {
 			ResultSet resultSetaddressLink = preparedStatementAddressLinkSQLStr.executeQuery();
 
 			while (resultSetaddressLink.next()) {
-				addressLinkDetail.setAddressLinkID(resultSetaddressLink.getInt("addressLinkID"));
-				addressLinkDetail.setRelatedID(resultSetaddressLink.getInt("relatedID"));
-				addressLinkDetail.setAddressID(resultSetaddressLink.getInt("addressID"));
+				addressLinkDetail.setAddressLinkID(resultSetaddressLink.getLong("addressLinkID"));
+				addressLinkDetail.setRelatedID(resultSetaddressLink.getLong("relatedID"));
+				addressLinkDetail.setAddressID(resultSetaddressLink.getLong("addressID"));
 				addressLinkDetail.setTypeCode(resultSetaddressLink.getString("typeCode"));
 				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
@@ -46,7 +46,7 @@ public class ReadAddressDAO {
 			while (resultSetaddress.next()) {
 				AddressDetail addressDetail = new AddressDetail();
 
-				addressDetail.setAddressId(resultSetaddress.getInt("addressID"));
+				addressDetail.setAddressId(resultSetaddress.getLong("addressID"));
 				addressDetail.setStreetOne(resultSetaddress.getString("streetOne"));
 				addressDetail.setStreetTwo(resultSetaddress.getString("streetTwo"));
 				addressDetail.setAptUnit(resultSetaddress.getString("aptUnit"));
@@ -92,9 +92,9 @@ public class ReadAddressDAO {
 			ResultSet resultSetaddressLink = preparedStatementAddressLinkSQLStr.executeQuery();
 
 			while (resultSetaddressLink.next()) {
-				addressLinkDetail.setAddressLinkID(resultSetaddressLink.getInt("addressLinkID"));
-				addressLinkDetail.setRelatedID(resultSetaddressLink.getInt("relatedID"));
-				addressLinkDetail.setAddressID(resultSetaddressLink.getInt("addressID"));
+				addressLinkDetail.setAddressLinkID(resultSetaddressLink.getLong("addressLinkID"));
+				addressLinkDetail.setRelatedID(resultSetaddressLink.getLong("relatedID"));
+				addressLinkDetail.setAddressID(resultSetaddressLink.getLong("addressID"));
 				addressLinkDetail.setTypeCode(resultSetaddressLink.getString("typeCode"));
 				addressLinkDetail.setPrimaryInd(resultSetaddressLink.getString("primaryInd"));
 				addressLinkDetail.setStartDate(resultSetaddressLink.getDate("startDate"));
@@ -111,7 +111,7 @@ public class ReadAddressDAO {
 			while (resultSetaddress.next()) {
 				AddressDetail addressDetail = new AddressDetail();
 
-				addressDetail.setAddressId(resultSetaddress.getInt("addressID"));
+				addressDetail.setAddressId(resultSetaddress.getLong("addressID"));
 				addressDetail.setStreetOne(resultSetaddress.getString("streetOne"));
 				addressDetail.setStreetTwo(resultSetaddress.getString("streetTwo"));
 				addressDetail.setAptUnit(resultSetaddress.getString("aptUnit"));

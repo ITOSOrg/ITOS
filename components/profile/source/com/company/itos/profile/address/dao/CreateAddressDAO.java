@@ -24,26 +24,6 @@ public class CreateAddressDAO {
 		try {
 			connection = DBConnection.getDBConnection();
 
-			/*
-			 * PreparedStatement preparedStatementAddress =
-			 * connection.prepareStatement
-			 * ("SELECT AddressSEQ.nextval FROM DUAL"); PreparedStatement
-			 * preparedStatementAddressLink =
-			 * connection.prepareStatement("SELECT AddressLinkSEQ.nextval FROM DUAL"
-			 * );
-			 * 
-			 * ResultSet resultSetAddress =
-			 * preparedStatementAddress.executeQuery(); ResultSet
-			 * resultSetAddressLink =
-			 * preparedStatementAddressLink.executeQuery();
-			 * 
-			 * while (resultSetAddress.next()) {
-			 * addressDetail.setAddressId(resultSetAddress.getInt(1)); } while
-			 * (resultSetAddressLink.next()) {
-			 * addressLinkDetail.setAddressLinkID
-			 * (resultSetAddressLink.getInt(1)); }
-			 */
-
 			String addressSQLStr = "INSERT INTO Address (addressId, streetOne, streetTwo, aptUnit, city, county, state, country, zipCode, versionNo)"
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 

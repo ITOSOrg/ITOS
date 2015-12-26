@@ -83,8 +83,8 @@ public class UpdateEmailAddressDAO {
 			if (resultSet.next()) {
 
 				versionNo = resultSet.getInt("versionNo");
-				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
-				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getLong("emailAddressID"));
 				// emailAddressDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 		} catch (SQLException e) {

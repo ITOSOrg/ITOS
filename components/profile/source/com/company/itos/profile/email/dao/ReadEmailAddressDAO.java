@@ -29,13 +29,13 @@ public class ReadEmailAddressDAO {
 
 			if (resultSet.next()) {
 
-				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getLong("emailAddressID"));
 				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
-				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getLong("emailAddressLinkID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
 				emailAddressLinkDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 
@@ -80,13 +80,13 @@ public class ReadEmailAddressDAO {
 
 			while (resultSet.next()) {
 
-				emailAddressLinkDetail.setEmailAddressID(resultSet.getInt("emailAddressID"));
+				emailAddressLinkDetail.setEmailAddressID(resultSet.getLong("emailAddressID"));
 				emailAddressLinkDetail.setTypeCode(resultSet.getString("typeCode"));
 				emailAddressLinkDetail.setPrimaryInd(resultSet.getString("primaryInd"));
 				emailAddressLinkDetail.setStartDate(resultSet.getDate("startDate"));
 				emailAddressLinkDetail.setEndDate(resultSet.getDate("endDate"));
-				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getInt("emailAddressLinkID"));
-				emailAddressLinkDetail.setRelatedID(resultSet.getInt("relatedID"));
+				emailAddressLinkDetail.setEmailAddressLinkID(resultSet.getLong("emailAddressLinkID"));
+				emailAddressLinkDetail.setRelatedID(resultSet.getLong("relatedID"));
 				emailAddressLinkDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
 

@@ -25,14 +25,6 @@ public class CreateRoleDAO {
 
 			connection = DBConnection.getDBConnection();
 
-			/*
-			 * PreparedStatement preparedStatement1 =
-			 * connection.prepareStatement("SELECT RoleSEQ.nextval FROM DUAL");
-			 * ResultSet resultSet1 = preparedStatement1.executeQuery();
-			 * 
-			 * while (resultSet1.next()) {
-			 * roleDeatail.setRoleID(resultSet1.getInt(1)); }
-			 */
 
 			String roleSQLStr = "INSERT INTO Role(roleID, roleType, workspace, recordStatus, createdBy, createdOn, lastModifiedBy, lastModifiedOn, versionNo)"
 					+ "VALUES(?, ?, ?, 'Active', 'Rahul', ?, 'Rahul', ?, 1)";

@@ -27,13 +27,13 @@ public class ReadPhoneNumberDAO {
 			ResultSet resultSetPhoneNumberLink = preparedStatementPhoneNumberLink.executeQuery();
 
 			while (resultSetPhoneNumberLink.next()) {
-				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
-				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getLong("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getLong("phoneNumberID"));
 				phoneNumberLinkDetail.setTypeCode(resultSetPhoneNumberLink.getString("typeCode"));
 				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSetPhoneNumberLink.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSetPhoneNumberLink.getDate("endDate"));
-				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getInt("phoneNumberLinkID"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getLong("phoneNumberLinkID"));
 				phoneNumberLinkDetail.setVersionNo(resultSetPhoneNumberLink.getInt("versionNo"));
 			}
 
@@ -46,7 +46,7 @@ public class ReadPhoneNumberDAO {
 
 				phoneNumberDetail = new PhoneNumberDetail();
 
-				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getInt("phoneNumberID"));
+				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getLong("phoneNumberID"));
 				phoneNumberDetail.setCountryCode(resultSetPhoneNumber.getInt("countryCode"));
 				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));
@@ -80,13 +80,13 @@ public class ReadPhoneNumberDAO {
 			ResultSet resultSetPhoneNumberLink = statementPhoneNumberLink.executeQuery(PhoneNumberLinkSQLStr);
 
 			while (resultSetPhoneNumberLink.next()) {
-				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getInt("relatedID"));
-				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getInt("phoneNumberID"));
+				phoneNumberLinkDetail.setRelatedID(resultSetPhoneNumberLink.getLong("relatedID"));
+				phoneNumberLinkDetail.setPhoneNumberID(resultSetPhoneNumberLink.getLong("phoneNumberID"));
 				phoneNumberLinkDetail.setTypeCode(resultSetPhoneNumberLink.getString("typeCode"));
 				phoneNumberLinkDetail.setPrimaryInd(resultSetPhoneNumberLink.getString("primaryInd"));
 				phoneNumberLinkDetail.setStartDate(resultSetPhoneNumberLink.getDate("startDate"));
 				phoneNumberLinkDetail.setEndDate(resultSetPhoneNumberLink.getDate("endDate"));
-				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getInt("phoneNumberLinkID"));
+				phoneNumberLinkDetail.setPhoneNumberLinkID(resultSetPhoneNumberLink.getLong("phoneNumberLinkID"));
 				phoneNumberLinkDetail.setVersionNo(resultSetPhoneNumberLink.getInt("versionNo"));
 			}
 
@@ -99,7 +99,7 @@ public class ReadPhoneNumberDAO {
 
 				phoneNumberDetail = new PhoneNumberDetail();
 
-				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getInt("phoneNumberID"));
+				phoneNumberDetail.setPhoneNumberID(resultSetPhoneNumber.getLong("phoneNumberID"));
 				phoneNumberDetail.setCountryCode(resultSetPhoneNumber.getInt("countryCode"));
 				phoneNumberDetail.setAreaCode(resultSetPhoneNumber.getInt("areaCode"));
 				phoneNumberDetail.setPhoneNumber(resultSetPhoneNumber.getLong("phoneNumber"));

@@ -9,7 +9,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#datepicker").datepicker();
+		$("#datepicker").datepicker({
+			  changeMonth: true,
+			  changeYear: true
+		});
 		$('#submit').click(function() {
 			alert("Submit ?");
 		});

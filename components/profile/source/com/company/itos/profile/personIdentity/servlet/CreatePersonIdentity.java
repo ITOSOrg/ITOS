@@ -44,7 +44,7 @@ public class CreatePersonIdentity extends HttpServlet {
 		 PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
 		 
 		 int personID =(new Integer (request.getParameter("personID")));
-		 int alternateID =(new Integer (request.getParameter("alternateID")));
+		 String alternateID = request.getParameter("alternateID");
 		 String primaryInd = request.getParameter("primaryInd");
 		 String typeCode = request.getParameter("typeCode");
 		 String startDate = request.getParameter("startDate");

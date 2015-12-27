@@ -52,7 +52,7 @@ public class UpdatePersonIdentity extends HttpServlet {
 		int versionNo = (new Integer(request.getParameter("versionNo")));
 		personIdentityDetail.setVersionNo(versionNo);
 		
-		 int alternateID =(new Integer (request.getParameter("alternateID")));
+		 String alternateID = request.getParameter("alternateID");
 		 String primaryInd = request.getParameter("primaryInd");
 		 String typeCode = request.getParameter("typeCode");
 		 String startDate = request.getParameter("startDate");

@@ -337,7 +337,7 @@ public class PersonRegistration extends HttpServlet {
 		
 		PersonIdentityDetail personIdentityDetail = new PersonIdentityDetail();
 		 
-		 int alternateID =(new Integer (request.getParameter("alternateID")));
+		 String alternateID = request.getParameter("alternateID");
 		 String primaryInd3 = request.getParameter("primaryIndI");
 		 String typeCode3 = request.getParameter("typeCode");
 		 String startDate3 = request.getParameter("startDate");

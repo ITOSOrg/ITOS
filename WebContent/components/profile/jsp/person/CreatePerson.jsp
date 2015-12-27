@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="/struts-jquery-tags" prefix="sj"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
-<link href="jquery-ui\jquery-ui.css" rel="stylesheet" />
-<script src="js\jquery.js" type="text/javascript"></script>
-<script src="jquery-ui\jquery-ui.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#datepicker").datepicker();
@@ -18,7 +17,7 @@
 </script>
 </head>
 <body >
-    <h> Registration Form</h>
+    <h2> Registration Form</h2>
     <br>
     <br>
 
@@ -35,16 +34,16 @@
 
             <tr>
                 <td>First Name :</td>
-                <td><s:textfield type="text" name="personDetail.firstName" /></td>
+                <td><s:textfield   type="text" name="personDetail.firstName" placeholder = "FirstName"/></td>
             </tr>
             <tr>
                 <td>Middle Name:</td>
-                <td><s:textfield type="text" name="personDetail.middleName" /></td>
+                <td><s:textfield type="text" name="personDetail.middleName" placeholder = "MiddleName"/></td>
             </tr>
 
             <tr>
                 <td>Last Name:</td>
-                <td><s:textfield type="text" name="personDetail.lastName" /></td>
+                <td><s:textfield type="text" name="personDetail.lastName" placeholder = "LastName"/></td>
             </tr>
 
 
@@ -62,15 +61,22 @@
                 <s:date id="datepicker" name="personDetail.dateOfBirth" format="MM/dd/yyyy" />
                 <s:textfield name="personDetail.dateOfBirth"></s:textfield>
                 </td>
+            </tr>
+            <tr>
+            <td>
+            
+             <sj:datepicker value="" id="datepicker" name="personDetail.dateOfBirth" displayFormat="dd.mm.yy" label="DateOfBirth" />
+             </td>
             </tr>-->
 
             <tr>
                 <td>UserName:</td>
-                <td><s:textfield type="text" name="personDetail.usersDetail.userName" /></td>
+                <td><s:textfield type="text" name="personDetail.usersDetail.userName" placeholder = "UserName"/></td>
             </tr>
+            
             <tr>
                 <td>Password:</td>
-                <td><s:textfield type="text" name="personDetail.usersDetail.password" /></td>
+                <td><s:textfield type="text" name="personDetail.usersDetail.password" placeholder = "Password"/></td>
             </tr>
 
             <!-- Enter Email Address Parameter -->
@@ -78,7 +84,7 @@
             <tr>
                 <td>Email Address:</td>
                 <td><s:textfield type="text"
-                        name="personDetail.emailAddressLinkDetail.emailAddressDetail.emailAddress" /></td>
+                        name="personDetail.emailAddressLinkDetail.emailAddressDetail.emailAddress" placeholder = "EmailAddress"/></td>
             </tr>
             <tr>
                 <td>

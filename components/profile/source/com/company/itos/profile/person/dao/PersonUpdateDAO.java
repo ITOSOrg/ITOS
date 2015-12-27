@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
@@ -37,7 +38,7 @@ public class PersonUpdateDAO {
 
 				preparedStatement = connection.prepareStatement(personSQLStr);
 
-				preparedStatement.setDate(1, personDetail.getDateOfBirth());
+				preparedStatement.setDate(1, JavaUtildates.convertUtilToSql(personDetail.getDateOfBirth()));
 				preparedStatement.executeUpdate();
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;

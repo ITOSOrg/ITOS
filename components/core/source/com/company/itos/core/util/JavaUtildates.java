@@ -11,10 +11,12 @@ import java.util.Date;
 
 /**
  * @author vaish
- *
+ * 
  */
 public class JavaUtildates {
+	
 	public static Date stringToDateConversion(String sting) {
+
 		java.util.Date date;
 		java.sql.Date sqlDate = null;
 		try {
@@ -23,23 +25,23 @@ public class JavaUtildates {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
+		
 		return sqlDate;
-
+		
 	}
-
+	
 	/**
 	 * 
 	 * @return
 	 */
 	public static String getCurrentDateTime() {
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		// get current date time with Date()
 		Date date = new Date();
 		String crrentDateTime = dateFormat.format(date);
-		//System.out.println(crrentDateTime);
-
+		// System.out.println(crrentDateTime);
+		
 		/*
 		 * //get current date time with Calendar() Calendar cal =
 		 * Calendar.getInstance();
@@ -47,5 +49,17 @@ public class JavaUtildates {
 		 */
 		return crrentDateTime;
 	}
+	
+	/**
+	 * 
+	 * @param uDate
+	 * @return
+	 */
+	public static java.sql.Date convertUtilToSql(java.util.Date uDate) {
 
+		java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+		
+		return sDate;
+	}
+	
 }

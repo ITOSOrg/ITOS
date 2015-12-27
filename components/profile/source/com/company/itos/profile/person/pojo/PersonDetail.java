@@ -1,15 +1,14 @@
 package com.company.itos.profile.person.pojo;
 
-import java.sql.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
-import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class PersonDetail {

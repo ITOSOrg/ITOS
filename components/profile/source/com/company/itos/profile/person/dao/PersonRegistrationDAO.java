@@ -86,7 +86,7 @@ public class PersonRegistrationDAO {
 				PreparedStatement preparedStatement1 = connection.prepareStatement(personSQLStr);
 
 				preparedStatement1.setLong(1, personDetail.getPersonID());
-				preparedStatement1.setDate(2, personDetail.getDateOfBirth());
+				preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(personDetail.getDateOfBirth()));
 
 				String crrentDateTime = JavaUtildates.getCurrentDateTime();
 

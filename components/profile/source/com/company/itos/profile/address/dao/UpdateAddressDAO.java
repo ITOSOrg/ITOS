@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -59,8 +61,8 @@ public class UpdateAddressDAO {
 					PreparedStatement preparedStatementaddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
 
 					preparedStatementaddressLinkSQLStr.setString(1, addressLinkDetail.getTypeCode());
-					preparedStatementaddressLinkSQLStr.setDate(2, addressLinkDetail.getStartDate());
-					preparedStatementaddressLinkSQLStr.setDate(3, addressLinkDetail.getEndDate());
+					preparedStatementaddressLinkSQLStr.setDate(2, JavaUtildates.convertUtilToSql(addressLinkDetail.getStartDate()));
+					preparedStatementaddressLinkSQLStr.setDate(3, JavaUtildates.convertUtilToSql(addressLinkDetail.getEndDate()));
 
 					preparedStatementaddressLinkSQLStr.execute();
 					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;

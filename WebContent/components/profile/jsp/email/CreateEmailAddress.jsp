@@ -17,13 +17,18 @@
 				<td><s:textfield type="text" name="emailAddressLinkDetail.emailAddressDetail.emailAddress"/></td>
 			</tr>
 			<tr>
-				<td>Type Code :</td>
-				<td><s:textfield type="text" name="emailAddressLinkDetail.typeCode"/></td>
-			</tr>
-			<tr>
-				<td>PrimaryInd :</td>
-				<td><s:textfield type="text" name="emailAddressLinkDetail.primaryInd"/></td>
-			</tr>
+            <td><s:select
+                list="#{'Primary':'Primary', 'Secondary':'Secondary', 'Persnal':'Persnal', 'Business':'Business'}"
+                name="emailAddressLinkDetail.typeCode" label="Type Code">
+
+            </s:select></td>
+        </tr>
+		
+        <tr>
+            <td>PrimaryInd :</td>
+            <td><s:radio name="emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
+                value="1"></s:radio></td>
+        </tr>
 			
 			<tr>
 

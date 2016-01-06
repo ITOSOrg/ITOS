@@ -217,11 +217,6 @@
 
                 </table>
 
-                
-
-                    <br>
-                    <input type="submit" value="LogOut">
-                    <br>
             </div>
         </s:form>
     </div>

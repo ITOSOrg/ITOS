@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class UpdatePersonIdentityDAO {
@@ -33,8 +35,8 @@ public class UpdatePersonIdentityDAO {
 				preparedStatementpersonIdentity.setString(1, personIdentityDetail.getAlternateID());
 				preparedStatementpersonIdentity.setString(2, personIdentityDetail.getPrimaryInd());
 				preparedStatementpersonIdentity.setString(3, personIdentityDetail.getTypeCode());
-				preparedStatementpersonIdentity.setDate(4, personIdentityDetail.getStartDate());
-				preparedStatementpersonIdentity.setDate(5, personIdentityDetail.getEndDate());
+				preparedStatementpersonIdentity.setDate(4, JavaUtildates.convertUtilToSql(personIdentityDetail.getStartDate()));
+				preparedStatementpersonIdentity.setDate(5, JavaUtildates.convertUtilToSql(personIdentityDetail.getEndDate()));
 
 				preparedStatementpersonIdentity.executeUpdate();
 

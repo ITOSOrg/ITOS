@@ -1,6 +1,7 @@
 package com.company.itos.profile.personIdentity.pojo;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class PersonIdentityDetail {
 	

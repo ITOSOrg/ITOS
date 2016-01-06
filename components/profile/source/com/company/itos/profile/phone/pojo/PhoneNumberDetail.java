@@ -1,6 +1,5 @@
 package com.company.itos.profile.phone.pojo;
 
-import java.sql.Date;
 
 public class PhoneNumberDetail {
 	

@@ -1,6 +1,5 @@
 package com.company.itos.profile.email.pojo;
 
-import java.sql.Date;
 
 public class EmailAddressDetail {
 

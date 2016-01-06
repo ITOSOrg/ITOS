@@ -1,6 +1,7 @@
 package com.company.itos.profile.address.pojo;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class AddressLinkDetail {
 	
@@ -102,18 +103,30 @@ public class AddressLinkDetail {
 		this.primaryInd = primaryInd;
 	}
 
+	/**
+	 * @return the startDate
+	 */
 	public Date getStartDate() {
 		return startDate;
 	}
 
+	/**
+	 * @param startDate the startDate to set
+	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
+	/**
+	 * @return the endDate
+	 */
 	public Date getEndDate() {
 		return endDate;
 	}
 
+	/**
+	 * @param endDate the endDate to set
+	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}

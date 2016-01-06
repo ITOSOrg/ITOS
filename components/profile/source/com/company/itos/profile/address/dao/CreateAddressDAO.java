@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 
@@ -53,8 +54,8 @@ public class CreateAddressDAO {
 			preparedStatementaddressLinkSQLStr.setLong(3, addressId);
 			preparedStatementaddressLinkSQLStr.setString(4, addressLinkDetail.getTypeCode());
 			preparedStatementaddressLinkSQLStr.setString(5, addressLinkDetail.getPrimaryInd());
-			preparedStatementaddressLinkSQLStr.setDate(6, addressLinkDetail.getStartDate());
-			preparedStatementaddressLinkSQLStr.setDate(7, addressLinkDetail.getEndDate());
+			preparedStatementaddressLinkSQLStr.setDate(6, JavaUtildates.convertUtilToSql(addressLinkDetail.getStartDate()));
+			preparedStatementaddressLinkSQLStr.setDate(7, JavaUtildates.convertUtilToSql(addressLinkDetail.getEndDate()));
 			preparedStatementaddressLinkSQLStr.setString(8, "Active");
 			
 			

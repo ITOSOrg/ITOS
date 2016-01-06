@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
@@ -58,8 +60,8 @@ public class UpdatePhoneNumberDAO {
 					PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
 					preparedStatementPhoneNumberLink.setString(1, phoneNumberLinkDetail.getTypeCode());
 					preparedStatementPhoneNumberLink.setString(2, phoneNumberLinkDetail.getPrimaryInd());
-					preparedStatementPhoneNumberLink.setDate(3, phoneNumberLinkDetail.getStartDate());
-					preparedStatementPhoneNumberLink.setDate(4, phoneNumberLinkDetail.getEndDate());
+					preparedStatementPhoneNumberLink.setDate(3, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getStartDate()));
+					preparedStatementPhoneNumberLink.setDate(4, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getEndDate()));
 
 					preparedStatementPhoneNumberLink.executeUpdate();
 

@@ -1,7 +1,7 @@
 package com.company.itos.core.userrolelink.pojo;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class UserRoleLinkDetail {
 

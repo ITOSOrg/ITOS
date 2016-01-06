@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -75,8 +76,8 @@ public class CreatePhoneNumberDAO {
 			preparedStatementPhoneNumberLink.setLong(3, phoneNumberID);
 			preparedStatementPhoneNumberLink.setString(4, phoneNumberLinkDetail.getTypeCode());
 			preparedStatementPhoneNumberLink.setString(5, phoneNumberLinkDetail.getPrimaryInd());
-			preparedStatementPhoneNumberLink.setDate(6, phoneNumberLinkDetail.getStartDate());
-			preparedStatementPhoneNumberLink.setDate(7, phoneNumberLinkDetail.getEndDate());
+			preparedStatementPhoneNumberLink.setDate(6, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getStartDate()));
+			preparedStatementPhoneNumberLink.setDate(7, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getEndDate()));
 			preparedStatementPhoneNumberLink.execute();
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;

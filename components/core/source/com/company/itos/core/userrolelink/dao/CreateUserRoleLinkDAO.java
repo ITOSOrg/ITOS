@@ -39,7 +39,7 @@ public class CreateUserRoleLinkDAO {
 			Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
 			preparedStatementuserRoleLink.setTimestamp(4, timestamp);
 
-			preparedStatementuserRoleLink.setDate(5, userRoleLinkDetail.getEndDate());
+			preparedStatementuserRoleLink.setDate(5, JavaUtildates.convertUtilToSql(userRoleLinkDetail.getEndDate()));
 			preparedStatementuserRoleLink.execute();
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;

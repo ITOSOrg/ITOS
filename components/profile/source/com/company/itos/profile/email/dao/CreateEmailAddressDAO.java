@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
@@ -49,8 +50,8 @@ public class CreateEmailAddressDAO {
 			preparedStatementEmailAddressLink.setLong(1, UniqueID.nextUniqueID());
 			preparedStatementEmailAddressLink.setLong(2, emailAddressLinkDetail.getRelatedID());
 			preparedStatementEmailAddressLink.setLong(3, emailAddressID);
-			preparedStatementEmailAddressLink.setDate(4, emailAddressLinkDetail.getStartDate());
-			preparedStatementEmailAddressLink.setDate(5, emailAddressLinkDetail.getEndDate());
+			preparedStatementEmailAddressLink.setDate(4, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
+			preparedStatementEmailAddressLink.setDate(5, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
 
 			preparedStatementEmailAddressLink.execute();
 

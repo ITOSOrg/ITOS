@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 
 public class CreatePersonIdentityDAO {
@@ -31,8 +32,8 @@ public class CreatePersonIdentityDAO {
 			preparedStatementpersonIdentity.setString(3, personIdentityDetail.getAlternateID());
 			preparedStatementpersonIdentity.setString(4, personIdentityDetail.getPrimaryInd());
 			preparedStatementpersonIdentity.setString(5, personIdentityDetail.getTypeCode());
-			preparedStatementpersonIdentity.setDate(6, personIdentityDetail.getStartDate());
-			preparedStatementpersonIdentity.setDate(7, personIdentityDetail.getEndDate());
+			preparedStatementpersonIdentity.setDate(6, JavaUtildates.convertUtilToSql(personIdentityDetail.getStartDate()));
+			preparedStatementpersonIdentity.setDate(7, JavaUtildates.convertUtilToSql(personIdentityDetail.getEndDate()));
 
 			preparedStatementpersonIdentity.executeQuery();
 

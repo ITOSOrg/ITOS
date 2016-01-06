@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
@@ -52,8 +54,8 @@ public class UpdateEmailAddressDAO {
 							+ " WHERE emailAddressLinkID = '" + emailAddressLinkDetail.getEmailAddressLinkID() + "'";
 
 					PreparedStatement preparedStatement1 = connection.prepareStatement(updateEmailAddressLinkSqlStr);
-					preparedStatement1.setDate(1, emailAddressLinkDetail.getStartDate());
-					preparedStatement1.setDate(2, emailAddressLinkDetail.getEndDate());
+					preparedStatement1.setDate(1, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
+					preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getEndDate()));
 					preparedStatement1.executeUpdate();
 
 					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;

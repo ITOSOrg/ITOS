@@ -69,9 +69,10 @@
             <tr> -->
 
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.dateOfBirth" displayFormat="dd.mm.yy"
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.dateOfBirth" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
                 label="Date Of Birth" changeMonth="true" changeYear="true" /></td>
         </tr>
+        
 
         <tr>
             <td>UserName:</td>
@@ -102,19 +103,20 @@
             <td><s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
-        <!--   <tr>
-                <td>Start Date :</td>
-                <td><s:date name="personDetail.emailAddressLinkDetail.startDate" format="MM/dd/yyyy" />
-                    <s:textfield name="personDetail.emailAddressLinkDetail.startDate"></s:textfield>
-                </td>
-            </tr>
-            <tr>
-                <td>End Date :</td>
-                <td><s:date name="personDetail.emailAddressLinkDetail.endDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.emailAddressLinkDetail.endDate"></s:textfield>
-                </td>
-            </tr>-->
-
+       
+      
+       <tr>
+            <td><sj:datepicker value=""  id="datepicker" name="personDetail.emailAddressLinkDetail.startDate" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
+                label="Start Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+       
+        
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.emailAddressLinkDetail.endDate" displayFormat="dd.mm.yy"
+                label="End Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+       
+       
         <!-- Enter Phone Number Parameter -->
 
 
@@ -146,19 +148,16 @@
             <td><s:radio name="personDetail.phoneNumberLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
-        <!--  <tr>
-                <td>Start Date:</td>
-                <td><s:date name="personDetail.phoneNumberLinkDetail.startDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.phoneNumberLinkDetail.startDate"></s:textfield>
-                </td>
-            </tr>
-
-            <tr>
-                <td>End Date:</td>
-                <td><s:date name="personDetail.phoneNumberLinkDetail.endDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.phoneNumberLinkDetail.endDate"></s:textfield>
-                </td>
-            </tr>-->
+         <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.phoneNumberLinkDetail.startDate" displayFormat="dd.mm.yy"
+                label="Start Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.phoneNumberLinkDetail.endDate" displayFormat="dd.mm.yy"
+                label="End Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+       
+       
 
         <!-- Enter Address table parameter -->
 
@@ -221,18 +220,16 @@
             <td><s:radio name="personDetail.addressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
-        <!--     <tr>
-                <td>Start Date :</td>
-                <td><s:date name="personDetail.addressLinkDetail.startDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.addressLinkDetail.startDate"></s:textfield>
-                </td>
-            </tr>
-            <tr>
-                <td>End Date :</td>
-                <td><s:date name="personDetail.addressLinkDetail.endDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.addressLinkDetail.endDate"></s:textfield>
-                </td>
-            </tr>-->
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.addressLinkDetail.startDate" displayFormat="dd.mm.yy"
+                label="Start Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.addressLinkDetail.endDate" displayFormat="dd.mm.yy"
+                label="End Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+       
+       
 
         <!-- Insert Person Identity Parameters -->
 
@@ -251,18 +248,16 @@
                 name="personDetail.personIdentityDetail.typeCode" label="Type Code">
             </s:select></td>
         </tr>
-        <!--  <tr>
-                <td>Start Date :</td>
-                <td><s:date name="personDetail.personIdentityDetail.startDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.personIdentityDetail.startDate"></s:textfield>
-                </td>
-            </tr>
-            <tr>
-                <td>End Date :</td>
-                <td><s:date name="personDetail.personIdentityDetail.endDate" format="MM/dd/yyyy"/>
-                <s:textfield name="personDetail.personIdentityDetail.endDate"></s:textfield>
-                </td>
-            </tr>-->
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.personIdentityDetail.startDate" displayFormat="dd.mm.yy"
+                label="Start Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+        <tr>
+            <td><sj:datepicker value="" id="datepicker" name="personDetail.personIdentityDetail.endDate" displayFormat="dd.mm.yy"
+                label="End Date" changeMonth="true" changeYear="true" /></td>
+        </tr>
+       
+       
         <tr>
             <td><s:select list="#{'9001':'Administrator', '9002':'Employee', '9003':'Devloper'}"
                 name="personDetail.roleDetail.roleID" label="Role">
@@ -283,12 +278,15 @@
 
     </table>
 
-</s:form>
+
+    </s:form>
+
 
 <s:form action="/ITOS/PersonLogOut" method="POST">
     <br>
     <s:submit type="submit" value="Cancel" />
 </s:form>
+
 
 
 </body>

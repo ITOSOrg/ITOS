@@ -90,6 +90,15 @@ CREATE TABLE KeyServer (
 	versionNo NUMBER(20)
 );
 
+CREATE TABLE AuditTrail(
+	auditTrailID NUMBER(19,0) NOT NULL, 
+	tableName  VARCHAR2(20) NOT NULL,
+	operationType VARCHAR2(35),
+	userName VARCHAR2(35),
+	timeEntered timestamp(6),
+	relatedID NUMBER(19,0) NOT NULL
+);
+
 	--LOCALEIDENTIFIER CHARACTER(20) not null, 
            
 		   

@@ -13,3 +13,6 @@ ALTER TABLE Role ADD CONSTRAINT Role PRIMARY KEY(RoleID);
 
 -- Key Server
 ALTER TABLE KeyServer ADD CONSTRAINT keysetCode PRIMARY KEY(keysetCode);
+
+--- auditTrailID
+ALTER TABLE AuditTrail ADD CONSTRAINT AuditTrail PRIMARY KEY(auditTrailID);

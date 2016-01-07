@@ -170,6 +170,29 @@
         <put-attribute name="body" value="/components/core/jsp/codetable/UpdateCodeTableItem.jsp" />
     </definition>
     
+    
+    
+    <definition name="CreateAuditTrail" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Create AuditTrail" />
+        <put-attribute name="body" value="/components/core/jsp/audittrail/CreateAuditTrail.jsp" />
+    </definition>
+    <definition name="LitAuditTrail" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Lit AuditTrail" />
+        <put-attribute name="body" value="/components/core/jsp/audittrail/LitAuditTrail.jsp" />
+    </definition>
+    <definition name="ReadAuditTrail" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Read AuditTrail" />
+        <put-attribute name="body" value="/components/core/jsp/audittrail/ReadAuditTrail.jsp" />
+    </definition>
+    <definition name="UpdateAuditTrail" extends="userWorkspaceLayout">
+        <put-attribute name="title" value="Update AuditTrail" />
+        <put-attribute name="body" value="/components/core/jsp/audittrail/UpdateAuditTrail.jsp" />
+    </definition>
+    
+    
+    
+    
+    
     <definition name="PersonHome" extends="userWorkspaceLayout">
         <put-attribute name="title" value="Person Home" />
         <put-attribute name="menu" value="/components/common/layout/userworkspace/UserWorkspaceMenu.jsp" />

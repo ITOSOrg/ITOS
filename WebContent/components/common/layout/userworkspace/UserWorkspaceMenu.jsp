@@ -42,6 +42,7 @@
 <s:a href="ListKeyServer">KeyServers</s:a><br><br>
 <s:a href="ListCodeTable">CodeTables</s:a><br><br>
 <s:a href="ListRoles">Roles</s:a><br><br>
+<s:a href="LitAuditTrail">AuditTrail</s:a><br><br>
 </body>
 </html>
 

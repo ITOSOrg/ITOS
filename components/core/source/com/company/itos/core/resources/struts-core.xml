@@ -247,7 +247,45 @@
             </result>
             <result name="error" type="tiles">UpdateCodeTableItem</result>
         </action>
+        
+        
+        
+        
+        <action name="CreateAuditTrail">
 
+            <result type="tiles">CreateAuditTrail</result>
+
+        </action>
+        
+        <action name="CreateAuditTrailSubmit" class="com.company.itos.core.audittrail.action.CreateAuditTrailAction">
+
+            <result name="success" type="redirect">
+                <param name="location">/LitAuditTrail</param>
+            </result>
+            <result name="error" type="tiles">CreateAuditTrail</result>
+        </action>
+        
+        <action name="LitAuditTrail" class="com.company.itos.core.audittrail.action.LitAuditTrailAction">
+
+            <result name="success" type="tiles"> LitAuditTrail </result>
+            <result name="error" type="tiles">CreateAuditTrail</result>
+        </action>
+        
+        <action name="ReadAuditTrail" class="com.company.itos.core.audittrail.action.ReadAuditTrailAction">
+
+            <result name="success" type="tiles"> ReadAuditTrail </result>
+             <result name="SENTTOUPDATE" type="tiles">UpdateAuditTrail</result>
+            <result name="error" >/index.jsp</result>
+        </action>
+
+        <action name="UpdateAuditTrailSubmit" class="com.company.itos.core.audittrail.action.UpdateAuditTrailAction">
+
+            <result name="success" type="redirect">
+            <param name="location">/LitAuditTrail</param>  
+            <param name="auditTrailDetails.auditTrailID">${auditTrailDetails.auditTrailID}</param>
+            </result>
+            <result name="error" type="tiles">UpdateAuditTrail</result>
+        </action>
 
 
     </package>

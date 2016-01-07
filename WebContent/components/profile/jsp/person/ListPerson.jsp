@@ -12,6 +12,9 @@
 	$(function() {
 		$("#myaccordion").accordion();
 	});
+	
+	
+	
 </script>
 </head>
 <body>
@@ -27,17 +30,17 @@
 			<thead>
 
 				<tr>
-					<th align="left">Title:</th>
-					<th>First Name:</th>
-					<th>Middle Name:</th>
-					<th>Last Name:</th>
-					<th>Date Of Birth:</th>
-					<th>Gender:</th>
-					<th>Created By:</th>
-					<th align="center">Created On:</th>
-					<th align="center">Modified By:</th>
-					<th align="center">Modified On:</th>
-					<th align="center">Registration Date:</th>
+					<th align="left">Title</th>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+					<th>Date Of Birth</th>
+					<th>Gender</th>
+					<th>Created By</th>
+					<th align="center">Created On</th>
+					<th align="center">Modified By</th>
+					<th align="center">Modified On</th>
+					<th align="center">Registration Date</th>
 					 
 					 
 					<th colspan=3>Action</th>
@@ -77,7 +80,7 @@
                             <s:url id="PersonDeleteURL" action="/ITOS/PersonDelete" escapeAmp="false">
                                 <s:param name="personDetail.personID" value="%{personID}"/>
                             </s:url>
-                            <s:a href="%{PersonDeleteURL}">Delete</s:a>
+                            <s:a href=  "%{PersonDeleteURL}" onclick="return confirm('Are you sure you want to Remove?');" >Delete</s:a>
                     
                     </td>
 

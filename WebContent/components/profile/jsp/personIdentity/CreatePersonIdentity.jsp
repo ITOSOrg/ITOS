@@ -27,7 +27,7 @@
 		<table>
 		  
 			<tr>
-				<td>AlternateID :</td>
+				<td>AlternateID </td>
 				<td><s:textfield type="text" name="personIdentityDetail.alternateID"/></td>
 			</tr>
 			<tr>
@@ -39,7 +39,7 @@
         </tr>
 		
         <tr>
-            <td>PrimaryInd :</td>
+            <td>PrimaryInd </td>
             <td><s:radio name="personIdentityDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>

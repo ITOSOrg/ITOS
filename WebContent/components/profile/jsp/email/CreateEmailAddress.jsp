@@ -13,7 +13,7 @@
 		method="POST">
 		<table>
 		  <tr>
-				<td>Email Address :</td>
+				<td>Email Address </td>
 				<td><s:textfield type="text" name="emailAddressLinkDetail.emailAddressDetail.emailAddress"/></td>
 			</tr>
 			<tr>
@@ -25,7 +25,7 @@
         </tr>
 		
         <tr>
-            <td>PrimaryInd :</td>
+            <td>PrimaryInd </td>
             <td><s:radio name="emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>

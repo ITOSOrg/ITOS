@@ -13,32 +13,32 @@
         <table>
             
             <tr>
-                <td>StreetOne:</td>
+                <td>StreetOne</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.streetOne" maxlength="50" /></td>
             </tr>
 
             <tr>
-                <td>StreetTwo:</td>
+                <td>StreetTwo</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.streetTwo" maxlength="50" /></td>
             </tr>
 
             <tr>
-                <td>AptUnit:</td>
+                <td>AptUnit</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.aptUnit" maxlength="20" /></td>
             </tr>
 
             <tr>
-                <td>City:</td>
+                <td>City</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.city" /></td>
             </tr>
 
             <tr>
-                <td>County:</td>
+                <td>County</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.county" /></td>
             </tr>
 
             <tr>
-                <td>State:</td>
+                <td>State</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.state" /></td>
             </tr>
 
@@ -48,15 +48,15 @@
             </tr>
 
             <tr>
-                <td>ZipCode:</td>
+                <td>ZipCode</td>
                 <td><s:textfield type="text" name="addressLinkDetail.addressDetail.zipCode" /></td>
             </tr>
             <tr>
-                <td>Type Code :</td>
+                <td>Type Code</td>
                 <td><s:textfield type="text" name="addressLinkDetail.typeCode" /></td>
             </tr>
             <tr>
-                <td>PrimaryInd :</td>
+                <td>PrimaryInd </td>
                 <td><s:textfield type="text" name="addressLinkDetail.primaryInd" /></td>
             </tr>
             

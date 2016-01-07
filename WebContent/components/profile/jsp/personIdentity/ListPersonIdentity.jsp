@@ -30,11 +30,11 @@
 			<thead>
 
 				<tr>
-					<th align="left">AlternateID:</th>
-					<th>PrimaryInd:</th>
-					<th>Type Code:</th>
-					<th>Start Date:</th>
-					<th>End Date:</th>
+					<th align="left">AlternateID</th>
+					<th>PrimaryInd</th>
+					<th>Type Code</th>
+					<th>Start Date</th>
+					<th>End Date</th>
 					<th colspan=3>Action</th>
 				</tr>
 			</thead>

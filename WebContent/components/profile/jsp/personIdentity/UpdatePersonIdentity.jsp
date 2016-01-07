@@ -13,27 +13,27 @@
 	
 	<table>
 			<tr>
-				<td>alternateID :</td>
+				<td>alternateID </td>
 				<td><s:textfield name="personIdentityDetail.alternateID"
 					/></td>
 			</tr>
 			<tr>
-				<td>PrimaryInd :</td>
+				<td>PrimaryInd </td>
 				<td><s:textfield name="personIdentityDetail.primaryInd"
 				     /></td>
 			</tr>
 			<tr>
-				<td>Type Code :</td>
+				<td>Type Code </td>
 				<td><s:textfield name="personIdentityDetail.typeCode"
 				      /></td>
 			</tr>
 			<tr>
-				<td>Start Date :</td>
+				<td>Start Date </td>
 				<td><s:textfield name="personIdentityDetail.startDate"
 				     /></td>
 			</tr>
 			<tr>
-				<td>End Date :</td>
+				<td>End Date </td>
 				<td><s:textfield name="personIdentityDetail.endDate"
 				   /></td>
 			</tr>

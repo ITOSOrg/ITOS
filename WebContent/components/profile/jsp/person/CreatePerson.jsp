@@ -43,16 +43,16 @@ $(function(){$('.dateTxt').datepicker({
         </tr>
 
         <tr>
-            <td>First Name :</td>
+            <td>First Name </td>
             <td><s:textfield type="text" name="personDetail.firstName" placeholder="FirstName" /></td>
         </tr>
         <tr>
-            <td>Middle Name:</td>
+            <td>Middle Name</td>
             <td><s:textfield type="text" name="personDetail.middleName" placeholder="MiddleName" /></td>
         </tr>
 
         <tr>
-            <td>Last Name:</td>
+            <td>Last Name</td>
             <td><s:textfield type="text" name="personDetail.lastName" placeholder="LastName" /></td>
         </tr>
 
@@ -74,19 +74,19 @@ $(function(){$('.dateTxt').datepicker({
             
 
         <tr>
-            <td>UserName:</td>
+            <td>UserName</td>
             <td><s:textfield type="text" name="personDetail.usersDetail.userName" placeholder="UserName" /></td>
         </tr>
 
         <tr>
-            <td>Password:</td>
+            <td>Password</td>
             <td><s:textfield type="text" name="personDetail.usersDetail.password" placeholder="Password" /></td>
         </tr>
 
         <!-- Enter Email Address Parameter -->
 
         <tr>
-            <td>Email Address:</td>
+            <td>Email Address</td>
             <td><s:textfield type="text" name="personDetail.emailAddressLinkDetail.emailAddressDetail.emailAddress"
                 placeholder="EmailAddress" /></td>  
         </tr>
@@ -98,7 +98,7 @@ $(function(){$('.dateTxt').datepicker({
             </s:select></td>
         </tr>
         <tr>
-            <td>PrimaryInd :</td>
+            <td>PrimaryInd </td>
             <td><s:radio name="personDetail.emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
@@ -120,19 +120,19 @@ $(function(){$('.dateTxt').datepicker({
 
 
         <tr>
-            <td>Country Code:</td>
+            <td>Country Code</td>
             <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.countryCode" /></td>
         </tr>
         <tr>
-            <td>Area Code:</td>
+            <td>Area Code</td>
             <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.areaCode" /></td>
         </tr>
         <tr>
-            <td>Phone Number:</td>
+            <td>Phone Number</td>
             <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.phoneNumber" /></td>
         </tr>
         <tr>
-            <td>Extension:</td>
+            <td>Extension</td>
             <td><s:textfield type="text" name="personDetail.phoneNumberLinkDetail.phoneNumberDetail.extension" /></td>
         </tr>
         <tr>
@@ -143,7 +143,7 @@ $(function(){$('.dateTxt').datepicker({
             </s:select></td>
         </tr>
        <tr>
-            <td>PrimaryInd:</td>
+            <td>PrimaryInd</td>
             <td><s:radio name="personDetail.phoneNumberLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
@@ -164,29 +164,29 @@ $(function(){$('.dateTxt').datepicker({
         <!-- Enter Address table parameter -->
 
         <tr>
-            <td>StreetOne:</td>
+            <td>StreetOne</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.streetOne"
                 maxlength="50" /></td>
         </tr>
 
         <tr>
-            <td>StreetTwo:</td>
+            <td>StreetTwo</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.streetTwo"
                 maxlength="50" /></td>
         </tr>
 
         <tr>
-            <td>AptUnit:</td>
+            <td>AptUnit</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.aptUnit" maxlength="20" /></td>
         </tr>
 
         <tr>
-            <td>City:</td>
+            <td>City</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.city" /></td>
         </tr>
 
         <tr>
-            <td>County:</td>
+            <td>County</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.county" /></td>
         </tr>
 
@@ -208,7 +208,7 @@ $(function(){$('.dateTxt').datepicker({
         </tr>
 
         <tr>
-            <td>ZipCode:</td>
+            <td>ZipCode</td>
             <td><s:textfield type="text" name="personDetail.addressLinkDetail.addressDetail.zipCode" /></td>
         </tr>
         <tr>
@@ -218,7 +218,7 @@ $(function(){$('.dateTxt').datepicker({
             </s:select></td>
         </tr>
         <tr>
-            <td>PrimaryInd :</td>
+            <td>PrimaryInd </td>
             <td><s:radio name="personDetail.addressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
@@ -239,11 +239,11 @@ $(function(){$('.dateTxt').datepicker({
         <!-- Insert Person Identity Parameters -->
 
         <tr>
-            <td>AlternateID :</td>
+            <td>AlternateID </td>
             <td><s:textfield type="text" name="personDetail.personIdentityDetail.alternateID" /></td>
         </tr>
         <tr>
-            <td>PrimaryInd :</td>
+            <td>PrimaryInd </td>
             <td><s:radio name="personDetail.personIdentityDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>

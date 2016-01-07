@@ -32,16 +32,16 @@
         <thead>
 
             <tr>
-                <th align="left">StreetOne:</th>
-                <th>StreetTwo:</th>
-                <th>AptUnit:</th>
-                <th>City:</th>
-                <th>County:</th>
-                <th>State:</th>
-                <th>Country:</th>
-                <th>ZipCode:</th>
-                <th>StartDate:</th>
-                <th>End Date:</th>
+                <th align="left">StreetOne</th>
+                <th>StreetTwo</th>
+                <th>AptUnit</th>
+                <th>City</th>
+                <th>County</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>ZipCode</th>
+                <th>StartDate</th>
+                <th>End Date</th>
                 <th colspan=3>Action</th>
             </tr>
         </thead>

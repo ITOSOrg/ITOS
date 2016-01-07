@@ -22,12 +22,12 @@
 			<thead>
 
 				<tr>
-					<th align="left">EmailAddress:</th>
-					<th>Type Code:</th>
-					<th>PrimaryInd:</th>
-					<th>Start Date:</th>
-					<th>End Date:</th>
-					<th>Record Status:</th>
+					<th align="left">EmailAddress</th>
+					<th>Type Code</th>
+					<th>PrimaryInd</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Record Status</th>
 				</tr>
 			</thead>
 			<tbody>

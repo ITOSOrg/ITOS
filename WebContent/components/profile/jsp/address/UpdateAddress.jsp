@@ -13,57 +13,57 @@
 <s:form action="/ITOS/UpdateAddressSubmit" method = "POST">
 <table>
 			<tr>
-				<td>StreetOne :</td>
+				<td>StreetOne </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.streetOne"
 					/></td>
 			</tr>
 			<tr>
-				<td>StreetTwo :</td>
+				<td>StreetTwo </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.streetTwo"
 				      /></td>
 			</tr>
 			<tr>
-				<td>Apartment Unit :</td>
+				<td>Apartment Unit </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.aptUnit"
 				      /></td>
 			</tr>
 			<tr>
-				<td>City :</td>
+				<td>City </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.city"
 				      /></td>
 			</tr>
 			<tr>
-				<td>County :</td>
+				<td>County </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.county"
 				      /></td>
 			</tr>
 			<tr>
-				<td>State :</td>
+				<td>State </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.state"
 				    /></td>
 			</tr>
 			<tr>
-				<td>Country :</td>
+				<td>Country </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.country"
 				      /></td>
 			</tr>
 			<tr>
-				<td>ZipCode :</td>
+				<td>ZipCode </td>
 				<td><s:textfield name="addressLinkDetail.addressDetail.zipCode"
 				     /></td>
 			</tr>
 			<tr>
-				<td>Type Code :</td>
+				<td>Type Code </td>
 				<td><s:textfield name="addressLinkDetail.typeCode"
 				     /></td>
 			</tr>
 			<tr>
-				<td>Start Date :</td>
+				<td>Start Date </td>
 				<td><s:textfield name="addressLinkDetail.startDate"
 				    /></td>
 			</tr>
 			<tr>
-				<td>End Date :</td>
+				<td>End Date </td>
 				<td><s:textfield name="addressLinkDetail.endDate"
 				      /></td>
 			</tr>

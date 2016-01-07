@@ -31,18 +31,18 @@
 					<thead>
                     <tr>
 
-							<th>Title :</th>
-							<th >First Name: </th>
-							<th >Middle Name: </th>
-							<th >Last Name: </th>
-    						<th >Gender: </th>
-    						<th >Date Of Birth: </th>
-    						<th >Status: </th>
-    						<th >Created By:</th>
-    						<th >Created On:</th>
-    						<th >Modified By:</th>
-    						<th >Modified On:</th>
-    						<th >Registration Date:</th>
+							<th>Title </th>
+							<th >First Name </th>
+							<th >Middle Name </th>
+							<th >Last Name </th>
+    						<th >Gender </th>
+    						<th >Date Of Birth </th>
+    						<th >Status </th>
+    						<th >Created By</th>
+    						<th >Created On</th>
+    						<th >Modified By</th>
+    						<th >Modified On</th>
+    						<th >Registration Date</th>
     						
                       </tr>
 					</thead>

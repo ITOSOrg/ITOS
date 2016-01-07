@@ -17,12 +17,12 @@
 			<thead>
 
 				<tr>
-					<th align="left">AlternateID:</th>
-					<th>PrimaryInd:</th>
-					<th>Type Code:</th>
-					<th>Start Date:</th>
-					<th>End Date:</th>
-					<th>Record Status:</th>
+					<th align="left">AlternateID</th>
+					<th>PrimaryInd</th>
+					<th>Type Code</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Record Status</th>
 				</tr>
 			</thead>
 			

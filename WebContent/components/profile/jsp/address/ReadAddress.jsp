@@ -15,19 +15,19 @@
 					<thead>
 
 						<tr>
-							<th align="left">StreetOne:</th>
-							<th>StreetTwo:</th>
-							<th>AptUnit:</th>
-							<th>City:</th>
-							<th>County:</th>
-							<th>State:</th>
-							<th>Country:</th>
-							<th>ZipCode:</th>
-							<th>Type Code:</th>
-							<th>PrimaryInd:</th>
-							<th>StartDate:</th>
-							<th>End Date:</th>
-							<th>Record Status:</th>
+							<th align="left">StreetOne</th>
+							<th>StreetTwo</th>
+							<th>AptUnit</th>
+							<th>City</th>
+							<th>County</th>
+							<th>State</th>
+							<th>Country</th>
+							<th>ZipCode</th>
+							<th>Type Code</th>
+							<th>PrimaryInd</th>
+							<th>StartDate</th>
+							<th>End Date</th>
+							<th>Record Status</th>
 						</tr>
 					</thead>
 					<tbody>

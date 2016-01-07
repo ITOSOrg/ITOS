@@ -12,27 +12,27 @@
 <s:form action="/ITOS/UpdateEmailAddressSubmit" method = "POST">
 <table>
 			<tr>
-				<td>EmailAddress :</td>
+				<td>EmailAddress </td>
 				<td><s:textfield name="emailAddressLinkDetail.emailAddressDetail.emailAddress"
 					/></td>
 			</tr>
 			<tr>
-				<td>Type Code :</td>
+				<td>Type Code </td>
 				<td><s:textfield name="emailAddressLinkDetail.typeCode"
 				      /></td>
 			</tr>
 			<tr>
-				<td>PrimaryInd :</td>
+				<td>PrimaryInd </td>
 				<td><s:textfield name="emailAddressLinkDetail.primaryInd"
 				     /></td>
 			</tr>
 			<tr>
-				<td>Start Date :</td>
+				<td>Start Date </td>
 				<td><s:textfield name="emailAddressLinkDetail.startDate"
 				    /></td>
 			</tr>
 			<tr>
-				<td>End Date :</td>
+				<td>End Date </td>
 				<td><s:textfield name="emailAddressLinkDetail.endDate"/></td>
 			</tr>
 			<tr>

@@ -16,33 +16,33 @@
 		
 		<table>
 			<tr>
-				<td>Title :</td>
+				<td>Title </td>
 				<td><s:textfield name="personDetail.title"
 					/></td>
 			</tr>
 
 			<tr>
-				<td>First Name :</td>
+				<td>First Name </td>
 				<td><s:textfield name="personDetail.firstName"
 					/></td>
 			</tr>
 			<tr>
-				<td>Middle Name:</td>
+				<td>Middle Name</td>
 				<td><s:textfield name="personDetail.middleName"
 					/></td>
 			</tr>
 			<tr>
-				<td>Last Name:</td>
+				<td>Last Name</td>
 				<td><s:textfield name="personDetail.lastName"
 					/></td>
 			</tr>
 			<tr>
-				<td>Gender:</td>
+				<td>Gender</td>
 				<td><s:textfield name="personDetail.gender"
 					/></td>
 			</tr>
 			<tr>
-				<td>Date Of Birth:</td>
+				<td>Date Of Birth</td>
 				<td><s:textfield name="personDetail.dateOfBirth"
 					/></td>
 			</tr>

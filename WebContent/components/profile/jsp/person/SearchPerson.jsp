@@ -14,15 +14,15 @@
         <table>
 
             <tr>
-                <td>First Name:</td>
+                <td>First Name</td>
                 <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.firstName" /></td>
             </tr>
             <tr>
-                <td>Middle Name:</td>
+                <td>Middle Name</td>
                 <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.middleName" /></td>
             </tr>
             <tr>
-                <td>Last Name:</td>
+                <td>Last Name</td>
                 <td><s:textfield type="text" name="personSearchDetails.personSearchCriteria.lastName" /></td>
             </tr>
             <!--  <tr>
@@ -44,12 +44,12 @@
             <thead>
 
                 <tr>
-                    <th>Title:</th>
-                    <th>First Name:</th>
-                    <th>Middle Name:</th>
-                    <th>Last Name:</th>
-                    <th>Gender:</th>
-                    <th>Date Of Birth:</th>
+                    <th>Title</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Date Of Birth</th>
                 </tr>
             </thead>
 

@@ -57,11 +57,11 @@
 			<thead>
 
 				<tr>
-					<th align="left">EmailAddress:</th>
-					<th>Type Code:</th>
-					<th>PrimaryInd:</th>
-					<th>Start Date:</th>
-					<th>End Date:</th>
+					<th align="left">EmailAddress</th>
+					<th>Type Code</th>
+					<th>PrimaryInd</th>
+					<th>Start Date</th>
+					<th>End Date</th>
 					<th colspan=3>Action</th>
 				</tr>
 			</thead>

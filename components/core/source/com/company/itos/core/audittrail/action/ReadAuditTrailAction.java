@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ReadAuditTrailAction extends ActionSupport implements SessionAware {
 
-public AuditTrailDetails auditTrailDetails;
+	public AuditTrailDetails auditTrailDetails;
 	
 	private static final long serialVersionUID = 1L;
 

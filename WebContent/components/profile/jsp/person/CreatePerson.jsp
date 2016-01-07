@@ -8,15 +8,21 @@
 <title>Registration</title>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#datepicker").datepicker({
+
+$(function(){$('.dateTxt').datepicker({
+	  changeMonth: true,
+	  changeYear: true
+}); });
+
+	/* $(document).ready(function() {
+		$(this).datepicker({
 			  changeMonth: true,
 			  changeYear: true
 		});
 		$('#submit').click(function() {
 			alert("Submit ?");
 		});
-	});
+	}); */
 </script>
 </head>
 <body>
@@ -59,20 +65,13 @@
         </tr>
 
 
-        <!--   <tr>
-                <td>Date Of Birth:</td>
-                <td>
-                <s:date id="datepicker" name="personDetail.dateOfBirth" format="MM/dd/yyyy" />
-                <s:textfield name="personDetail.dateOfBirth"></s:textfield>
-                </td>
+            <tr>
+            <td>DateOfBirth</td>
+            <td>
+            <input type="text" id="datepicker1" class="dateTxt" name="personDetail.dateOfBirth"  />
+            </td>
             </tr>
-            <tr> -->
-
-        <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.dateOfBirth" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
-                label="Date Of Birth" changeMonth="true" changeYear="true" /></td>
-        </tr>
-        
+            
 
         <tr>
             <td>UserName:</td>
@@ -89,7 +88,7 @@
         <tr>
             <td>Email Address:</td>
             <td><s:textfield type="text" name="personDetail.emailAddressLinkDetail.emailAddressDetail.emailAddress"
-                placeholder="EmailAddress" /></td>
+                placeholder="EmailAddress" /></td>  
         </tr>
         <tr>
             <td><s:select
@@ -104,19 +103,19 @@
                 value="1"></s:radio></td>
         </tr>
        
-      
        <tr>
-            <td><sj:datepicker value=""  id="datepicker" name="personDetail.emailAddressLinkDetail.startDate" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
-                label="Start Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
-       
-        
-        <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.emailAddressLinkDetail.endDate" displayFormat="dd.mm.yy"
-                label="End Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
-       
-       
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker2" class="dateTxt" name="personDetail.emailAddressLinkDetail.startDate"  />
+            </td>
+       </tr>
+       <tr>
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker3" class="dateTxt" name="personDetail.emailAddressLinkDetail.endDate"  />
+            </td>
+       </tr>
+      
         <!-- Enter Phone Number Parameter -->
 
 
@@ -143,21 +142,24 @@
 
             </s:select></td>
         </tr>
-        <tr>
+       <tr>
             <td>PrimaryInd:</td>
             <td><s:radio name="personDetail.phoneNumberLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
+        
          <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.phoneNumberLinkDetail.startDate" displayFormat="dd.mm.yy"
-                label="Start Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker4" class="dateTxt" name="personDetail.phoneNumberLinkDetail.startDate"  />
+            </td>
+       </tr>
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.phoneNumberLinkDetail.endDate" displayFormat="dd.mm.yy"
-                label="End Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
-       
-       
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker5" class="dateTxt" name="personDetail.phoneNumberLinkDetail.endDate"  />
+            </td>
+       </tr>
 
         <!-- Enter Address table parameter -->
 
@@ -220,16 +222,19 @@
             <td><s:radio name="personDetail.addressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
+        
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.addressLinkDetail.startDate" displayFormat="dd.mm.yy"
-                label="Start Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker6" class="dateTxt" name="personDetail.addressLinkDetail.startDate"  />
+            </td>
+       </tr>
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.addressLinkDetail.endDate" displayFormat="dd.mm.yy"
-                label="End Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
-       
-       
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker7" class="dateTxt" name="personDetail.addressLinkDetail.endDate"  />
+            </td>
+       </tr>
 
         <!-- Insert Person Identity Parameters -->
 
@@ -248,14 +253,20 @@
                 name="personDetail.personIdentityDetail.typeCode" label="Type Code">
             </s:select></td>
         </tr>
+        
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.personIdentityDetail.startDate" displayFormat="dd.mm.yy"
-                label="Start Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker8" class="dateTxt" name="personDetail.personIdentityDetail.startDate"  />
+            </td>
+       </tr>
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personDetail.personIdentityDetail.endDate" displayFormat="dd.mm.yy"
-                label="End Date" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker9" class="dateTxt" name="personDetail.personIdentityDetail.endDate"  />
+            </td>
+       </tr>
+      
        
        
         <tr>

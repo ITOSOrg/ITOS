@@ -286,6 +286,14 @@
             </result>
             <result name="error" type="tiles">UpdateAuditTrail</result>
         </action>
+        
+        <action name="DeleteAuditTrail" class="com.company.itos.core.audittrail.action.DeleteAuditTrailAction">
+
+            <result name="success" type="redirect">
+            <param name="location">/LitAuditTrail</param>  
+            </result>
+            <result name="error" >/index.jsp</result>
+        </action>
 
 
     </package>

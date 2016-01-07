@@ -25,11 +25,12 @@
             <thead>
 
                 <tr>
-                    <th align="left">TableName:</th>
-                    <th>OperationType:</th>
-                    <th>UserName:</th>
-                    <th>TimeEntered:</th>
-                    <th>RelatedID:</th>
+                    <th align="left">TableName</th>
+                    <th>OperationType</th>
+                    <th>UserName</th>
+                    <th>TimeEntered</th>
+                    <th>RelatedID</th>
+                    <th colspan="3">Action</th>
                 </tr>
             </thead>
             <s:iterator value="auditTrailDetailList" status="stat">
@@ -50,6 +51,11 @@
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>
                             <s:a href="%{updateAuditTrailURL}">Update</s:a>
+                            
+                            <s:url var="deleteAuditTrailURL" action="/ITOS/DeleteAuditTrail" escapeAmp="false">
+                                <s:param name="auditTrailDetails.auditTrailID" value="%{auditTrailID}"/>
+                            </s:url>
+                            <s:a href="%{deleteAuditTrailURL}">Delete</s:a>
                             
                         </td>
                  </tr>

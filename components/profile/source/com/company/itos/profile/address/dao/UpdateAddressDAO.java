@@ -7,12 +7,11 @@ import java.sql.SQLException;
 
 import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
 import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
-import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
-import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 
 public class UpdateAddressDAO {
 

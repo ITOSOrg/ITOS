@@ -52,12 +52,12 @@ public class UpdateEmailAddressDAO {
 					preparedStatement.executeUpdate();
 
 					String updateEmailAddressLinkSqlStr = "UPDATE EmailAddressLink SET typeCode = '" + emailAddressLinkDetail.getTypeCode()
-							+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "'"
+							+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "', startDate = ?, endDate = ?"
 							+ " WHERE emailAddressLinkID = '" + emailAddressLinkDetail.getEmailAddressLinkID() + "'";
 
 					PreparedStatement preparedStatement1 = connection.prepareStatement(updateEmailAddressLinkSqlStr);
-					//preparedStatement1.setDate(1, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
-					//preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getEndDate()));
+					preparedStatement1.setDate(1, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
+					preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getEndDate()));
 					preparedStatement1.executeUpdate();
 					
 					//inserting data into AuditTrail Table for Email Table

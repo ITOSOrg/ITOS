@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.core.userrolelink.pojo.UserRoleLinkDetail;
 import com.company.itos.core.util.CRUDConstants;
@@ -37,6 +40,18 @@ public class UpdateRoleDAO {
 				preparedStatementRole.setString(3, roleDetail.getCreatedBy());
 				preparedStatementRole.setString(4, roleDetail.getLastModifiedBy());
 				preparedStatementRole.execute();
+				
+				//inserting data into AuditTrail Table for Role Table
+				AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+				
+				auditTrailDetails.setTableName("Role");
+				auditTrailDetails.setOperationType("Update");
+				auditTrailDetails.setUserName("Rahul");
+				auditTrailDetails.setRelatedID(roleDetail.getRoleID());
+				auditTrailDetails.setTransactionType("Online");
+				
+				CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

@@ -41,7 +41,10 @@
                         <td>
                         <td><s:url id="ReadCodeTableHeaderURL" action="/ITOS/ReadCodeTableHeader" escapeAmp="false">
                                 <s:param name="codeTableHeaderDetail.tableName" value="%{tableName}" />
-                            </s:url> <s:a href="%{ReadCodeTableHeaderURL}">View</s:a> <s:url id="UpdateCodeTableHeaderURL"
+                            </s:url> <s:a href="%{ReadCodeTableHeaderURL}">View</s:a> 
+                            
+                            
+                            <s:url id="UpdateCodeTableHeaderURL"
                                 action="/ITOS/ReadCodeTableHeader" escapeAmp="false">
                                 <s:param name="codeTableHeaderDetail.tableName" value="%{tableName}" />
                                 <s:param name="act" value="%{updateAction}" />

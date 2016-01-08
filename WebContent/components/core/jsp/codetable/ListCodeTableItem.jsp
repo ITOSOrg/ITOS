@@ -63,7 +63,7 @@
                             
                             <s:url var="DeleteCodeTableItemURL" action="/ITOS/DeleteCodeTableItem" escapeAmp="false">
                                 <s:param name="codeTableItemDetail.code" value="%{code}"/>
-                                <s:param name="act" value="%{updateAction}"/>
+                                <s:param name="codeTableItemDetail.tableName" value="%{tableName}"/>
                             </s:url>
                             <s:a href="%{DeleteCodeTableItemURL}">Delete</s:a>
                             

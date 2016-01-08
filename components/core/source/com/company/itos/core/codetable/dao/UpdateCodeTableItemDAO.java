@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
@@ -40,6 +43,18 @@ public class UpdateCodeTableItemDAO {
 				preparedStatement.setString(6, codeTableItemDetail.getRecordStatus());
 
 				preparedStatement.executeUpdate();
+				
+				//inserting data into AuditTrail Table for CodeTableItem Table
+				AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+				
+				auditTrailDetails.setTableName("CodeTableItem");
+				auditTrailDetails.setOperationType("Update");
+				auditTrailDetails.setUserName("Rahul");
+				auditTrailDetails.setRelatedID(codeTableItemDetail.getCode());
+				auditTrailDetails.setTransactionType("Online");
+				
+				CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

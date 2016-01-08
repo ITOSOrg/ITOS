@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.company.itos.core.util.dataaccess.DBConnection;
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.keyserver.pojo.KeyServerDetail;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
@@ -40,6 +43,18 @@ public class UpdateKeyServerDAO {
 				preparedStatement.setString(8, keyServerDetail.getLastModifiedBy());
 
 				preparedStatement.executeUpdate();
+				
+				//inserting data into AuditTrail Table for KeyServer Table
+				AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+				
+				auditTrailDetails.setTableName("KeyServer");
+				auditTrailDetails.setOperationType("Update");
+				auditTrailDetails.setUserName("Rahul");
+				auditTrailDetails.setRelatedID(keyServerDetail.getKeysetCode());
+				auditTrailDetails.setTransactionType("Online");
+				
+				CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

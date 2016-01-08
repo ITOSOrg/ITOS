@@ -115,9 +115,9 @@ public class PersonRegistrationDAO {
 				CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 				createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
 				
-				//inserting data into AuditTrail Table for Email Table
+				//inserting data into AuditTrail Table for EmailAddress Table
 				
-				auditTrailDetails.setTableName("Email");
+				auditTrailDetails.setTableName("EmailAddress");
 				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 				
 				//Inserting data into PhoneNumber Table

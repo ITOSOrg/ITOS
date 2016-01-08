@@ -16,6 +16,8 @@ public class AuditTrailDetails {
 		
 		private Timestamp timeEntered;
 		
+		private String transactionType;
+		
 		private String updateAction = "update";
 		
 		/**
@@ -115,6 +117,20 @@ public class AuditTrailDetails {
 		 */
 		public void setTimeEntered(Timestamp timeEntered) {
 			this.timeEntered = timeEntered;
+		}
+
+		/**
+		 * @return the transactionType
+		 */
+		public String getTransactionType() {
+			return transactionType;
+		}
+
+		/**
+		 * @param transactionType the transactionType to set
+		 */
+		public void setTransactionType(String transactionType) {
+			this.transactionType = transactionType;
 		}
 
 		

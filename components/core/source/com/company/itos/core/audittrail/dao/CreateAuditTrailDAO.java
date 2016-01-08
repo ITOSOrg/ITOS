@@ -22,8 +22,8 @@ public class CreateAuditTrailDAO {
 
 			connection = DBConnection.getDBConnection();
 			
-			String auditTrailSQLStr = "INSERT INTO AuditTrail ( auditTrailID, tableName, operationType, userName, timeEntered, relatedID) "
-					+ "VALUES(?, ?, ?, ?, ?, ?)";
+			String auditTrailSQLStr = "INSERT INTO AuditTrail ( auditTrailID, tableName, operationType, userName, timeEntered, relatedID, transactionType) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(auditTrailSQLStr);
 
@@ -37,6 +37,7 @@ public class CreateAuditTrailDAO {
 			Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
 			preparedStatement.setTimestamp(5, timestamp);
 			preparedStatement.setLong(6,   auditTrailDetails.getRelatedID());
+			preparedStatement.setString(7,   auditTrailDetails.getTransactionType());
 			preparedStatement.executeQuery();
 			
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;	

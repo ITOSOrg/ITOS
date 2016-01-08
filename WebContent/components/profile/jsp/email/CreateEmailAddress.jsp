@@ -37,13 +37,7 @@ $(function(){$('.dateTxt').datepicker({
             <td><s:radio name="emailAddressLinkDetail.primaryInd" list="#{'1':'True','0':'false' }"
                 value="1"></s:radio></td>
         </tr>
-			
-			<tr>
-
-				<td><s:submit  type="submit" value="Submit"/>
-                <s:hidden name="emailAddressLinkDetail.relatedID" value="%{#parameters['emailAddressLinkDetail.relatedID']}"/>
-                </td>
-			</tr>
+        </tr>
              <tr>
             <td>Start Date</td>
             <td>
@@ -56,6 +50,13 @@ $(function(){$('.dateTxt').datepicker({
             <input type="text" id="datepicker2" class="dateTxt" name="emailAddressLinkDetail.endDate"  />
             </td>
        </tr>
+			
+			<tr>
+
+				<td><s:submit  type="submit" value="Submit"/>
+                <s:hidden name="emailAddressLinkDetail.relatedID" value="%{#parameters['emailAddressLinkDetail.relatedID']}"/>
+                </td>
+			
 			
 		
 		</table>

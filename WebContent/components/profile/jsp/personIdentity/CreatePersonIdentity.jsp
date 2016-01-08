@@ -17,6 +17,13 @@
             alert("Submit ?");
         });
     });
+
+    
+    
+    $(function(){$('.dateTxt').datepicker({
+          changeMonth: true,
+          changeYear: true
+    }); });
 </script>
 </head>
 <body>
@@ -44,13 +51,17 @@
                 value="1"></s:radio></td>
         </tr>
 			<tr>
-            <td><sj:datepicker value="" id="datepicker" name="personIdentityDetail.startDate" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
-                label="Start Date:" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker1" class="dateTxt" name="personIdentityDetail.startDate"  />
+            </td>
+       </tr>
         <tr>
-            <td><sj:datepicker value="" id="datepicker" name="personIdentityDetail.endDate" displayFormat="dd.mm.yy" placeholder="DD/MM/YY"
-                label="End Date:" changeMonth="true" changeYear="true" /></td>
-        </tr>
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker2" class="dateTxt" name="personIdentityDetail.endDate"  />
+            </td>
+       </tr>
 			<tr>
 
 				<td><s:submit  type="submit" value="Submit"/>

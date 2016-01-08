@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+$(function(){$('.dateTxt').datepicker({
+      changeMonth: true,
+      changeYear: true
+}); });
+</script>
+
 </head>
 <body>
 
@@ -36,6 +44,18 @@
                 <s:hidden name="emailAddressLinkDetail.relatedID" value="%{#parameters['emailAddressLinkDetail.relatedID']}"/>
                 </td>
 			</tr>
+             <tr>
+            <td>Start Date</td>
+            <td>
+            <input type="text" id="datepicker1" class="dateTxt" name="emailAddressLinkDetail.startDate"  />
+            </td>
+       </tr>
+        <tr>
+            <td>End Date</td>
+            <td>
+            <input type="text" id="datepicker2" class="dateTxt" name="emailAddressLinkDetail.endDate"  />
+            </td>
+       </tr>
 			
 		
 		</table>

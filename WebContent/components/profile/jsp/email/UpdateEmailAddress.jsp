@@ -26,7 +26,7 @@
 				<td><s:textfield name="emailAddressLinkDetail.primaryInd"
 				     /></td>
 			</tr>
-			<tr>
+			<!--  <tr>
 				<td>Start Date </td>
 				<td><s:textfield name="emailAddressLinkDetail.startDate"
 				    /></td>
@@ -34,7 +34,7 @@
 			<tr>
 				<td>End Date </td>
 				<td><s:textfield name="emailAddressLinkDetail.endDate"/></td>
-			</tr>
+			</tr>-->
 			<tr>
 
 				<td><s:submit  type="submit" value="Submit"/><br><br>

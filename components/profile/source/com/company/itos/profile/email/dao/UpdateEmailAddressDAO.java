@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
@@ -50,13 +52,26 @@ public class UpdateEmailAddressDAO {
 					preparedStatement.executeUpdate();
 
 					String updateEmailAddressLinkSqlStr = "UPDATE EmailAddressLink SET typeCode = '" + emailAddressLinkDetail.getTypeCode()
-							+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "', startDate = ?, endDate = ?"
+							+ "', primaryInd = '" + emailAddressLinkDetail.getPrimaryInd() + "'"
 							+ " WHERE emailAddressLinkID = '" + emailAddressLinkDetail.getEmailAddressLinkID() + "'";
 
 					PreparedStatement preparedStatement1 = connection.prepareStatement(updateEmailAddressLinkSqlStr);
-					preparedStatement1.setDate(1, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
-					preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getEndDate()));
+					//preparedStatement1.setDate(1, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
+					//preparedStatement1.setDate(2, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getEndDate()));
 					preparedStatement1.executeUpdate();
+					
+					//inserting data into AuditTrail Table for Email Table
+					AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+					
+					auditTrailDetails.setTableName("Email");
+					auditTrailDetails.setOperationType("Update");
+					String username = returnUserName(emailAddressLinkDetail);
+					auditTrailDetails.setUserName(username);
+					auditTrailDetails.setRelatedID(emailAddressLinkDetail.getRelatedID());
+					auditTrailDetails.setTransactionType("Online");
+					
+					CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+					createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 
@@ -116,5 +131,23 @@ public class UpdateEmailAddressDAO {
 			e.printStackTrace();
 		}
 		return versionNo;
+	}
+	
+	public String returnUserName(EmailAddressLinkDetail emailAddressLinkDetail) throws SQLException{
+		
+		String username = null;
+		Connection connection = DBConnection.getDBConnection();
+		
+		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + emailAddressLinkDetail.getRelatedID() + "\'";
+		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
+
+		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
+
+		while (resultSetUsers.next()) {
+			 username = resultSetUsers.getString("userName");
+		}
+		
+		return username;
+		
 	}
 }

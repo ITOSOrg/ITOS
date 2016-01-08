@@ -5,9 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
 /**
@@ -40,6 +44,21 @@ public class PersonUpdateDAO {
 
 				preparedStatement.setDate(1, JavaUtildates.convertUtilToSql(personDetail.getDateOfBirth()));
 				preparedStatement.executeUpdate();
+				
+				//inserting data into AuditTrail Table for Person Table
+				AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+				
+				auditTrailDetails.setTableName("Person");
+				auditTrailDetails.setOperationType("Update");
+				
+				String username = returnUserName(personDetail);
+				
+				auditTrailDetails.setUserName(username);
+				auditTrailDetails.setRelatedID(personDetail.getPersonID());
+				auditTrailDetails.setTransactionType("Online");
+				
+				CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 				returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 
@@ -90,6 +109,24 @@ public class PersonUpdateDAO {
 			e.printStackTrace();
 		}
 
+	}
+	
+public String returnUserName(PersonDetail personDetail) throws SQLException{
+		
+		String username = null;
+		Connection connection = DBConnection.getDBConnection();
+		
+		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + personDetail.getPersonID() + "\'";
+		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
+
+		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
+
+		while (resultSetUsers.next()) {
+			 username = resultSetUsers.getString("userName");
+		}
+		
+		return username;
+		
 	}
 
 }

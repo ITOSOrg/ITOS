@@ -58,6 +58,7 @@
                             
                             <s:url var="UpdatePersonIdentityURL" action="/ITOS/ReadPersonIdentity" escapeAmp="false">
                                   <s:param name="personIdentityDetail.personIdentityID" value="%{personIdentityID}"/>     
+                                  <s:param name="personIdentityDetail.personID" value="%{personID}"/>     
                                   <s:param name="act" value="%{updateAction}"/>
                             </s:url>
                             <s:a href="%{UpdatePersonIdentityURL}">Update</s:a>
@@ -66,6 +67,7 @@
                             
                             <s:url var="DeletePersonIdentityURL" action="/ITOS/DeletePersonIdentity" escapeAmp="false">
                                     <s:param name="personIdentityDetail.personIdentityID" value="%{personIdentityID}"/>
+                                  <s:param name="personIdentityDetail.personID" value="%{personID}"/>     
                             </s:url>
                             <s:a href="%{DeletePersonIdentityURL}">Delete</s:a>
                         </td>

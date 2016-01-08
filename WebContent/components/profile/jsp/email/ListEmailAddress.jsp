@@ -87,6 +87,7 @@
                             <s:url var="UpdateEmailAddressURL" action="/ITOS/ReadEmailAddress" escapeAmp="false">
                                 <s:param name="emailAddressDetail.emailAddressID" value="%{emailAddressID}"/>
                                 <s:param name="emailAddressLinkDetail.emailAddressLinkID" value="%{emailAddressLinkID}"/>
+                                <s:param name="emailAddressLinkDetail.relatedID" value="%{relatedID}"/>
                                 <s:param name="act" value="%{updateAction}"/>
                             </s:url>
                             <s:a href="%{UpdateEmailAddressURL}">Update</s:a>

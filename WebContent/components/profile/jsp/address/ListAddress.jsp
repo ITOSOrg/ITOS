@@ -71,12 +71,14 @@
                     <s:url var="UpdateAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
                         <s:param name="addressLinkDetail.addressID" value="%{addressID}" />
                         <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
+                        <s:param name="addressLinkDetail.relatedID" value="%{relatedID}" />
                         <s:param name="act" value="%{updateAction}" />
                     </s:url> <s:a href="%{UpdateAddressURL}">Update</s:a> 
                     
                     <s:url var="DeleteAddressURL" action="/ITOS/DeleteAddress" escapeAmp="false">
                         <s:param name="addressDetail.addressID" value="%{addressID}" />
                         <s:param name="addressLinkDetail.addressLinkID" value="%{addressLinkID}" />
+                        <s:param name="addressLinkDetail.relatedID" value="%{relatedID}" />
                     </s:url> <s:a href="%{DeleteAddressURL}">Delete</s:a></td>
 
                 </tr>

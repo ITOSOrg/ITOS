@@ -6,10 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
+import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
@@ -64,6 +67,20 @@ public class UpdatePhoneNumberDAO {
 					preparedStatementPhoneNumberLink.setDate(4, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getEndDate()));
 
 					preparedStatementPhoneNumberLink.executeUpdate();
+					
+					//inserting data into AuditTrail Table for PhoneNumber Table
+					AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+					
+					auditTrailDetails.setTableName("PhoneNumber");
+					auditTrailDetails.setOperationType("Update");
+					String username = returnUserName(phoneNumberLinkDetail);
+					auditTrailDetails.setUserName(username);
+					auditTrailDetails.setRelatedID(phoneNumberLinkDetail.getRelatedID());
+					auditTrailDetails.setTransactionType("Online");
+					
+					CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+					createAuditTrailDAO.createAuditTrail(auditTrailDetails);
+
 
 					returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 
@@ -123,6 +140,24 @@ public class UpdatePhoneNumberDAO {
 			e.printStackTrace();
 		}
 		return versionNo;
+	}
+	
+public String returnUserName(PhoneNumberLinkDetail phoneNumberLinkDetail) throws SQLException{
+		
+		String username = null;
+		Connection connection = DBConnection.getDBConnection();
+		
+		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + phoneNumberLinkDetail.getRelatedID() + "\'";
+		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
+
+		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
+
+		while (resultSetUsers.next()) {
+			 username = resultSetUsers.getString("userName");
+		}
+		
+		return username;
+		
 	}
 
 }

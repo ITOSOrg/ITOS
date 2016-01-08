@@ -60,12 +60,17 @@
                                 <td><s:url id="ReadPhoneNumberURL" action="/ITOS/ReadPhoneNumber" escapeAmp="false">
                                         <s:param name="phoneNumberLinkDetail.phoneNumberLinkID"
                                             value="%{phoneNumberLinkID}" />
-                                    </s:url> <s:a href="%{ReadPhoneNumberURL}">View</s:a> <s:url var="UpdatePhoneNumberURL"
+                                    </s:url> <s:a href="%{ReadPhoneNumberURL}">View</s:a>
+                                    
+                                     <s:url var="UpdatePhoneNumberURL"
                                         action="/ITOS/ReadPhoneNumber" escapeAmp="false">
                                         <s:param name="phoneNumberLinkDetail.phoneNumberLinkID"
                                             value="%{phoneNumberLinkID}" />
+                                        <s:param name="phoneNumberLinkDetail.relatedID" value="%{relatedID}" />
                                         <s:param name="act" value="%{updateAction}" />
-                                    </s:url> <s:a href="%{UpdatePhoneNumberURL}">Update</s:a> <s:url var="DeletePhoneNumberURL"
+                                    </s:url> <s:a href="%{UpdatePhoneNumberURL}">Update</s:a> 
+                                    
+                                    <s:url var="DeletePhoneNumberURL"
                                         action="/ITOS/DeletePhoneNumber" escapeAmp="false">
                                         <s:param name="phoneNumberLinkDetail.phoneNumberLinkID"
                                             value="%{phoneNumberLinkID}" />

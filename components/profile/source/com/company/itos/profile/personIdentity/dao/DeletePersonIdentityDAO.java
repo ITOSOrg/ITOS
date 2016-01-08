@@ -3,6 +3,9 @@ package com.company.itos.profile.personIdentity.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
@@ -21,6 +24,22 @@ public class DeletePersonIdentityDAO {
 					+ personIdentityDetail.getPersonIdentityID();
 			PreparedStatement preparedStatement = connection.prepareStatement(PersonIdentitySQLStr);
 			preparedStatement.executeUpdate();
+			
+			//inserting data into AuditTrail Table for PersonIdentity Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("PersonIdentity");
+			auditTrailDetails.setOperationType("Delete");
+			
+			UpdatePersonIdentityDAO updatePersonIdentityDAO = new UpdatePersonIdentityDAO();
+			String username = updatePersonIdentityDAO.returnUserName(personIdentityDetail);
+			
+			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setRelatedID(personIdentityDetail.getPersonID());
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 		} catch (SQLException e) {
 

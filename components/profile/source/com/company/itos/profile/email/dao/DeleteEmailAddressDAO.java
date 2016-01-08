@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
@@ -31,6 +34,22 @@ public class DeleteEmailAddressDAO {
 
 			PreparedStatement preparedStatementEmailAddressLink = connection.prepareStatement(EmailAddressLinkSQLStr);
 			preparedStatementEmailAddressLink.executeUpdate();
+			
+			//inserting data into AuditTrail Table for Email Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("Email");
+			auditTrailDetails.setOperationType("Delete");
+			
+			UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
+			String username = updateEmailAddressDAO.returnUserName(emailAddressLinkDetail);
+			
+			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setRelatedID(emailAddressLinkDetail.getRelatedID());
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 		} catch (SQLException e) {
 

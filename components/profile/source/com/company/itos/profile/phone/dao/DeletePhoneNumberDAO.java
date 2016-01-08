@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
@@ -31,6 +34,22 @@ public class DeletePhoneNumberDAO {
 
 			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(phoneNumberLinkSQLStr);
 			preparedStatementPhoneNumberLink.executeUpdate();
+			
+			//inserting data into AuditTrail Table for PhoneNumber Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("PhoneNumber");
+			auditTrailDetails.setOperationType("Update");
+			
+			UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
+			String username = updatePhoneNumberDAO.returnUserName(phoneNumberLinkDetail);
+			
+			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setRelatedID(phoneNumberLinkDetail.getRelatedID());
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

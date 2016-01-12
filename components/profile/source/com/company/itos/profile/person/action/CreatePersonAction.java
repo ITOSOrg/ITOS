@@ -65,7 +65,9 @@ public class CreatePersonAction extends ActionSupport implements SessionAware {
 			pageForwardStr = SUCCESS;
 
 		} else {
+			
 			pageForwardStr = ERROR;
+		
 		}
 		return pageForwardStr;
 	}

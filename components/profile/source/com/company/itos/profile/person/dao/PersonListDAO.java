@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import java.sql.*;
+
+import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
@@ -42,15 +45,23 @@ public class PersonListDAO {
 				personDetail.setUserName(resultSet.getString("USERNAME"));
 				personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
 				personDetail.setGender(resultSet.getString("gender"));
-				personDetail.setCreatedBy(resultSet.getString("createdBy"));
-				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
+				
+				//Retriving audit info from AuditTrail Table
+				AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+				auditTrailDetails.setRelatedID(personDetail.getPersonID());
+				auditTrailDetails.setOperationType("Create");
+				auditTrailDetails.setTableName("Person");
+				
+				ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
+				readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailDetails);
+				
+				personDetail.setAuditTrailDetails(auditTrailDetails);
 
 				personDetailList.add(personDetail);
-
 			}
 
 		} catch (SQLException e) {

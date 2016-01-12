@@ -5,21 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.company.itos.core.util.dataaccess.DBConnection;
+
+import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.address.dao.ReadAddressDAO;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.dao.ReadEmailAddressDAO;
-import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
 import com.company.itos.profile.person.pojo.PersonDetail;
-import com.company.itos.profile.person.pojo.UsersDetail;
 import com.company.itos.profile.personIdentity.dao.ReadPersonIdentityDAO;
 import com.company.itos.profile.personIdentity.pojo.PersonIdentityDetail;
 import com.company.itos.profile.phone.dao.ReadPhoneNumberDAO;
-import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
 import com.company.itos.profile.phone.pojo.PhoneNumberLinkDetail;
 
 public class PersonHomeDAO {
@@ -66,8 +66,6 @@ public class PersonHomeDAO {
 				personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
 				personDetail.setGender(resultSet.getString("gender"));
 				personDetail.setRecordStatus(resultSet.getString("recordStatus"));
-				personDetail.setCreatedBy(resultSet.getString("createdBy"));
-				personDetail.setCreatedOn(resultSet.getTimestamp("createdOn"));
 				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
 				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
@@ -128,7 +126,19 @@ public class PersonHomeDAO {
 			ReadPersonIdentityDAO readPersonIdentityDAO = new ReadPersonIdentityDAO();
 			readPersonIdentityDAO.readPrimaryPersonIdentity(personIdentityDetail);
 			personDetail.setPersonIdentityDetail(personIdentityDetail);
-
+			
+			//Retriving audit info from AuditTrail Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			auditTrailDetails.setRelatedID(personDetail.getPersonID());
+			auditTrailDetails.setOperationType("Create");
+			auditTrailDetails.setTableName("Person");
+			
+			ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
+			readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailDetails);
+			
+			personDetail.setAuditTrailDetails(auditTrailDetails);
+			
+			
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 
 		} catch (SQLException e) {

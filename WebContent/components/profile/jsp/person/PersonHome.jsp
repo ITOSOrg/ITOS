@@ -64,8 +64,8 @@
                             <td><s:property value="personDetail.gender" /></td>
                             <td><s:property value="personDetail.dateOfBirth" /></td>
                             <td><s:property value="personDetail.recordStatus" /></td>
-                            <td><s:property value="personDetail.createdBy" /></td>
-                            <td><s:property value="personDetail.createdOn" /></td>
+                            <td><s:property value="personDetail.auditTrailDetails.userName" /></td>
+                            <td><s:property value="personDetail.auditTrailDetails.timeEntered" /></td>
                             <td><s:property value="personDetail.modifiedBy" /></td>
                             <td><s:property value="personDetail.modifiedOn" /></td>
                             <td><s:property value="personDetail.registrationDate" /></td>

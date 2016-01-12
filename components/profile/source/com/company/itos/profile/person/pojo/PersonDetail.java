@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -64,6 +66,10 @@ public class PersonDetail {
 	private PersonIdentityDetail personIdentityDetail = null;
 	
 	private RoleDetail roleDetail = null;
+	
+	private AuditTrailDetails auditTrailDetails = null;
+	
+	private AuditTrailkey auditTrailkey = null;
 	
 	private String updateAction = "update";
 	
@@ -307,6 +313,34 @@ public class PersonDetail {
 
 	public void setRoleDetail(RoleDetail roleDetail) {
 		this.roleDetail = roleDetail;
+	}
+
+	/**
+	 * @return the auditTrailDetails
+	 */
+	public AuditTrailDetails getAuditTrailDetails() {
+		return auditTrailDetails;
+	}
+
+	/**
+	 * @param auditTrailDetails the auditTrailDetails to set
+	 */
+	public void setAuditTrailDetails(AuditTrailDetails auditTrailDetails) {
+		this.auditTrailDetails = auditTrailDetails;
+	}
+
+	/**
+	 * @return the auditTrailkey
+	 */
+	public AuditTrailkey getAuditTrailkey() {
+		return auditTrailkey;
+	}
+
+	/**
+	 * @param auditTrailkey the auditTrailkey to set
+	 */
+	public void setAuditTrailkey(AuditTrailkey auditTrailkey) {
+		this.auditTrailkey = auditTrailkey;
 	}
 
 }

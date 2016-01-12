@@ -58,8 +58,8 @@
 					<td><s:property value="lastName" /></td>
 					<td><s:property value="dateOfBirth" /></td>
 					<td><s:property value="gender" /></td>
-					<td><s:property value="createdBy" /></td>
-					<td><s:property value="createdOn" /></td>
+					<td><s:property value="auditTrailDetails.userName" /></td>
+					<td><s:property value="auditTrailDetails.timeEntered" /></td>
 					<td><s:property value="modifiedBy" /></td>
 					<td><s:property value="modifiedOn" /></td>
 					<td><s:property value="registrationDate" /></td>

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.dataaccess.DBConnection;
 
@@ -44,30 +46,40 @@ public class ReadAuditTrailDAO {
 		return returnMassegeStr;
 	}
 	
-public String readAuditTrailBaseOnCondition(AuditTrailDetails auditTrailDetails){
+public AuditTrailDtls readAuditTrailBaseOnCondition(AuditTrailkey auditTrailkey){
 		
 		String returnMassegeStr = "";
+		AuditTrailDtls auditTrailDtls = new AuditTrailDtls();
 
 		Connection connection = null;
 		try {
 
 			connection = DBConnection.getDBConnection();
 			
-			String auditTrailSQLStr = "SELECT * FROM AuditTrail WHERE relatedID = \'" + auditTrailDetails.getRelatedID()
-					+ "\' AND operationType = \'" + auditTrailDetails.getOperationType()
-					+ "\' AND tableName = \'" + auditTrailDetails.getTableName()
-					+ "\'";
+			String auditTrailSQLStr = "SELECT userName, timeEntered FROM AuditTrail WHERE relatedID = \'" + auditTrailkey.getRelatedID()
+					+ "\'  AND tableName = \'" + auditTrailkey.getTableName()
+					+ "\'AND operationType = 'Create'";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(auditTrailSQLStr);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				auditTrailDetails.setTableName(resultSet.getString("tableName"));
-				auditTrailDetails.setRelatedID(resultSet.getLong("relatedID"));
-				auditTrailDetails.setAuditTrailID(resultSet.getLong("auditTrailID"));
-				auditTrailDetails.setOperationType(resultSet.getString("operationType"));
-				auditTrailDetails.setUserName(resultSet.getString("userName"));
-				auditTrailDetails.setTimeEntered(resultSet.getTimestamp("timeEntered"));
+				
+				auditTrailDtls.setCreatedBy(resultSet.getString("userName"));
+				auditTrailDtls.setCreatedOn(resultSet.getTimestamp("timeEntered"));
+				
+			}
+			String auditTrailSQLStr1 = "SELECT userName, MAX(timeEntered) FROM AuditTrail WHERE relatedID = \'" + auditTrailkey.getRelatedID()
+					+ "\'  AND tableName = \'" + auditTrailkey.getTableName()
+					+ "\' AND operationType = 'Update' GROUP  BY userName";
+			
+			PreparedStatement preparedStatement1 = connection.prepareStatement(auditTrailSQLStr1);
+			ResultSet resultSet1 = preparedStatement1.executeQuery();
+			
+			while (resultSet1.next()) {
+				
+				auditTrailDtls.setLastModifieddBy(resultSet1.getString("userName"));
+				auditTrailDtls.setLastModifiedOn(resultSet.getTimestamp("timeEntered"));
 				
 			}
 			
@@ -76,7 +88,7 @@ public String readAuditTrailBaseOnCondition(AuditTrailDetails auditTrailDetails)
 			e.printStackTrace();
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_FAILURE;
 		}
-		return returnMassegeStr;
+		return auditTrailDtls;
 	}
 
 

@@ -73,7 +73,7 @@ public class PersonRegistrationDAO {
 				personIdentityDetail.setPersonID(relatedID);
 				
 				
-				String personSQLStr = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, modifiedBy, modifiedOn, REGISTRATIONDATE, versionNo) "
+				String personSQLStr = "INSERT INTO PERSON(personID,  refrenceNumber, title, firstName, middleName, lastName, gender, userName, dateOfBirth, recordStatus, REGISTRATIONDATE, versionNo) "
 						+ "VALUES (?, PersonRefrenceNumberSEQ.nextval, '"
 						+ personDetail.getTitle()
 						+ "', '"
@@ -84,7 +84,7 @@ public class PersonRegistrationDAO {
 						+ personDetail.getLastName()
 						+ "','"
 						+ personDetail.getGender()
-						+ "' ,'" + usersDetail.getUserName() + "',?, 'Active','Rahul',?,?," + " 1 )";
+						+ "' ,'" + usersDetail.getUserName() + "',?, 'Active',?," + " 1 )";
 
 				PreparedStatement preparedStatement1 = connection.prepareStatement(personSQLStr);
 
@@ -95,7 +95,6 @@ public class PersonRegistrationDAO {
 
 				Timestamp timestamp = Timestamp.valueOf(crrentDateTime);
 				preparedStatement1.setTimestamp(3, timestamp);
-				preparedStatement1.setTimestamp(4, timestamp);
 
 				preparedStatement1.execute();
 				

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
 import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.role.pojo.RoleDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
@@ -69,7 +70,7 @@ public class PersonDetail {
 	
 	private AuditTrailDetails auditTrailDetails = null;
 	
-	private AuditTrailkey auditTrailkey = null;
+	private AuditTrailDtls auditTrailDtls = null;
 	
 	private String updateAction = "update";
 	
@@ -330,17 +331,17 @@ public class PersonDetail {
 	}
 
 	/**
-	 * @return the auditTrailkey
+	 * @return the auditTrailDtls
 	 */
-	public AuditTrailkey getAuditTrailkey() {
-		return auditTrailkey;
+	public AuditTrailDtls getAuditTrailDtls() {
+		return auditTrailDtls;
 	}
 
 	/**
-	 * @param auditTrailkey the auditTrailkey to set
+	 * @param auditTrailDtls the auditTrailDtls to set
 	 */
-	public void setAuditTrailkey(AuditTrailkey auditTrailkey) {
-		this.auditTrailkey = auditTrailkey;
+	public void setAuditTrailDtls(AuditTrailDtls auditTrailDtls) {
+		this.auditTrailDtls = auditTrailDtls;
 	}
 
 }

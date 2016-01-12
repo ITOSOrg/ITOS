@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
 import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
@@ -66,8 +68,6 @@ public class PersonHomeDAO {
 				personDetail.setDateOfBirth(resultSet.getDate("dateOfBirth"));
 				personDetail.setGender(resultSet.getString("gender"));
 				personDetail.setRecordStatus(resultSet.getString("recordStatus"));
-				personDetail.setModifiedBy(resultSet.getString("modifiedBy"));
-				personDetail.setModifiedOn(resultSet.getTimestamp("modifiedOn"));
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
 			}
@@ -128,16 +128,15 @@ public class PersonHomeDAO {
 			personDetail.setPersonIdentityDetail(personIdentityDetail);
 			
 			//Retriving audit info from AuditTrail Table
-			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
-			auditTrailDetails.setRelatedID(personDetail.getPersonID());
-			auditTrailDetails.setOperationType("Create");
-			auditTrailDetails.setTableName("Person");
+			AuditTrailkey auditTrailkey = new AuditTrailkey();
+			auditTrailkey.setRelatedID(personDetail.getPersonID());
+			auditTrailkey.setTableName("Person");
 			
 			ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
-			readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailDetails);
+			AuditTrailDtls auditTrailDtls = readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailkey);
 			
-			personDetail.setAuditTrailDetails(auditTrailDetails);
 			
+			personDetail.setAuditTrailDtls(auditTrailDtls);
 			
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 

@@ -16,8 +16,6 @@ CREATE TABLE Person (
 	primaryAlternateID NUMBER(10),
 	primaryPhoneNumberID NUMBER(15),
 	recordStatus VARCHAR2(30),	
-	modifiedBy varchar2(35),
-	modifiedOn timestamp(6),	
 	versionNo NUMBER(20)
    ); 
    

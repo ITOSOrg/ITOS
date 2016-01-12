@@ -64,10 +64,10 @@
                             <td><s:property value="personDetail.gender" /></td>
                             <td><s:property value="personDetail.dateOfBirth" /></td>
                             <td><s:property value="personDetail.recordStatus" /></td>
-                            <td><s:property value="personDetail.auditTrailDetails.userName" /></td>
-                            <td><s:property value="personDetail.auditTrailDetails.timeEntered" /></td>
-                            <td><s:property value="personDetail.modifiedBy" /></td>
-                            <td><s:property value="personDetail.modifiedOn" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.createdBy" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.createdOn" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.lastModifieddBy" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.lastModifiedOn" /></td>
                             <td><s:property value="personDetail.registrationDate" /></td>
 
                             <td><s:url var="updatePersonHomeURL" action="/ITOS/ReadSinglePerson" escapeAmp="false">

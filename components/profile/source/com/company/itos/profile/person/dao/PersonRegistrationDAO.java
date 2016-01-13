@@ -114,39 +114,21 @@ public class PersonRegistrationDAO {
 				CreateEmailAddressDAO createEmailAddressDAO = new CreateEmailAddressDAO();
 				createEmailAddressDAO.createEmailAddress(emailAddressLinkDetail);
 				
-				//inserting data into AuditTrail Table for Email Table
-				
-				auditTrailDetails.setTableName("Email");
-				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 				
 				//Inserting data into PhoneNumber Table
 				CreatePhoneNumberDAO createPhoneNumberDAO = new CreatePhoneNumberDAO();
 				createPhoneNumberDAO.createPhoneNumber(phoneNumberLinkDetail);
 				
-				//inserting data into AuditTrail Table for PhoneNumber Table
-				
-				auditTrailDetails.setTableName("PhoneNumber");
-				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
-				
+
 				//Inserting data into Address Table
 				CreateAddressDAO createAddressDAO = new CreateAddressDAO();
 				createAddressDAO.createAddress(addressLinkDetail);
 				
-				//inserting data into AuditTrail Table for Address Table
-				
-				auditTrailDetails.setTableName("Address");
-				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
-				
+
 				//Inserting data into PersonIdentity Table
 				CreatePersonIdentityDAO createPersonIdentityDAO = new CreatePersonIdentityDAO();
 				createPersonIdentityDAO.CreatePersonIdentity(personIdentityDetail);
 				
-				//inserting data into AuditTrail Table for PersonIdentity Table
-				
-				auditTrailDetails.setTableName("PersonIdentity");
-				createAuditTrailDAO.createAuditTrail(auditTrailDetails);
-				
-
 				// For Role table
 
 				RoleDetail roleDetail = personDetail.getRoleDetail();

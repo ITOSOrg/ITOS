@@ -38,8 +38,8 @@
 					<th>Gender</th>
 					<th>Created By</th>
 					<th align="center">Created On</th>
-					<th align="center">Modified By</th>
-					<th align="center">Modified On</th>
+					<th align="center">LastModified By</th>
+					<th align="center">LastModified On</th>
 					<th align="center">Registration Date</th>
 					 
 					 
@@ -58,10 +58,10 @@
 					<td><s:property value="lastName" /></td>
 					<td><s:property value="dateOfBirth" /></td>
 					<td><s:property value="gender" /></td>
-					<td><s:property value="auditTrailDetails.userName" /></td>
-					<td><s:property value="auditTrailDetails.timeEntered" /></td>
-					<td><s:property value="modifiedBy" /></td>
-					<td><s:property value="modifiedOn" /></td>
+					<td><s:property value="auditTrailDtls.createdBy" /></td>
+					<td><s:property value="auditTrailDtls.createdOn" /></td>
+					<td><s:property value="auditTrailDtls.lastModifieddBy" /></td>
+					<td><s:property value="auditTrailDtls.lastModifiedOn" /></td>
 					<td><s:property value="registrationDate" /></td>
 					
 					<td>

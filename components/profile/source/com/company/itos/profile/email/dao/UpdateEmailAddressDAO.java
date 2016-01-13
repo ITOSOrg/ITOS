@@ -65,9 +65,8 @@ public class UpdateEmailAddressDAO {
 					
 					auditTrailDetails.setTableName("Email");
 					auditTrailDetails.setOperationType("Update");
-					String username = returnUserName(emailAddressLinkDetail);
-					auditTrailDetails.setUserName(username);
-					auditTrailDetails.setRelatedID(emailAddressLinkDetail.getRelatedID());
+					auditTrailDetails.setUserName("Rahul");
+					auditTrailDetails.setRelatedID(emailAddressLinkDetail.getEmailAddressLinkID());
 					auditTrailDetails.setTransactionType("Online");
 					
 					CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
@@ -133,21 +132,5 @@ public class UpdateEmailAddressDAO {
 		return versionNo;
 	}
 	
-	public String returnUserName(EmailAddressLinkDetail emailAddressLinkDetail) throws SQLException{
-		
-		String username = null;
-		Connection connection = DBConnection.getDBConnection();
-		
-		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + emailAddressLinkDetail.getRelatedID() + "\'";
-		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
-
-		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
-
-		while (resultSetUsers.next()) {
-			 username = resultSetUsers.getString("userName");
-		}
-		
-		return username;
-		
-	}
+	
 }

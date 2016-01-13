@@ -40,11 +40,7 @@ public class DeleteEmailAddressDAO {
 			
 			auditTrailDetails.setTableName("Email");
 			auditTrailDetails.setOperationType("Delete");
-			
-			UpdateEmailAddressDAO updateEmailAddressDAO = new UpdateEmailAddressDAO();
-			String username = updateEmailAddressDAO.returnUserName(emailAddressLinkDetail);
-			
-			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setUserName("Rahul");
 			auditTrailDetails.setRelatedID(emailAddressLinkDetail.getRelatedID());
 			auditTrailDetails.setTransactionType("Online");
 			

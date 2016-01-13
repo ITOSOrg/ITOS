@@ -2,6 +2,8 @@ package com.company.itos.profile.personIdentity.pojo;
 
 import java.util.Date;
 
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+
 
 public class PersonIdentityDetail {
 	
@@ -22,6 +24,8 @@ public class PersonIdentityDetail {
 	private String recordStatus;
 	
 	private int versionNo;
+	
+	private AuditTrailDtls auditTrailDtls = null;
 	
 	private String updateAction = "update";
 	
@@ -129,6 +133,20 @@ public class PersonIdentityDetail {
 
 	public void setVersionNo(int versionNo) {
 		this.versionNo = versionNo;
+	}
+
+	/**
+	 * @return the auditTrailDtls
+	 */
+	public AuditTrailDtls getAuditTrailDtls() {
+		return auditTrailDtls;
+	}
+
+	/**
+	 * @param auditTrailDtls the auditTrailDtls to set
+	 */
+	public void setAuditTrailDtls(AuditTrailDtls auditTrailDtls) {
+		this.auditTrailDtls = auditTrailDtls;
 	}
 	
 

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
@@ -49,7 +51,9 @@ public class CreateAddressDAO {
 
 			PreparedStatement preparedStatementaddressLinkSQLStr = connection.prepareStatement(addressLinkSQLStr);
 			
-			preparedStatementaddressLinkSQLStr.setLong(1, UniqueID.nextUniqueID());
+			Long addressLinkID = UniqueID.nextUniqueID();
+			
+			preparedStatementaddressLinkSQLStr.setLong(1, addressLinkID);
 			preparedStatementaddressLinkSQLStr.setLong(2, addressLinkDetail.getRelatedID());
 			preparedStatementaddressLinkSQLStr.setLong(3, addressId);
 			preparedStatementaddressLinkSQLStr.setString(4, addressLinkDetail.getTypeCode());
@@ -57,9 +61,21 @@ public class CreateAddressDAO {
 			preparedStatementaddressLinkSQLStr.setDate(6, JavaUtildates.convertUtilToSql(addressLinkDetail.getStartDate()));
 			preparedStatementaddressLinkSQLStr.setDate(7, JavaUtildates.convertUtilToSql(addressLinkDetail.getEndDate()));
 			preparedStatementaddressLinkSQLStr.setString(8, "Active");
-			
-			
 			preparedStatementaddressLinkSQLStr.execute();
+			
+			addressLinkDetail.setAddressLinkID(addressLinkID);
+			
+			//inserting data into AuditTrail Table for Address Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("Address");
+			auditTrailDetails.setOperationType("Create");
+			auditTrailDetails.setUserName("Rahul");
+			auditTrailDetails.setRelatedID(addressLinkID);
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 			

@@ -30,11 +30,7 @@ public class DeletePersonIdentityDAO {
 			
 			auditTrailDetails.setTableName("PersonIdentity");
 			auditTrailDetails.setOperationType("Delete");
-			
-			UpdatePersonIdentityDAO updatePersonIdentityDAO = new UpdatePersonIdentityDAO();
-			String username = updatePersonIdentityDAO.returnUserName(personIdentityDetail);
-			
-			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setUserName("Rahul");
 			auditTrailDetails.setRelatedID(personIdentityDetail.getPersonID());
 			auditTrailDetails.setTransactionType("Online");
 			

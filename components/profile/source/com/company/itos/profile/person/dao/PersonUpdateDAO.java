@@ -50,10 +50,7 @@ public class PersonUpdateDAO {
 				
 				auditTrailDetails.setTableName("Person");
 				auditTrailDetails.setOperationType("Update");
-				
-				String username = returnUserName(personDetail);
-				
-				auditTrailDetails.setUserName(username);
+				auditTrailDetails.setUserName("Rahul");
 				auditTrailDetails.setRelatedID(personDetail.getPersonID());
 				auditTrailDetails.setTransactionType("Online");
 				
@@ -111,22 +108,6 @@ public class PersonUpdateDAO {
 
 	}
 	
-public String returnUserName(PersonDetail personDetail) throws SQLException{
-		
-		String username = null;
-		Connection connection = DBConnection.getDBConnection();
-		
-		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + personDetail.getPersonID() + "\'";
-		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
 
-		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
-
-		while (resultSetUsers.next()) {
-			 username = resultSetUsers.getString("userName");
-		}
-		
-		return username;
-		
-	}
 
 }

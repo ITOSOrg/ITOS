@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
@@ -70,8 +72,10 @@ public class CreatePhoneNumberDAO {
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
 
 			PreparedStatement preparedStatementPhoneNumberLink = connection.prepareStatement(PhoneNumberLinkSQLStr);
+			
+			Long phoneNumberLinkID = UniqueID.nextUniqueID();
 
-			preparedStatementPhoneNumberLink.setLong(1, UniqueID.nextUniqueID());
+			preparedStatementPhoneNumberLink.setLong(1, phoneNumberLinkID);
 			preparedStatementPhoneNumberLink.setLong(2, phoneNumberLinkDetail.getRelatedID());
 			preparedStatementPhoneNumberLink.setLong(3, phoneNumberID);
 			preparedStatementPhoneNumberLink.setString(4, phoneNumberLinkDetail.getTypeCode());
@@ -79,6 +83,20 @@ public class CreatePhoneNumberDAO {
 			preparedStatementPhoneNumberLink.setDate(6, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getStartDate()));
 			preparedStatementPhoneNumberLink.setDate(7, JavaUtildates.convertUtilToSql(phoneNumberLinkDetail.getEndDate()));
 			preparedStatementPhoneNumberLink.execute();
+			
+			phoneNumberLinkDetail.setPhoneNumberLinkID(phoneNumberLinkID);
+			
+			//inserting data into AuditTrail Table for PhoneNumber Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("PhoneNumber");
+			auditTrailDetails.setOperationType("Create");
+			auditTrailDetails.setUserName("Rahul");
+			auditTrailDetails.setRelatedID(phoneNumberLinkID);
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {

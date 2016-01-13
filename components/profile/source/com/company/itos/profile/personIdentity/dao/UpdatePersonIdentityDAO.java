@@ -48,9 +48,8 @@ public class UpdatePersonIdentityDAO {
 				
 				auditTrailDetails.setTableName("PersonIdentity");
 				auditTrailDetails.setOperationType("Update");
-				String username = returnUserName(personIdentityDetail);
-				auditTrailDetails.setUserName(username);
-				auditTrailDetails.setRelatedID(personIdentityDetail.getPersonID());
+				auditTrailDetails.setUserName("Rahul");
+				auditTrailDetails.setRelatedID(personIdentityDetail.getPersonIdentityID());
 				auditTrailDetails.setTransactionType("Online");
 				
 				CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
@@ -91,22 +90,5 @@ public class UpdatePersonIdentityDAO {
 		return versionNo;
 	}
 	
-public String returnUserName(PersonIdentityDetail personIdentityDetail) throws SQLException{
-		
-		String username = null;
-		Connection connection = DBConnection.getDBConnection();
-		
-		String usersSQLStr = "SELECT userName FROM Users WHERE relatedID=\'" + personIdentityDetail.getPersonID() + "\'";
-		PreparedStatement preparedStatementusers = connection.prepareStatement(usersSQLStr);
-
-		ResultSet resultSetUsers = preparedStatementusers.executeQuery();
-
-		while (resultSetUsers.next()) {
-			 username = resultSetUsers.getString("userName");
-		}
-		
-		return username;
-		
-	}
 
 }

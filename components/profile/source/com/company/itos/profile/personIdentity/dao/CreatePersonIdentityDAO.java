@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.type.UniqueID;
 import com.company.itos.core.util.CRUDConstants;
@@ -26,8 +28,10 @@ public class CreatePersonIdentityDAO {
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 'Active', 1)";
 
 			PreparedStatement preparedStatementpersonIdentity = connection.prepareStatement(personIdentitySQLStr);
+			
+			Long personIdentityID = UniqueID.nextUniqueID();
 
-			preparedStatementpersonIdentity.setLong(1, UniqueID.nextUniqueID());
+			preparedStatementpersonIdentity.setLong(1, personIdentityID);
 			preparedStatementpersonIdentity.setLong(2, personIdentityDetail.getPersonID());
 			preparedStatementpersonIdentity.setString(3, personIdentityDetail.getAlternateID());
 			preparedStatementpersonIdentity.setString(4, personIdentityDetail.getPrimaryInd());
@@ -36,6 +40,21 @@ public class CreatePersonIdentityDAO {
 			preparedStatementpersonIdentity.setDate(7, JavaUtildates.convertUtilToSql(personIdentityDetail.getEndDate()));
 
 			preparedStatementpersonIdentity.executeQuery();
+			
+			personIdentityDetail.setPersonIdentityID(personIdentityID);
+			
+			//inserting data into AuditTrail Table for PersonIdentity Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("PersonIdentity");
+			auditTrailDetails.setOperationType("Create");
+			auditTrailDetails.setUserName("Rahul");
+			auditTrailDetails.setRelatedID(personIdentityID);
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
+
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {

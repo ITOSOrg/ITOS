@@ -40,6 +40,10 @@
                             <th>PrimaryInd:</th>
                             <th>Start Date:</th>
                             <th>End Date:</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                             <th colspan=3>Action</th>
                         </tr>
                     </thead>
@@ -56,6 +60,10 @@
                                 <td><s:property value="primaryInd" /></td>
                                 <td><s:property value="startDate" /></td>
                                 <td><s:property value="endDate" /></td>
+                                <td><s:property value="auditTrailDtls.createdBy" /></td>
+                                <td><s:property value="auditTrailDtls.createdOn" /></td>
+                                <td><s:property value="auditTrailDtls.lastModifieddBy" /></td>
+                                <td><s:property value="auditTrailDtls.lastModifiedOn" /></td>
 
                                 <td><s:url id="ReadPhoneNumberURL" action="/ITOS/ReadPhoneNumber" escapeAmp="false">
                                         <s:param name="phoneNumberLinkDetail.phoneNumberLinkID"

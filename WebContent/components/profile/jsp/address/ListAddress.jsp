@@ -42,6 +42,10 @@
                 <th>ZipCode</th>
                 <th>StartDate</th>
                 <th>End Date</th>
+                <th>CreatedBy</th>
+                <th>CreatedOn</th>
+                <th>LastModified By</th>
+                <th>LastModified On</th>
                 <th colspan=3>Action</th>
             </tr>
         </thead>
@@ -62,6 +66,10 @@
                     <td><s:property value="addressDetail.zipCode" /></td>
                     <td><s:property value="startDate" /></td>
                     <td><s:property value="endDate" /></td>
+                    <td><s:property value="auditTrailDtls.createdBy" /></td>
+                    <td><s:property value="auditTrailDtls.createdOn" /></td>
+                    <td><s:property value="auditTrailDtls.lastModifieddBy" /></td>
+                    <td><s:property value="auditTrailDtls.lastModifiedOn" /></td>
 
                     <td><s:url id="ReadAddressURL" action="/ITOS/ReadAddress" escapeAmp="false">
                         <s:param name="addressDetail.addressID" value="%{addressID}" />

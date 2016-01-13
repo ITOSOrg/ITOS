@@ -47,8 +47,8 @@
                             <th>Status</th>
                             <th>Created By</th>
                             <th>Created On</th>
-                            <th>Modified By</th>
-                            <th>Modified On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                             <th>Registration Date</th>
                             <th>Action</th>
                         </tr>
@@ -93,6 +93,10 @@
                             <th>PrimaryInd:</th>
                             <th>Start Date:</th>
                             <th>End Date:</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                         </tr>
                     </thead>
 
@@ -104,6 +108,10 @@
                             <td><s:property value="personDetail.emailAddressLinkDetail.primaryInd" /></td>
                             <td><s:property value="personDetail.emailAddressLinkDetail.startDate" /></td>
                             <td><s:property value="personDetail.emailAddressLinkDetail.endDate" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.createdBy" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.createdOn" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.lastModifieddBy" /></td>
+                            <td><s:property value="personDetail.auditTrailDtls.lastModifiedOn" /></td>
                         </tr>
 
                     </tbody>
@@ -125,6 +133,10 @@
                             <th>PrimaryInd:</th>
                             <th>start Date:</th>
                             <th>End Date:</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                         </tr>
                     </thead>
 
@@ -140,6 +152,10 @@
                             <td><s:property value="personDetail.phoneNumberLinkDetail.primaryInd" /></td>
                             <td><s:property value="personDetail.phoneNumberLinkDetail.startDate" /></td>
                             <td><s:property value="personDetail.phoneNumberLinkDetail.endDate" /></td>
+                            <td><s:property value="personDetail.phoneNumberLinkDetail.auditTrailDtls.createdBy" /></td>
+                            <td><s:property value="personDetail.phoneNumberLinkDetail.auditTrailDtls.createdOn" /></td>
+                            <td><s:property value="personDetail.phoneNumberLinkDetail.auditTrailDtls.lastModifieddBy" /></td>
+                            <td><s:property value="personDetail.phoneNumberLinkDetail.auditTrailDtls.lastModifiedOn" /></td>
                         </tr>
                     </tbody>
 
@@ -159,6 +175,10 @@
                             <th>Type Code:</th>
                             <th>Start Date:</th>
                             <th>End Date:</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                         </tr>
                     </thead>
 
@@ -169,6 +189,10 @@
                             <td><s:property value="personDetail.personIdentityDetail.typeCode" /></td>
                             <td><s:property value="personDetail.personIdentityDetail.startDate" /></td>
                             <td><s:property value="personDetail.personIdentityDetail.endDate" /></td>
+                            <td><s:property value="personDetail.personIdentityDetail.auditTrailDtls.createdBy" /></td>
+                            <td><s:property value="personDetail.personIdentityDetail.auditTrailDtls.createdOn" /></td>
+                            <td><s:property value="personDetail.personIdentityDetail.auditTrailDtls.lastModifieddBy" /></td>
+                            <td><s:property value="personDetail.personIdentityDetail.auditTrailDtls.lastModifiedOn" /></td>
                         </tr>
                     </tbody>
 
@@ -193,6 +217,10 @@
                             <th>PrimaryInd:</th>
                             <th>Start Date:</th>
                             <th>End Date:</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>LastModified By</th>
+                            <th>LastModified On</th>
                         </tr>
                     </thead>
 
@@ -210,6 +238,10 @@
                             <td><s:property value="personDetail.addressLinkDetail.primaryInd" /></td>
                             <td><s:property value="personDetail.addressLinkDetail.startDate" /></td>
                             <td><s:property value="personDetail.addressLinkDetail.endDate" /></td>
+                            <td><s:property value="personDetail.addressLinkDetail.auditTrailDtls.createdBy" /></td>
+                            <td><s:property value="personDetail.addressLinkDetail.auditTrailDtls.createdOn" /></td>
+                            <td><s:property value="personDetail.addressLinkDetail.auditTrailDtls.lastModifieddBy" /></td>
+                            <td><s:property value="personDetail.addressLinkDetail.auditTrailDtls.lastModifiedOn" /></td>
                         </tr>
 
 

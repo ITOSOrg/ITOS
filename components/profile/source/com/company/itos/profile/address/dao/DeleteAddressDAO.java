@@ -34,9 +34,7 @@ public class DeleteAddressDAO {
 			auditTrailDetails.setOperationType("Delete");
 			
 			UpdateAddressDAO updateAddressDAO = new UpdateAddressDAO();
-			String username = updateAddressDAO.returnUserName(addressLinkDetail);
-			
-			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setUserName("Rahul");
 			auditTrailDetails.setRelatedID(addressLinkDetail.getRelatedID());
 			auditTrailDetails.setTransactionType("Online");
 			

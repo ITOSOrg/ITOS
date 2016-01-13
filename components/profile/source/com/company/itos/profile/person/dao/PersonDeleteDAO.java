@@ -44,11 +44,7 @@ public class PersonDeleteDAO {
 			
 			auditTrailDetails.setTableName("Person");
 			auditTrailDetails.setOperationType("Delete");
-			
-			PersonUpdateDAO personUpdateDAO = new PersonUpdateDAO();
-			String username = personUpdateDAO.returnUserName(personDetail);
-			
-			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setUserName("Rahul");
 			auditTrailDetails.setRelatedID(personDetail.getPersonID());
 			auditTrailDetails.setTransactionType("Online");
 			

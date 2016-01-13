@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.email.pojo.EmailAddressDetail;
 import com.company.itos.profile.email.pojo.EmailAddressLinkDetail;
@@ -77,6 +81,18 @@ public class ListEmailAddressDAO {
 				}
 
 				emailAddressLinkDetail.setEmailAddressDetail(emailAddressDetailFromDB);
+				
+				//Retriving audit info from AuditTrail Table
+				AuditTrailkey auditTrailkey = new AuditTrailkey();
+				auditTrailkey.setRelatedID(emailAddressLinkDetail.getEmailAddressLinkID());
+				auditTrailkey.setTableName("Email");
+				
+				ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
+				AuditTrailDtls auditTrailDtls = readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailkey);
+				
+				
+				emailAddressLinkDetail.setAuditTrailDtls(auditTrailDtls);
+				
 				// Add object in list
 				emailAddressLinkDetailList.add(emailAddressLinkDetail);
 			}

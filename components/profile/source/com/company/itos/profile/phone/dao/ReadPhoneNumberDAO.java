@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.profile.phone.pojo.PhoneNumberDetail;
@@ -107,6 +111,18 @@ public class ReadPhoneNumberDAO {
 
 				phoneNumberLinkDetail.setPhoneNumberDetail(phoneNumberDetail);
 			}
+			
+			//Retriving audit info from AuditTrail Table
+			AuditTrailkey auditTrailkey = new AuditTrailkey();
+			auditTrailkey.setRelatedID(phoneNumberLinkDetail.getPhoneNumberLinkID());
+			auditTrailkey.setTableName("PhoneNumber");
+			
+			ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
+			AuditTrailDtls auditTrailDtls = readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailkey);
+			
+			
+			phoneNumberLinkDetail.setAuditTrailDtls(auditTrailDtls);
+			
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();

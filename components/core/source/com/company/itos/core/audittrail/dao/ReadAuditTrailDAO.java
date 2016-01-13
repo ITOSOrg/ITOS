@@ -69,7 +69,7 @@ public AuditTrailDtls readAuditTrailBaseOnCondition(AuditTrailkey auditTrailkey)
 				auditTrailDtls.setCreatedOn(resultSet.getTimestamp("timeEntered"));
 				
 			}
-			String auditTrailSQLStr1 = "SELECT userName, MAX(timeEntered) FROM AuditTrail WHERE relatedID = \'" + auditTrailkey.getRelatedID()
+			String auditTrailSQLStr1 = "SELECT userName, MAX(timeEntered) timeEntered FROM AuditTrail WHERE relatedID = \'" + auditTrailkey.getRelatedID()
 					+ "\'  AND tableName = \'" + auditTrailkey.getTableName()
 					+ "\' AND operationType = 'Update' GROUP  BY userName";
 			
@@ -79,7 +79,7 @@ public AuditTrailDtls readAuditTrailBaseOnCondition(AuditTrailkey auditTrailkey)
 			while (resultSet1.next()) {
 				
 				auditTrailDtls.setLastModifieddBy(resultSet1.getString("userName"));
-				auditTrailDtls.setLastModifiedOn(resultSet.getTimestamp("timeEntered"));
+				auditTrailDtls.setLastModifiedOn(resultSet1.getTimestamp("timeEntered"));
 				
 			}
 			

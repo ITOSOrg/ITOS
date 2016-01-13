@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+import com.company.itos.core.audittrail.pojo.AuditTrailkey;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.address.pojo.AddressDetail;
 import com.company.itos.profile.address.pojo.AddressLinkDetail;
@@ -56,6 +60,18 @@ public class ListAddressDAO {
 					addressDetail.setCountry(resultSetAddress.getString("country"));
 					addressDetail.setZipCode(resultSetAddress.getInt("zipCode"));
 				}
+				
+				//Retriving audit info from AuditTrail Table
+				AuditTrailkey auditTrailkey = new AuditTrailkey();
+				auditTrailkey.setRelatedID(addressLinkDetail.getAddressLinkID());
+				auditTrailkey.setTableName("Address");
+				
+				ReadAuditTrailDAO readAuditTrailDAO = new ReadAuditTrailDAO();
+				AuditTrailDtls auditTrailDtls = readAuditTrailDAO.readAuditTrailBaseOnCondition(auditTrailkey);
+				
+				
+				addressLinkDetail.setAuditTrailDtls(auditTrailDtls);
+				
 				addressLinkDetail.setAddressDetail(addressDetail);
 				addressLinkDetailList.add(addressLinkDetail);
 			}

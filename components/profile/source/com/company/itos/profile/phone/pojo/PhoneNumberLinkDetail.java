@@ -2,6 +2,8 @@ package com.company.itos.profile.phone.pojo;
 
 import java.util.Date;
 
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+
 public class PhoneNumberLinkDetail {
 
 	private long phoneNumberLinkID;
@@ -23,6 +25,8 @@ public class PhoneNumberLinkDetail {
 	private long phoneNumberID;
 
 	private PhoneNumberDetail phoneNumberDetail = null;
+	
+	private AuditTrailDtls auditTrailDtls = null;
 	
 	private String updateAction = "update";
 	
@@ -141,6 +145,20 @@ public class PhoneNumberLinkDetail {
 
 	public void setPhoneNumberDetail(PhoneNumberDetail phoneNumberDetail) {
 		this.phoneNumberDetail = phoneNumberDetail;
+	}
+
+	/**
+	 * @return the auditTrailDtls
+	 */
+	public AuditTrailDtls getAuditTrailDtls() {
+		return auditTrailDtls;
+	}
+
+	/**
+	 * @param auditTrailDtls the auditTrailDtls to set
+	 */
+	public void setAuditTrailDtls(AuditTrailDtls auditTrailDtls) {
+		this.auditTrailDtls = auditTrailDtls;
 	}
 
 }

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.company.itos.core.audittrail.dao.CreateAuditTrailDAO;
+import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.util.CRUDConstants;
 import com.company.itos.core.util.JavaUtildates;
 import com.company.itos.core.util.dataaccess.DBConnection;
@@ -46,14 +48,30 @@ public class CreateEmailAddressDAO {
 					+ "', ?, ?, 'Active', 1)";
 
 			PreparedStatement preparedStatementEmailAddressLink = connection.prepareStatement(emailAddressLinkSQLStr);
+			
+			Long emailAddressLinkID = UniqueID.nextUniqueID();
 
-			preparedStatementEmailAddressLink.setLong(1, UniqueID.nextUniqueID());
+			preparedStatementEmailAddressLink.setLong(1, emailAddressLinkID);
 			preparedStatementEmailAddressLink.setLong(2, emailAddressLinkDetail.getRelatedID());
 			preparedStatementEmailAddressLink.setLong(3, emailAddressID);
 			preparedStatementEmailAddressLink.setDate(4, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
 			preparedStatementEmailAddressLink.setDate(5, JavaUtildates.convertUtilToSql(emailAddressLinkDetail.getStartDate()));
 
 			preparedStatementEmailAddressLink.execute();
+			emailAddressLinkDetail.setEmailAddressLinkID(emailAddressLinkID);
+			
+			//inserting data into AuditTrail Table for Email Table
+			AuditTrailDetails auditTrailDetails = new AuditTrailDetails();
+			
+			auditTrailDetails.setTableName("Email");
+			auditTrailDetails.setOperationType("Create");
+			auditTrailDetails.setUserName("Rahul");
+			auditTrailDetails.setRelatedID(emailAddressLinkID);
+			auditTrailDetails.setTransactionType("Online");
+			
+			CreateAuditTrailDAO createAuditTrailDAO = new CreateAuditTrailDAO();
+			createAuditTrailDAO.createAuditTrail(auditTrailDetails);
+			
 
 			returnMassegeStr = CRUDConstants.RETURN_MESSAGE_SUCCESS;
 		} catch (SQLException e) {

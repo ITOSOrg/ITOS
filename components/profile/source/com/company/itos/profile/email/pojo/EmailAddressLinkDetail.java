@@ -2,6 +2,8 @@ package com.company.itos.profile.email.pojo;
 
 import java.util.Date;
 
+import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
+
 
 public class EmailAddressLinkDetail {
 
@@ -24,6 +26,8 @@ public class EmailAddressLinkDetail {
 	private int versionNo;
 	
 	private EmailAddressDetail emailAddressDetail = null;
+	
+	private AuditTrailDtls auditTrailDtls = null;
 	
 	private String updateAction = "update";
 	
@@ -126,5 +130,19 @@ public class EmailAddressLinkDetail {
 	}
 	public void setEmailAddressDetail(EmailAddressDetail emailAddressDetail) {
 		this.emailAddressDetail = emailAddressDetail;
+	}
+
+	/**
+	 * @return the auditTrailDtls
+	 */
+	public AuditTrailDtls getAuditTrailDtls() {
+		return auditTrailDtls;
+	}
+
+	/**
+	 * @param auditTrailDtls the auditTrailDtls to set
+	 */
+	public void setAuditTrailDtls(AuditTrailDtls auditTrailDtls) {
+		this.auditTrailDtls = auditTrailDtls;
 	}
 }

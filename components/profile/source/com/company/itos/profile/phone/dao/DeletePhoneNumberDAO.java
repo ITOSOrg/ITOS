@@ -40,11 +40,7 @@ public class DeletePhoneNumberDAO {
 			
 			auditTrailDetails.setTableName("PhoneNumber");
 			auditTrailDetails.setOperationType("Update");
-			
-			UpdatePhoneNumberDAO updatePhoneNumberDAO = new UpdatePhoneNumberDAO();
-			String username = updatePhoneNumberDAO.returnUserName(phoneNumberLinkDetail);
-			
-			auditTrailDetails.setUserName(username);
+			auditTrailDetails.setUserName("Rahul");
 			auditTrailDetails.setRelatedID(phoneNumberLinkDetail.getRelatedID());
 			auditTrailDetails.setTransactionType("Online");
 			

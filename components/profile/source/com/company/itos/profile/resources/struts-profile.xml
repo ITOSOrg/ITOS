@@ -107,17 +107,18 @@
         </action>
 
 
-        <action name="CreateUser">
-            <result type="tiles">CreateUser</result>
+        <action name="CreateUser" class="com.company.itos.profile.person.action.DynamicDropDownAction">
+            <result name="success" type="tiles">CreateUser</result>
         </action>
 
-        <action name="CreateUserSubmit" class="com.company.itos.profile.person.action.CreatePersonAction">
+        <action name="CreateUserSubmit" method="createPerson"  class="com.company.itos.profile.person.action.CreatePersonAction">
 
-            <result name="success" type="redirect">
+            <result name="input">/components/profile/jsp/person/CreatePerson.jsp</result>
+             <result name="success" type="redirect">
                 <param name="location">/PersonList</param>
-            </result>
-            <result name="input">/index</result>
-            <result name="error" type="tiles">CreateUser</result>
+            </result> 
+            <result name="error" type="tiles">CreateUser</result> 
+<!--             <result name="SUCCESS" >/components/profile/jsp/person/CreatePerson.jsp</result> -->
 
         </action>
 

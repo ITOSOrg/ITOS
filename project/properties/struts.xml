@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    
+
     <package name="ITOS" namespace="/" extends="struts-default">
     
     </package>
@@ -12,5 +12,7 @@
     <include file="com/company/itos/core/resources/struts-core.xml"/>
     
     <include file="com/company/itos/profile/resources/struts-profile.xml"/>
+    
+    
     
 </struts>

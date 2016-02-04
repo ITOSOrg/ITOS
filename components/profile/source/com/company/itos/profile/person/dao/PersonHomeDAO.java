@@ -83,7 +83,7 @@ public class PersonHomeDAO {
 				personDetail.setUserName(resultSetUsers.getString("userName"));
 			}
 
-			// For Gender
+			// For Gender retriving description for code
 			CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
 			codeTableItemKey.setCode(personDetail.getGender());
 

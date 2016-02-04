@@ -121,6 +121,27 @@
 <!--             <result name="SUCCESS" >/components/profile/jsp/person/CreatePerson.jsp</result> -->
 
         </action>
+        
+        
+        
+        
+         <action name="New User">
+            <result >/components/profile/jsp/person/Trial.jsp</result>
+        </action>
+        
+        
+        <action name="CreateTrailPersonSubmit"   class="com.company.itos.profile.trial.person.action.CreateTrialPersonAction">
+
+            <result name="input">/components/profile/jsp/person/Trial.jsp</result>
+             <result name="success" type="redirect">
+                <param name="location">/PersonList</param>
+            </result> 
+            <result name="error">/components/profile/jsp/person/Trial.jsp</result> 
+
+        </action>
+        
+        
+        
 
 
 

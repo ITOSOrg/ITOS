@@ -5,7 +5,7 @@ CREATE TABLE Person (
 	middleName VARCHAR2(30),
 	lastName VARCHAR2(15), 
 	fullName VARCHAR2(60),
-	gender VARCHAR2(10),
+	gender VARCHAR2(50),
 	dateOfBirth DATE, 
 	comments VARCHAR2(500),
 	registrationDate DATE,

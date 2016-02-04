@@ -28,8 +28,7 @@
 		</table>
 
 		<br>
-		<a href="/ITOS/components/profile/jsp/person/Trial.jsp">New
-			User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<a href="/ITOS/components/profile/jsp/person/Trial.jsp">New User</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<br>
 		<br>
 

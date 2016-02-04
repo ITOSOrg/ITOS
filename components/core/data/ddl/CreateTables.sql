@@ -18,7 +18,7 @@ CREATE TABLE Properties (
 );
 
 CREATE TABLE CodeTableHeader
-(	tableName CHARACTER(100) not null,
+(	tableName CHARACTER(20) not null,
 	defaultCode CHARACTER(40), 
 	parentCodeTable CHARACTER(100), 
 	comments VARCHAR(100),
@@ -36,7 +36,7 @@ CREATE TABLE CodeTableHeader
 
 CREATE TABLE CodeTableItem
 (	tableName CHARACTER(100) not null, 
-	code CHARACTER(40) not null, 
+	code CHARACTER(20) not null, 
 	description VARCHAR(100), 
 	annotation VARCHAR(100), 
 	isEnabled CHARACTER(1) not null, 

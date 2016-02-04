@@ -11,6 +11,8 @@ import com.company.itos.core.audittrail.dao.ReadAuditTrailDAO;
 import com.company.itos.core.audittrail.pojo.AuditTrailDetails;
 import com.company.itos.core.audittrail.pojo.AuditTrailDtls;
 import com.company.itos.core.audittrail.pojo.AuditTrailkey;
+import com.company.itos.core.codetable.dao.ReadCodeTableItemDAO;
+import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.profile.person.pojo.PersonDetail;
 
@@ -49,6 +51,18 @@ public class PersonListDAO {
 				personDetail.setGender(resultSet.getString("gender"));
 				personDetail.setRegistrationDate(resultSet.getTimestamp("registrationDate"));
 				personDetail.setVersionNo(resultSet.getInt("versionNo"));
+				
+				// For Gender Retriving desription from table for code
+				CodeTableItemKey codeTableItemKey = new CodeTableItemKey();
+				codeTableItemKey.setCode(personDetail.getGender());
+
+				codeTableItemKey.setTableName("Gender");
+
+				ReadCodeTableItemDAO readCodeTableItemDAO = new ReadCodeTableItemDAO();
+				readCodeTableItemDAO.readCodeTableItemDescription(codeTableItemKey);
+
+				personDetail.setGender(codeTableItemKey.getDescription());
+
 				
 				//Retriving audit info from AuditTrail Table
 				AuditTrailkey auditTrailkey = new AuditTrailkey();

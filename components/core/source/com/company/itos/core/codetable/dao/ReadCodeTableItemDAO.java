@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import com.company.itos.core.util.dataaccess.DBConnection;
 import com.company.itos.core.codetable.pojo.CodeTableItemDetail;
 import com.company.itos.core.codetable.pojo.CodeTableItemKey;
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.core.util.dataaccess.DBConnection;
 
 public class ReadCodeTableItemDAO {
 
@@ -80,9 +81,10 @@ public class ReadCodeTableItemDAO {
 
 	}
 
-	public List<CodeTableItemDetail> litCodeTableItem(CodeTableItemDetail codeTableItemDetailkey) {
+	public HashMap<String, String> litGender() {
 
-		List<CodeTableItemDetail> codeTableItemList = new ArrayList<CodeTableItemDetail>();
+
+		HashMap<String, String> genderMap = new HashMap<String, String>();
 
 		Connection connection = null;
 
@@ -95,11 +97,15 @@ public class ReadCodeTableItemDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			CodeTableItemDetail codeTableItemDetail = null;
+
 			while (resultSet.next()) {
+
 				codeTableItemDetail = new CodeTableItemDetail();
 				codeTableItemDetail.setCode(resultSet.getString("code"));
 				codeTableItemDetail.setDescription(resultSet.getString("description"));
-				codeTableItemList.add(codeTableItemDetail);
+				genderMap.put(codeTableItemDetail.getCode(), codeTableItemDetail.getDescription());
+				// codeTableItemList.add(codeTableItemDetail);
+
 			}
 
 		} catch (SQLException e) {
@@ -107,7 +113,42 @@ public class ReadCodeTableItemDAO {
 			e.printStackTrace();
 		}
 
-		return codeTableItemList;
+		return genderMap;
+	}
+	
+	public HashMap<String, String> litState() {
+
+
+		HashMap<String, String> stateMap = new HashMap<String, String>();
+
+		Connection connection = null;
+
+		try {
+			connection = DBConnection.getDBConnection();
+
+			String CodeTableItemSQLStr = "SELECT code, description FROM CodeTableItem WHERE tableName = 'State'";
+
+			PreparedStatement preparedStatement = connection.prepareStatement(CodeTableItemSQLStr);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			CodeTableItemDetail codeTableItemDetail = null;
+
+			while (resultSet.next()) {
+
+				codeTableItemDetail = new CodeTableItemDetail();
+				codeTableItemDetail.setCode(resultSet.getString("code"));
+				codeTableItemDetail.setDescription(resultSet.getString("description"));
+				stateMap.put(codeTableItemDetail.getCode(), codeTableItemDetail.getDescription());
+				// codeTableItemList.add(codeTableItemDetail);
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return stateMap;
 	}
 
 }

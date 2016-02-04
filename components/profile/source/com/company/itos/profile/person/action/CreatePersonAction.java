@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.company.itos.core.util.CRUDConstants;
+import com.company.itos.profile.person.dao.PersonHomeDAO;
 import com.company.itos.profile.person.dao.PersonRegistrationDAO;
 import com.company.itos.profile.person.pojo.PersonDetail;
 import com.company.itos.profile.person.pojo.UsersDetail;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 public class CreatePersonAction extends ActionSupport implements SessionAware, ServletRequestAware {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private Map<String, Object> session;
 	HttpServletRequest request;
 	private PersonDetail personDetail;
@@ -58,9 +59,11 @@ public class CreatePersonAction extends ActionSupport implements SessionAware, S
 		this.personDetail = personDetail;
 	}
 
+
 	public String createPerson() throws Exception {
 
 		String pageForwardStr = "";
+		
 
 		PersonRegistrationDAO personRegistrationDAO = new PersonRegistrationDAO();
 		String returnMassegeStr = personRegistrationDAO.registerPerson(personDetail);
@@ -90,8 +93,11 @@ public class CreatePersonAction extends ActionSupport implements SessionAware, S
 	 * 
 	 * }
 	 */
+	
 
-	public void validate() {
+	
+
+	/*public void validate() {
 		System.out.println("inside validate method");
 		String letters = "/^[A-Za-z]+$/";
 		// Validation for First Name
@@ -165,16 +171,16 @@ public class CreatePersonAction extends ActionSupport implements SessionAware, S
 
 		// Validation for Phone Number
 		
-		/*if(!personDetail.getPhoneNumberLinkDetail().getPhoneNumberDetail().getCountryCode().isNumeric()){
+		if(!personDetail.getPhoneNumberLinkDetail().getPhoneNumberDetail().getCountryCode().isNumeric()){
 			
 			addFieldError
 			 ("personDetail.phoneNumberLinkDetail.phoneNumberDetail.countryCode", "Phone number is required");
 			
-		}*/
+		}
 		
 		// Validation for Phone Number
 
-		 /*if (!personDetail.getPhoneNumberLinkDetail().getPhoneNumberDetail().
+		 if (!personDetail.getPhoneNumberLinkDetail().getPhoneNumberDetail().
 		 getPhoneNumber().equals("")) &&
 		 !personDetail.getPhoneNumberLinkDetail
 		 ().getPhoneNumberDetail().getPhoneNumber().isNumeric() {
@@ -186,8 +192,8 @@ public class CreatePersonAction extends ActionSupport implements SessionAware, S
 		 getPhoneNumber().equals("") &&
 		 personDetail.getPhoneNumberLinkDetail()
 		 .getPhoneNumberDetail().getPhoneNumber().length()!=10) {
-		 addFieldError("mobile", "Phone number should have ten digits"); }*/
+		 addFieldError("mobile", "Phone number should have ten digits"); }
 		
 
-	}
+	}*/
 }
